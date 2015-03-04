@@ -1,0 +1,18 @@
+{
+"development": {
+"username": "rahul",
+"password": "jobletics",
+"database": "jobletics",
+"host": "localhost",
+"dialect": "postgres",
+"port": "5432"
+},
+"production": {
+"username": "rahuls",
+"password": "job123",
+"database": "jobleticsprod",
+"host": "PRODUCTION_DATABASE_URL",
+"dialect": "postgres",
+"port": "DATABASE_PORT"
+}
+}
