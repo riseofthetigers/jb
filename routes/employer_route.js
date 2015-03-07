@@ -16,11 +16,13 @@ module.exports = function (sequelize) {
                 res.send(406);
             }
         },
+
         get: function (req, res) {
             Employer.findAll().success(function (employers) {
                 res.send(employers);                
             });
         },
+
         update: function (req, res) {
             Employer.find({ where: {username: req.params.id} }).then(function(oldEmployer){   
                 oldEmployer.updateAttributes({
@@ -32,5 +34,6 @@ module.exports = function (sequelize) {
                 });
             });            
         }
+        
     };
 };
