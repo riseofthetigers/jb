@@ -8,8 +8,8 @@
 "port": "5432"
 },
 "production": {
-"username": "rahul",
-"password": "jobletics",
+"username": "cqsswuavwfcudd",
+"password": "Ze0UHcMzswL4nUzHywJ8vdGA64",
 "database": "jobleticsprod",
 "host": "postgres://cqsswuavwfcudd:Ze0UHcMzswL4nUzHywJ8vdGA64@ec2-23-23-180-133.compute-1.amazonaws.com:5432/d1tb8shkqv8o9f",
 "dialect": "postgres",
