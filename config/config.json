@@ -8,10 +8,10 @@
 "port": "5432"
 },
 "production": {
-"username": "cqsswuavwfcudd",
-"password": "Ze0UHcMzswL4nUzHywJ8vdGA64",
-"database": "jobleticsprod",
-"host": "postgres://cqsswuavwfcudd:Ze0UHcMzswL4nUzHywJ8vdGA64@ec2-23-23-180-133.compute-1.amazonaws.com:5432/d1tb8shkqv8o9f",
+"username": "mjfvucmilnanhg",
+"password": "nOwA73r5O0GbFPtIP0mX16JEYD",
+"database": "d3hgqfoask25fo",
+"host": "ec2-23-21-183-70.compute-1.amazonaws.com",
 "dialect": "postgres",
 "port": "5432"
 }
