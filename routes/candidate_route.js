@@ -33,6 +33,15 @@ module.exports = function (sequelize) {
                     res.json(req.dataValues);
                 });
             });            
+        },
+
+        destroy: function (req, res) {
+        	Candidate.find({ where: {username: req.params.id} }).then(function(oldCandidate){   
+                oldCandidate.destroy().then(function(){
+                    res.send(200);
+                    res.json(req.dataValues);
+                });
+            });     
         }
 		
 	};

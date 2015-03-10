@@ -33,6 +33,15 @@ module.exports = function (sequelize) {
                     res.json(req.dataValues);
                 });
             });            
+        },
+
+        destroy: function (req, res) {
+            Employer.find({ where: {username: req.params.id} }).then(function(oldEmployer){   
+                oldEmployer.destroy().then(function(){
+                    res.send(200);
+                    res.json(req.dataValues);
+                });
+            });     
         }
         
     };
