@@ -35,5 +35,5 @@ app.delete("/employer/:id", candidateRoute.destroy);
 app.get("/listing", listingRoute.get);
 app.post("/listing", listingRoute.create);
 app.put("/listing/:id", listingRoute.update);
-app.delete("/employer/:id", listingRoute.destroy);
+app.delete("/listing/:id", listingRoute.destroy);
 

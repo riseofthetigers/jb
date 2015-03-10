@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (sequelize) {
-	var model = require('../models/listing_model');
+	var model = require('../models/listing_model')(sequelize);
 	var Listing = model.Listing;
 
 	return {
