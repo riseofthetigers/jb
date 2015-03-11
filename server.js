@@ -7,7 +7,7 @@ var app = express();
 var models = require("./models"); 
 
 //sequalize initialization
-var sequelize = new Sequelize("postgres://rahul:jobletics@localhost:5432/jobletics");
+var sequelize = new Sequelize(process.env.DATABASE_URL || "postgres://rahul:jobletics@localhost:5432/jobletics");
 
 //routers
 var employerRoute = require("./routes/employer_route")(sequelize);
