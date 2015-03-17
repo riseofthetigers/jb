@@ -1,8 +1,8 @@
 'use strict';
 
 var Sequelize = require('sequelize');
-var candidates = require('./candidate_model.js');
-var employees = require('./employer_model.js');
+var candidates = require('./candidate_model');
+var employees = require('./employer_model');
 
 
 module.exports = function (sequelize) {
