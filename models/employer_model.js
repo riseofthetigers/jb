@@ -3,11 +3,15 @@
 var Sequelize = require('sequelize');
 
 module.exports = function (sequelize) {
-    var Employer = sequelize.define("employer", {
-        username: { type: Sequelize.STRING, validate: { notNull: true } },
-        password: { type: Sequelize.STRING, validate: { notNull: true } }
+    var employer = sequelize.define("employer", {
+        name: { type: Sequelize.STRING, validate: { notNull: true } },
+        phone_number: { type: Sequelize.STRING, validate: { notNull: true } },
+        address: { type: Sequelize.STRING, validate: { notNull: true } },
+        state: { type: Sequelize.STRING, validate: { notNull: true } },
+        employer_description: { type: Sequelize.STRING, validate: { notNull: true} },
+        employer_picture: { type: Sequelize.STRING, validate: { notNull: true } }
     });
     return {
-        Employer: Employer
+        employer: employer
     };
 };

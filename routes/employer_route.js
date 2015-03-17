@@ -3,18 +3,19 @@ module.exports = function (sequelize) {
     var Employer = model.Employer;
     return {
         create: function (req, res) {
-            if (req.body.username && req.body.password != null) {
-                var newEmployer = {
-                    username: req.body.username,
-                    password: req.body.password
-                }
-            
-            Employer.create(newEmployer).success(function () {
+            var createEmployer = {
+                name: req.body.name,
+                phone_number: req.body.phone_number,
+                address: req.body.address,
+                state: req.body.state,
+                employer_description: req.body.employer_description,
+                employer_picture: req.body.employer_picture
+            }
+
+            Employer.create(createEmployer).success(function () {
                 res.send(200);
                 res.json(req.dataValues);
-            });} else {
-                res.send(406);
-            }
+            });         
         },
 
         get: function (req, res) {
@@ -24,10 +25,14 @@ module.exports = function (sequelize) {
         },
 
         update: function (req, res) {
-            Employer.find({ where: {username: req.params.id} }).then(function(oldEmployer){   
+            Employer.find({ where: {name: req.params.id} }).then(function(oldEmployer){   
                 oldEmployer.updateAttributes({
-                    username: req.body.username,
-                    password: req.body.password
+                    name: req.body.name,
+                    phone_number: req.body.phone_number,
+                    address: req.body.address,
+                    business_state: req.body.business_state,
+                    skills: req.body.skills,
+                    candidate_picture: req.body.candidate_picture
                 }).then(function(){
                     res.send(200);
                     res.json(req.dataValues);
@@ -36,7 +41,7 @@ module.exports = function (sequelize) {
         },
 
         destroy: function (req, res) {
-            Employer.find({ where: {username: req.params.id} }).then(function(oldEmployer){   
+            Employer.find({ where: {name: req.params.id} }).then(function(oldEmployer){   
                 oldEmployer.destroy().then(function(){
                     res.send(200);
                     res.json(req.dataValues);

@@ -3,7 +3,7 @@
 var Sequelize = require('sequelize');
 
 module.exports = function (sequelize) {
-    var Listing = sequelize.define("listing", {   	
+    var listing = sequelize.define("listing", {   	
         business_name: { type: Sequelize.STRING },
     	business_address: { type: Sequelize.STRING },
         business_city: { type: Sequelize.STRING },
@@ -19,6 +19,6 @@ module.exports = function (sequelize) {
         job_hiring_manager: { type: Sequelize.STRING },
     });
     return {
-        Listing: Listing
+        listing: listing
     };
 };

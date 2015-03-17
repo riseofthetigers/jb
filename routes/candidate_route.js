@@ -3,18 +3,19 @@ module.exports = function (sequelize) {
 	var Candidate = model.Candidate;
 	return {
 		create: function (req, res) {
-			if (req.body.username && req.body.password != null) {
-				var newCandidate = {
-					username: req.body.username,
-					password: req.body.password
-				}
+			var createCandidate = {
+                name: req.body.name,
+                phone_number: req.body.phone_number,
+                address: req.body.address,
+                state: req.body.state,
+                skills: req.body.skills,
+                candidate_picture: req.body.candidate_picture
+            }
 
-			Candidate.create(newCandidate).success(function () {
-				res.send(200);
-				res.json(req.dataValues);
-			});} else {
-				res.send(406);
-			}
+            Candidate.create(createCandidate).success(function (err) {
+                res.send(200);
+                res.json(req.dataValues);
+            });         
 		},
 
 		get: function (req, res) {
@@ -24,10 +25,14 @@ module.exports = function (sequelize) {
 		},
 
 		update: function (req, res) {
-            Candidate.find({ where: {username: req.params.id} }).then(function(oldCandidate){   
+            Candidate.find({ where: {name: req.params.id} }).then(function(oldCandidate){   
                 oldCandidate.updateAttributes({
-                    username: req.body.username,
-                    password: req.body.password
+                name: req.body.name,
+                phone_number: req.body.phone_number,
+                address: req.body.address,
+                state: req.body.state,
+                skills: req.body.skills,
+                candidate_picture: req.body.candidate_picture
                 }).then(function(){
                     res.send(200);
                     res.json(req.dataValues);
@@ -36,7 +41,7 @@ module.exports = function (sequelize) {
         },
 
         destroy: function (req, res) {
-        	Candidate.find({ where: {username: req.params.id} }).then(function(oldCandidate){   
+        	Candidate.find({ where: {name: req.params.id} }).then(function(oldCandidate){   
                 oldCandidate.destroy().then(function(){
                     res.send(200);
                     res.json(req.dataValues);
