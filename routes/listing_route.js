@@ -8,7 +8,7 @@ module.exports = function (sequelize) {
 		create: function (req, res) {
 			var createListing = {
 				business_name: req.body.business_name,
-				business_address: req.body.address,
+				business_address: req.body.business_address,
 				business_city: req.body.business_city,
 				business_state: req.body.business_state,
 				business_zip: req.body.business_zip,
