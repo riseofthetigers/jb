@@ -9,8 +9,9 @@ module.exports = function (sequelize) {
         address: { type: Sequelize.STRING, validate: { notNull: true } },
         state: { type: Sequelize.STRING, validate: { notNull: true } },
         employer_description: { type: Sequelize.STRING, validate: { notNull: true} },
-        employer_picture: { type: Sequelize.STRING, validate: { notNull: true } }
+        employer_picture: { type: Sequelize.STRING, validate: { notNull: true } },
     });
+
     return {
         employer: employer
     };

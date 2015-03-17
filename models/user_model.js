@@ -10,7 +10,6 @@ module.exports = function (sequelize) {
 		username: { type: Sequelize.STRING, validate: {	notNull: true } },
 		password: { type: Sequelize.STRING, validate: { notNull: true } }
 	});
-
 	user.hasMany(candidates);
 	user.hasMany(employees);
 	return {
