@@ -1,10 +1,14 @@
+var path = require("path");
+
 module.exports = function (sequelize) {
-    var model = require("../models/user_model")(sequelize);
-    var User = model.User;
+    var User = sequelize.import(
+        path.resolve(__dirname, "../models/user_model")
+    );
+
     return {
         create: function (req, res) {
             if (req.body.username && req.body.password != null) {
-                var newEmployer = {
+                var newUser = {
                     username: req.body.username,
                     password: req.body.password
                 }
@@ -18,7 +22,7 @@ module.exports = function (sequelize) {
         },
 
         get: function (req, res) {
-            Employer.findAll().success(function (users) {
+            User.findAll().success(function (users) {
                 res.send(users);                
             });
         },

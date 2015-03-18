@@ -1,8 +1,9 @@
-'use strict';
+var path = require("path");
 
 module.exports = function (sequelize) {
-	var model = require('../models/listing_model')(sequelize);
-	var Listing = model.Listing;
+    var Listing = sequelize.import(
+        path.resolve(__dirname, "../models/listing_model")
+    );
 
 	return {
 		create: function (req, res) {

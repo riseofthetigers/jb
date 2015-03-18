@@ -11,9 +11,13 @@ module.exports = function (sequelize) {
         state: { type: Sequelize.STRING, validate: { notNull: true } },
         skills: { type: Sequelize.STRING, validate: { notNull: true } },
         candidate_picture: { type: Sequelize.BLOB, validate: { notNull: true } },
+	}, {
+		classMethods: {
+    		associate: function(db){
+				candidate.belongsTo(db.user, { foreignKey: 'candidate_id' });
+    		}
+	  	},
 	});
 
-	return {
-		candidate: candidate
-	}
+	return candidate;
 };

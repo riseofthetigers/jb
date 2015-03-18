@@ -8,6 +8,7 @@ var models = require("./models");
 
 //sequalize initialization
 var sequelize = new Sequelize("postgres://rahul:jobletics@localhost:5432/jobletics");
+models(sequelize);
 
 //routers
 var employerRoute = require("./routes/employer_route")(sequelize);
@@ -20,7 +21,7 @@ var userRoute = require("./routes/user_route")(sequelize);
 app.use(bodyParser());
 app.use(morgan('dev'));
 
-models.sequelize.sync().success(function (err) {
+sequelize.sync().success(function (err) {
 	console.log('Express server listening on port 5000');
     app.listen(5000);
 });
@@ -42,3 +43,5 @@ app.get("/listing", listingRoute.get);
 app.post("/listing", listingRoute.create);
 app.put("/listing/:id", listingRoute.update);
 app.delete("/listing/:id", listingRoute.destroy);
+
+app.use(express.static("./public"));

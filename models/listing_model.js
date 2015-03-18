@@ -18,7 +18,5 @@ module.exports = function (sequelize) {
         business_picture: { type: Sequelize.BLOB },
         job_hiring_manager: { type: Sequelize.STRING },
     });
-    return {
-        listing: listing
-    };
+    return listing;
 };

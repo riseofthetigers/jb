@@ -1,6 +1,10 @@
+var path = require("path");
+
 module.exports = function (sequelize) {
-	var model = require("../models/candidate_model")(sequelize);
-	var Candidate = model.Candidate;
+    var Candidate = sequelize.import(
+        path.resolve(__dirname, "../models/candidate_model")
+    );
+
 	return {
 		create: function (req, res) {
 			var createCandidate = {
@@ -9,7 +13,8 @@ module.exports = function (sequelize) {
                 address: req.body.address,
                 state: req.body.state,
                 skills: req.body.skills,
-                candidate_picture: req.body.candidate_picture
+                candidate_picture: req.body.candidate_picture,
+                candidate_id: req.body.candidate_id,
             }
 
             Candidate.create(createCandidate).success(function (err) {

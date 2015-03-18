@@ -1,6 +1,10 @@
+var path = require("path");
+
 module.exports = function (sequelize) {
-    var model = require("../models/employer_model")(sequelize);
-    var Employer = model.Employer;
+    var Employer = sequelize.import(
+        path.resolve(__dirname, "../models/employer_model")
+    );
+
     return {
         create: function (req, res) {
             var createEmployer = {

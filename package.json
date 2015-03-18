@@ -23,7 +23,8 @@
     "pg": "^3.6.3",
     "pg-hstore": "^2.3.1",
     "sequelize": "^1.7.10",
-    "sequelize-heroku": "^1.0.0"
+    "sequelize-heroku": "^1.0.0",
+    "webpack": "^1.7.3"
   },
   "devDependencies": {
     "mocha": "~1.19.0",
