@@ -22,11 +22,10 @@ module.exports = function (sequelize) {
   //   candidate: Candiddate,
   // }
 
-
   Object.keys(db).forEach(function(modelName) {
     console.log(modelName, "associate" in db[modelName]);
-    if ("associate" in db[modelName]) {
-      db[modelName].associate(db);
+    if ("associate" in db[modelName].options) {
+      db[modelName].options.associate(db);
     }
   });
 };

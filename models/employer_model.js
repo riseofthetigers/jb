@@ -11,11 +11,9 @@ module.exports = function (sequelize) {
         employer_description: { type: Sequelize.STRING, validate: { notNull: true} },
         employer_picture: { type: Sequelize.STRING, validate: { notNull: true } },
     }, {
-		classMethods: {
     		associate: function(db){
 				employer.belongsTo(db.user);
     		}
-	  	},
 	});
 
     return employer;

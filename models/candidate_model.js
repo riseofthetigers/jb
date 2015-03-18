@@ -12,11 +12,9 @@ module.exports = function (sequelize) {
         skills: { type: Sequelize.STRING, validate: { notNull: true } },
         candidate_picture: { type: Sequelize.BLOB, validate: { notNull: true } }
 	}, {
-		classMethods: {
     		associate: function(db){
 				candidate.belongsTo(db.user);
     		}
-	  	},
 	});
 
 	return candidate;
