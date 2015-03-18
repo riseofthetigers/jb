@@ -13,8 +13,7 @@ module.exports = function (sequelize) {
                 address: req.body.address,
                 state: req.body.state,
                 skills: req.body.skills,
-                candidate_picture: req.body.candidate_picture,
-                candidate_id: req.body.candidate_id,
+                candidate_picture: req.body.candidate_picture
             }
 
             Candidate.create(createCandidate).success(function (err) {

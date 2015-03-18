@@ -44,4 +44,6 @@ app.post("/listing", listingRoute.create);
 app.put("/listing/:id", listingRoute.update);
 app.delete("/listing/:id", listingRoute.destroy);
 
+
+//middleware to point to view entry point
 app.use(express.static("./public"));

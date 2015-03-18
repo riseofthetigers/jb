@@ -9,13 +9,11 @@ module.exports = function (sequelize) {
 	}, {
 		classMethods: {
     		associate: function(db){
-				User.hasMany(db.candidate, { foreignKey: 'candidate_id' });
-				User.hasMany(db.employer, { foreignKey: 'book_id' });
-
+				User.hasMany(db.candidate);
+				User.hasMany(db.employer);
     		}
 	  	},
 	});
-
 
 	return User;
 };
