@@ -7,6 +7,7 @@ module.exports = function (sequelize) {
 
 	return {
 		create: function (req, res) {
+            console.log(req.body);
 			var createCandidate = {
                 name: req.body.name,
                 phone_number: req.body.phone_number,

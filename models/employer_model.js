@@ -8,7 +8,7 @@ module.exports = function (sequelize) {
         phone_number: { type: Sequelize.STRING, validate: { notNull: true } },
         address: { type: Sequelize.STRING, validate: { notNull: true } },
         state: { type: Sequelize.STRING, validate: { notNull: true } },
-        employer_description: { type: Sequelize.STRING, validate: { notNull: true} },
+        employer_description: { type: Sequelize.STRING, validate: { notNull: true } },
         employer_picture: { type: Sequelize.STRING, validate: { notNull: true } },
     }, {
     		associate: function(db){

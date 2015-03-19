@@ -16,7 +16,7 @@ module.exports = function (sequelize) {
       db[Model.name] = Model;
     });
 
-  console.log(Object.keys(db));
+  //console.log(db);
   // db = {
   //   user: User,
   //   candidate: Candiddate,

@@ -18,7 +18,8 @@ var userRoute = require("./routes/user_route")(sequelize);
 
 
 //middleware
-app.use(bodyParser());
+//app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 sequelize.sync().success(function (err) {

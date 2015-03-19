@@ -7,6 +7,7 @@ module.exports = function (sequelize) {
 
     return {
         create: function (req, res) {
+            console.log(req.body);
             if (req.body.username && req.body.password != null) {
                 var newUser = {
                     username: req.body.username,
@@ -14,10 +15,10 @@ module.exports = function (sequelize) {
                 }
             
             User.create(newUser).success(function () {
-                res.send(200);
+                res.sendStatus(200);
                 res.json(req.dataValues);
             });} else {
-                res.send(406);
+                res.sendStatus(406);
             }
         },
 
