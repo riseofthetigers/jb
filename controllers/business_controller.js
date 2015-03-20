@@ -20,7 +20,7 @@ module.exports = {
       business_description: req.body.business_description,
       business_picture: req.body.business_picture,
       business_hiring_manager: req.body.business_hiring_manager,
-      employer_id: req.body.user_id
+      employer_id: req.body.employer_id
     }
 
     Business.create(createListing).success(function() {
