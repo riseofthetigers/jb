@@ -16,7 +16,8 @@ module.exports = {
       address: req.body.address,
       state: req.body.state,
       employer_description: req.body.employer_description,
-      employer_picture: req.body.employer_picture
+      employer_picture: req.body.employer_picture,
+      user_id: req.body.user_id
     }
 
     Employer.create(createEmployer).success(function() {

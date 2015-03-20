@@ -12,19 +12,13 @@ module.exports = {
 
   create: function(req, res) {
     var createListing = {
-      business_name: req.body.business_name,
-      business_address: req.body.business_address,
-      business_city: req.body.business_city,
-      business_state: req.body.business_state,
-      business_zip: req.body.business_zip,
       job_title: req.body.job_title,
       employment_type: req.body.employment_type,
       job_description: req.body.job_description,
       business_culture: req.body.business_culture,
       job_compensation: req.body.job_compensation,
       job_benifits: req.body.job_benifits,
-      business_picture: req.body.business_picture,
-      job_hiring_manager: req.body.job_hiring_manager
+      business_id: req.body.business_id
     }
 
     Listing.create(createListing).success(function() {
@@ -42,12 +36,16 @@ module.exports = {
   update: function(req, res) {
     Listing.find({
       where: {
-        business_name: req.params.id
+        job_title: req.params.id
       }
     }).then(function(oldListing) {
-      oldCandidate.updateAttributes({
-        username: req.body.username,
-        password: req.body.password
+      oldListing.updateAttributes({
+      job_title: req.body.job_title,
+      employment_type: req.body.employment_type,
+      job_description: req.body.job_description,
+      business_culture: req.body.business_culture,
+      job_compensation: req.body.job_compensation,
+      job_benifits: req.body.job_benifits
       }).then(function() {
         res.send(200);
         res.json(req.dataValues);

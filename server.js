@@ -28,7 +28,9 @@ app.use(express.static("./public"));
 app.use("/user", require('./routes/user_route'));
 app.use("/employer", require('./routes/employer_route'));
 app.use("/listing", require('./routes/listing_route'));
-app.use('/candidate', require('./routes/candidate_route'))
+app.use('/candidate', require('./routes/candidate_route'));
+app.use("/business", require('./routes/business_route'));
+
 
 // Init the models
 var db = require("./models");

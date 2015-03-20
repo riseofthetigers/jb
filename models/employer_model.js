@@ -4,38 +4,38 @@ module.exports = function(sequelize, DataTypes) {
   var Employer = sequelize.define("Employer", {
     name: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        notNull: true
       }
     },
     phone_number: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        notNull: true
       }
     },
     address: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        notNull: true
       }
     },
     state: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        notNull: true
       }
     },
     employer_description: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        notNull: true
       }
     },
     employer_picture: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        notNull: true
       }
     },
   }, {
@@ -44,6 +44,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Employer.belongsTo(models.User);
+        Employer.hasMany(models.Business);
       }
     }
   });

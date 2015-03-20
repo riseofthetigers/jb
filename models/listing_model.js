@@ -2,49 +2,50 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Listing = sequelize.define("Listing", {
-    business_name: {
-      type: DataTypes.STRING
-    },
-    business_address: {
-      type: DataTypes.STRING
-    },
-    business_city: {
-      type: DataTypes.STRING
-    },
-    business_state: {
-      type: DataTypes.STRING
-    },
-    business_zip: {
-      type: DataTypes.INTEGER
-    },
     job_title: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
     },
     employment_type: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
     },
     job_description: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+      }
     },
     business_culture: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
     },
     job_compensation: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+      }
     },
     job_benifits: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
     },
-    business_picture: {
-      type: DataTypes.BLOB
-    },
-    job_hiring_manager: {
-      type: DataTypes.STRING
-    },
-
   }, {
     //  lowercase tableName in Posrgres, if you need.
     tableName: 'listings',
+    classMethods: {
+      associate: function(models) {
+        Listing.belongsTo(models.Business);
+      }
+    }
   });
   return Listing;
 };
