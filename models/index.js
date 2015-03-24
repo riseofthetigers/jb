@@ -4,7 +4,6 @@ var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
 var basename  = path.basename(module.filename);
-var env       = process.env.NODE_ENV || "development";
 // Use env variable for our project.
 var env       = process.env.NODE_ENV || "development";
 // Read config from `config/config.js`;
