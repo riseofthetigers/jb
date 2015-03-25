@@ -3,13 +3,13 @@ module.exports = {
 
   // "postgres://rahul:jobletics@localhost:5432/jobletics"
   "development": {
-    //"username": "fundon",
-    //"password": "fdc",
-    "username": "rahul",
-    "password": "jobletics",
+    "username": "fundon",
+    "password": "fdc",
+    // "username": "rahul",
+    // "password": "jobletics",
     "database": "jobletics",
-    //"host": "192.168.59.103",
-    "host": "localhost",
+    "host": "192.168.59.103",
+    // "host": "localhost",
     "dialect": "postgres",
     "port": "5432",
 
@@ -19,7 +19,7 @@ module.exports = {
       "underscored": true,
       "charset": "utf8"
     },
-    // "logging": null
+    "logging": console.log
 
   },
 

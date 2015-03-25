@@ -1,25 +1,26 @@
 "use strict";
 
-var fs = require("fs");
-var path = require("path");
+var fs        = require("fs");
+var path      = require("path");
 var Sequelize = require("sequelize");
+var basename  = path.basename(module.filename);
 // Use env variable for our project.
-var env = process.env.NODE_ENV || "development";
+var env       = process.env.NODE_ENV || "development";
 // Read config from `config/config.js`;
-var config = require(__dirname + '/../config/config.js')[env];
+// `node_modules/.bin/sequelize -c config/config.js cmd`
+var config    = require(__dirname + '/../config/config.js')[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
-
 // Store the models.
-var db = {};
+var db        = {};
 
 fs
   .readdirSync(__dirname)
   .filter(function(file) {
-    return (file.indexOf(".") !== 0) && (file !== "index.js");
+    return (file.indexOf(".") !== 0) && (file !== basename);
   })
   .forEach(function(file) {
-    var Model = sequelize["import"](path.join(__dirname, file));
-    db[Model.name] = Model;
+    var model = sequelize["import"](path.join(__dirname, file));
+    db[model.name] = model;
   });
 
 Object.keys(db).forEach(function(modelName) {
@@ -34,5 +35,5 @@ db.sequelize = sequelize;
 // Adds `Sequelize` class to db object.
 db.Sequelize = Sequelize;
 
-// Returns the db object.
+// Expose the db object.
 module.exports = db;
