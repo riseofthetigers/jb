@@ -3,11 +3,11 @@
 var Router = require('express').Router;
 
 // Import Controllers.
-var businessController = require('../controllers/business_controller')
-var candidatesController = require('../controllers/candidates_controller')
-var employersController = require('../controllers/employers_controller')
-var listingsController = require('../controllers/listings_controller')
-var usersController = require('../controllers/users_controller')
+var businessController = require('../controllers/business')
+var candidatesController = require('../controllers/candidates')
+var employersController = require('../controllers/employers')
+var listingsController = require('../controllers/listings')
+var usersController = require('../controllers/users')
 
 // Register business routes.
 var businessRouter = Router();
