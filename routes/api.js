@@ -9,9 +9,6 @@ var employersController = require('../controllers/employers_controller')
 var listingsController = require('../controllers/listings_controller')
 var usersController = require('../controllers/users_controller')
 
-// Create API router.
-var apiRouter = Router();
-
 // Register business routes.
 var businessRouter = Router();
 businessRouter.get("/", businessController.get);
@@ -47,6 +44,8 @@ usersRouter.post("/", usersController.create);
 usersRouter.put("/:id", usersController.update);
 usersRouter.delete("/:id", usersController.destroy);
 
+// Create API router.
+var apiRouter = Router();
 
 apiRouter.use("/users", usersRouter);
 apiRouter.use("/employers", employersRouter);
