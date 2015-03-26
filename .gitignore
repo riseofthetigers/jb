@@ -3,3 +3,4 @@ npm-debug.log
 db
 *.swp
 .DS_Store
+*.hot-update.{js,json}

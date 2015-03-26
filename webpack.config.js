@@ -6,7 +6,7 @@ module.exports = {
     path: path.join(__dirname, 'public/js'),
     filename: '[name].js',
     publicPath: '/js/',
-    chunkFilename: "[name].js"
+    chunkFilename: '[name].js'
   },
 
   entry: [
@@ -14,7 +14,7 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ['', '.js', '.jsx']
   },
 
   module: {
@@ -27,6 +27,6 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
   ],
 };
