@@ -30,5 +30,21 @@ module.exports = {
     "host": "ec2-23-21-183-70.compute-1.amazonaws.com",
     "dialect": "postgres",
     "port": "5432"
+  },
+
+  "test": {
+    "username": "jobletics",
+    "password": "jobletics",
+    "database": "jobletics-test",
+    "host": "192.168.59.103",
+    "dialect": "postgres",
+    "port": "5432",
+
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "charset": "utf8"
+    },
+    "logging": console.log
   }
 };
