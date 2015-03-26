@@ -38,6 +38,10 @@ $ pm2 monit
 
 ### Test
 
+1. Create the `jobletics-test` database, see `config/config.js`
+
+2. Run
+
 ```bash
 $ npm test
 ```
