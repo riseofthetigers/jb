@@ -3,7 +3,7 @@ var Router = require('react-router');
 var Link = Router.Link;
 var RouteHandler = Router.RouteHandler;
 
-var routes = require('./routes');
+var routes = require('./routes.js');
 
 /*
 Router.run(routes, function (Handler) {
@@ -12,5 +12,5 @@ Router.run(routes, function (Handler) {
 */
 
 Router.run(routes, Router.HistoryLocation, function (Handler) {
-  React.render(<Handler/>, document.body);
+  React.render(<Handler/>, document.getElementById('jobletics'));
 });
