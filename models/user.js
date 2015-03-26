@@ -13,7 +13,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         isEmail: true,
-        addColumn: true,
         len: [5, 256]
       }
     },

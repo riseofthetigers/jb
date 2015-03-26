@@ -8,7 +8,6 @@ module.exports = {
         allowNull: false,
         validate: {
           isEmail: true,
-          addColumn: true,
           len: [5, 256]
         }
       })
