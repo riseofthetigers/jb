@@ -13,10 +13,6 @@ app.use(morgan(isProduction || 'dev'));
 // static resources
 app.use(express.static("./public"));
 
-// resources routes
-app.use('/', require('./routes/web'));
-app.use('/api', require('./routes/api'));
-
 // Init the models
 var db = require("./models");
 
@@ -30,3 +26,10 @@ db.sequelize
     console.log('Express server listening on port 5000');
     app.listen(5000);
   });
+
+
+var auth_handler = require('./lib/auth/passport.js')(app, db.User);
+
+// resources routes
+app.use('/', require('./routes/web'));
+app.use('/api', auth_handler, require('./routes/api'));
