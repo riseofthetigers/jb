@@ -35,3 +35,9 @@ $ npm run devstart
 $ pm2 logs
 $ pm2 monit
 ```
+
+### Test
+
+```bash
+$ npm test
+```
