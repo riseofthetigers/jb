@@ -1,5 +1,6 @@
 // app dependencies
 var morgan = require('morgan');
+var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({
 app.use(morgan(isProduction || 'dev'));
 // static resources
 app.use(express.static("./public"));
+app.use(methodOverride());
 
 // Use cookie middleware
 app.use(cookieParser());
