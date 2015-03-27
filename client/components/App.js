@@ -1,3 +1,4 @@
+var React  = require('react');
 var Navbar = require('./Navbar.js');
 
 var App = React.createClass({

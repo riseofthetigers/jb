@@ -1,3 +1,6 @@
+var React  = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 var Navbar = React.createClass({
   render: function () {
@@ -15,10 +18,12 @@ var Navbar = React.createClass({
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
               <li className="active"><a href="#">Home</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><Link to="about">About</Link></li>
+              <li><Link to="concat">Concat</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
-              <li><a href="#about">About</a></li>
+              <li><Link to="login">Log in</Link></li>
+              <li><a href="#signup">Sign up</a></li>
             </ul>
           </div>
         </div>
