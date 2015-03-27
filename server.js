@@ -1,6 +1,8 @@
 // app dependencies
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 var express = require("express");
 var isProduction = process.env.NODE_ENV === 'production';
 var app = express();
@@ -12,6 +14,15 @@ app.use(bodyParser.urlencoded({
 app.use(morgan(isProduction || 'dev'));
 // static resources
 app.use(express.static("./public"));
+
+// Use cookie middleware
+app.use(cookieParser());
+// Enable session management by express
+app.use(session({
+  secret: 'changethis!',
+  resave: false,
+  saveUninitialized: false
+}));
 
 // Init the models
 var db = require("./models");
