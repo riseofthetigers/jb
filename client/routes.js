@@ -15,7 +15,6 @@ var routes = (
     <Route name="about" handler={About}/>
     <Route name="concat" handler={Concat}/>
     <Route name="login" handler={Login}/>
-    <NotFoundRoute handler={NotFoundRoute}/>
   </Route>
 );
 
