@@ -30,15 +30,15 @@ app.use(session({
 var db = require("./models");
 
 db.sequelize
-  // You can set `force` to `true` in development mode.
-  // .sync({
-  //   force: true
-  // })
-  .sync()
+  //You can set `force` to `true` in development mode.
+  .sync({
+    force: true
+  })
+  //.sync()
   .then(function() {
     console.log('Express server listening on port 5000');
     app.listen(5000);
-  });
+});
 
 
 var auth_handler = require('./lib/auth/passport.js')(app, db.User);

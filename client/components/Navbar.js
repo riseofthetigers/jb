@@ -16,9 +16,9 @@ var Navbar = React.createClass({
           </div>
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
-              <li><Link to="Home">Jobletics/Link></li>
-              <li className="active"><a href="#">Create a Listing</a></li>
-              <li><Link to="concat">Search Jobs</Link></li>
+              <li className="active"><Link to="home">Jobletics</Link></li>
+              <li><Link to="concat">Create a Listing</Link></li>
+              <li><Link to="search">Search Jobs</Link></li>
               <li><Link to="about">About</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">

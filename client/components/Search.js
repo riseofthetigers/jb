@@ -1,10 +1,11 @@
 var React  = require('react');
-var Home = React.createClass({
+var Search = React.createClass({
   render: function () {
     return (
-      <h2> App</h2>
+      <h2>search</h2>
     );
   }
 });
 
-module.exports = Home;
+module.exports = Search;
+
