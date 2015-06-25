@@ -39,12 +39,15 @@ const LoginModal = React.createClass({
       }
 
       return (
-        <Modal title='Modal heading' onRequestHide={this.handleToggle}>
+        <Modal title='Login' onRequestHide={this.handleToggle}>
           <div className='modal-body'>
-            This modal is controlled by our custom trigger component.
-          </div>
-          <div className='modal-footer'>
-            <Button onClick={this.handleToggle}>Close</Button>
+              <div className="jumbotron text-center">
+                 <h2><span className="fa fa-lock"></span> Login or Register</h2>
+                 <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+                 <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+                 <a href="/auth/facebook" className="btn btn-primary"><span className="fa fa-facebook"></span> Facebook</a>
+
+             </div>
           </div>
         </Modal>
       );

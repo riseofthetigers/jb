@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "af62fbab63c9c982b51c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "185661fe3a0fa701f112"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -581,7 +581,7 @@
 	      return React.createElement("span", null);
 	    }
 
-	    return React.createElement(Modal, { title: "Modal heading", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, "This modal is controlled by our custom trigger component."), React.createElement("div", { className: "modal-footer" }, React.createElement(Button, { onClick: this.handleToggle }, "Close")));
+	    return React.createElement(Modal, { title: "Login", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h2", null, React.createElement("span", { className: "fa fa-lock" }), " Login or Register"), React.createElement("a", { href: "/login", "class": "btn btn-default" }, React.createElement("span", { "class": "fa fa-user" }), " Local Login"), React.createElement("a", { href: "/signup", "class": "btn btn-default" }, React.createElement("span", { "class": "fa fa-user" }), " Local Signup"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"))));
 	  }
 	});
 
