@@ -11,13 +11,16 @@ var User = models.User;
 module.exports = {
 
   create: function(req, res) {
-    console.log(req.body);
-    if (req.body.username && req.body.password != null) {
+    //console.log(req.body);
+    if (req.body.email && req.body.password != null && req.body.firstname && req.body.lastname != null) {
+      var displayname = req.body.firstname + ' ' + req.body.lastname;
+      console.log('displayname111111111' + displayname);
       var newUser = {
-        username: req.body.username,
-        password: req.body.password
+        username: req.body.email,
+        email: req.body.email,
+        password: req.body.password,
+        displayName: displayname
       }
-
       User.create(newUser).then(function() {
         res.sendStatus(200);
         res.json(req.dataValues);
@@ -63,3 +66,5 @@ module.exports = {
   }
 
 };
+
+

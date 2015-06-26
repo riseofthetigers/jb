@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
+  console.log('11111111')
   var User = sequelize.define("User", {
     username: {
       type: DataTypes.STRING,
@@ -10,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     displayName: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       validate: {
       }
     },

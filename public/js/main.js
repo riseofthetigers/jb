@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "185661fe3a0fa701f112"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b2f3324d36837454e89c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -548,7 +548,6 @@
 	var Button = ReactBootstrap.Button;
 	var Modal = ReactBootstrap.Modal;
 	var OverlayMixin = ReactBootstrap.OverlayMixin;
-	var App = __webpack_require__(286);
 
 	// Our custom component is managing whether the Modal is visible
 	var LoginModal = React.createClass({ displayName: "LoginModal",
@@ -581,7 +580,7 @@
 	      return React.createElement("span", null);
 	    }
 
-	    return React.createElement(Modal, { title: "Login", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h2", null, React.createElement("span", { className: "fa fa-lock" }), " Login or Register"), React.createElement("a", { href: "/login", "class": "btn btn-default" }, React.createElement("span", { "class": "fa fa-user" }), " Local Login"), React.createElement("a", { href: "/signup", "class": "btn btn-default" }, React.createElement("span", { "class": "fa fa-user" }), " Local Signup"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"))));
+	    return React.createElement(Modal, { title: "Login", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h3", null, "Login"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"), React.createElement("form", { action: "/api/user", method: "get" }, React.createElement("div", null, React.createElement("label", null, "Username: "), React.createElement("input", { type: "email", name: "username" }), React.createElement("br", null)), React.createElement("div", null, React.createElement("label", null, "Password: "), React.createElement("input", { type: "password", name: "password" })), React.createElement("div", null, React.createElement("input", { type: "submit", value: "Submit" }))))));
 	  }
 	});
 
@@ -32320,8 +32319,9 @@
 	var Home = __webpack_require__(289);
 	var Login = __webpack_require__(1);
 	var Search = __webpack_require__(290);
+	var Signup = __webpack_require__(309);
 
-	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Home }), React.createElement(Route, { name: "about", handler: About }), React.createElement(Route, { name: "concat", handler: Concat }), React.createElement(Route, { name: "home", handler: Home }), React.createElement(Route, { name: "login", handler: Login }), React.createElement(Route, { name: "search", handler: Search }));
+	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Home }), React.createElement(Route, { name: "about", handler: About }), React.createElement(Route, { name: "concat", handler: Concat }), React.createElement(Route, { name: "home", handler: Home }), React.createElement(Route, { name: "login", handler: Login }), React.createElement(Route, { name: "search", handler: Search }), React.createElement(Route, { name: "signup", handler: Signup }));
 
 	module.exports = routes;
 
@@ -32506,7 +32506,7 @@
 
 	var Navbar = React.createClass({ displayName: "Navbar",
 	  render: function render() {
-	    return React.createElement("div", { className: "navbar navbar-default navbar-static-top" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-collapse" }, React.createElement("span", { className: "icon-bar" }, "test"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }))), React.createElement("div", { className: "collapse navbar-collapse" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "active" }, React.createElement(Link, { to: "home" }, "Jobletics")), React.createElement("li", null, React.createElement(Link, { to: "concat" }, "Create a Listing")), React.createElement("li", null, React.createElement(Link, { to: "search" }, "Search Jobs")), React.createElement("li", null, React.createElement(Link, { to: "about" }, "About"))), React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(Link, { to: "login" }, "Log in")), React.createElement("li", null, React.createElement("a", { href: "#signup" }, "Sign up"))))));
+	    return React.createElement("div", { className: "navbar navbar-default navbar-static-top" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-collapse" }, React.createElement("span", { className: "icon-bar" }, "test"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }))), React.createElement("div", { className: "collapse navbar-collapse" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "active" }, React.createElement(Link, { to: "home" }, "Jobletics")), React.createElement("li", null, React.createElement(Link, { to: "concat" }, "Create a Listing")), React.createElement("li", null, React.createElement(Link, { to: "search" }, "Search Jobs")), React.createElement("li", null, React.createElement(Link, { to: "about" }, "About"))), React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(Link, { to: "login" }, "Log in")), React.createElement("li", null, React.createElement(Link, { to: "signup" }, "Sign up"))))));
 	  }
 	});
 
@@ -32573,6 +32573,78 @@
 	module.exports = Search;
 
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(283), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(119))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Search.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+
+/***/ },
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(234), RootInstanceProvider = __webpack_require__(6), ReactMount = __webpack_require__(10), React = __webpack_require__(119); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+
+	"use strict";
+
+	var React = __webpack_require__(119);
+	var ReactBootstrap = __webpack_require__(2);
+	var Button = ReactBootstrap.Button;
+	var Modal = ReactBootstrap.Modal;
+	var OverlayMixin = ReactBootstrap.OverlayMixin;
+
+	// Our custom component is managing whether the Modal is visible
+	var SignupModal = React.createClass({ displayName: "SignupModal",
+	  mixins: [OverlayMixin],
+
+	  handleToggle: function handleToggle() {
+	    this.setState({
+	      isModalOpen: !this.state.isModalOpen
+	    });
+	  },
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      isModalOpen: false
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    this.handleToggle();
+	  },
+
+	  render: function render() {
+	    return React.createElement("div", null, " test1 ");
+	  },
+
+	  // This is called by the `OverlayMixin` when this component
+	  // is mounted or updated and the return value is appended to the body.
+	  renderOverlay: function renderOverlay() {
+	    if (!this.state.isModalOpen) {
+	      return React.createElement("span", null);
+	    }
+
+	    return React.createElement(Modal, { title: "Sign up", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h2", null, React.createElement("span", { className: "fa fa-lock" }), " Register"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"), React.createElement("form", { action: "/api/users", method: "post" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "First Name: "), React.createElement("input", { type: "text", name: "firstname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "Last Name: "), React.createElement("input", { type: "text", name: "lastname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "Email: "), React.createElement("input", { type: "email", name: "email" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, " Password: "), React.createElement("input", { type: "password", name: "password" })), React.createElement("div", null, React.createElement("input", { type: "submit", value: "Submit" })))))));
+	  }
+	});
+
+	module.exports = SignupModal;
+
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(283), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(119))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Signup.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ }

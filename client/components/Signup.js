@@ -5,7 +5,7 @@ var Modal = ReactBootstrap.Modal;
 var OverlayMixin = ReactBootstrap.OverlayMixin;
 
 // Our custom component is managing whether the Modal is visible
-const LoginModal = React.createClass({
+const SignupModal = React.createClass({
   mixins: [OverlayMixin],
 
   handleToggle: function () {
@@ -26,7 +26,7 @@ const LoginModal = React.createClass({
 
   render: function () {
       return (
-        <div> test </div>
+        <div> test1 </div>
       );
     },
 
@@ -38,22 +38,32 @@ const LoginModal = React.createClass({
       }
 
       return (
-        <Modal title='Login' onRequestHide={this.handleToggle}>
+        <Modal title='Sign up' onRequestHide={this.handleToggle}>
           <div className='modal-body'>
               <div className="jumbotron text-center">
-                 <h3>Login</h3>
+                 <h2><span className="fa fa-lock"></span> Register</h2>
                  <a href="/auth/facebook" className="btn btn-primary"><span className="fa fa-facebook"></span> Facebook</a>
-                 <form action="/api/user" method="get">
-                  <div>
-                  <label>Username: </label>
-                  <input type="email" name="username"/><br/>
-                  </div>
-                  <div>
-                  <label>Password: </label>
-                  <input type="password" name="password"/>
-                  </div>
-                  <div>
-                  <input type="submit" value="Submit"/>
+                 <form action="/api/users" method="post">
+                 <div className="row">
+                    <div className="col-md-6">
+                      <label>First Name: </label>
+                      <input type="text" name="firstname"/><br/>
+                    </div>
+                    <div className="col-md-6">
+                      <label>Last Name: </label>
+                      <input type="text" name="lastname"/><br/>
+                    </div>
+                    <div className="col-md-6">
+                      <label>Email: </label>
+                      <input type="email" name="email"/><br/>
+                    </div>
+                    <div className="col-md-6">
+                      <label> Password: </label>
+                      <input type="password" name="password"/>
+                    </div>
+                    <div>
+                    <input type="submit" value="Submit"/>
+                    </div>
                   </div>
                  </form>
              </div>
@@ -63,4 +73,4 @@ const LoginModal = React.createClass({
     }
 });
 
-module.exports = LoginModal
+module.exports = SignupModal
