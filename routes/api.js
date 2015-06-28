@@ -42,6 +42,7 @@ listingsRouter.delete("/:id", listingsController.destroy);
 // Register users routes.
 var usersRouter = Router();
 usersRouter.get("/", usersController.get);
+usersRouter.get("/:id", usersController.getUser);
 usersRouter.post("/", usersController.create);
 usersRouter.put("/:id", usersController.update);
 usersRouter.delete("/:id", usersController.destroy);

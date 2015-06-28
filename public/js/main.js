@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fec0f66f43fa67741171"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "69fcb164d5a4dccb3abd"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24494,11 +24494,12 @@
 	var About = __webpack_require__(214);
 	var Concat = __webpack_require__(215);
 	var Home = __webpack_require__(216);
+	var Landing = __webpack_require__(292);
 	var Login = __webpack_require__(217);
 	var Search = __webpack_require__(290);
 	var Signup = __webpack_require__(291);
 
-	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Home }), React.createElement(Route, { name: "about", handler: About }), React.createElement(Route, { name: "concat", handler: Concat }), React.createElement(Route, { name: "home", handler: Home }), React.createElement(Route, { name: "login", handler: Login }), React.createElement(Route, { name: "search", handler: Search }), React.createElement(Route, { name: "signup", handler: Signup }));
+	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", handler: About }), React.createElement(Route, { name: "concat", handler: Concat }), React.createElement(Route, { name: "home", handler: Home }), React.createElement(Route, { name: "login", handler: Login }), React.createElement(Route, { name: "search", handler: Search }), React.createElement(Route, { name: "signup", handler: Signup }));
 
 	module.exports = routes;
 
@@ -24516,6 +24517,8 @@
 	var React = __webpack_require__(59);
 	var Navbar = __webpack_require__(210);
 	var Router = __webpack_require__(169);
+	var Landing = __webpack_require__(292);
+
 	var RouteHandler = Router.RouteHandler;
 
 	var App = React.createClass({ displayName: "App",
@@ -32873,6 +32876,27 @@
 	module.exports = SignupModal;
 
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(211), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Signup.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+
+	"use strict";
+
+	var React = __webpack_require__(59);
+
+	var Landing = React.createClass({ displayName: "Landing",
+	  render: function render() {
+	    return React.createElement("h2", null, "Landing");
+	  }
+	});
+
+	module.exports = Landing;
+
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(211), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Landing.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ }

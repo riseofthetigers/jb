@@ -35,6 +35,17 @@ module.exports = {
     });
   },
 
+  getUser: function(req, res) {
+    User.find({
+          where: {
+            username: req.params.id,
+            displayName: req.user.displayName
+          }
+        }).success(function(User) {
+          res.send(User);
+        });
+  },
+
   update: function(req, res) {
     User.find({
       where: {
