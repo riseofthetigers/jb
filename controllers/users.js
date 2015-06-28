@@ -30,7 +30,7 @@ module.exports = {
   },
 
   get: function(req, res) {
-    User.findAll().success(function(users) {
+    User.findAll().then(function(users) {
       res.send(users);
     });
   },
@@ -41,7 +41,7 @@ module.exports = {
             username: req.params.id,
             displayName: req.user.displayName
           }
-        }).success(function(User) {
+        }).then(function(User) {
           res.send(User);
         });
   },
