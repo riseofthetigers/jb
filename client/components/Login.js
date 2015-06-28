@@ -43,7 +43,7 @@ const LoginModal = React.createClass({
               <div className="jumbotron text-center">
                  <h3>Login</h3>
                  <a href="/auth/facebook" className="btn btn-primary"><span className="fa fa-facebook"></span> Facebook</a>
-                 <form action="/api/user" method="get">
+                 <form action="/api/users" method="get">
                   <div>
                   <label>Username: </label>
                   <input type="email" name="username"/><br/>
