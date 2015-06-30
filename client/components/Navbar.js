@@ -3,6 +3,9 @@ var Router = require('react-router');
 var Link = Router.Link;
 
 var Navbar = React.createClass({
+
+  
+
   render: function () {
     return (
       <div className="navbar navbar-default navbar-static-top">

@@ -44,5 +44,8 @@ db.sequelize
 var auth_handler = require('./lib/auth/passport.js')(app, db.User);
 
 // resources routes
-app.use('/', require('./routes/web'));
+// app.use('/', require('./routes/web'));
 app.use('/api', auth_handler, require('./routes/api'));
+app.get('*', function(request, response) {
+  response.sendfile('./public/index.html');
+});

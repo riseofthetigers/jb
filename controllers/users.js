@@ -6,6 +6,7 @@
 var models = require('../models');
 // Import User Model.
 var User = models.User;
+var async   = require('async');
 
 // Expose the users controller.
 module.exports = {
@@ -38,11 +39,12 @@ module.exports = {
   getUser: function(req, res) {
     User.find({
           where: {
-            username: req.params.id,
+            id: req.params.id,
             displayName: req.user.displayName
           }
         }).then(function(User) {
           res.send(User);
+          // res.redirect('/');
         });
   },
 
