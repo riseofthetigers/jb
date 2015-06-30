@@ -3,12 +3,9 @@ module.exports = {
 
   // "postgres://rahul:jobletics@localhost:5432/jobletics"
   "development": {
-    //"username": "fundon",
-    //"password": "fdc",
-    "username": "rahul",
-    "password": "jobletics",
-    "database": "jobletics",
-    //"host": "192.168.59.103",
+    "username": process.env.DB_USERNAME || "rahul",
+    "password": process.env.DB_PASSWORD || "jobletics",
+    "database": process.env.DATABASE || "jobletics",
     "host": "localhost",
     "dialect": "postgres",
     "port": "5432",

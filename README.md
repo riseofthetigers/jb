@@ -29,6 +29,12 @@ $ ./node_modules/.bin/sequelize help:db:migrate
 $ npm run devstart
 ```
 
+or for easy development
+
+```bash
+$ npm run dev
+```
+
 #### PM2
 
 ```bash
