@@ -23,6 +23,7 @@ function _login(username,password){
     }, function(data){
         _auth = data.auth;
         console.log('authentication response', _auth);
+        AuthStore.emitChange();
     });
     //AuthActions.loggedin();
 }
@@ -46,7 +47,7 @@ function _loggedOut(){
 }
 
 var AuthStore = assign(EventEmitter.prototype, {
-    emitchange: function(){
+    emitChange: function(){
         this.emit(CHANGE_EVENT);
     },
 
@@ -76,7 +77,7 @@ var AuthStore = assign(EventEmitter.prototype, {
             case AuthConstants.LOGGEDIN:
                 _loggedIn();
             case AuthConstants.LOGGEDOUT:
-                _loggedout();
+                _loggedOut();
         }
         AuthStore.emitChange();
 

@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f4947bed3c97fefefd36"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1e9358ca3440ce9ea1ac"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24684,15 +24684,36 @@
 	var Router = __webpack_require__(169);
 	var Link = Router.Link;
 	var AuthActions = __webpack_require__(215);
+	var AuthStore = __webpack_require__(297);
+	
+	function getAuth() {
+	  return { auth: AuthStore.isAuthenticated() };
+	}
 	
 	var Navbar = React.createClass({ displayName: "Navbar",
 	
+	  getInitialState: function getInitialState() {
+	    return getAuth();
+	  },
+	
 	  componentWillMount: function componentWillMount() {
-	    console.log("mount navbar");
+	    AuthStore.addChangeListener(this._onChange);
+	  },
+	
+	  _onChange: function _onChange() {
+	    this.setState(getAuth());
 	  },
 	
 	  render: function render() {
-	    return React.createElement("div", { className: "navbar navbar-default navbar-static-top" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-collapse" }, React.createElement("span", { className: "icon-bar" }, "test"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }))), React.createElement("div", { className: "collapse navbar-collapse" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "active" }, React.createElement(Link, { to: "home" }, "Jobletics")), React.createElement("li", null, React.createElement(Link, { to: "concat" }, "Create a Listing")), React.createElement("li", null, React.createElement(Link, { to: "search" }, "Search Jobs")), React.createElement("li", null, React.createElement(Link, { to: "about" }, "About"))), React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(Link, { to: "login" }, "Log in")), React.createElement("li", null, React.createElement(Link, { to: "signup" }, "Sign up"))))));
+	    var LoginNav;
+	
+	    if (this.state.auth) {
+	      LoginNav = React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(Link, { to: "login" }, "Logout")));
+	    } else {
+	      LoginNav = React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(Link, { to: "login" }, "Log in")), React.createElement("li", null, React.createElement(Link, { to: "signup" }, "Sign up")));
+	    }
+	
+	    return React.createElement("div", { className: "navbar navbar-default navbar-static-top" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-collapse" }, React.createElement("span", { className: "icon-bar" }, "test"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }))), React.createElement("div", { className: "collapse navbar-collapse" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "active" }, React.createElement(Link, { to: "home" }, "Jobletics")), React.createElement("li", null, React.createElement(Link, { to: "concat" }, "Create a Listing")), React.createElement("li", null, React.createElement(Link, { to: "search" }, "Search Jobs")), React.createElement("li", null, React.createElement(Link, { to: "about" }, "About"))), LoginNav)));
 	  }
 	});
 	
@@ -25194,10 +25215,11 @@
 	var OverlayMixin = ReactBootstrap.OverlayMixin;
 	var AuthActions = __webpack_require__(215);
 	var AuthStore = __webpack_require__(297);
+	var Navigation = __webpack_require__(169).Navigation;
 	
 	// Our custom component is managing whether the Modal is visible
 	var LoginModal = React.createClass({ displayName: "LoginModal",
-	  mixins: [OverlayMixin],
+	  mixins: [OverlayMixin, Navigation],
 	
 	  handleToggle: function handleToggle() {
 	    this.setState({
@@ -25211,7 +25233,18 @@
 	    };
 	  },
 	
-	  componentDidMount: function componentDidMount() {},
+	  componentDidMount: function componentDidMount() {
+	    //this.handleToggle();
+	    AuthStore.addChangeListener(this._onChange);
+	  },
+	
+	  _onChange: function _onChange() {
+	    if (AuthStore.isAuthenticated()) {
+	      return this.transitionTo("/search");
+	    }
+	
+	    // should show message incorrect username password
+	  },
 	
 	  render: function render() {
 	    return React.createElement("div", null, " test ");
@@ -25234,6 +25267,7 @@
 	    var password = this.refs.password.getDOMNode().value;
 	    AuthActions.login(username, password);
 	  },
+	
 	  render: function render() {
 	    return React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h3", null, "Login"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"), React.createElement("form", { action: "/api/users", method: "get" }, React.createElement("div", null, React.createElement("label", null, "Username: "), React.createElement("input", { type: "email", name: "username", ref: "username" }), React.createElement("br", null)), React.createElement("div", null, React.createElement("label", null, "Password: "), React.createElement("input", { type: "password", name: "password", ref: "password" })), React.createElement("div", null, React.createElement("input", { type: "button", value: "Submit", onClick: this.handleLogin }))));
 	  }
@@ -25241,8 +25275,6 @@
 	
 	module.exports = LoginModal;
 	
-	//this.handleToggle();
-
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(210), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Login.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
@@ -33293,6 +33325,7 @@
 	    }, function (data) {
 	        _auth = data.auth;
 	        console.log("authentication response", _auth);
+	        AuthStore.emitChange();
 	    });
 	    //AuthActions.loggedin();
 	}
@@ -33310,7 +33343,7 @@
 	}
 	
 	var AuthStore = assign(EventEmitter.prototype, {
-	    emitchange: function emitchange() {
+	    emitChange: function emitChange() {
 	        this.emit(CHANGE_EVENT);
 	    },
 	
@@ -33338,7 +33371,7 @@
 	            case AuthConstants.LOGGEDIN:
 	                _loggedIn();
 	            case AuthConstants.LOGGEDOUT:
-	                _loggedout();
+	                _loggedOut();
 	        }
 	        AuthStore.emitChange();
 	

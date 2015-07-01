@@ -5,10 +5,12 @@ var Modal = ReactBootstrap.Modal;
 var OverlayMixin = ReactBootstrap.OverlayMixin;
 var AuthActions = require('../actions/auth-actions');
 var AuthStore = require('../stores/auth-store');
+var Navigation = require('react-router').Navigation;
+
 
 // Our custom component is managing whether the Modal is visible
 const LoginModal = React.createClass({
-  mixins: [OverlayMixin],
+  mixins: [OverlayMixin, Navigation],
 
   handleToggle: function () {
     this.setState({
@@ -24,8 +26,17 @@ const LoginModal = React.createClass({
 
   componentDidMount: function() {
     //this.handleToggle();
+    AuthStore.addChangeListener(this._onChange);
   },
 
+
+    _onChange : function(){
+        if(AuthStore.isAuthenticated() ){
+           return this.transitionTo('/search');
+        }
+
+        // should show message incorrect username password
+    },
 
 
   render: function () {
@@ -58,6 +69,7 @@ const LoginForm = React.createClass({
         var password = this.refs.password.getDOMNode().value;
         AuthActions.login(username, password);
     },
+
     render: function() {
       return (
           <div className="jumbotron text-center">
