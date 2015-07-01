@@ -1,10 +1,14 @@
 var React  = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var AuthActions = require('../actions/auth-actions');
 
 var Navbar = React.createClass({
 
-  
+
+  componentWillMount: function() {
+    console.log('mount navbar');
+  },
 
   render: function () {
     return (

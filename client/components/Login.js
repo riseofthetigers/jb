@@ -3,6 +3,8 @@ var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 var Modal = ReactBootstrap.Modal;
 var OverlayMixin = ReactBootstrap.OverlayMixin;
+var AuthActions = require('../actions/auth-actions');
+var AuthStore = require('../stores/auth-store');
 
 // Our custom component is managing whether the Modal is visible
 const LoginModal = React.createClass({
@@ -16,13 +18,15 @@ const LoginModal = React.createClass({
 
   getInitialState: function() {
     return {
-      isModalOpen: false
+      isModalOpen: true
     };
   },
 
   componentDidMount: function() {
-    this.handleToggle();
+    //this.handleToggle();
   },
+
+
 
   render: function () {
       return (
@@ -32,7 +36,7 @@ const LoginModal = React.createClass({
 
     // This is called by the `OverlayMixin` when this component
     // is mounted or updated and the return value is appended to the body.
-    renderOverlay() {
+  renderOverlay: function() {
       if (!this.state.isModalOpen) {
         return <span/>;
       }
@@ -40,26 +44,40 @@ const LoginModal = React.createClass({
       return (
         <Modal title='Login' onRequestHide={this.handleToggle}>
           <div className='modal-body'>
-              <div className="jumbotron text-center">
-                 <h3>Login</h3>
-                 <a href="/auth/facebook" className="btn btn-primary"><span className="fa fa-facebook"></span> Facebook</a>
-                 <form action="/api/users" method="get">
-                  <div>
-                  <label>Username: </label>
-                  <input type="email" name="username"/><br/>
-                  </div>
-                  <div>
-                  <label>Password: </label>
-                  <input type="password" name="password"/>
-                  </div>
-                  <div>
-                  <input type="submit" value="Submit"/>
-                  </div>
-                 </form>
-             </div>
+            <LoginForm />
           </div>
         </Modal>
       );
+    }
+});
+
+
+const LoginForm = React.createClass({
+    handleLogin: function() {
+        var username = this.refs.username.getDOMNode().value;
+        var password = this.refs.password.getDOMNode().value;
+        AuthActions.login(username, password);
+    },
+    render: function() {
+      return (
+          <div className="jumbotron text-center">
+             <h3>Login</h3>
+             <a href="/auth/facebook" className="btn btn-primary"><span className="fa fa-facebook"></span> Facebook</a>
+             <form action="/api/users" method="get">
+              <div>
+              <label>Username: </label>
+              <input type="email" name="username" ref="username"/><br/>
+              </div>
+              <div>
+              <label>Password: </label>
+              <input type="password" name="password" ref="password"/>
+              </div>
+              <div>
+              <input type="button" value="Submit" onClick={this.handleLogin}/>
+              </div>
+             </form>
+         </div>
+        )
     }
 });
 

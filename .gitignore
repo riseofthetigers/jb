@@ -3,5 +3,6 @@ npm-debug.log
 .env
 db
 *.swp
+*.map
 .DS_Store
 public/js/*.hot-update.js*

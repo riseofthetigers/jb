@@ -1,21 +1,21 @@
 var AuthConstants = require('../constants/auth-constants');
 var AppDispatcher = require('../dispatchers/app-dispatcher');
 
-var AppAction = {
+var AuthActions = {
 
     login: function(username, password) {
-        AppDispatcher.handleauthAction({
+        AppDispatcher.handleAuthAction({
             actionType: AuthConstants.LOGIN,
             username: username,
             password: password
         });
-    }
+    },
 
     loginWithFacebook: function() {
-        AppDispatcher.handleauthAction({
+        AppDispatcher.handleAuthAction({
             actionType: AuthConstants.LOGIN_FACEBOOK
         });
-    }
+    },
 
 
     logout: function() {

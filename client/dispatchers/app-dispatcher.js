@@ -1,5 +1,5 @@
 
-var Dispathcer = require ('flux').Dispatcher;
+var Dispatcher = require ('flux').Dispatcher;
 var assign = require('react/lib/Object.assign');
 
 var AppDispatcher = assign(new Dispatcher() , {
