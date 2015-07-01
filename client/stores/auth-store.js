@@ -9,10 +9,20 @@ var CHANGE_EVENT = 'change_auth';
 
 var _auth = false;
 
-function _isAuthenticated (){
+function _isAuthenticated (cb){
     // must check on server if it is authenticated
-    return _auth;
+
+    $.get('/api/auth', function(data){
+        var auth= data.auth;
+        if( auth != _auth){
+            AuthStore.emitChange();
+        }
+        _auth = auth;
+        cb({auth:auth});
+
+    });
 }
+
 
 function _login(username,password){
     console.log('I should login with ', username, password);
@@ -60,8 +70,8 @@ var AuthStore = assign(EventEmitter.prototype, {
       },
 
 
-    isAuthenticated: function () {
-        return _isAuthenticated();
+    isAuthenticated: function (cb) {
+        return _isAuthenticated(cb);
     },
 
 

@@ -5,23 +5,27 @@ var AuthActions = require('../actions/auth-actions');
 var AuthStore = require('../stores/auth-store');
 
 
-function getAuth() {
-    return {auth: AuthStore.isAuthenticated()};
+function getAuth(cb) {
+     AuthStore.isAuthenticated(cb);
 }
 
 var Navbar = React.createClass({
 
     getInitialState: function(){
-        return getAuth();
+        return {auth:false}
     },
 
     componentWillMount: function() {
+        this._onChange();
         AuthStore.addChangeListener(this._onChange);
     },
 
 
     _onChange: function() {
-        this.setState(getAuth());
+        var self = this;
+        getAuth( function(data) {
+            self.setState(data);
+        });
     },
 
   render: function () {
