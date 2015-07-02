@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7171a305e333f9e89611"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f196b0b93be9583fc097"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25208,8 +25208,11 @@
 	    console.log("I should login with ", username, password);
 	    // do the login on server
 	    $.post("/api/login", {
-	        email: username,
-	        password: password
+	        username: username,
+	        password: password,
+	        firstname: firstname,
+	        lastname: lastname,
+	        email: email
 	    }, function (data) {
 	        _auth = data.auth;
 	        console.log("authentication response", _auth);
@@ -25257,6 +25260,8 @@
 	    dispatcherIndex: AppDispatcher.register(function (payload) {
 	        var action = payload.action;
 	        switch (action.actionType) {
+	            case AuthConstants.SIGNUP:
+	                _signup(payload.action.username, payload.action.password, payload.action.email, payload.action.firstname, payload.action.lastname);
 	            case AuthConstants.LOGIN:
 	                _login(payload.action.username, payload.action.password);
 	            case AuthConstants.LOGIN_FACEBOOK:
@@ -34933,10 +34938,12 @@
 	var Button = ReactBootstrap.Button;
 	var Modal = ReactBootstrap.Modal;
 	var OverlayMixin = ReactBootstrap.OverlayMixin;
-
+	var AuthActions = __webpack_require__(215);
+	var AuthStore = __webpack_require__(221);
+	var Navigation = __webpack_require__(169).Navigation;
 	// Our custom component is managing whether the Modal is visible
 	var SignupModal = React.createClass({ displayName: "SignupModal",
-	  mixins: [OverlayMixin],
+	  mixins: [OverlayMixin, Navigation],
 
 	  handleToggle: function handleToggle() {
 	    this.setState({
@@ -34951,7 +34958,19 @@
 	  },
 
 	  componentDidMount: function componentDidMount() {
-	    this.handleToggle();
+	    // this.handleToggle();
+	    AuthStore.addChangeListener(this._onChange);
+	  },
+
+	  _onChange: function _onChange() {
+	    var self = this;
+	    AuthStore.isAuthenticated(function (auth) {
+	      if (auth.auth) {
+	        return self.transitionTo("/search");
+	      };
+	    });
+
+	    // should show message incorrect username password
 	  },
 
 	  render: function render() {
@@ -34960,12 +34979,29 @@
 
 	  // This is called by the `OverlayMixin` when this component
 	  // is mounted or updated and the return value is appended to the body.
+
 	  renderOverlay: function renderOverlay() {
 	    if (!this.state.isModalOpen) {
 	      return React.createElement("span", null);
 	    }
 
-	    return React.createElement(Modal, { title: "Sign up", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h2", null, React.createElement("span", { className: "fa fa-lock" }), " Register"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"), React.createElement("form", { action: "/api/users", method: "post" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "First Name: "), React.createElement("input", { type: "text", name: "firstname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "Last Name: "), React.createElement("input", { type: "text", name: "lastname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "Email: "), React.createElement("input", { type: "email", name: "email" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, " Password: "), React.createElement("input", { type: "password", name: "password" })), React.createElement("div", null, React.createElement("input", { type: "submit", value: "Submit" })))))));
+	    return React.createElement(Modal, { title: "Login", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement(LoginForm, null)));
+	  }
+	});
+
+	var LoginForm = React.createClass({ displayName: "LoginForm",
+	  handleLogin: function handleLogin() {
+	    var username = this.refs.username.getDOMNode().value;
+	    var password = this.refs.password.getDOMNode().value;
+	    var firstname = this.refs.password.getDOMNode().value;
+	    var lastname = this.refs.password.getDOMNode().value;
+	    var email = this.refs.password.getDOMNode().value;
+
+	    AuthActions.login(username, password);
+	  },
+
+	  render: function render() {
+	    return React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h2", null, React.createElement("span", { className: "fa fa-lock" }), " Register"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"), React.createElement("form", { action: "/api/users", method: "post" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "First Name: "), React.createElement("input", { name: "firstname", ref: "firstname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "Last Name: "), React.createElement("input", { name: "lastname", ref: "lastname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "Email: "), React.createElement("input", { type: "email", name: "email", ref: "email" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, " Password: "), React.createElement("input", { type: "password", name: "password", ref: "password" }), React.createElement("br", null)), React.createElement("div", null, React.createElement("input", { type: "button", value: "Submit", onClick: this.handleLogin })))));
 	  }
 	});
 

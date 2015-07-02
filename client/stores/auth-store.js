@@ -42,7 +42,7 @@ function _signup(username, password, firstname, lastname, email){
     console.log('I should login with ', username, password);
     // do the login on server
     $.post('/api/login', {
-        email: username,
+        username: username,
         password: password,
         firstname: firstname,
         lastname: lastname,
