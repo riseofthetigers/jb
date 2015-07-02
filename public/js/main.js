@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "566d6fdbd15862a118a3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f276f8e1b69b2093f697"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33825,7 +33825,7 @@
 	      return React.createElement("span", null);
 	    }
 	
-	    return React.createElement(Modal, { title: "Sign up", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h2", null, React.createElement("span", { className: "fa fa-lock" }), " Register"), React.createElement(SignUpForm, null))));
+	    return React.createElement(Modal, { title: "Sign up", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h2", null, React.createElement("span", { className: "fa fa-lock" }), " Register"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"), React.createElement(SignUpForm, null))));
 	  }
 	});
 	

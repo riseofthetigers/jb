@@ -56,6 +56,7 @@ const SignupModal = React.createClass({
           <div className='modal-body'>
               <div className="jumbotron text-center">
                  <h2><span className="fa fa-lock"></span> Register</h2>
+                    <a href="/auth/facebook" className="btn btn-primary"><span className="fa fa-facebook"></span> Facebook</a>
                  <SignUpForm />
              </div>
           </div>
