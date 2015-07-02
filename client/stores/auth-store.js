@@ -9,6 +9,12 @@ var CHANGE_EVENT = 'change_auth';
 
 var _auth = false;
 
+var _signedUp = null;
+
+function _getSignedUp() {
+    return _signedUp;
+}
+
 function _isAuthenticated (cb){
     // must check on server if it is authenticated
 
@@ -34,21 +40,21 @@ function _login(username,password){
         console.log('authentication response', _auth);
         AuthStore.emitChange();
     });
-    //AuthActions.loggedin();
 }
 
 
 function _signup(username, password, firstname, lastname, email){
     console.log('I should login with ', username, password);
     // do the login on server
-    $.post('/api/login', {
-        username: username,
-        password: password,
-        firstname: firstname,
-        lastname: lastname,
-        email: email
+    $.post('/api/signup', {
+        username  : username,
+        password  : password,
+        firstname : firstname,
+        lastname  : lastname,
+        email     : email
     }, function(data){
-        _auth = data.auth;
+        _auth = false;
+        _signedUp = data;
         console.log('authentication response', _auth);
         AuthStore.emitChange();
     });
@@ -57,24 +63,15 @@ function _signup(username, password, firstname, lastname, email){
 
 function _loginWithFacebook() {
     // do the login with facebook
-    //AuthActions.loggedin();
 }
 
 function _logout() {
     console.log('logging out');
 
     $.get('/api/logout', function(req){
-        _auth = true
+        _auth = false
         AuthStore.emitChange();
     });
-}
-
-function _loggedIn(){
-    _auth = true;
-}
-
-function _loggedOut(){
-    _auth = false;
 }
 
 var AuthStore = assign(EventEmitter.prototype, {
@@ -96,21 +93,22 @@ var AuthStore = assign(EventEmitter.prototype, {
     },
 
 
+    getSignedUp: function(){
+        return _getSignedUp();
+    },
+
+
     dispatcherIndex: AppDispatcher.register(function(payload){
         var action = payload.action;
         switch(action.actionType){
             case AuthConstants.SIGNUP:
-                _signup(payload.action.username, payload.action.password, payload.action.email, payload.action.firstname, payload.action.lastname);
+                _signup(payload.action.username, payload.action.password, payload.action.firstname, payload.action.lastname, payload.action.email);
             case AuthConstants.LOGIN:
                 _login(payload.action.username, payload.action.password);
             case AuthConstants.LOGIN_FACEBOOK:
                 _loginWithFacebook();
             case AuthConstants.LOGOUT:
                 _logout();
-            case AuthConstants.LOGGEDIN:
-                _loggedIn();
-            case AuthConstants.LOGGEDOUT:
-                _loggedOut();
         }
         AuthStore.emitChange();
 

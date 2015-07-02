@@ -37,7 +37,7 @@ var Navbar = React.createClass({
     if(this.state.auth){
         LoginNav = (
             <ul className="nav navbar-nav navbar-right">
-              <li><a onClick={this.handleLogout}>Logout</a></li>
+              <li><a  href="#" onClick={this.handleLogout}>Logout</a></li>
             </ul>
             );
     } else {
