@@ -20,7 +20,6 @@ var Navbar = React.createClass({
         AuthStore.addChangeListener(this._onChange);
     },
 
-
     _onChange: function() {
         var self = this;
         getAuth( function(data) {
@@ -28,13 +27,17 @@ var Navbar = React.createClass({
         });
     },
 
+    handleLogout: function() {
+        AuthActions.logout()
+    }
+
   render: function () {
     var LoginNav;
 
     if(this.state.auth){
         LoginNav = (
             <ul className="nav navbar-nav navbar-right">
-              <li><Link to="login">Logout</Link></li>
+              <li><a onClick={this.handleLogout}>Logout</a></li>
             </ul>
             );
     } else {

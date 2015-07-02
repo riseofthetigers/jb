@@ -33,7 +33,7 @@ db.sequelize
   //You can set `force` to `true` in development mode.
   .sync({
     force: true
-  })
+    })
   //.sync()
   .then(function() {
     console.log('Express server listening on port 5000');

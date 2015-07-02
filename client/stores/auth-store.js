@@ -44,8 +44,12 @@ function _loginWithFacebook() {
 }
 
 function _logout() {
-    // do the logout
-    //AuthActions.loggedout();
+    console.log('logging out');
+
+    $.get('/api/logout', function(req){
+        _auth = true
+        AuthStore.emitChange();
+    });
 }
 
 function _loggedIn(){
