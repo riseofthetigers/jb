@@ -29,7 +29,7 @@ var Navbar = React.createClass({
 
     handleLogout: function() {
         AuthActions.logout()
-    }
+    },
 
   render: function () {
     var LoginNav;

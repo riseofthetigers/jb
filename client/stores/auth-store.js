@@ -23,13 +23,30 @@ function _isAuthenticated (cb){
     });
 }
 
-
 function _login(username,password){
     console.log('I should login with ', username, password);
     // do the login on server
     $.post('/api/login', {
         email: username,
         password: password
+    }, function(data){
+        _auth = data.auth;
+        console.log('authentication response', _auth);
+        AuthStore.emitChange();
+    });
+    //AuthActions.loggedin();
+}
+
+
+function _signup(username, password, firstname, lastname, email){
+    console.log('I should login with ', username, password);
+    // do the login on server
+    $.post('/api/login', {
+        email: username,
+        password: password,
+        firstname: firstname,
+        lastname: lastname,
+        email: email
     }, function(data){
         _auth = data.auth;
         console.log('authentication response', _auth);
@@ -82,6 +99,8 @@ var AuthStore = assign(EventEmitter.prototype, {
     dispatcherIndex: AppDispatcher.register(function(payload){
         var action = payload.action;
         switch(action.actionType){
+            case AuthConstants.SIGNUP:
+                _signup(payload.action.username, payload.action.password, payload.action.email, payload.action.firstname, payload.action.lastname);
             case AuthConstants.LOGIN:
                 _login(payload.action.username, payload.action.password);
             case AuthConstants.LOGIN_FACEBOOK:

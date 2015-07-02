@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0c2ece875a952bfd6592"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7171a305e333f9e89611"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24708,11 +24708,15 @@
 	    });
 	  },
 
+	  handleLogout: function handleLogout() {
+	    AuthActions.logout();
+	  },
+
 	  render: function render() {
 	    var LoginNav;
 
 	    if (this.state.auth) {
-	      LoginNav = React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(Link, { to: "logout" }, "Logout")));
+	      LoginNav = React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement("a", { onClick: this.handleLogout }, "Logout")));
 	    } else {
 	      LoginNav = React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(Link, { to: "login" }, "Log in")), React.createElement("li", null, React.createElement(Link, { to: "signup" }, "Sign up")));
 	    }
@@ -24757,6 +24761,17 @@
 	        AppDispatcher.handleAuthAction({
 	            actionType: AuthConstants.LOGOUT
 	        });
+	    },
+
+	    signup: function signup(username, password, firstname, lastname, email) {
+	        AppDispatcher.handleAuthAction({
+	            actionType: AuthConstants.SIGNUP,
+	            username: username,
+	            password: password,
+	            firstname: firstname,
+	            lastname: lastname,
+	            email: email
+	        });
 	    }
 
 	};
@@ -24780,7 +24795,8 @@
 	    LOGGEDOUT: "LOGGEDOUT",
 	    LOGIN: "LOGIN",
 	    LOGOUT: "LOGOUT",
-	    LOGIN_FACEBOOK: "LOGIN_FACEBOOK"
+	    LOGIN_FACEBOOK: "LOGIN_FACEBOOK",
+	    SIGNUP: "SIGNUP"
 
 	};
 
@@ -25175,6 +25191,20 @@
 	}
 
 	function _login(username, password) {
+	    console.log("I should login with ", username, password);
+	    // do the login on server
+	    $.post("/api/login", {
+	        email: username,
+	        password: password
+	    }, function (data) {
+	        _auth = data.auth;
+	        console.log("authentication response", _auth);
+	        AuthStore.emitChange();
+	    });
+	    //AuthActions.loggedin();
+	}
+
+	function _signup(username, password, firstname, lastname, email) {
 	    console.log("I should login with ", username, password);
 	    // do the login on server
 	    $.post("/api/login", {

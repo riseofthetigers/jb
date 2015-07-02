@@ -22,6 +22,17 @@ var AuthActions = {
         AppDispatcher.handleAuthAction({
             actionType: AuthConstants.LOGOUT
         });
+    },
+
+    signup: function(username, password, firstname, lastname, email) {
+        AppDispatcher.handleAuthAction({
+            actionType: AuthConstants.SIGNUP,
+            username: username,
+            password: password,
+            firstname: firstname,
+            lastname: lastname,
+            email: email
+        });
     }
 
 }
