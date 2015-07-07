@@ -12,6 +12,9 @@ var app = express();
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(bodyParser.json({
+    strict: false
+}));
 app.use(morgan(isProduction || 'dev'));
 // static resources
 app.use(express.static("./public"));
@@ -32,7 +35,7 @@ var db = require("./models");
 db.sequelize
   //You can set `force` to `true` in development mode.
   .sync({
-    //force: true
+        force: true
     })
   //.sync()
   .then(function() {
@@ -45,7 +48,8 @@ var auth_handler = require('./lib/auth/passport.js')(app, db.User);
 
 // resources routes
 // app.use('/', require('./routes/web'));
-app.use('/api', auth_handler, require('./routes/api'));
+//app.use('/api', auth_handler, require('./routes/api'));
+app.use('/api', require('./routes/api'));
 
 // default route for website
 app.use( function(request, response) {

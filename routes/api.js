@@ -34,7 +34,8 @@ employersRouter.delete("/:id", employersController.destroy);
 
 // Register listings routes.
 var listingsRouter = Router();
-listingsRouter.get("/", listingsController.get);
+listingsRouter.get("/", listingsController.getAll);
+listingsRouter.get("/:id", listingsController.getById);
 listingsRouter.post("/", listingsController.create);
 listingsRouter.put("/:id", listingsController.update);
 listingsRouter.delete("/:id", listingsController.destroy);

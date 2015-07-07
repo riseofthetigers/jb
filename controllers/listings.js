@@ -6,6 +6,7 @@
 var models = require('../models');
 // Import Listing Model.
 var Listing = models.Listing;
+var Business = models.Business;
 
 // Expose the listings controller.
 module.exports = {
@@ -17,22 +18,27 @@ module.exports = {
       job_description: req.body.job_description,
       business_culture: req.body.business_culture,
       job_compensation: req.body.job_compensation,
-      job_benifits: req.body.job_benifits,
+      job_benefits: req.body.job_benefits,
       business_id: req.body.business_id
     }
 
-    Listing.create(createListing).success(function() {
+    Listing.create(createListing).then(function() {
       res.send(200);
       res.json(req.dataValues);
     });
   },
 
-  get: function(req, res) {
-    Listing.findAll().success(function(listings) {
+  getAll: function(req, res) {
+    Listing.findAll({include: [Business]}).then(function(listings) {
       res.send(listings);
     });
   },
 
+  getById: function(req, res) {
+    Listing.findById(res.params.id).then(function(listings) {
+      res.send(listings);
+    });
+  },
   update: function(req, res) {
     Listing.find({
       where: {

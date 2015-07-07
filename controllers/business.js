@@ -23,7 +23,7 @@ module.exports = {
       employer_id: req.body.employer_id
     }
 
-    Business.create(createListing).success(function() {
+    Business.create(createListing).then(function() {
       res.send(200);
       res.json(req.dataValues);
     });

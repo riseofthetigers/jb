@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
-    job_benifits: {
+    job_benefits: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
