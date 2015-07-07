@@ -29,8 +29,13 @@ module.exports = {
     });
   },
 
-  get: function(req, res) {
-    Business.findAll().then(function(listings) {
+  getAll: function(req, res) {
+    Business.findAll({include:[Employer]}).then(function(listings) {
+      res.send(listings);
+    });
+  },
+  getById: function(req, res) {
+    Business.findOne({include:[Employer], where:{id:req.params.id}}).then(function(listings) {
       res.send(listings);
     });
   },

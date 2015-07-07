@@ -13,7 +13,8 @@ var topicsController = require('../controllers/topics')
 
 // Register business routes.
 var businessRouter = Router();
-businessRouter.get("/", businessController.get);
+businessRouter.get("/", businessController.getAll);
+businessRouter.get("/:id", businessController.getById);
 businessRouter.post("/", businessController.create);
 businessRouter.put("/:id", businessController.update);
 businessRouter.delete("/:id", businessController.destroy);
