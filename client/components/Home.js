@@ -1,4 +1,6 @@
 var React  = require('react');
+var AppActions = require('../actions/app-actions');
+var AppStore = require('../stores/app-store');
 var Home = React.createClass({
   render: function () {
     return (
