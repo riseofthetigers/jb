@@ -35,7 +35,8 @@ module.exports = {
   },
 
   getById: function(req, res) {
-    Listing.findById(res.params.id).then(function(listings) {
+               console.log(req.params, Listing.findById);
+    Listing.findOne({include:[Business], where:{id:req.params.id}}).then(function(listings) {
       res.send(listings);
     });
   },

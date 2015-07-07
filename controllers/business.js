@@ -30,7 +30,7 @@ module.exports = {
   },
 
   get: function(req, res) {
-    Business.findAll().success(function(listings) {
+    Business.findAll().then(function(listings) {
       res.send(listings);
     });
   },
