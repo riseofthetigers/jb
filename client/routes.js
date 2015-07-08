@@ -14,6 +14,7 @@ var Login = require('./components/Login.js');
 var Search = require('./components/Search');
 var Signup = require('./components/Signup');
 
+var JobsListing = require('./components/JobsListing');
 
 var routes = (
   <Route path="/" handler={App}>
@@ -22,8 +23,10 @@ var routes = (
     <Route name="concat" path='/concat' handler={Concat}/>
     <Route name="home" path='/home' handler={Home}/>
     <Route name="login" path='/login' handler={Login}/>
-    <Route name="search" path='/search' handler={Search}/> 
-    <Route name="signup" path='/signup' handler={Signup}/>       
+    <Route name="search" path='/search' handler={Search}/>
+    <Route name="signup" path='/signup' handler={Signup}/>
+
+    <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
   </Route>
 
 );
