@@ -7,4 +7,4 @@ var AppActions = {
 }
 
 
-module.exports = AuthActions;
+module.exports = AppActions;
