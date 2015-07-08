@@ -36,6 +36,8 @@ const JobsListing = React.createClass({
                 <div className="col-sm-8">
                     <div className="jobs">
                          <JobOffer />
+                         <JobOffer />
+                         <JobOffer />
                     </div>
                     <Pagination />
                 </div>

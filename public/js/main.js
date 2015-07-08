@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1e19a2766069e982fde8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1f90739adfc8ef821dc4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25643,10 +25643,9 @@
 	"use strict";
 	
 	var React = __webpack_require__(59);
-	var JobListing = __webpack_require__(306);
 	var Home = React.createClass({ displayName: "Home",
 	  render: function render() {
-	    return React.createElement(JobListing, null);
+	    return React.createElement("h2", null, "App");
 	  }
 	});
 	
@@ -43130,9 +43129,11 @@
 	"use strict";
 	
 	var React = __webpack_require__(59);
+	var JobsListing = __webpack_require__(306);
+	
 	var Search = React.createClass({ displayName: "Search",
 	  render: function render() {
-	    return React.createElement("h2", null, "search");
+	    return React.createElement(JobsListing, null);
 	  }
 	});
 	
@@ -43257,7 +43258,7 @@
 	  _onChange: function _onChange() {},
 	
 	  render: function render() {
-	    return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, React.createElement(JobOffer, null)), React.createElement(Pagination, null)), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
+	    return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, React.createElement(JobOffer, null), React.createElement(JobOffer, null), React.createElement(JobOffer, null)), React.createElement(Pagination, null)), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
 	  }
 	
 	});

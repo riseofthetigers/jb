@@ -1,8 +1,10 @@
 var React  = require('react');
+var JobsListing = require('./JobsListing');
+
 var Search = React.createClass({
   render: function () {
     return (
-      <h2>search</h2>
+      <JobsListing />
     );
   }
 });
