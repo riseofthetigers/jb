@@ -55,7 +55,7 @@ const SignupModal = React.createClass({
         <Modal title='Sign up' onRequestHide={this.handleToggle}>
           <div className='modal-body'>
               <div className="jumbotron text-center">
-                 <h2><span className="fa fa-lock"></span> Register</h2>
+                 <h3><span className="fa fa-lock"></span> Register</h3>
                     <a href="/auth/facebook" className="btn btn-primary"><span className="fa fa-facebook"></span> Facebook</a>
                  <SignUpForm />
              </div>
