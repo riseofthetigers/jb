@@ -33,11 +33,16 @@ const JobsListing = React.createClass({
 
 
   render: function () {
+      var NoListings = <div/>;
+      if(this.state.listings.length == 0){
+          NoListings = <h1>There is no listigns in the database</h1>;
+      }
       return (
         <div className="container">
             <div className="row">
                 <div className="col-sm-8">
                     <div className="jobs">
+                        { NoListings }
                         {
                          this.state.listings.map( function (listing) {
                              return <JobOffer key={listing.id} data={listing} />

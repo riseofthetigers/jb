@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6a992698ebfdc3f26c58"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6eb93d55c35d9af023a0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33812,7 +33812,11 @@
 	    },
 	
 	    render: function render() {
-	        return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, this.state.listings.map(function (listing) {
+	        var NoListings = React.createElement("div", null);
+	        if (this.state.listings.length == 0) {
+	            NoListings = React.createElement("h1", null, "There is no listigns in the database");
+	        }
+	        return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, NoListings, this.state.listings.map(function (listing) {
 	            return React.createElement(JobOffer, { key: listing.id, data: listing });
 	        })), React.createElement(Pagination, { "current-page": 1, "entries-per-page": 1, data: this.state.listings })), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
 	    }
