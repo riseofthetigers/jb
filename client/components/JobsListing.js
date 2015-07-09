@@ -17,7 +17,9 @@ const JobsListing = React.createClass({
 
   getInitialState: function() {
     return {
-        listings: []
+        listings: [],
+        loaded: false
+
     };
   },
 
@@ -40,14 +42,14 @@ const JobsListing = React.createClass({
 
 
   _onChange : function(){
-    this.setState({listings:AppStore.getListings()});
+    this.setState({listings:AppStore.getListings(), loaded: true});
   },
 
 
   render: function () {
       var self = this;
       var NoListings = <div/>;
-      if(this.state.listings.length == 0){
+      if(this.state.loaded && this.state.listings.length == 0){
           NoListings = <h1>There is no listings in the database</h1>;
       }
       return (

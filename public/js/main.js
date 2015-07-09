@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "99fb08ce02d06308b684"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6d1274ea7108004dae00"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33799,7 +33799,9 @@
 	
 	    getInitialState: function getInitialState() {
 	        return {
-	            listings: []
+	            listings: [],
+	            loaded: false
+	
 	        };
 	    },
 	
@@ -33820,13 +33822,13 @@
 	    },
 	
 	    _onChange: function _onChange() {
-	        this.setState({ listings: AppStore.getListings() });
+	        this.setState({ listings: AppStore.getListings(), loaded: true });
 	    },
 	
 	    render: function render() {
 	        var self = this;
 	        var NoListings = React.createElement("div", null);
-	        if (this.state.listings.length == 0) {
+	        if (this.state.loaded && this.state.listings.length == 0) {
 	            NoListings = React.createElement("h1", null, "There is no listings in the database");
 	        }
 	        return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, NoListings, this.state.listings.map(function (listing, index) {
