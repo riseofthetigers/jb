@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6eb93d55c35d9af023a0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "99fb08ce02d06308b684"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24501,7 +24501,7 @@
 	
 	var JobsListing = __webpack_require__(300);
 	
-	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", path: "/about", handler: About }), React.createElement(Route, { name: "concat", path: "/concat", handler: Concat }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }, React.createElement(Route, { path: "/search/:page", handler: Search })), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }));
+	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", path: "/about", handler: About }), React.createElement(Route, { name: "concat", path: "/concat", handler: Concat }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }), React.createElement(Route, { name: "search_page", path: "/search/:page", handler: Search }), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }));
 	
 	module.exports = routes;
 	
@@ -24583,7 +24583,7 @@
 	      LoginNav = React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(Link, { to: "login" }, "Log in")), React.createElement("li", null, React.createElement(Link, { to: "signup" }, "Sign up")));
 	    }
 	
-	    return React.createElement("div", { className: "navbar navbar-default navbar-static-top" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-collapse" }, React.createElement("span", { className: "icon-bar" }, "test"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }))), React.createElement("div", { className: "collapse navbar-collapse" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", null, React.createElement("img", { style: { width: 100 + "px", height: 60 + "px" }, src: "images/logo.jpg", alt: "" })), React.createElement("li", null, React.createElement(Link, { to: "concat" }, "Create a Listing")), React.createElement("li", null, React.createElement(Link, { to: "search" }, "Search Jobs")), React.createElement("li", null, React.createElement(Link, { to: "about" }, "About"))), LoginNav)));
+	    return React.createElement("div", { className: "navbar navbar-default navbar-static-top" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-collapse" }, React.createElement("span", { className: "icon-bar" }, "test"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }))), React.createElement("div", { className: "collapse navbar-collapse" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", null, React.createElement("img", { style: { width: 100 + "px", height: 60 + "px" }, src: "/images/logo.jpg", alt: "" })), React.createElement("li", null, React.createElement(Link, { to: "concat" }, "Create a Listing")), React.createElement("li", null, React.createElement(Link, { to: "search" }, "Search Jobs")), React.createElement("li", null, React.createElement(Link, { to: "about" }, "About"))), LoginNav)));
 	  }
 	});
 	
@@ -33763,7 +33763,8 @@
 	
 	var Search = React.createClass({ displayName: "Search",
 	  render: function render() {
-	    return React.createElement(JobsListing, null);
+	    console.log(this.props.params.page);
+	    return React.createElement(JobsListing, { currentPage: this.props.params.page });
 	  }
 	});
 	
@@ -33802,9 +33803,20 @@
 	        };
 	    },
 	
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            currentPage: 1,
+	            entriesPerPage: 2
+	        };
+	    },
+	
 	    componentDidMount: function componentDidMount() {
 	        AppStore.addListingChangeListener(this._onChange);
 	        AppStore.getListings(true);
+	    },
+	
+	    changePageCallback: function changePageCallback(index) {
+	        this.transitionTo("/search/" + index);
 	    },
 	
 	    _onChange: function _onChange() {
@@ -33812,13 +33824,16 @@
 	    },
 	
 	    render: function render() {
+	        var self = this;
 	        var NoListings = React.createElement("div", null);
 	        if (this.state.listings.length == 0) {
-	            NoListings = React.createElement("h1", null, "There is no listigns in the database");
+	            NoListings = React.createElement("h1", null, "There is no listings in the database");
 	        }
-	        return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, NoListings, this.state.listings.map(function (listing) {
-	            return React.createElement(JobOffer, { key: listing.id, data: listing });
-	        })), React.createElement(Pagination, { "current-page": 1, "entries-per-page": 1, data: this.state.listings })), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
+	        return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, NoListings, this.state.listings.map(function (listing, index) {
+	            if (index >= self.props.entriesPerPage * (self.props.currentPage - 1) && index < self.props.entriesPerPage * self.props.currentPage) {
+	                return React.createElement(JobOffer, { key: listing.id, data: listing });
+	            }
+	        })), React.createElement(Pagination, { currentPage: this.props.currentPage, entriesPerPage: 2, entries: this.state.listings.length, changePage: this.changePageCallback })), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
 	    }
 	
 	});
@@ -55628,7 +55643,7 @@
 	            default:
 	                employmentType = "Unknown";
 	        }
-	        return React.createElement("a", { onClick: this.handleClick }, React.createElement("img", { style: { width: 50 + "px", height: 50 + "px" }, src: "images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, data.job_title), React.createElement("p", null, data.Business.business_name)), React.createElement("div", { className: "data" }, React.createElement("div", null, React.createElement("i", null, "Posted 1 Day Ago")), React.createElement("div", { className: "city" }, React.createElement("i", { className: "fa fa-map-marker" }), data.Business.business_city), React.createElement("div", { className: "type full-time" }, React.createElement("i", { className: "fa fa-clock-o" }), employmentType), React.createElement("div", { className: "sallary" }, React.createElement("i", { className: "fa fa-dollar" }), data.job_compensation)));
+	        return React.createElement("a", { onClick: this.handleClick }, React.createElement("img", { style: { width: 50 + "px", height: 50 + "px" }, src: "/images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, data.job_title), React.createElement("p", null, data.Business.business_name)), React.createElement("div", { className: "data" }, React.createElement("div", null, React.createElement("i", null, "Posted 1 Day Ago")), React.createElement("div", { className: "city" }, React.createElement("i", { className: "fa fa-map-marker" }), data.Business.business_city), React.createElement("div", { className: "type full-time" }, React.createElement("i", { className: "fa fa-clock-o" }), employmentType), React.createElement("div", { className: "sallary" }, React.createElement("i", { className: "fa fa-dollar" }), data.job_compensation)));
 	    } });
 	
 	module.exports = JobOffer;
@@ -55658,34 +55673,36 @@
 	    getDefaultProps: function getDefaultProps() {
 	        return {
 	            entriesPerPage: 10,
-	            currentPage: 0
+	            currentPage: 1,
+	            entries: 0
 	        };
 	    },
 	
-	    update: function update() {
-	        console.log("+++++", this.props.data);
-	        this.setState({
-	            pages: Math.ceil(this.props.data.length / this.props.entriesPerPage),
-	            data: this.props.data
-	        });
-	    },
+	    componentDidMount: function componentDidMount() {},
 	
-	    componentDidMount: function componentDidMount() {
-	        this.update();
-	    },
+	    componentDidUpdate: function componentDidUpdate() {},
 	
-	    componentDidUpdate: function componentDidUpdate() {
-	        //this.udate();
-	        this.state.data = this.props.data;
+	    handleChangePage: function handleChangePage(index) {
+	        this.props.changePage(index);
 	    },
 	
 	    render: function render() {
-	        return React.createElement("nav", null, React.createElement("ul", { className: "pagination" }, _.times(this.state.pages, function (n) {
-	            if (n + 1 == this.props.currentPage) {
-	                return React.createElement("li", { className: "active" }, React.createElement("a", { href: "#" }, n, " ", React.createElement("span", { className: "sr-only" }, "(current)")));
+	        var self = this;
+	        var currentPage = this.props.currentPage;
+	        var pages = Math.ceil(this.props.entries / this.props.entriesPerPage);
+	        if (currentPage > pages) {
+	            currentPage = pages;
+	        }
+	        if (currentPage < 1) {
+	            currentPage = 1;
+	        }
+	        return React.createElement("nav", null, React.createElement("ul", { className: "pagination" }, React.createElement("li", { className: "disabled" }, React.createElement("a", { href: "#", "aria-label": "Previous" }, React.createElement("span", { "aria-hidden": "true" }, "«"))), _.times(pages, function (n) {
+	            var boundClick = self.handleChangePage.bind(self, n + 1);
+	            if (n + 1 == currentPage) {
+	                return React.createElement("li", { className: "active" }, React.createElement("a", null, n + 1, " ", React.createElement("span", { className: "sr-only" }, "(current)")));
 	            }
-	            return React.createElement("li", null, React.createElement("a", { href: "#" }, n));
-	        }), React.createElement("li", { className: "disabled" }, React.createElement("a", { href: "#", "aria-label": "Previous" }, React.createElement("span", { "aria-hidden": "true" }, "«"))), React.createElement("li", null, React.createElement("a", { href: "#", "aria-label": "Next" }, React.createElement("span", { "aria-hidden": "true" }, "»")))));
+	            return React.createElement("li", null, React.createElement("a", { onClick: boundClick, page: n + 1 }, n + 1));
+	        }), React.createElement("li", null, React.createElement("a", { href: "#", "aria-label": "Next" }, React.createElement("span", { "aria-hidden": "true" }, "»")))));
 	    }
 	});
 	

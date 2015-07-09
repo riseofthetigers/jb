@@ -21,9 +21,21 @@ const JobsListing = React.createClass({
     };
   },
 
+  getDefaultProps: function() {
+    return ({
+        currentPage: 1,
+        entriesPerPage: 2
+    });
+  },
+
   componentDidMount: function() {
     AppStore.addListingChangeListener(this._onChange);
     AppStore.getListings(true);
+  },
+
+
+  changePageCallback: function(index) {
+    this.transitionTo('/search/'+ index);
   },
 
 
@@ -33,9 +45,10 @@ const JobsListing = React.createClass({
 
 
   render: function () {
+      var self = this;
       var NoListings = <div/>;
       if(this.state.listings.length == 0){
-          NoListings = <h1>There is no listigns in the database</h1>;
+          NoListings = <h1>There is no listings in the database</h1>;
       }
       return (
         <div className="container">
@@ -44,11 +57,14 @@ const JobsListing = React.createClass({
                     <div className="jobs">
                         { NoListings }
                         {
-                         this.state.listings.map( function (listing) {
-                             return <JobOffer key={listing.id} data={listing} />
+                         this.state.listings.map( function (listing, index) {
+                             if(   index>=self.props.entriesPerPage*(self.props.currentPage-1)
+                                && index < self.props.entriesPerPage*self.props.currentPage){
+                                return <JobOffer key={listing.id} data={listing} />
+                             }
                         })}
                     </div>
-                    <Pagination current-page={1} entries-per-page={1} data={this.state.listings} />
+                    <Pagination currentPage={this.props.currentPage} entriesPerPage={2} entries={this.state.listings.length} changePage={this.changePageCallback}/>
                 </div>
                 <div className="col-sm-4" id="sidebar">
 

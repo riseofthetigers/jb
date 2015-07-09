@@ -23,9 +23,8 @@ var routes = (
     <Route name="concat" path='/concat' handler={Concat}/>
     <Route name="home" path='/home' handler={Home}/>
     <Route name="login" path='/login' handler={Login}/>
-    <Route name="search" path='/search' handler={Search}>
-        <Route path="/search/:page" handler={Search} />
-    </Route>
+    <Route name="search" path='/search' handler={Search} />
+    <Route name="search_page" path="/search/:page" handler={Search} />
     <Route name="signup" path='/signup' handler={Signup}/>
 
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
