@@ -37,310 +37,149 @@
 
 		<!-- ============ HEADER END ============ -->
 
-		<!-- ============ RESUME START ============ -->
+		<!-- ============ TITLE START ============ -->
 
 			<div class="container">
-				<div class="row text-center">
-					<div class="col-sm-12">
-						<h1>Bob Candidate</h1>
-							<img style="width: 400px; height: 400px" src="images/person1.jpg" alt="" class="img-circle" />
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<h1>Andy Spencer</h1>
+						<h4>'Honest Cashier with 10 years of experience'</h4>
 					</div>
 				</div>
-
-				<form>
-
-					<!-- Resume Details Start -->
-					<div class="row">
-						<div class="col-sm-6">
-							<h2>Profile</h2>
-						</div>
-						<div class="col-sm-6 text-right">
-							<a class="btn btn-primary"><i class="fa fa-linkedin-square"></i> LinkedIn Import</a>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-name-group">
-								<label for="resume-name">Name</label>
-								<input type="text" class="form-control" id="resume-name" placeholder="e.g. John Doe">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-photo-group">
-								<label for="resume-photo">Photo</label>
-								<input type="file" id="resume-photo">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-title-group">
-								<label for="resume-title">Title</label>
-								<input type="text" class="form-control" id="resume-title" placeholder="e.g. Web Designer">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-video-group">
-								<label for="resume-video">Video</label>
-								<input type="text" class="form-control" id="resume-video" placeholder="Video URL">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-email-group">
-								<label for="resume-email">Email</label>
-								<input type="email" class="form-control" id="resume-email" placeholder="you@yourdomain.com">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-category-group">
-								<label for="resume-category">Job Category</label>
-								<select  class="form-control" id="resume-category">
-									<option>Choose a category</option>
-									<option>Retail</option>
-									<option>Service</option>
-									<option>Training</option>
-									<option>Resturuant</option>
-									<option>Management</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-location-group">
-								<label for="resume-location">Location</label>
-								<input type="text" class="form-control" id="resume-location" placeholder="e.g. New York City">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-skills-group">
-								<label for="resume-skills">Skills</label>
-								<input type="text" class="form-control" id="resume-skills" placeholder="e.g. Cleaning, Ordering, Customer Service">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="form-group wysiwyg" id="resume-content-group">
-								<label>Your Summary</label>
-
-								<div class="btn-toolbar" data-role="editor-toolbar" data-target="#resume-content">
-									<div class="btn-group">
-										<a class="btn" data-edit="bold" title="" data-original-title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-										<a class="btn" data-edit="italic" title="" data-original-title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-									</div>
-									<div class="btn-group">
-										<a class="btn" data-edit="insertunorderedlist" title="" data-original-title="Bullet list"><i class="fa fa-list-ul"></i></a>
-										<a class="btn" data-edit="insertorderedlist" title="" data-original-title="Number list"><i class="fa fa-list-ol"></i></a>
-									</div>
-									<div class="btn-group">
-										<a class="btn" data-edit="justifyleft" title="" data-original-title="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-										<a class="btn" data-edit="justifycenter" title="" data-original-title="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-										<a class="btn" data-edit="justifyright" title="" data-original-title="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-									</div>
-									<div class="btn-group">
-										<a class="btn dropdown-toggle" data-toggle="dropdown" title="" data-original-title="Hyperlink"><i class="fa fa-link"></i></a>
-										<div class="dropdown-menu input-append">
-											<input class="form-control pull-left" placeholder="http://" type="text" data-edit="createLink">
-											<button class="btn btn-primary" type="button">Add</button>
-										</div>
-										<a class="btn" data-edit="unlink" title="" data-original-title="Remove Hyperlink"><i class="fa fa-unlink"></i></a>
-									</div>
-									<input type="text" data-edit="inserttext" id="voiceBtn" style="display: none;">
-								</div>
-
-								<div class="editor" id="resume-content" contenteditable="true">Write something about yourself...</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<hr class="dashed">
-						</div>
-					</div>
-					<div class="row social-network">
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-social-network-group">
-								<label for="resume-social-network">Choose Social Network</label>
-								<select  class="form-control" id="resume-social-network">
-									<option>Choose social network</option>
-									<option>Facebook</option>
-									<option>Twitter</option>
-									<option>Google+</option>
-									<option>LinkedIn</option>
-									<option>YouTube</option>
-									<option>Vimeo</option>
-									<option>Github</option>
-									<option>Flickr</option>
-									<option>YouTube</option>
-									<option>DeviantArt</option>
-									<option>ThemeForest</option>
-									<option>CodeCanyon</option>
-									<option>VideoHive</option>
-									<option>AudioJungle</option>
-									<option>GraphicRiver</option>
-									<option>PhotoDune</option>
-									<option>3dOcean</option>
-									<option>ActiveDen</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-social-network-url-group">
-								<label for="resume-social-network-url">URL</label>
-								<input type="text" class="form-control" id="resume-social-network-url" placeholder="http://">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<hr class="dashed">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<p><a id="add-social-network">+ Add Social Network</a></p>
-							<hr>
-						</div>
-					</div>
-					<!-- Resume Details End -->
-
-					<!-- Experience Start -->
-					<div class="row">
-						<div class="col-sm-12">
-							<p>&nbsp;</p>
-							<h2>Experience</h2>
-						</div>
-					</div>
-					<div class="row experience">
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-employer-group">
-								<label for="resume-employer">Employer</label>
-								<input type="text" class="form-control" id="resume-employer" placeholder="Company name">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-experience-dates-group">
-								<label for="resume-experience-dates">Start/End Date</label>
-								<input type="text" class="form-control" id="resume-experience-dates" placeholder="e.g. April 2010 - June 2013">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-job-title-group">
-								<label for="resume-job-title">Job Title</label>
-								<input type="text" class="form-control" id="resume-job-title" placeholder="e.g. Cashier">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-responsibilities-group">
-								<label for="resume-responsibilities">Responsibilities</label>
-								<input type="text" class="form-control" id="resume-responsibilities" placeholder="e.g. Developing new websites">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<hr class="dashed">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<p><a id="add-experience">+ Add Experience</a></p>
-							<hr>
-						</div>
-					</div>
-					<!-- Experience Start -->
-
-					<!-- Education Start -->
-					<div class="row">
-						<div class="col-sm-12">
-							<p>&nbsp;</p>
-							<h2>Education</h2>
-						</div>
-					</div>
-					<div class="row education">
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-school-group">
-								<label for="resume-school">School Name</label>
-								<input type="text" class="form-control" id="resume-school" placeholder="School name, city and country">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-education-dates-group">
-								<label for="resume-education-dates">Start/End Date</label>
-								<input type="text" class="form-control" id="resume-education-dates" placeholder="e.g. April 2010 - June 2013">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-qualifications-group">
-								<label for="resume-qualifications">Qualifications</label>
-								<input type="text" class="form-control" id="resume-qualifications" placeholder="e.g. Master Engineer">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group" id="resume-notes-group">
-								<label for="resume-notes">Notes</label>
-								<input type="text" class="form-control" id="resume-notes" placeholder="Any achievements">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<hr class="dashed">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<p><a id="add-education">+ Add Education</a></p>
-							<hr>
-						</div>
-					</div>
-					<!-- Education Start -->
-
-					<!-- Resume File Start -->
-					<div class="row">
-						<div class="col-sm-12">
-							<p>&nbsp;</p>
-							<h2>Resume File</h2>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="form-group" id="resume-file-group">
-								<label for="resume-file">Upload Your Resume</label>
-								<input type="file" id="resume-file">
-								<p class="help-block">Optionally upload your resume for employers to view. Max. file size: 64 MB.</p>
-							</div>
-						</div>
-					</div>
-					<!-- Resume File Start -->
-
-					<div class="row text-center">
-						<div class="col-sm-12">
-							<p>&nbsp;</p>
-							<a href="#" class="btn btn-primary btn-lg">Save <i class="fa fa-arrow-right"></i></a>
-						</div>
-					</div>
-
-				</form>
-
 			</div>
 
-		<!-- ============ RESUME END ============ -->
+		<!-- ============ TITLE END ============ -->
+
+		<!-- ============ CONTENT START ============ -->
+
+		<section id="jobs">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8">
+						<article>
+							<img src="images/person1.jpg" alt="" class="pull-left" />
+							<p>Maecenas mollis dictum lectus quis scelerisque. Nulla at rutrum ipsum. Praesent augue quam, facilisis vitae felis vel, convallis convallis nisi. Donec maximus accumsan purus vel tempus. Aenean pretium luctus velit id fermentum. Aenean non velit non nulla interdum venenatis. Integer in libero sagittis, consequat est quis, commodo odio. Aliquam eu vulputate neque. Nunc et massa leo. Vestibulum a pretium dolor. Proin et fermentum sapien. Cras malesuada neque ac purus fermentum, a placerat quam malesuada. Quisque sollicitudin tellus a ex eleifend mattis. In vitae ipsum in mauris vestibulum imperdiet.</p>
+							<p>Maecenas mollis dictum lectus quis scelerisque. Nulla at rutrum ipsum. Praesent augue quam, facilisis vitae felis vel, convallis convallis nisi. Donec maximus accumsan purus vel tempus. Aenean pretium luctus velit id fermentum. Aenean non velit non nulla interdum venenatis. Integer in libero sagittis, consequat est quis, commodo odio. Aliquam eu vulputate neque. Nunc et massa leo. Vestibulum a pretium dolor. Proin et fermentum sapien. Cras malesuada neque ac purus fermentum, a placerat quam malesuada. Quisque sollicitudin tellus a ex eleifend mattis. In vitae ipsum in mauris vestibulum imperdiet.</p>
+							<h3>Skills</h3>
+							<ul>
+								<li>Aliquam rhoncus justo eget tellus scelerisque, at mollis mi aliquam.</li>
+								<li>Quisque pretium convallis pulvinar.</li>
+								<li>Nulla rutrum nisi mi, iaculis commodo nibh lobortis sed.</li>
+								<li>Sed pulvinar, nunc vitae molestie dapibus, lacus dolor dignissim sapien.</li>
+								<li>Pellentesque ipsum ex, imperdiet quis consequat sed, consectetur ut ante.</li>
+								<li>Aliquam libero felis, mollis vitae elementum vel, bibendum eu tortor.</li>
+								<li>Morbi rhoncus luctus interdum.</li>
+							</ul>
+							<h3>Work Experience</h3>
+							<div class="row work-experience">
+								<div class="col-sm-2">
+									<div class="img-circle">
+										<i class="fa fa-briefcase"></i>
+									</div>
+								</div>
+								<div class="col-sm-10">
+									<h4>April 2014 - Now</h4>
+									<h5>Starbuck - Designer</h5>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel sapien nibh. Mauris et neque tellus. In tellus felis, ornare in urna commodo, volutpat gravida sem. Integer vitae lorem sit amet nibh ornare varius. Sed sollicitudin leo quis dui dictum.</p>
+								</div>
+							</div>
+							<div class="row work-experience">
+								<div class="col-sm-2">
+									<div class="img-circle">
+										<i class="fa fa-briefcase"></i>
+									</div>
+								</div>
+								<div class="col-sm-10">
+									<h4>April 2014 - Now</h4>
+									<h5> Designer</h5>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel sapien nibh. Mauris et neque tellus. In tellus felis, ornare in urna commodo, volutpat gravida sem. Integer vitae lorem sit amet nibh ornare varius. Sed sollicitudin leo quis dui dictum.</p>
+								</div>
+							</div>
+							<div class="row work-experience">
+								<div class="col-sm-2">
+									<div class="img-circle">
+										<i class="fa fa-briefcase"></i>
+									</div>
+								</div>
+								<div class="col-sm-10">
+									<h4>April 2014 - Now</h4>
+									<h5>Designer</h5>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel sapien nibh. Mauris et neque tellus. In tellus felis, ornare in urna commodo, volutpat gravida sem. Integer vitae lorem sit amet nibh ornare varius. Sed sollicitudin leo quis dui dictum.</p>
+								</div>
+							</div>
+							<h3>Education</h3>
+							<div class="row work-experience">
+								<div class="col-sm-2">
+									<div class="img-circle">
+										<i class="fa fa-graduation-cap"></i>
+									</div>
+								</div>
+								<div class="col-sm-10">
+									<h4>April 2014 - Now</h4>
+									<h5>Santa Monica College</h5>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel sapien nibh. Mauris et neque tellus. In tellus felis, ornare in urna commodo, volutpat gravida sem. Integer vitae lorem sit amet nibh ornare varius. Sed sollicitudin leo quis dui dictum.</p>
+								</div>
+							</div>
+							<div class="row work-experience">
+								<div class="col-sm-2">
+									<div class="img-circle">
+										<i class="fa fa-graduation-cap"></i>
+									</div>
+								</div>
+								<div class="col-sm-10">
+									<h4>April 2014 - Now</h4>
+									<h5>Beeber High School</h5>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel sapien nibh. Mauris et neque tellus. In tellus felis, ornare in urna commodo, volutpat gravida sem. Integer vitae lorem sit amet nibh ornare varius. Sed sollicitudin leo quis dui dictum.</p>
+								</div>
+							</div>
+							<p>&nbsp;</p>
+							<p><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-arrow-down"></i> Download Profile</a></p>
+						</article>
+					</div>
+					<div class="col-sm-4" id="sidebar">
+						<div class="sidebar-widget" id="share">
+							<h2>Share Profile</h2>
+							<ul>
+								<li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://twitter.com/home?status=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="https://plus.google.com/share?url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html&amp;title=Jobseek%20-%20Job%20Board%20Responsive%20HTML%20Template&amp;summary=&amp;source="><i class="fa fa-linkedin"></i></a></li>
+							</ul>
+						</div>
+						<hr>
+						<div class="sidebar-widget" id="widget-contact">
+							<h2>Contact</h2>
+							<ul>
+								<li><i class="fa fa-user"></i>Andy Spencer</li>
+								<li><i class="fa fa-briefcase"></i>Senior Web Designer</li>
+								<li><i class="fa fa-birthday-cake"></i>28/08/1983</li>
+								<li><i class="fa fa-map-marker"></i>New York City</li>
+								<li><i class="fa fa-phone"></i>01.22.987.8392</li>
+								<li><i class="fa fa-envelope"></i><a href="mailto:andy.spencer@yourdomain.com">Send an email</a></li>
+							</ul>
+						</div>
+						<hr>
+						<div class="sidebar-widget" id="skills">
+							<h2>Key skills</h2>
+							<a class="badge">Cleaning</a>
+							<a class="badge">Customer Service</a>
+							<a class="badge">Cash handling</a>
+							<a class="badge">Produce Ordering</a>
+							<a class="badge">Sales Forcasting</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ CONTENT END ============ -->
 
 		<!-- ============ CONTACT START ============ -->
 
 		<!-- ============ CONTACT END ============ -->
 
 		<!-- ============ FOOTER START ============ -->
-		
+
 		<footer>
 			<div id="credits">
 				<div class="container text-center">
