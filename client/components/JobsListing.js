@@ -38,11 +38,12 @@ const JobsListing = React.createClass({
             <div className="row">
                 <div className="col-sm-8">
                     <div className="jobs">
-                        {this.state.listings.map( function (listing) {
-                             return <JobOffer />
+                        {
+                         this.state.listings.map( function (listing) {
+                             return <JobOffer key={listing.id} data={listing} />
                         })}
                     </div>
-                    <Pagination />
+                    <Pagination current-page={1} entries-per-page={1} data={this.state.listings} />
                 </div>
                 <div className="col-sm-4" id="sidebar">
 

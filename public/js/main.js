@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6f51aeb9bafd9813c1b6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6a992698ebfdc3f26c58"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24501,7 +24501,7 @@
 	
 	var JobsListing = __webpack_require__(300);
 	
-	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", path: "/about", handler: About }), React.createElement(Route, { name: "concat", path: "/concat", handler: Concat }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }));
+	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", path: "/about", handler: About }), React.createElement(Route, { name: "concat", path: "/concat", handler: Concat }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }, React.createElement(Route, { path: "/search/:page", handler: Search })), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }));
 	
 	module.exports = routes;
 	
@@ -33784,8 +33784,8 @@
 	var ReactBootstrap = __webpack_require__(227);
 	var Button = ReactBootstrap.Button;
 	var Modal = ReactBootstrap.Modal;
-	var AppActions = __webpack_require__(301);
-	var AppStore = __webpack_require__(303);
+	var AppActions = __webpack_require__(303);
+	var AppStore = __webpack_require__(301);
 	var Navigation = __webpack_require__(169).Navigation;
 	var _ = __webpack_require__(306);
 	
@@ -33813,8 +33813,8 @@
 	
 	    render: function render() {
 	        return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, this.state.listings.map(function (listing) {
-	            return React.createElement(JobOffer, null);
-	        })), React.createElement(Pagination, null)), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
+	            return React.createElement(JobOffer, { key: listing.id, data: listing });
+	        })), React.createElement(Pagination, { "current-page": 1, "entries-per-page": 1, data: this.state.listings })), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
 	    }
 	
 	});
@@ -33832,39 +33832,8 @@
 	
 	"use strict";
 	
-	var AppConstants = __webpack_require__(302);
 	var AppDispatcher = __webpack_require__(216);
-	
-	var AppActions = {};
-	
-	module.exports = AppActions;
-	
-	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(213), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "app-actions.js" + ": " + err.message); } }); } } })(); }
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
-
-/***/ },
-/* 302 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
-	
-	"use strict";
-	
-	module.exports = {};
-	
-	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(213), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "app-constants.js" + ": " + err.message); } }); } } })(); }
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
-
-/***/ },
-/* 303 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
-	
-	"use strict";
-	
-	var AppDispatcher = __webpack_require__(216);
-	var AppActions = __webpack_require__(301);
+	var AppActions = __webpack_require__(303);
 	var AppConstants = __webpack_require__(302);
 	var assign = __webpack_require__(19);
 	var EventEmitter = __webpack_require__(221).EventEmitter;
@@ -33903,6 +33872,37 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	module.exports = {};
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(213), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "app-constants.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	var AppConstants = __webpack_require__(302);
+	var AppDispatcher = __webpack_require__(216);
+	
+	var AppActions = {};
+	
+	module.exports = AppActions;
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(213), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "app-actions.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
 /* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -33911,7 +33911,7 @@
 	"use strict";
 	
 	var AppDispatcher = __webpack_require__(216);
-	var AppActions = __webpack_require__(301);
+	var AppActions = __webpack_require__(303);
 	var AppConstants = __webpack_require__(302);
 	var assign = __webpack_require__(19);
 	var EventEmitter = __webpack_require__(221).EventEmitter;
@@ -55583,27 +55583,49 @@
 	var ReactBootstrap = __webpack_require__(227);
 	var Button = ReactBootstrap.Button;
 	var Modal = ReactBootstrap.Modal;
-	var AppActions = __webpack_require__(301);
-	var AppStore = __webpack_require__(303);
+	var AppActions = __webpack_require__(303);
+	var AppStore = __webpack_require__(301);
 	var Navigation = __webpack_require__(169).Navigation;
 	
 	// Our custom component is managing whether the Modal is visible
 	var JobOffer = React.createClass({ displayName: "JobOffer",
-	  mixins: [Navigation],
+	    mixins: [Navigation],
 	
-	  getInitialState: function getInitialState() {
-	    return {};
-	  },
+	    getInitialState: function getInitialState() {
+	        console.log(this.props.data);
+	        return {
+	            listing: this.props.data
+	        };
+	    },
 	
-	  componentDidMount: function componentDidMount() {
-	    AppStore.addChangeListener(this._onChange);
-	  },
+	    componentDidMount: function componentDidMount() {
+	        AppStore.addChangeListener(this._onChange);
+	    },
 	
-	  _onChange: function _onChange() {},
+	    _onChange: function _onChange() {},
 	
-	  render: function render() {
-	    return React.createElement("a", { href: "#" }, React.createElement("img", { style: { width: 50 + "px", height: 50 + "px" }, src: "images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, "Cashier"), React.createElement("p", null, "Chevron")), React.createElement("div", { className: "data" }, React.createElement("div", null, React.createElement("i", null, "Posted 1 Day Ago")), React.createElement("div", { className: "city" }, React.createElement("i", { className: "fa fa-map-marker" }), "Boston"), React.createElement("div", { className: "type full-time" }, React.createElement("i", { className: "fa fa-clock-o" }), "Full Time"), React.createElement("div", { className: "sallary" }, React.createElement("i", { className: "fa fa-dollar" }), "45,000")));
-	  } });
+	    handleClick: function handleClick() {
+	        this.transitionTo("/listing/detail/" + this.state.listing.id);
+	    },
+	
+	    render: function render() {
+	        var data = this.state.listing;
+	        var employmentType;
+	        switch (data.employment_type) {
+	            case "F":
+	                employmentType = "Full Time";
+	                break;
+	            case "P":
+	                employmentType = "Part Time";
+	                break;
+	            case "H":
+	                employmentType = "Hourly";
+	                break;
+	            default:
+	                employmentType = "Unknown";
+	        }
+	        return React.createElement("a", { onClick: this.handleClick }, React.createElement("img", { style: { width: 50 + "px", height: 50 + "px" }, src: "images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, data.job_title), React.createElement("p", null, data.Business.business_name)), React.createElement("div", { className: "data" }, React.createElement("div", null, React.createElement("i", null, "Posted 1 Day Ago")), React.createElement("div", { className: "city" }, React.createElement("i", { className: "fa fa-map-marker" }), data.Business.business_city), React.createElement("div", { className: "type full-time" }, React.createElement("i", { className: "fa fa-clock-o" }), employmentType), React.createElement("div", { className: "sallary" }, React.createElement("i", { className: "fa fa-dollar" }), data.job_compensation)));
+	    } });
 	
 	module.exports = JobOffer;
 	
@@ -55619,11 +55641,47 @@
 	"use strict";
 	
 	var React = __webpack_require__(59);
+	var _ = __webpack_require__(306);
 	
 	var Pagination = React.createClass({ displayName: "Pagination",
 	
+	    getInitialState: function getInitialState() {
+	        return {
+	            pages: 0
+	        };
+	    },
+	
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            entriesPerPage: 10,
+	            currentPage: 0
+	        };
+	    },
+	
+	    update: function update() {
+	        console.log("+++++", this.props.data);
+	        this.setState({
+	            pages: Math.ceil(this.props.data.length / this.props.entriesPerPage),
+	            data: this.props.data
+	        });
+	    },
+	
+	    componentDidMount: function componentDidMount() {
+	        this.update();
+	    },
+	
+	    componentDidUpdate: function componentDidUpdate() {
+	        //this.udate();
+	        this.state.data = this.props.data;
+	    },
+	
 	    render: function render() {
-	        return React.createElement("nav", null, React.createElement("ul", { className: "pagination" }, React.createElement("li", { className: "disabled" }, React.createElement("a", { href: "#", "aria-label": "Previous" }, React.createElement("span", { "aria-hidden": "true" }, "«"))), React.createElement("li", { className: "active" }, React.createElement("a", { href: "#" }, "1 ", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("li", null, React.createElement("a", { href: "#" }, "2")), React.createElement("li", null, React.createElement("a", { href: "#" }, "3")), React.createElement("li", null, React.createElement("a", { href: "#" }, "4")), React.createElement("li", null, React.createElement("a", { href: "#" }, "5")), React.createElement("li", null, React.createElement("a", { href: "#", "aria-label": "Next" }, React.createElement("span", { "aria-hidden": "true" }, "»")))));
+	        return React.createElement("nav", null, React.createElement("ul", { className: "pagination" }, _.times(this.state.pages, function (n) {
+	            if (n + 1 == this.props.currentPage) {
+	                return React.createElement("li", { className: "active" }, React.createElement("a", { href: "#" }, n, " ", React.createElement("span", { className: "sr-only" }, "(current)")));
+	            }
+	            return React.createElement("li", null, React.createElement("a", { href: "#" }, n));
+	        }), React.createElement("li", { className: "disabled" }, React.createElement("a", { href: "#", "aria-label": "Previous" }, React.createElement("span", { "aria-hidden": "true" }, "«"))), React.createElement("li", null, React.createElement("a", { href: "#", "aria-label": "Next" }, React.createElement("span", { "aria-hidden": "true" }, "»")))));
 	    }
 	});
 	
