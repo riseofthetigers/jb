@@ -16,16 +16,18 @@ const JobsListing = React.createClass({
 
   getInitialState: function() {
     return {
+        listings: []
     };
   },
 
   componentDidMount: function() {
-    AppStore.addChangeListener(this._onChange);
+    AppStore.addListingChangeListener(this._onChange);
+    AppStore.getListings(true);
   },
 
 
   _onChange : function(){
-
+    this.setState({listings:AppStore.getListings()});
   },
 
 
