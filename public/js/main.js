@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "88e3cc38d7de2355e101"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9b85faa4aa12a057cb4b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24723,7 +24723,7 @@
 	      LoginNav = React.createElement("ul", { className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(Link, { to: "login" }, "Log in")), React.createElement("li", null, React.createElement(Link, { to: "signup" }, "Sign up")));
 	    }
 	
-	    return React.createElement("div", { className: "navbar navbar-default navbar-static-top" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-collapse" }, React.createElement("span", { className: "icon-bar" }, "test"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }))), React.createElement("div", { className: "collapse navbar-collapse" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "active" }, React.createElement(Link, { to: "home" }, "Jobletics")), React.createElement("li", null, React.createElement(Link, { to: "concat" }, "Create a Listing")), React.createElement("li", null, React.createElement(Link, { to: "search" }, "Search Jobs")), React.createElement("li", null, React.createElement(Link, { to: "about" }, "About"))), LoginNav)));
+	    return React.createElement("div", { className: "navbar navbar-default navbar-static-top" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-collapse" }, React.createElement("span", { className: "icon-bar" }, "test"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }))), React.createElement("div", { className: "collapse navbar-collapse" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", null, React.createElement("img", { style: { width: 100 + "px", height: 60 + "px" }, src: "images/logo.jpg", alt: "" })), React.createElement("li", null, React.createElement(Link, { to: "concat" }, "Create a Listing")), React.createElement("li", null, React.createElement(Link, { to: "search" }, "Search Jobs")), React.createElement("li", null, React.createElement(Link, { to: "about" }, "About"))), LoginNav)));
 	  }
 	});
 	
