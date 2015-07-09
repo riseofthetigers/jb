@@ -5,6 +5,7 @@ var Modal = ReactBootstrap.Modal;
 var AppActions = require('../actions/app-actions');
 var AppStore = require('../stores/app-store');
 var Navigation = require('react-router').Navigation;
+var _ = require('lodash');
 
 var JobOffer = require('./JobOffer');
 var Pagination = require('./Pagination');
@@ -37,9 +38,9 @@ const JobsListing = React.createClass({
             <div className="row">
                 <div className="col-sm-8">
                     <div className="jobs">
-                         <JobOffer />
-                         <JobOffer />
-                         <JobOffer />
+                        {this.state.listings.map( function (listing) {
+                             return <JobOffer />
+                        })}
                     </div>
                     <Pagination />
                 </div>

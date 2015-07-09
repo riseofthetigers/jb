@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ee71eb7bca6a6db5dffe"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6f51aeb9bafd9813c1b6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33787,32 +33787,35 @@
 	var AppActions = __webpack_require__(301);
 	var AppStore = __webpack_require__(303);
 	var Navigation = __webpack_require__(169).Navigation;
+	var _ = __webpack_require__(306);
 	
 	var JobOffer = __webpack_require__(307);
 	var Pagination = __webpack_require__(308);
 	
 	// Our custom component is managing whether the Modal is visible
 	var JobsListing = React.createClass({ displayName: "JobsListing",
-	  mixins: [Navigation],
+	    mixins: [Navigation],
 	
-	  getInitialState: function getInitialState() {
-	    return {
-	      listings: []
-	    };
-	  },
+	    getInitialState: function getInitialState() {
+	        return {
+	            listings: []
+	        };
+	    },
 	
-	  componentDidMount: function componentDidMount() {
-	    AppStore.addListingChangeListener(this._onChange);
-	    AppStore.getListings(true);
-	  },
+	    componentDidMount: function componentDidMount() {
+	        AppStore.addListingChangeListener(this._onChange);
+	        AppStore.getListings(true);
+	    },
 	
-	  _onChange: function _onChange() {
-	    this.setState({ listings: AppStore.getListings() });
-	  },
+	    _onChange: function _onChange() {
+	        this.setState({ listings: AppStore.getListings() });
+	    },
 	
-	  render: function render() {
-	    return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, React.createElement(JobOffer, null), React.createElement(JobOffer, null), React.createElement(JobOffer, null)), React.createElement(Pagination, null)), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
-	  }
+	    render: function render() {
+	        return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, this.state.listings.map(function (listing) {
+	            return React.createElement(JobOffer, null);
+	        })), React.createElement(Pagination, null)), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
+	    }
 	
 	});
 	
