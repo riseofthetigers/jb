@@ -35,6 +35,9 @@ const JobsListing = React.createClass({
     AppStore.getListings(true);
   },
 
+  componentWillUnmount: function() {
+    AppStore.removeListingChangeListener(this._onChange);
+  },
 
   changePageCallback: function(index) {
     this.transitionTo('/search/'+ index);

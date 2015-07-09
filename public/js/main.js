@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6d1274ea7108004dae00"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "51c744771033b883bebb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33817,6 +33817,10 @@
 	        AppStore.getListings(true);
 	    },
 	
+	    componentWillUnmount: function componentWillUnmount() {
+	        AppStore.removeListingChangeListener(this._onChange);
+	    },
+	
 	    changePageCallback: function changePageCallback(index) {
 	        this.transitionTo("/search/" + index);
 	    },
@@ -55621,6 +55625,10 @@
 	
 	    componentDidMount: function componentDidMount() {
 	        AppStore.addChangeListener(this._onChange);
+	    },
+	
+	    componentWillUnmount: function componentWillUnmount() {
+	        AppStore.removeChangeListener(this._onChange);
 	    },
 	
 	    _onChange: function _onChange() {},
