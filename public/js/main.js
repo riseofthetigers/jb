@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e2e7a225079b6e26ef72"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9c20e19e015653b34ebf"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24497,10 +24497,10 @@
 	var Landing = __webpack_require__(223);
 	var Login = __webpack_require__(226);
 	var Search = __webpack_require__(307);
-	var Signup = __webpack_require__(317);
+	var Signup = __webpack_require__(318);
 	
 	var JobsListing = __webpack_require__(308);
-	var ListingDetail = __webpack_require__(318);
+	var ListingDetail = __webpack_require__(316);
 	
 	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", path: "/about", handler: About }), React.createElement(Route, { name: "concat", path: "/concat", handler: Concat }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }), React.createElement(Route, { name: "search_page", path: "/search/:page", handler: Search }), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }), React.createElement(Route, { name: "ListingDetail", path: "/listing/:id", handler: ListingDetail }));
 	
@@ -25693,6 +25693,12 @@
 	    AuthStore.addChangeListener(this._onChange);
 	  },
 	
+	  componentWillUnmount: function componentWillUnmount() {
+	    return {
+	      isModalOpen: false
+	    };
+	  },
+	
 	  _onChange: function _onChange() {
 	    var self = this;
 	    AuthStore.isAuthenticated(function (auth) {
@@ -25705,7 +25711,7 @@
 	  },
 	
 	  render: function render() {
-	    return React.createElement("div", null, " test ");
+	    return React.createElement("body", { style: { float: "right", textDecoration: "none" } });
 	  },
 	
 	  // This is called by the `OverlayMixin` when this component
@@ -25727,7 +25733,7 @@
 	  },
 	
 	  render: function render() {
-	    return React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h3", null, "Login"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"), React.createElement("form", { action: "/api/users", method: "get" }, React.createElement("div", null, React.createElement("label", null, "Username: "), React.createElement("input", { type: "email", name: "username", ref: "username" }), React.createElement("br", null)), React.createElement("div", null, React.createElement("label", null, "Password: "), React.createElement("input", { type: "password", name: "password", ref: "password" })), React.createElement("div", null, React.createElement("input", { type: "button", value: "Submit", onClick: this.handleLogin }))));
+	    return React.createElement("div", { className: "jumbotron text-center" }, React.createElement("a", { href: "/auth/facebook", className: "btn btn-facebook" }, React.createElement("span", { className: "fa fa-facebook" }), " Sign In with Facebook"), React.createElement("form", { action: "/api/users", method: "get" }, React.createElement("div", null, React.createElement("label", { "for": "login-username" }, "Username"), React.createElement("input", { type: "email", className: "form-control", name: "username", ref: "username" }), React.createElement("br", null)), React.createElement("div", null, React.createElement("label", { "for": "login-password" }, "Password"), React.createElement("input", { type: "password", className: "form-control", name: "password", ref: "password" })), React.createElement("div", { className: "col-md-12" }, React.createElement("input", { type: "button", value: "Submit", className: "btn btn-primary", onClick: this.handleLogin }))));
 	  }
 	});
 	
@@ -34946,7 +34952,7 @@
 	var _ = __webpack_require__(314);
 	
 	var JobOffer = __webpack_require__(315);
-	var Pagination = __webpack_require__(316);
+	var Pagination = __webpack_require__(317);
 	
 	// Our custom component is managing whether the Modal is visible
 	var JobsListing = React.createClass({ displayName: "JobsListing",
@@ -56767,7 +56773,7 @@
 	var AppStore = __webpack_require__(309);
 	var Navigation = __webpack_require__(169).Navigation;
 	
-	var ListingDetail = __webpack_require__(318);
+	var ListingDetail = __webpack_require__(316);
 	
 	// Our custom component is managing whether the Modal is visible
 	var JobOffer = React.createClass({ displayName: "JobOffer",
@@ -56828,6 +56834,55 @@
 	"use strict";
 	
 	var React = __webpack_require__(59);
+	var ReactBootstrap = __webpack_require__(227);
+	var Button = ReactBootstrap.Button;
+	var Modal = ReactBootstrap.Modal;
+	var AppActions = __webpack_require__(311);
+	var AppStore = __webpack_require__(309);
+	var Navigation = __webpack_require__(169).Navigation;
+	var _ = __webpack_require__(314);
+	
+	// Our custom component is managing whether the Modal is visible
+	var ListingDetail = React.createClass({ displayName: "ListingDetail",
+	  mixins: [Navigation],
+	
+	  getInitialState: function getInitialState() {
+	    console.log(this.props.data);
+	    return {
+	      listing: this.props.data
+	    };
+	  },
+	
+	  componentDidMount: function componentDidMount() {
+	    AppStore.addChangeListener(this._onChange.bind(this));
+	  },
+	
+	  _onChange: function _onChange() {},
+	
+	  handleClick: function handleClick() {
+	    this.transitionTo("/listing/apply/" + this.state.listing.id);
+	  },
+	
+	  render: function render() {
+	    var data = this.state.listing;
+	    var employmentType = "test";
+	    return React.createElement("div", null, React.createElement("img", { style: { width: 200 + "px", height: 200 + "px" }, src: "/images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, data.job_title), React.createElement("p", null, data.Business.business_name)));
+	  } });
+	
+	module.exports = ListingDetail;
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(210), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "ListingDetail.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 317 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	var React = __webpack_require__(59);
 	var _ = __webpack_require__(314);
 	
 	var Pagination = React.createClass({ displayName: "Pagination",
@@ -56880,7 +56935,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
@@ -56936,7 +56991,7 @@
 	      return React.createElement("span", null);
 	    }
 	
-	    return React.createElement(Modal, { title: "Sign up", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h3", null, React.createElement("span", { className: "fa fa-lock" }), " Register"), React.createElement("a", { href: "/auth/facebook", className: "btn btn-primary" }, React.createElement("span", { className: "fa fa-facebook" }), " Facebook"), React.createElement(SignUpForm, null))));
+	    return React.createElement(Modal, { title: "Sign up", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("a", { href: "/auth/facebook", className: "btn btn-facebook" }, React.createElement("span", { className: "fa fa-facebook" }), " Sign In with Facebook"), React.createElement(SignUpForm, null))));
 	  }
 	});
 	
@@ -56951,7 +57006,7 @@
 	    AuthActions.signup(username, password, firstName, lastName, username);
 	  },
 	  render: function render() {
-	    return React.createElement("form", { action: "/api/users", method: "post" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "First Name: "), React.createElement("input", { type: "text", ref: "firstname", name: "firstname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "Last Name: "), React.createElement("input", { type: "text", ref: "lastname", name: "lastname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, "Email: "), React.createElement("input", { type: "email", ref: "username", name: "email" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", null, " Password: "), React.createElement("input", { type: "password", ref: "password", name: "password" })), React.createElement("div", null, React.createElement("input", { type: "button", value: "Submit", onClick: this.handleSignup }))));
+	    return React.createElement("form", { action: "/api/users", method: "post" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-firstname" }, "First Name"), React.createElement("input", { type: "text", className: "form-control", ref: "firstname", name: "firstname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-username" }, "Last Name"), React.createElement("input", { type: "text", className: "form-control", ref: "lastname", name: "lastname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-username" }, "Email"), React.createElement("input", { type: "email", className: "form-control", ref: "username", name: "email" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-username" }, "Password"), React.createElement("input", { type: "password", className: "form-control", ref: "password", name: "password" })), React.createElement("div", { className: "col-md-13" }, React.createElement("input", { type: "button", value: "Submit", className: "btn btn-primary", onClick: this.handleSignup }))));
 	  }
 	
 	});
@@ -56959,55 +57014,6 @@
 	module.exports = SignupModal;
 	
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(210), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Signup.js" + ": " + err.message); } }); } } })(); }
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
-
-/***/ },
-/* 318 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
-	
-	"use strict";
-	
-	var React = __webpack_require__(59);
-	var ReactBootstrap = __webpack_require__(227);
-	var Button = ReactBootstrap.Button;
-	var Modal = ReactBootstrap.Modal;
-	var AppActions = __webpack_require__(311);
-	var AppStore = __webpack_require__(309);
-	var Navigation = __webpack_require__(169).Navigation;
-	var _ = __webpack_require__(314);
-	
-	// Our custom component is managing whether the Modal is visible
-	var ListingDetail = React.createClass({ displayName: "ListingDetail",
-	  mixins: [Navigation],
-	
-	  getInitialState: function getInitialState() {
-	    console.log(this.props.data);
-	    return {
-	      listing: this.props.data
-	    };
-	  },
-	
-	  componentDidMount: function componentDidMount() {
-	    AppStore.addChangeListener(this._onChange.bind(this));
-	  },
-	
-	  _onChange: function _onChange() {},
-	
-	  handleClick: function handleClick() {
-	    this.transitionTo("/listing/apply/" + this.state.listing.id);
-	  },
-	
-	  render: function render() {
-	    var data = this.state.listing;
-	    var employmentType = "test";
-	    return React.createElement("div", null, React.createElement("img", { style: { width: 200 + "px", height: 200 + "px" }, src: "/images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, data.job_title), React.createElement("p", null, data.Business.business_name)));
-	  } });
-	
-	module.exports = ListingDetail;
-	
-	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(210), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "ListingDetail.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ }

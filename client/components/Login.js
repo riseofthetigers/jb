@@ -29,6 +29,12 @@ const LoginModal = React.createClass({
     AuthStore.addChangeListener(this._onChange);
   },
 
+  componentWillUnmount: function() {
+    return {
+      isModalOpen: false
+    };
+  },
+
 
     _onChange : function(){
         var self = this;
@@ -44,7 +50,7 @@ const LoginModal = React.createClass({
 
   render: function () {
       return (
-        <div> test </div>
+        <body style={{float: "right", textDecoration: "none"}}></body>
       );
     },
 
@@ -76,19 +82,18 @@ const LoginForm = React.createClass({
     render: function() {
       return (
           <div className="jumbotron text-center">
-             <h3>Login</h3>
-             <a href="/auth/facebook" className="btn btn-primary"><span className="fa fa-facebook"></span> Facebook</a>
+             <a href="/auth/facebook" className="btn btn-facebook"><span className="fa fa-facebook"></span> Sign In with Facebook</a>
              <form action="/api/users" method="get">
               <div>
-              <label>Username: </label>
-              <input type="email" name="username" ref="username"/><br/>
+              <label for="login-username">Username</label>
+              <input type="email" className="form-control" name="username" ref="username"/><br/>
               </div>
               <div>
-              <label>Password: </label>
-              <input type="password" name="password" ref="password"/>
+              <label for="login-password">Password</label>
+              <input type="password" className="form-control" name="password" ref="password"/>
               </div>
-              <div>
-              <input type="button" value="Submit" onClick={this.handleLogin}/>
+              <div className="col-md-12">
+              <input type="button" value="Submit" className="btn btn-primary" onClick={this.handleLogin}/>
               </div>
              </form>
          </div>

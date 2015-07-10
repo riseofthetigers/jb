@@ -55,8 +55,7 @@ const SignupModal = React.createClass({
         <Modal title='Sign up' onRequestHide={this.handleToggle}>
           <div className='modal-body'>
               <div className="jumbotron text-center">
-                 <h3><span className="fa fa-lock"></span> Register</h3>
-                    <a href="/auth/facebook" className="btn btn-primary"><span className="fa fa-facebook"></span> Facebook</a>
+                 <a href="/auth/facebook" className="btn btn-facebook"><span className="fa fa-facebook"></span> Sign In with Facebook</a>
                  <SignUpForm />
              </div>
           </div>
@@ -82,23 +81,23 @@ const SignUpForm = React.createClass({
          <form action="/api/users" method="post">
          <div className="row">
             <div className="col-md-6">
-              <label>First Name: </label>
-              <input type="text" ref="firstname" name="firstname"/><br/>
+            <label for="login-firstname">First Name</label>
+              <input type="text" className="form-control" ref="firstname" name="firstname"/><br/>
             </div>
             <div className="col-md-6">
-              <label>Last Name: </label>
-              <input type="text" ref="lastname" name="lastname"/><br/>
+            <label for="login-username">Last Name</label>
+              <input type="text" className="form-control" ref="lastname" name="lastname"/><br/>
             </div>
             <div className="col-md-6">
-              <label>Email: </label>
-              <input type="email" ref="username" name="email"/><br/>
+            <label for="login-username">Email</label>
+              <input type="email" className="form-control" ref="username" name="email"/><br/>
             </div>
             <div className="col-md-6">
-              <label> Password: </label>
-              <input type="password" ref="password" name="password"/>
+            <label for="login-username">Password</label>
+              <input type="password" className="form-control" ref="password" name="password"/>
             </div>
-            <div>
-            <input type="button" value="Submit" onClick={this.handleSignup}/>
+            <div className="col-md-13">
+            <input type="button" value="Submit" className="btn btn-primary" onClick={this.handleSignup}/>
             </div>
           </div>
          </form>
