@@ -68,10 +68,15 @@ var ListingStore =  {
          }
     },
 
-    getListingById: function (id) {
-        _getListingById(id, function () {
-            this.emitListingChange();
-        });
+    getListingById: function (id, load) {
+         if(load){
+             self = this;
+            _getListingById(id, function () {
+                self.emitListingChange();
+            });
+         } else {
+            return _currentListing;
+         }
     },
 
     dispatcherIndex: AppDispatcher.register(function(payload){

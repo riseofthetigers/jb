@@ -13,29 +13,28 @@ const JobOffer = React.createClass({
   mixins: [Navigation],
 
   getInitialState: function() {
-    console.log(this.props.data);
     return {
         listing: this.props.data
     };
   },
 
-  componentDidMount: function() {
-    AppStore.addChangeListener(this._onChange);
-  },
+  //componentDidMount: function() {
+    //AppStore.addChangeListener(this._onChange);
+  //},
 
-  componentWillUnmount: function() {
-    AppStore.removeChangeListener(this._onChange);
-  },
+  //componentWillUnmount: function() {
+    //AppStore.removeChangeListener(this._onChange);
+  //},
 
-    _onChange : function(){
+    //_onChange : function(){
 
-    },
+    //},
 
 
   handleClick: function () {
-    
-    this.transitionTo('/listing/' + this.state.listing.id );
-    
+
+    this.transitionTo('/listing/detail/' + this.state.listing.id );
+
   },
 
 

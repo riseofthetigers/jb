@@ -13,19 +13,25 @@ const ListingDetail = React.createClass({
   mixins: [Navigation],
 
   getInitialState: function() {
-    console.log(this.props.data);
     return {
-        listing: this.props.data
+        listing: {
+                     Business: {}
+                 }
     };
   },
 
   componentDidMount: function() {
-    AppStore.addChangeListener(this._onChange.bind(this));
+    AppStore.addListingChangeListener(this._onChange.bind(this));
+    AppStore.getListingById(this.props.params.id, true);
   },
 
+  componentWillUnmount: function() {
+    AppStore.removeListingChangeListener(this._onChange);
+  },
 
   _onChange : function(){
-
+    console.log(AppStore.getListingById(this.props.params.id));
+    this.setState({listing:AppStore.getListingById(this.props.params.id), loaded: true});
   },
 
 
