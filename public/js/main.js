@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bee3e64947f1cb5697ff"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d700e3e0f5f4e25c7ff6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24498,12 +24498,11 @@
 	var Login = __webpack_require__(226);
 	var Search = __webpack_require__(299);
 	var Signup = __webpack_require__(310);
-	var ListingDetails = __webpack_require__(308);
 	
 	var JobsListing = __webpack_require__(300);
 	var ListingDetail = __webpack_require__(308);
 	
-	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", path: "/about", handler: About }), React.createElement(Route, { name: "concat", path: "/concat", handler: Concat }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }), React.createElement(Route, { name: "search_page", path: "/search/:page", handler: Search }), React.createElement(Route, { name: "listing_details", path: "/listing/detail/:id", handler: ListingDetails }), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }), React.createElement(Route, { name: "ListingDetail", path: "/listing/:id", handler: ListingDetail }));
+	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", path: "/about", handler: About }), React.createElement(Route, { name: "concat", path: "/concat", handler: Concat }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }), React.createElement(Route, { name: "search_page", path: "/search/:page", handler: Search }), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }), React.createElement(Route, { name: "listing_details", path: "/listing/detail/:id", handler: ListingDetails }));
 	
 	module.exports = routes;
 	

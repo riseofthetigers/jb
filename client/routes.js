@@ -13,7 +13,6 @@ var Landing = require('./components/Landing.js');
 var Login = require('./components/Login.js');
 var Search = require('./components/Search');
 var Signup = require('./components/Signup');
-var ListingDetails = require('./components/ListingDetail');
 
 var JobsListing = require('./components/JobsListing');
 var ListingDetail = require('./components/ListingDetail')
@@ -27,11 +26,10 @@ var routes = (
     <Route name="login" path='/login' handler={Login}/>
     <Route name="search" path='/search' handler={Search} />
     <Route name="search_page" path="/search/:page" handler={Search} />
-    <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetails} />
     <Route name="signup" path='/signup' handler={Signup}/>
 
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
-    <Route name="ListingDetail" path="/listing/:id" handler={ListingDetail} />
+    <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetails} />
 
   </Route>
 
