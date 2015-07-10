@@ -57,6 +57,14 @@ const ListingDetail = React.createClass({
             default:
                 employmentType = 'Unknown';
           }
+          var jobs_requirements = [];
+          if(data.requirements){
+              jobs_requirements = data.requirements.split("\n");
+          }
+          var jobs_benefits = [];
+          if(data.job_benefits){
+              jobs_benefits = data.job_benefits.split("\n");
+          }
 
         return (
             <div>
@@ -77,7 +85,7 @@ const ListingDetail = React.createClass({
                     <div className="row">
                         <div className="col-sm-8">
                         <h3></h3>
-                        <img style={{"width": 700+'px', "height": 300+'px'}} src="/images/wawa.jpg" />
+                        <img style={{"width": 700+'px', "height": 300+'px'}} src={data.photo_url} />
                         <h3></h3>
 
                             <article>
@@ -85,23 +93,19 @@ const ListingDetail = React.createClass({
                                 <p>{data.job_description}</p>
                                 <h3>Requirements</h3>
                                 <ul>
-                                    <li>Aliquam rhoncus justo eget tellus scelerisque, at mollis mi aliquam.</li>
-                                    <li>Quisque pretium convallis pulvinar.</li>
-                                    <li>Nulla rutrum nisi mi, iaculis commodo nibh lobortis sed.</li>
-                                    <li>Sed pulvinar, nunc vitae molestie dapibus, lacus dolor dignissim sapien.</li>
-                                    <li>Pellentesque ipsum ex, imperdiet quis consequat sed, consectetur ut ante.</li>
-                                    <li>Aliquam libero felis, mollis vitae elementum vel, bibendum eu tortor.</li>
-                                    <li>Morbi rhoncus luctus interdum.</li>
+                                    {
+                                        _.map(jobs_requirements, function(line) {
+                                            return <li>{line}</li>;
+                                        })
+                                    }
                                 </ul>
                                 <h3>Benefits</h3>
                                 <ul>
-                                    <li>Aliquam rhoncus justo eget tellus scelerisque, at mollis mi aliquam.</li>
-                                    <li>Quisque pretium convallis pulvinar.</li>
-                                    <li>Nulla rutrum nisi mi, iaculis commodo nibh lobortis sed.</li>
-                                    <li>Sed pulvinar, nunc vitae molestie dapibus, lacus dolor dignissim sapien.</li>
-                                    <li>Pellentesque ipsum ex, imperdiet quis consequat sed, consectetur ut ante.</li>
-                                    <li>Aliquam libero felis, mollis vitae elementum vel, bibendum eu tortor.</li>
-                                    <li>Morbi rhoncus luctus interdum.</li>
+                                    {
+                                        _.map(jobs_benefits, function(line) {
+                                            return <li>{line}</li>;
+                                        })
+                                    }
                                 </ul>
                                 <p>
                                     <a href="#" className="btn btn-primary btn-lg">Apply Here</a>
@@ -121,7 +125,7 @@ const ListingDetail = React.createClass({
                             <hr />
                             <div className="sidebar-widget" id="company">
                                 <h2>About this company</h2>
-                                <p><img src="http://placehold.it/300x109.gif" alt="" className="img-responsive" /></p>
+                                <p><img src={data.Business.business_picture} alt="" className="img-responsive" /></p>
                                 <p>{data.Business.business_description}</p>
                                 <p><a href="company.html" className="btn btn-primary">Read more</a></p>
                             </div>

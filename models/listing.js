@@ -20,7 +20,13 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
-    business_culture: {
+    photo_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+      }
+    },
+    requirements: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

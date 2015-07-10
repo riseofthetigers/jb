@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     business_picture: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
       }

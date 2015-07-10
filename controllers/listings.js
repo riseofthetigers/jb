@@ -16,10 +16,11 @@ module.exports = {
       job_title: req.body.job_title,
       employment_type: req.body.employment_type,
       job_description: req.body.job_description,
-      business_culture: req.body.business_culture,
       job_compensation: req.body.job_compensation,
       job_benefits: req.body.job_benefits,
-      business_id: req.body.business_id
+      business_id: req.body.business_id ,
+      requirements: req.body.requirements,
+      photo_url: req.body.photo_url
     }
 
     Listing.create(createListing).then(function() {
