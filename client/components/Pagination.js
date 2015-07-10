@@ -49,9 +49,9 @@ var Pagination = React.createClass({
                         _.times(pages, function(n){
                             var boundClick = self.handleChangePage.bind(self, n+1);
                             if((n+1) == currentPage ){
-                                return <li className="active"><a>{n+1} <span className="sr-only">(current)</span></a></li>
+                                return <li key={n} className="active"><a>{n+1} <span className="sr-only">(current)</span></a></li>
                             }
-                            return <li><a onClick={boundClick} page={n+1} >{n+1}</a></li>
+                            return <li key={n}><a onClick={boundClick} page={n+1} >{n+1}</a></li>
                         })
                     }
                     <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
