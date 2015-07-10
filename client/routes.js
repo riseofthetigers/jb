@@ -15,6 +15,7 @@ var Search = require('./components/Search');
 var Signup = require('./components/Signup');
 
 var JobsListing = require('./components/JobsListing');
+var ListingDetail = require('./components/ListingDetail')
 
 var routes = (
   <Route path="/" handler={App}>
@@ -28,6 +29,8 @@ var routes = (
     <Route name="signup" path='/signup' handler={Signup}/>
 
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
+    <Route name="ListingDetail" path="/listing/:id" handler={ListingDetail} />
+
   </Route>
 
 );
