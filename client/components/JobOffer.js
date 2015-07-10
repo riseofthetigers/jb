@@ -3,7 +3,6 @@ var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 var Modal = ReactBootstrap.Modal;
 var AppActions = require('../actions/app-actions');
-var AppStore = require('../stores/app-store');
 var Navigation = require('react-router').Navigation;
 
 var ListingDetail = require('./ListingDetail')
@@ -18,25 +17,9 @@ const JobOffer = React.createClass({
     };
   },
 
-  //componentDidMount: function() {
-    //AppStore.addChangeListener(this._onChange);
-  //},
-
-  //componentWillUnmount: function() {
-    //AppStore.removeChangeListener(this._onChange);
-  //},
-
-    //_onChange : function(){
-
-    //},
-
-
   handleClick: function () {
-
     this.transitionTo('/listing/detail/' + this.state.listing.id );
-
   },
-
 
   render: function () {
       var data = this.state.listing;

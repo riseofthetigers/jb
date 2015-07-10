@@ -3,7 +3,7 @@ var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 var Modal = ReactBootstrap.Modal;
 var AppActions = require('../actions/app-actions');
-var AppStore = require('../stores/app-store');
+var ListingStore = require('../stores/listing-store');
 var Navigation = require('react-router').Navigation;
 var _ = require('lodash');
 
@@ -31,12 +31,12 @@ const JobsListing = React.createClass({
   },
 
   componentDidMount: function() {
-    AppStore.addListingChangeListener(this._onChange);
-    AppStore.getListings(true);
+    ListingStore.addListingChangeListener(this._onChange);
+    ListingStore.getListings(true);
   },
 
   componentWillUnmount: function() {
-    AppStore.removeListingChangeListener(this._onChange);
+    ListingStore.removeListingChangeListener(this._onChange);
   },
 
   changePageCallback: function(index) {
@@ -45,7 +45,7 @@ const JobsListing = React.createClass({
 
 
   _onChange : function(){
-    this.setState({listings:AppStore.getListings(), loaded: true});
+    this.setState({listings:ListingStore.getListings(), loaded: true});
   },
 
 

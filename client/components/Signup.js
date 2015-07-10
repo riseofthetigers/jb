@@ -24,8 +24,11 @@ const SignupModal = React.createClass({
   },
 
   componentDidMount: function() {
-     AuthStore.addChangeListener(this._onChange);
-    //this.handleToggle();
+     AuthStore.addAuthChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    AuthStore.removeAuthChangeListener(this._onChange);
   },
 
 

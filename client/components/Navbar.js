@@ -15,9 +15,14 @@ var Navbar = React.createClass({
         return {auth:false}
     },
 
-    componentWillMount: function() {
+    componentDidMount: function() {
         this._onChange();
-        AuthStore.addChangeListener(this._onChange);
+        AuthStore.addAuthChangeListener(this._onChange);
+    },
+
+    componentWillUnount: function() {
+        this._onChange();
+        AuthStore.removeAuthChangeListener(this._onChange);
     },
 
     _onChange: function() {

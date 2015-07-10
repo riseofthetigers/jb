@@ -26,25 +26,22 @@ const LoginModal = React.createClass({
   },
 
   componentDidMount: function() {
-    //this.handleToggle();
-    AuthStore.addChangeListener(this._onChange);
+    AuthStore.addAuthChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
-    return {
-      isModalOpen: false
-    };
+    AuthStore.removeAuthChangeListener(this._onChange);
   },
 
 
     _onChange : function(){
         var self = this;
-        console.log('!!!!')
+
         AuthStore.isAuthenticated( function(auth) {
             if (auth.auth){
-                return self.transitionTo('/search');
+               return self.transitionTo('/search');
             } else {
-              this.setState({message:'Incorrect Username or Password'});
+              self.setState({message:'Incorrect Username or Password'});
             }
         });
 
@@ -86,7 +83,7 @@ const LoginForm = React.createClass({
     render: function() {
       return (
           <div className="jumbotron text-center">
-             <h3>{this.state.message}</h3>
+             <h3></h3>
              <a href="/auth/facebook" className="btn btn-facebook"><span className="fa fa-facebook"></span> Sign In with Facebook</a>
              <form action="/api/users" method="get">
               <div>

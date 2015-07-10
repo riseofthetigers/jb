@@ -3,7 +3,7 @@ var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 var Modal = ReactBootstrap.Modal;
 var AppActions = require('../actions/app-actions');
-var AppStore = require('../stores/app-store');
+var ListingStore = require('../stores/listing-store');
 var Navigation = require('react-router').Navigation;
 var _ = require('lodash');
 
@@ -21,17 +21,17 @@ const ListingDetail = React.createClass({
   },
 
   componentDidMount: function() {
-    AppStore.addListingChangeListener(this._onChange.bind(this));
-    AppStore.getListingById(this.props.params.id, true);
+    ListingStore.addListingChangeListener(this._onChange.bind(this));
+    ListingStore.getListingById(this.props.params.id, true);
   },
 
   componentWillUnmount: function() {
-    AppStore.removeListingChangeListener(this._onChange);
+    ListingStore.removeListingChangeListener(this._onChange);
   },
 
   _onChange : function(){
-    console.log(AppStore.getListingById(this.props.params.id));
-    this.setState({listing:AppStore.getListingById(this.props.params.id), loaded: true});
+    console.log(ListingStore.getListingById(this.props.params.id));
+    this.setState({listing:ListingStore.getListingById(this.props.params.id), loaded: true});
   },
 
 

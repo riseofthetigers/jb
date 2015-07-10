@@ -29,7 +29,7 @@ var routes = (
     <Route name="signup" path='/signup' handler={Signup}/>
 
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
-    <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetails} />
+    <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
 
   </Route>
 

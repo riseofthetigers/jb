@@ -44,7 +44,7 @@ var _getListingById = function (id, cb) {
 
 };
 
-var ListingStore =  {
+var ListingStore = assign(EventEmitter.prototype, {
     emitListingChange: function(){
         this.emit(CHANGE_EVENT);
     },
@@ -83,10 +83,8 @@ var ListingStore =  {
         var action = payload.action;
         switch(action.actionType){
         }
-        ListingStore.emitListingChange();
-
         return true;
      })
-};
+});
 
 module.exports = ListingStore;

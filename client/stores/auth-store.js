@@ -21,7 +21,7 @@ function _isAuthenticated (cb){
     $.get('/api/auth', function(data){
         var auth= data.auth;
         if( auth != _auth){
-            AuthStore.emitChange();
+            //AuthStore.emitAuthChange();
         }
         _auth = auth;
         cb({auth:auth});
@@ -29,7 +29,7 @@ function _isAuthenticated (cb){
     });
 }
 
-function _login(username,password){
+function _login(username,password, cb){
     console.log('I should login with ', username, password);
     // do the login on server
     $.post('/api/login', {
@@ -38,13 +38,13 @@ function _login(username,password){
     }, function(data){
         _auth = data.auth;
         console.log('authentication response', _auth);
-        AuthStore.emitChange();
+        AuthStore.emitAuthChange();
     });
 }
 
 
 function _signup(username, password, firstname, lastname, email){
-    console.log('I should login with ', username, password);
+    console.log('I should signup with ', username, password);
     // do the login on server
     $.post('/api/signup', {
         username  : username,
@@ -55,10 +55,9 @@ function _signup(username, password, firstname, lastname, email){
     }, function(data){
         _auth = false;
         _signedUp = data;
-        console.log('authentication response', _auth);
-        AuthStore.emitChange();
+        console.log('authentication response signup', _auth);
+        AuthStore.emitAuthChange();
     });
-    //AuthActions.loggedin();
 }
 
 function _loginWithFacebook() {
@@ -69,21 +68,21 @@ function _logout() {
     console.log('logging out');
 
     $.get('/api/logout', function(req){
-        _auth = false
-        AuthStore.emitChange();
+        _auth = false;
+        AuthStore.emitAuthChange();
     });
 }
 
 var AuthStore = assign(EventEmitter.prototype, {
-    emitChange: function(){
+    emitAuthChange: function(){
         this.emit(CHANGE_EVENT);
     },
 
-    addChangeListener: function(callback){
+    addAuthChangeListener: function(callback){
         this.on(CHANGE_EVENT, callback);
    },
 
-    removeChangeListener: function(callback){
+    removeAuthChangeListener: function(callback){
           this.removeListener(CHANGE_EVENT, callback);
       },
 
@@ -103,14 +102,17 @@ var AuthStore = assign(EventEmitter.prototype, {
         switch(action.actionType){
             case AuthConstants.SIGNUP:
                 _signup(payload.action.username, payload.action.password, payload.action.firstname, payload.action.lastname, payload.action.email);
+                break;
             case AuthConstants.LOGIN:
                 _login(payload.action.username, payload.action.password);
+                break;
             case AuthConstants.LOGIN_FACEBOOK:
                 _loginWithFacebook();
+                break;
             case AuthConstants.LOGOUT:
                 _logout();
+                break;
         }
-        AuthStore.emitChange();
 
         return true;
      })
