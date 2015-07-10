@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "72b67f2488e9d06f71ed"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c81b88464f92965ff78b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -55639,39 +55639,54 @@
 	
 	// Our custom component is managing whether the Modal is visible
 	var ListingDetail = React.createClass({ displayName: "ListingDetail",
-	  mixins: [Navigation],
+	    mixins: [Navigation],
 	
-	  getInitialState: function getInitialState() {
-	    return {
-	      listing: {
-	        Business: {}
-	      }
-	    };
-	  },
+	    getInitialState: function getInitialState() {
+	        return {
+	            listing: {
+	                Business: {}
+	            }
+	        };
+	    },
 	
-	  componentDidMount: function componentDidMount() {
-	    ListingStore.addListingChangeListener(this._onChange.bind(this));
-	    ListingStore.getListingById(this.props.params.id, true);
-	  },
+	    componentDidMount: function componentDidMount() {
+	        ListingStore.addListingChangeListener(this._onChange.bind(this));
+	        ListingStore.getListingById(this.props.params.id, true);
+	    },
 	
-	  componentWillUnmount: function componentWillUnmount() {
-	    ListingStore.removeListingChangeListener(this._onChange);
-	  },
+	    componentWillUnmount: function componentWillUnmount() {
+	        ListingStore.removeListingChangeListener(this._onChange);
+	    },
 	
-	  _onChange: function _onChange() {
-	    console.log(ListingStore.getListingById(this.props.params.id));
-	    this.setState({ listing: ListingStore.getListingById(this.props.params.id), loaded: true });
-	  },
+	    _onChange: function _onChange() {
+	        console.log(ListingStore.getListingById(this.props.params.id));
+	        this.setState({ listing: ListingStore.getListingById(this.props.params.id), loaded: true });
+	    },
 	
-	  handleClick: function handleClick() {
-	    this.transitionTo("/listing/apply/" + this.state.listing.id);
-	  },
+	    handleClick: function handleClick() {
+	        this.transitionTo("/listing/apply/" + this.state.listing.id);
+	    },
 	
-	  render: function render() {
-	    var data = this.state.listing;
-	    var employmentType = "test";
-	    return React.createElement("div", null, React.createElement("img", { style: { width: 200 + "px", height: 200 + "px" }, src: "/images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, data.job_title), React.createElement("p", null, data.Business.business_name)));
-	  } });
+	    render: function render() {
+	        var data = this.state.listing;
+	        var employmentType = "";
+	        var employmentType;
+	        switch (data.employment_type) {
+	            case "F":
+	                employmentType = "Full Time";
+	                break;
+	            case "P":
+	                employmentType = "Part Time";
+	                break;
+	            case "H":
+	                employmentType = "Hourly";
+	                break;
+	            default:
+	                employmentType = "Unknown";
+	        }
+	
+	        return React.createElement("div", null, React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-12 text-center" }, React.createElement("h1", null, data.job_title), React.createElement("h4", null, React.createElement("span", null, React.createElement("i", { className: "fa fa-map-marker" }), data.Business.business_city), React.createElement("span", null, React.createElement("i", { className: "fa fa-clock-o" }), employmentType), React.createElement("span", null, React.createElement("i", { className: "fa fa-dollar" }), data.job_compensation))))), React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("h3", null), React.createElement("img", { style: { width: 700 + "px", height: 300 + "px" }, src: "/images/wawa.jpg" }), React.createElement("h3", null), React.createElement("article", null, React.createElement("h2", null, "Job Details"), React.createElement("p", null, data.job_description), React.createElement("h3", null, "Requirements"), React.createElement("ul", null, React.createElement("li", null, "Aliquam rhoncus justo eget tellus scelerisque, at mollis mi aliquam."), React.createElement("li", null, "Quisque pretium convallis pulvinar."), React.createElement("li", null, "Nulla rutrum nisi mi, iaculis commodo nibh lobortis sed."), React.createElement("li", null, "Sed pulvinar, nunc vitae molestie dapibus, lacus dolor dignissim sapien."), React.createElement("li", null, "Pellentesque ipsum ex, imperdiet quis consequat sed, consectetur ut ante."), React.createElement("li", null, "Aliquam libero felis, mollis vitae elementum vel, bibendum eu tortor."), React.createElement("li", null, "Morbi rhoncus luctus interdum.")), React.createElement("h3", null, "Benefits"), React.createElement("ul", null, React.createElement("li", null, "Aliquam rhoncus justo eget tellus scelerisque, at mollis mi aliquam."), React.createElement("li", null, "Quisque pretium convallis pulvinar."), React.createElement("li", null, "Nulla rutrum nisi mi, iaculis commodo nibh lobortis sed."), React.createElement("li", null, "Sed pulvinar, nunc vitae molestie dapibus, lacus dolor dignissim sapien."), React.createElement("li", null, "Pellentesque ipsum ex, imperdiet quis consequat sed, consectetur ut ante."), React.createElement("li", null, "Aliquam libero felis, mollis vitae elementum vel, bibendum eu tortor."), React.createElement("li", null, "Morbi rhoncus luctus interdum.")), React.createElement("p", null, React.createElement("a", { href: "#", className: "btn btn-primary btn-lg" }, "Apply Here")))), React.createElement("div", { className: "col-sm-4", id: "sidebar" }, React.createElement("div", { className: "sidebar-widget", id: "share" }, React.createElement("h3", null, "Share this job"), React.createElement("ul", null, React.createElement("li", null, React.createElement("a", { href: "https://www.facebook.com/sharer/sharer.php?u=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-facebook" }))), React.createElement("li", null, React.createElement("a", { href: "https://twitter.com/home?status=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-twitter" }))), React.createElement("li", null, React.createElement("a", { href: "https://plus.google.com/share?url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-google-plus" }))), React.createElement("li", null, React.createElement("a", { href: "https://www.linkedin.com/shareArticle?mini=true&url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html&title=Jobseek%20-%20Job%20Board%20Responsive%20HTML%20Template&summary=&source=" }, React.createElement("i", { className: "fa fa-linkedin" }))))), React.createElement("hr", null), React.createElement("div", { className: "sidebar-widget", id: "company" }, React.createElement("h2", null, "About this company"), React.createElement("p", null, React.createElement("img", { src: "http://placehold.it/300x109.gif", alt: "", className: "img-responsive" })), React.createElement("p", null, data.Business.business_description), React.createElement("p", null, React.createElement("a", { href: "company.html", className: "btn btn-primary" }, "Read more"))), React.createElement("hr", null), React.createElement("div", { className: "sidebar-widget", id: "company-jobs" }, React.createElement("h2", null, "More jobs from this company"), React.createElement("ul", null, React.createElement("li", null, React.createElement("a", { href: "#" }, "Shift Lead")), React.createElement("li", null, React.createElement("a", { href: "#" }, "Cashier")), React.createElement("li", null, React.createElement("a", { href: "#" }, "Manager"))))))));
+	    } });
 	
 	module.exports = ListingDetail;
 	
