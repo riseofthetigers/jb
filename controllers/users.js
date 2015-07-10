@@ -16,6 +16,7 @@ module.exports = {
     if (req.body.email && req.body.password != null && req.body.firstname && req.body.lastname != null) {
       var displayname = req.body.firstname + ' ' + req.body.lastname;
       var newUser = {
+        type : req.body.type,
         username: req.body.email,
         email: req.body.email,
         password: req.body.password,

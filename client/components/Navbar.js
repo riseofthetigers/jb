@@ -3,6 +3,7 @@ var Router = require('react-router');
 var Link = Router.Link;
 var AuthActions = require('../actions/auth-actions');
 var AuthStore = require('../stores/auth-store');
+var Navigation = require('react-router').Navigation;
 
 
 function getAuth(cb) {
@@ -10,6 +11,7 @@ function getAuth(cb) {
 }
 
 var Navbar = React.createClass({
+  mixins: [Navigation],
 
     getInitialState: function(){
         return {auth:false}
@@ -33,7 +35,9 @@ var Navbar = React.createClass({
     },
 
     handleLogout: function() {
-        AuthActions.logout()
+        AuthActions.logout();
+        this.transitionTo('/home');
+
     },
 
   render: function () {

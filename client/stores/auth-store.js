@@ -11,6 +11,8 @@ var _auth = false;
 
 var _signedUp = null;
 
+var _user = null;
+
 function _getSignedUp() {
     return _signedUp;
 }
@@ -37,16 +39,21 @@ function _login(username,password, cb){
         password: password
     }, function(data){
         _auth = data.auth;
+        _user = {
+            type: data.type,
+            name: data.displayName
+        };
         console.log('authentication response', _auth);
         AuthStore.emitAuthChange();
     });
 }
 
 
-function _signup(username, password, firstname, lastname, email){
+function _signup(type, username, password, firstname, lastname, email){
     console.log('I should signup with ', username, password);
     // do the login on server
     $.post('/api/signup', {
+        type      : type,
         username  : username,
         password  : password,
         firstname : firstname,
@@ -69,6 +76,7 @@ function _logout() {
 
     $.get('/api/logout', function(req){
         _auth = false;
+        _user = null;
         AuthStore.emitAuthChange();
     });
 }
@@ -96,12 +104,16 @@ var AuthStore = assign(EventEmitter.prototype, {
         return _getSignedUp();
     },
 
+    getSignedInUser: function() {
+         return _user;
+    },
+
 
     dispatcherIndex: AppDispatcher.register(function(payload){
         var action = payload.action;
         switch(action.actionType){
             case AuthConstants.SIGNUP:
-                _signup(payload.action.username, payload.action.password, payload.action.firstname, payload.action.lastname, payload.action.email);
+                _signup(payload.action.type, payload.action.username, payload.action.password, payload.action.firstname, payload.action.lastname, payload.action.email);
                 break;
             case AuthConstants.LOGIN:
                 _login(payload.action.username, payload.action.password);

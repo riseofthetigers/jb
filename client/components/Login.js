@@ -37,9 +37,14 @@ const LoginModal = React.createClass({
     _onChange : function(){
         var self = this;
 
+        var next = this.props.query.next;
+
         AuthStore.isAuthenticated( function(auth) {
             if (auth.auth){
-               return self.transitionTo('/search');
+               if(!next){
+                    next = '/dashboard';
+               }
+               return self.transitionTo(next);
             } else {
               self.setState({message:'Incorrect Username or Password'});
             }

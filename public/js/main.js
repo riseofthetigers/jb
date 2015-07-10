@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8875cd9daec1c02a7344"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6cf8b62c261e4e111afb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24499,10 +24499,11 @@
 	var Search = __webpack_require__(299);
 	var Signup = __webpack_require__(309);
 	
+	var Dashboard = __webpack_require__(310);
 	var JobsListing = __webpack_require__(300);
 	var ListingDetail = __webpack_require__(307);
 	
-	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", path: "/about", handler: About }), React.createElement(Route, { name: "concat", path: "/concat", handler: Concat }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }), React.createElement(Route, { name: "search_page", path: "/search/:page", handler: Search }), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }), React.createElement(Route, { name: "listing_details", path: "/listing/detail/:id", handler: ListingDetail }));
+	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "about", path: "/about", handler: About }), React.createElement(Route, { name: "concat", path: "/concat", handler: Concat }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }), React.createElement(Route, { name: "search_page", path: "/search/:page", handler: Search }), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "dashboard", path: "/dashboard", handler: Dashboard }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }), React.createElement(Route, { name: "listing_details", path: "/listing/detail/:id", handler: ListingDetail }));
 	
 	module.exports = routes;
 	
@@ -24520,7 +24521,7 @@
 	var React = __webpack_require__(59);
 	var Home = React.createClass({ displayName: "Home",
 	  render: function render() {
-	    return React.createElement("h2", null, "App");
+	    return React.createElement("h2", null, "Home");
 	  }
 	});
 	
@@ -24688,12 +24689,14 @@
 	var Link = Router.Link;
 	var AuthActions = __webpack_require__(215);
 	var AuthStore = __webpack_require__(221);
+	var Navigation = __webpack_require__(169).Navigation;
 	
 	function getAuth(cb) {
 	  AuthStore.isAuthenticated(cb);
 	}
 	
 	var Navbar = React.createClass({ displayName: "Navbar",
+	  mixins: [Navigation],
 	
 	  getInitialState: function getInitialState() {
 	    return { auth: false };
@@ -24718,6 +24721,7 @@
 	
 	  handleLogout: function handleLogout() {
 	    AuthActions.logout();
+	    this.transitionTo("/home");
 	  },
 	
 	  render: function render() {
@@ -24771,9 +24775,10 @@
 	        });
 	    },
 	
-	    signup: function signup(username, password, firstname, lastname, email) {
+	    signup: function signup(type, username, password, firstname, lastname, email) {
 	        AppDispatcher.handleAuthAction({
 	            actionType: AuthConstants.SIGNUP,
+	            type: type,
 	            username: username,
 	            password: password,
 	            firstname: firstname,
@@ -25187,6 +25192,8 @@
 	
 	var _signedUp = null;
 	
+	var _user = null;
+	
 	function _getSignedUp() {
 	    return _signedUp;
 	}
@@ -25210,15 +25217,20 @@
 	        password: password
 	    }, function (data) {
 	        _auth = data.auth;
+	        _user = {
+	            type: data.type,
+	            name: data.displayName
+	        };
 	        console.log("authentication response", _auth);
 	        AuthStore.emitAuthChange();
 	    });
 	}
 	
-	function _signup(username, password, firstname, lastname, email) {
+	function _signup(type, username, password, firstname, lastname, email) {
 	    console.log("I should signup with ", username, password);
 	    // do the login on server
 	    $.post("/api/signup", {
+	        type: type,
 	        username: username,
 	        password: password,
 	        firstname: firstname,
@@ -25239,6 +25251,7 @@
 	
 	    $.get("/api/logout", function (req) {
 	        _auth = false;
+	        _user = null;
 	        AuthStore.emitAuthChange();
 	    });
 	}
@@ -25264,11 +25277,15 @@
 	        return _getSignedUp();
 	    },
 	
+	    getSignedInUser: function getSignedInUser() {
+	        return _user;
+	    },
+	
 	    dispatcherIndex: AppDispatcher.register(function (payload) {
 	        var action = payload.action;
 	        switch (action.actionType) {
 	            case AuthConstants.SIGNUP:
-	                _signup(payload.action.username, payload.action.password, payload.action.firstname, payload.action.lastname, payload.action.email);
+	                _signup(payload.action.type, payload.action.username, payload.action.password, payload.action.firstname, payload.action.lastname, payload.action.email);
 	                break;
 	            case AuthConstants.LOGIN:
 	                _login(payload.action.username, payload.action.password);
@@ -25706,9 +25723,14 @@
 	  _onChange: function _onChange() {
 	    var self = this;
 	
+	    var next = this.props.query.next;
+	
 	    AuthStore.isAuthenticated(function (auth) {
 	      if (auth.auth) {
-	        return self.transitionTo("/search");
+	        if (!next) {
+	          next = "/dashboard";
+	        }
+	        return self.transitionTo(next);
 	      } else {
 	        self.setState({ message: "Incorrect Username or Password" });
 	      }
@@ -55838,10 +55860,11 @@
 	    var lastName = this.refs.lastname.getDOMNode().value;
 	    var username = this.refs.username.getDOMNode().value;
 	    var password = this.refs.password.getDOMNode().value;
-	    AuthActions.signup(username, password, firstName, lastName, username);
+	    var type = this.refs.type.getDOMNode().value;
+	    AuthActions.signup(type, username, password, firstName, lastName, username);
 	  },
 	  render: function render() {
-	    return React.createElement("form", { action: "/api/users", method: "post" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-firstname" }, "First Name"), React.createElement("input", { type: "text", className: "form-control", ref: "firstname", name: "firstname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-username" }, "Last Name"), React.createElement("input", { type: "text", className: "form-control", ref: "lastname", name: "lastname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-username" }, "Email"), React.createElement("input", { type: "email", className: "form-control", ref: "username", name: "email" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-username" }, "Password"), React.createElement("input", { type: "password", className: "form-control", ref: "password", name: "password" })), React.createElement("div", { className: "col-md-13" }, React.createElement("input", { type: "button", value: "Submit", className: "btn btn-primary", onClick: this.handleSignup }))));
+	    return React.createElement("form", { action: "/api/users", method: "post" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-12" }, React.createElement("label", { "for": "login-type" }, "Sign in as "), React.createElement("select", { className: "form-control", ref: "type", name: "type" }, React.createElement("option", { value: "E" }, "Employer"), React.createElement("option", { value: "C" }, "Candidate")), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-firstname" }, "First Name"), React.createElement("input", { type: "text", className: "form-control", ref: "firstname", name: "firstname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-username" }, "Last Name"), React.createElement("input", { type: "text", className: "form-control", ref: "lastname", name: "lastname" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-username" }, "Email"), React.createElement("input", { type: "email", className: "form-control", ref: "username", name: "email" }), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("label", { "for": "login-username" }, "Password"), React.createElement("input", { type: "password", className: "form-control", ref: "password", name: "password" })), React.createElement("div", { className: "col-md-13" }, React.createElement("input", { type: "button", value: "Submit", className: "btn btn-primary", onClick: this.handleSignup }))));
 	  }
 	
 	});
@@ -55849,6 +55872,94 @@
 	module.exports = SignupModal;
 	
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(210), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Signup.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 310 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	var React = __webpack_require__(59);
+	var DashboardEmployer = __webpack_require__(311);
+	var DashboardCandidate = __webpack_require__(312);
+	var AuthStore = __webpack_require__(221);
+	var Navigation = __webpack_require__(169).Navigation;
+	
+	var Dashboard = React.createClass({ displayName: "Dashboard",
+	    mixins: [Navigation],
+	
+	    componentDidMount: function componentDidMount() {
+	        var user = AuthStore.getSignedInUser();
+	        if (!user) {
+	            this.transitionTo("/login?next=/dashboard");
+	            return;
+	        }
+	    },
+	
+	    render: function render() {
+	
+	        var type = "E";
+	        var dashboard;
+	        var user = AuthStore.getSignedInUser();
+	
+	        if (user && user.type === "E") {
+	            dashboard = React.createElement(DashboardEmployer, null);
+	        }
+	        if (user && user.type === "C") {
+	
+	            dashboard = React.createElement(DashboardCandidate, null);
+	        }
+	
+	        return React.createElement("div", null, dashboard);
+	    }
+	});
+	
+	module.exports = Dashboard;
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(210), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Dashboard.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 311 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	var React = __webpack_require__(59);
+	var DashboardEmployer = React.createClass({ displayName: "DashboardEmployer",
+	  render: function render() {
+	    return React.createElement("h2", null, "Dashboard EMPLOYER");
+	  }
+	});
+	
+	module.exports = DashboardEmployer;
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(210), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "DashboardEmployer.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 312 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	var React = __webpack_require__(59);
+	var DashboardCandidate = React.createClass({ displayName: "DashboardCandidate",
+	  render: function render() {
+	    return React.createElement("h2", null, "Dashboard CANDIDATE");
+	  }
+	});
+	
+	module.exports = DashboardCandidate;
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(210), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "DashboardCandidate.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ }

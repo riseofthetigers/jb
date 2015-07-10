@@ -76,13 +76,22 @@ const SignUpForm = React.createClass({
         var lastName = this.refs.lastname.getDOMNode().value;
         var username = this.refs.username.getDOMNode().value;
         var password = this.refs.password.getDOMNode().value;
-        AuthActions.signup(username, password, firstName, lastName, username);
+        var type     = this.refs.type.getDOMNode().value;
+        AuthActions.signup(type, username, password, firstName, lastName, username);
     },
     render: function () {
       return (
 
          <form action="/api/users" method="post">
          <div className="row">
+            <div className="col-md-12">
+            <label for="login-type">Sign in as </label>
+              <select className="form-control" ref="type" name="type">
+                <option value="E">Employer</option>
+                <option value="C">Candidate</option>
+              </select>
+              <br/>
+            </div>
             <div className="col-md-6">
             <label for="login-firstname">First Name</label>
               <input type="text" className="form-control" ref="firstname" name="firstname"/><br/>

@@ -24,9 +24,10 @@ var AuthActions = {
         });
     },
 
-    signup: function(username, password, firstname, lastname, email) {
+    signup: function(type, username, password, firstname, lastname, email) {
         AppDispatcher.handleAuthAction({
             actionType: AuthConstants.SIGNUP,
+            type: type,
             username: username,
             password: password,
             firstname: firstname,

@@ -14,6 +14,7 @@ var Login = require('./components/Login.js');
 var Search = require('./components/Search');
 var Signup = require('./components/Signup');
 
+var Dashboard = require('./components/Dashboard');
 var JobsListing = require('./components/JobsListing');
 var ListingDetail = require('./components/ListingDetail')
 
@@ -28,6 +29,7 @@ var routes = (
     <Route name="search_page" path="/search/:page" handler={Search} />
     <Route name="signup" path='/signup' handler={Signup}/>
 
+    <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
     <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
 
