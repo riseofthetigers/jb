@@ -14,13 +14,14 @@ const LoginModal = React.createClass({
 
   handleToggle: function () {
     this.setState({
-      isModalOpen: !this.state.isModalOpen
+      isModalOpen: !this.state.isModalOpen,
     });
   },
 
   getInitialState: function() {
     return {
-      isModalOpen: true
+      isModalOpen: true,
+      message: ''
     };
   },
 
@@ -38,10 +39,13 @@ const LoginModal = React.createClass({
 
     _onChange : function(){
         var self = this;
+        console.log('!!!!')
         AuthStore.isAuthenticated( function(auth) {
             if (auth.auth){
                 return self.transitionTo('/search');
-            };
+            } else {
+              this.setState({message:'Incorrect Username or Password'});
+            }
         });
 
         // should show message incorrect username password
@@ -50,7 +54,7 @@ const LoginModal = React.createClass({
 
   render: function () {
       return (
-        <body style={{float: "right", textDecoration: "none"}}></body>
+          <h2>Login</h2>
       );
     },
 
@@ -82,6 +86,7 @@ const LoginForm = React.createClass({
     render: function() {
       return (
           <div className="jumbotron text-center">
+             <h3>{this.state.message}</h3>
              <a href="/auth/facebook" className="btn btn-facebook"><span className="fa fa-facebook"></span> Sign In with Facebook</a>
              <form action="/api/users" method="get">
               <div>

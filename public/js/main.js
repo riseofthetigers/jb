@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9c20e19e015653b34ebf"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e2741af6dc4300246d1e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25678,13 +25678,13 @@
 	
 	  handleToggle: function handleToggle() {
 	    this.setState({
-	      isModalOpen: !this.state.isModalOpen
-	    });
+	      isModalOpen: !this.state.isModalOpen });
 	  },
 	
 	  getInitialState: function getInitialState() {
 	    return {
-	      isModalOpen: true
+	      isModalOpen: true,
+	      message: ""
 	    };
 	  },
 	
@@ -25701,17 +25701,20 @@
 	
 	  _onChange: function _onChange() {
 	    var self = this;
+	    console.log("!!!!");
 	    AuthStore.isAuthenticated(function (auth) {
 	      if (auth.auth) {
 	        return self.transitionTo("/search");
-	      };
+	      } else {
+	        this.setState({ message: "Incorrect Username or Password" });
+	      }
 	    });
 	
 	    // should show message incorrect username password
 	  },
 	
 	  render: function render() {
-	    return React.createElement("body", { style: { float: "right", textDecoration: "none" } });
+	    return React.createElement("h2", null, "Login");
 	  },
 	
 	  // This is called by the `OverlayMixin` when this component
@@ -25733,7 +25736,7 @@
 	  },
 	
 	  render: function render() {
-	    return React.createElement("div", { className: "jumbotron text-center" }, React.createElement("a", { href: "/auth/facebook", className: "btn btn-facebook" }, React.createElement("span", { className: "fa fa-facebook" }), " Sign In with Facebook"), React.createElement("form", { action: "/api/users", method: "get" }, React.createElement("div", null, React.createElement("label", { "for": "login-username" }, "Username"), React.createElement("input", { type: "email", className: "form-control", name: "username", ref: "username" }), React.createElement("br", null)), React.createElement("div", null, React.createElement("label", { "for": "login-password" }, "Password"), React.createElement("input", { type: "password", className: "form-control", name: "password", ref: "password" })), React.createElement("div", { className: "col-md-12" }, React.createElement("input", { type: "button", value: "Submit", className: "btn btn-primary", onClick: this.handleLogin }))));
+	    return React.createElement("div", { className: "jumbotron text-center" }, React.createElement("h3", null, this.state.message), React.createElement("a", { href: "/auth/facebook", className: "btn btn-facebook" }, React.createElement("span", { className: "fa fa-facebook" }), " Sign In with Facebook"), React.createElement("form", { action: "/api/users", method: "get" }, React.createElement("div", null, React.createElement("label", { "for": "login-username" }, "Username"), React.createElement("input", { type: "email", className: "form-control", name: "username", ref: "username" }), React.createElement("br", null)), React.createElement("div", null, React.createElement("label", { "for": "login-password" }, "Password"), React.createElement("input", { type: "password", className: "form-control", name: "password", ref: "password" })), React.createElement("div", { className: "col-md-12" }, React.createElement("input", { type: "button", value: "Submit", className: "btn btn-primary", onClick: this.handleLogin }))));
 	  }
 	});
 	
@@ -56976,12 +56979,12 @@
 	    var signedUp = AuthStore.getSignedUp();
 	    console.log(signedUp);
 	    if (signedUp && signedUp.success) {
-	      this.transitionTo("/login");
+	      this.transitionTo("/search");
 	    }
 	  },
 	
 	  render: function render() {
-	    return React.createElement("div", null, " test1 ");
+	    return React.createElement("h2", null, "Sign Up");
 	  },
 	
 	  // This is called by the `OverlayMixin` when this component
@@ -56991,7 +56994,7 @@
 	      return React.createElement("span", null);
 	    }
 	
-	    return React.createElement(Modal, { title: "Sign up", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("a", { href: "/auth/facebook", className: "btn btn-facebook" }, React.createElement("span", { className: "fa fa-facebook" }), " Sign In with Facebook"), React.createElement(SignUpForm, null))));
+	    return React.createElement(Modal, { title: "Sign up", onRequestHide: this.handleToggle }, React.createElement("div", { className: "modal-body" }, React.createElement("div", { className: "jumbotron text-center" }, React.createElement("a", { href: "/auth/facebook", className: "btn btn-facebook" }, React.createElement("span", { className: "fa fa-facebook" }), " Sign Up with Facebook"), React.createElement(SignUpForm, null))));
 	  }
 	});
 	

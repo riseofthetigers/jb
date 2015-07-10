@@ -33,14 +33,14 @@ const SignupModal = React.createClass({
        var signedUp = AuthStore.getSignedUp();
        console.log( signedUp );
        if(signedUp && signedUp.success) {
-        this.transitionTo('/login');
+        this.transitionTo('/search');
        }
 
   },
 
   render: function () {
       return (
-        <div> test1 </div>
+        <h2>Sign Up</h2>
       );
     },
 
@@ -55,7 +55,7 @@ const SignupModal = React.createClass({
         <Modal title='Sign up' onRequestHide={this.handleToggle}>
           <div className='modal-body'>
               <div className="jumbotron text-center">
-                 <a href="/auth/facebook" className="btn btn-facebook"><span className="fa fa-facebook"></span> Sign In with Facebook</a>
+                 <a href="/auth/facebook" className="btn btn-facebook"><span className="fa fa-facebook"></span> Sign Up with Facebook</a>
                  <SignUpForm />
              </div>
           </div>
