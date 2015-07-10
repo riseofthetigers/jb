@@ -21,7 +21,7 @@ const LoginModal = React.createClass({
   getInitialState: function() {
     return {
       isModalOpen: true,
-      message: ''
+      message: 'test'
     };
   },
 
@@ -65,7 +65,7 @@ const LoginModal = React.createClass({
       return (
         <Modal title='Login' onRequestHide={this.handleToggle}>
           <div className='modal-body'>
-            <LoginForm />
+            <LoginForm message = {this.state.message} />
           </div>
         </Modal>
       );
@@ -74,6 +74,7 @@ const LoginModal = React.createClass({
 
 
 const LoginForm = React.createClass({
+
     handleLogin: function() {
         var username = this.refs.username.getDOMNode().value;
         var password = this.refs.password.getDOMNode().value;
@@ -83,7 +84,7 @@ const LoginForm = React.createClass({
     render: function() {
       return (
           <div className="jumbotron text-center">
-             <h3></h3>
+             <h3>{this.props.message}</h3>
              <a href="/auth/facebook" className="btn btn-facebook"><span className="fa fa-facebook"></span> Sign In with Facebook</a>
              <form action="/api/users" method="get">
               <div>

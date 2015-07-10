@@ -8,6 +8,12 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
     displayName: {
       type: DataTypes.STRING,
       allowNull: false,
