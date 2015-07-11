@@ -1,7 +1,7 @@
 var React  = require('react');
 var Navbar = require('./Navbar.js');
+var Footer = require('./Footer');
 var Router = require('react-router');
-var Landing = require('./Landing.js');
 
 var RouteHandler = Router.RouteHandler;
 
@@ -10,7 +10,8 @@ var App = React.createClass({
     return (
       <div className="app-wrapper">
         <Navbar />
-        <RouteHandler />
+        		<RouteHandler />
+        <Footer />
       </div>
     );
   }

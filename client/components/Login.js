@@ -21,7 +21,7 @@ const LoginModal = React.createClass({
   getInitialState: function() {
     return {
       isModalOpen: true,
-      message: 'test'
+      message: ''
     };
   },
 

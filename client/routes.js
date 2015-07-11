@@ -6,8 +6,7 @@ var NotFoundRoute = Router.NotFoundRoute;
 var DefaultRoute = Router.DefaultRoute;
 
 var App = require('./components/App.js');
-var About = require('./components/About.js');
-var Concat = require('./components/Concat.js');
+var CreateListing = require('./components/CreateListing.js');
 var Home = require('./components/Home.js');
 var Landing = require('./components/Landing.js');
 var Login = require('./components/Login.js');
@@ -18,11 +17,13 @@ var Dashboard = require('./components/Dashboard');
 var JobsListing = require('./components/JobsListing');
 var ListingDetail = require('./components/ListingDetail')
 
+var ContactUs = require('./components/ContactUs');
+var About = require('./components/About');
+
 var routes = (
   <Route path="/" handler={App}>
   	<DefaultRoute handler={Landing} />
-    <Route name="about" path='/about' handler={About}/>
-    <Route name="concat" path='/concat' handler={Concat}/>
+    <Route name="createlisting" path='/createlisting' handler={CreateListing}/>
     <Route name="home" path='/home' handler={Home}/>
     <Route name="login" path='/login' handler={Login}/>
     <Route name="search" path='/search' handler={Search} />
@@ -32,6 +33,8 @@ var routes = (
     <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
     <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
+    <Route name="contactus" path="/contactus" handler={ContactUs} />
+    <Route name="about" path="/about" handler={About} />
 
   </Route>
 
