@@ -8,6 +8,13 @@ var AppDispatcher = assign(new Dispatcher() , {
             source: 'AUTH_ACTION',
             action: action
         })
+    },
+
+    handleListingAction : function(action) {
+        this.dispatch({
+            source: 'LISTING_ACTION',
+            action: action
+        })
     }
 });
 

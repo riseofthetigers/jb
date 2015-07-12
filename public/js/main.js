@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f9fab91c969865a7e431"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2d7b227ad8fa420bbfb5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33985,6 +33985,13 @@
 	            source: "AUTH_ACTION",
 	            action: action
 	        });
+	    },
+	
+	    handleListingAction: function handleListingAction(action) {
+	        this.dispatch({
+	            source: "LISTING_ACTION",
+	            action: action
+	        });
 	    }
 	});
 	
@@ -34899,7 +34906,20 @@
 	"use strict";
 	
 	var React = __webpack_require__(59);
+	var ListingActions = __webpack_require__(323);
+	var ListingStore = __webpack_require__(309);
+	var Navigation = __webpack_require__(169).Navigation;
+	
 	var CreateListing = React.createClass({ displayName: "CreateListing",
+	
+	  componentDidMount: function componentDidMount() {
+	    ListingStore.addListingChangeListener(this._onChange);
+	  },
+	
+	  componentWillUnmount: function componentWillUnmount() {
+	    ListingStore.removeListingChangeListener(this._onChange);
+	  },
+	
 	  render: function render() {
 	    return React.createElement("h2", null, "CreateListing");
 	  }
@@ -35100,6 +35120,26 @@
 	    });
 	};
 	
+	var _createListing = function _createListing(business_id, job_title, employment_type, job_desription, photo_url, requirements, job_compensation, job_benefits) {
+	    console.log(business_id, " created ", job_title);
+	
+	    $.post("/api/listings", {
+	        business_id: business_id,
+	        job_title: job_title,
+	        employment_type: job_desription,
+	        photo_url: photo_url,
+	        requirements: requirements,
+	        job_compensation: job_compensation,
+	        job_benefits: job_benefits
+	    }, function (data) {
+	        console.log("111111111");
+	        _currentListing = data;
+	        _cacheListing.push(data);
+	        console.log(data);
+	        AuthStore.emitAuthChange();
+	    });
+	};
+	
 	var ListingStore = assign(EventEmitter.prototype, {
 	    emitListingChange: function emitListingChange() {
 	        this.emit(CHANGE_EVENT);
@@ -35137,7 +35177,17 @@
 	
 	    dispatcherIndex: AppDispatcher.register(function (payload) {
 	        var action = payload.action;
-	        switch (action.actionType) {}
+	        switch (action.actionType) {
+	            case AppConstants.LISTING_CREATE:
+	                _createListing(payload.action.business_id, payload.action.job_title, payload.action.employment_type, payload.action.job_desription, payload.action.photo_url, payload.action.requirements, payload.action.job_compensation, payload.action.job_benefits);
+	                break;
+	            case AppConstants.GET_LISTING:
+	                _getListingById(payload.action.id);
+	                break;
+	            case AppConstants.GET_ALL_LISTINGS:
+	                _getAllListings();
+	                break;
+	        }
 	        return true;
 	    })
 	});
@@ -57170,6 +57220,73 @@
 	module.exports = About;
 	
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(292), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "About.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 323 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	var ListingConstants = __webpack_require__(324);
+	var AppDispatcher = __webpack_require__(295);
+	
+	var ListingActions = {
+	
+		getAllListings: function getAllListings() {
+			AppDispatcher.handleListingAction({
+				actionType: ListingConstants.GET_ALL_LISTINGS
+			});
+		},
+	
+		getListing: function getListing(id) {
+			AppDispatcher.handleListingAction({
+				actionType: ListingConstants.GET_LISTING,
+				id: id
+			});
+		},
+	
+		createListing: function createListing(business_id, job_title, employment_type, job_desription, photo_url, requirements, job_compensation, job_benefits) {
+			AppDispatcher.handleListingAction({
+				actionType: ListingConstants.LISTING_CREATE,
+				business_id: business_id,
+				job_title: job_title,
+				employment_type: employment_type,
+				job_desription: job_desription,
+				photo_url: photo_url,
+				requirements: requirements,
+				job_compensation: job_compensation,
+				job_benefits: job_benefits
+			});
+		}
+	
+	};
+	
+	module.exports = ListingActions;
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(292), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "listing-actions.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 324 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	module.exports = {
+	
+	    LISTING_CREATE: "LISTING_CREATE",
+	    GET_LISTING: "GET_LISTING",
+	    GET_ALL_LISTINGS: "GET_ALL_LISTINGS",
+	    LISTING_EDIT: "LISTING_EDIT",
+	    LISTING_DELETE: "LISTING_DELETE"
+	};
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(292), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "listing-constants.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ }

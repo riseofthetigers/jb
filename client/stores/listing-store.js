@@ -44,6 +44,26 @@ var _getListingById = function (id, cb) {
 
 };
 
+var _createListing = function (business_id, job_title, employment_type, job_desription, photo_url, requirements, job_compensation, job_benefits) {
+  console.log(business_id, ' created ', job_title);
+
+  $.post('/api/listings', {
+      business_id     : business_id,
+      job_title       : job_title,
+      employment_type : job_desription,
+      photo_url       : photo_url,
+      requirements    : requirements,
+      job_compensation: job_compensation,
+      job_benefits    : job_benefits
+  },  function(data) {
+      console.log('111111111');
+      _currentListing = data;
+      _cacheListing.push(data);
+      console.log(data);
+      AuthStore.emitAuthChange();
+  });
+}
+
 var ListingStore = assign(EventEmitter.prototype, {
     emitListingChange: function(){
         this.emit(CHANGE_EVENT);
@@ -82,6 +102,15 @@ var ListingStore = assign(EventEmitter.prototype, {
     dispatcherIndex: AppDispatcher.register(function(payload){
         var action = payload.action;
         switch(action.actionType){
+          case AppConstants.LISTING_CREATE:
+              _createListing(payload.action.business_id, payload.action.job_title, payload.action.employment_type, payload.action.job_desription, payload.action.photo_url, payload.action.requirements, payload.action.job_compensation, payload.action.job_benefits);
+              break;
+          case AppConstants.GET_LISTING:
+              _getListingById(payload.action.id);
+              break;
+          case AppConstants.GET_ALL_LISTINGS:
+              _getAllListings();
+              break;
         }
         return true;
      })
