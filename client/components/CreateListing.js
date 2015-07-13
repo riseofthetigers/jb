@@ -13,6 +13,9 @@ var CreateListing = React.createClass({
     ListingStore.removeListingChangeListener(this._onChange);
   },
 
+  _onChange: function() {
+  },
+
 
   render: function () {
     return (
