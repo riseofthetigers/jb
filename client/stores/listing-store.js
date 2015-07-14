@@ -1,6 +1,6 @@
 var AppDispatcher = require('../dispatchers/app-dispatcher');
 var AppActions = require('../actions/app-actions');
-var AppConstants = require('../constants/app-constants');
+var ListingConstants = require('../constants/listing-constants');
 var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
 var $ = require('jquery');
@@ -44,24 +44,25 @@ var _getListingById = function (id, cb) {
 
 };
 
-var _createListing = function (business_id, job_title, employment_type, job_desription, photo_url, requirements, job_compensation, job_benefits) {
-  console.log(business_id, ' created ', job_title);
+var _createListing = function (user, data) {
+    if(user && user.type === 'E'){
+        //should save to database
+    } else {
+        localStorage.setItem('tempListing',JSON.stringify(data));
+    }
 
-  $.post('/api/listings', {
-      business_id     : business_id,
-      job_title       : job_title,
-      employment_type : job_desription,
-      photo_url       : photo_url,
-      requirements    : requirements,
-      job_compensation: job_compensation,
-      job_benefits    : job_benefits
-  },  function(data) {
-      console.log('111111111');
-      _currentListing = data;
-      _cacheListing.push(data);
-      console.log(data);
-      AuthStore.emitAuthChange();
-  });
+}
+
+var _getInitialListing = function() {
+    var tempData= localStorage.getItem('tempListing');
+    if( tempData) {
+        try{
+            tempData = JSON.parse(tempData);
+        }catch(err){
+            tempData= null;
+        }
+    }
+    return tempData;
 }
 
 var ListingStore = assign(EventEmitter.prototype, {
@@ -99,16 +100,20 @@ var ListingStore = assign(EventEmitter.prototype, {
          }
     },
 
+    getInitialListing: function() {
+        return _getInitialListing();
+    },
+
     dispatcherIndex: AppDispatcher.register(function(payload){
         var action = payload.action;
         switch(action.actionType){
-          case AppConstants.LISTING_CREATE:
-              _createListing(payload.action.business_id, payload.action.job_title, payload.action.employment_type, payload.action.job_desription, payload.action.photo_url, payload.action.requirements, payload.action.job_compensation, payload.action.job_benefits);
+          case ListingConstants.LISTING_CREATE:
+              _createListing(payload.action.user, payload.action.data);
               break;
-          case AppConstants.GET_LISTING:
+          case ListingConstants.GET_LISTING:
               _getListingById(payload.action.id);
               break;
-          case AppConstants.GET_ALL_LISTINGS:
+          case ListingConstants.GET_ALL_LISTINGS:
               _getAllListings();
               break;
         }
