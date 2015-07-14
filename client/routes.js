@@ -16,13 +16,14 @@ var Signup = require('./components/Signup');
 var Dashboard = require('./components/Dashboard');
 var JobsListing = require('./components/JobsListing');
 var ListingDetail = require('./components/ListingDetail')
+var CandidateView = require('./components/CandidateView')
 
 var ContactUs = require('./components/ContactUs');
 var About = require('./components/About');
 
 var routes = (
   <Route path="/" handler={App}>
-  	<DefaultRoute handler={Landing} />
+    <DefaultRoute handler={Landing} />
     <Route name="createlisting" path='/createlisting' handler={CreateListing}/>
     <Route name="home" path='/home' handler={Home}/>
     <Route name="login" path='/login' handler={Login}/>
@@ -33,6 +34,7 @@ var routes = (
     <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
     <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
+    <Route name="profile_view" path="/profile" handler={CandidateView} />
     <Route name="contactus" path="/contactus" handler={ContactUs} />
     <Route name="about" path="/about" handler={About} />
 
