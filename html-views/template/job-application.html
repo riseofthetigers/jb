@@ -68,6 +68,11 @@
 				<form>
 					<div class="row">
 						<div class="col-sm-8">
+							<div class="form-group" id="job-tagline-group">
+								<h5 for="job-email">Tagline!</h5><br>
+								<h6>In 150 characters or less, tell us why you would be good for this job<h6>
+								<input type="text" class="form-control" id="job-tagline" placeholder="I've been a barista for 4 yrs! -- SHOULD AUTO-POPULATE">
+							</div>
 							<div class="form-group" id="job-email-group">
 								<h5 for="job-email">Email</h5>
 								<input type="email" class="form-control" id="job-email" placeholder="you@yourdomain.com -- SHOULD AUTO-POPULATE">
@@ -101,6 +106,18 @@
 							<div class="form-group" id="job-skills-group">
 								<h5 for="job-region">Skills</h5>
 								<input type="text" class="form-control" id="job-skills" placeholder="skills populated by #t">
+							</div>
+							<div class="form-group" id="job-authorize-group">
+								<h5 for="job-authorize">Are you authorized to work in US?</h5>
+								<input type="checkbox" name="authorized" value="yes"> I am authorized to work in US<br>
+								<input type="checkbox" name="vehicle" value="no"> I am not authorized to work in US<br>		
+							</div>
+							<div class="form-group" id="job-criminal-group">
+								<h5 for="job-authorize">Any criminal offenses?</h5>
+								<input type="checkbox" name="authorized" value="yes"> Yes<br>
+								<input type="checkbox" name="vehicle" value="no"> No<br>
+								<p>If Yes, tell us what happened and when it happened?</p>
+								<input type="text" class="form-control" id="job-criminal" placeholder=" Don't worry, this will not disqualify you..">		
 							</div>
 
 									<!-- Experience Start -->
