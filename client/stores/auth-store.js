@@ -60,7 +60,11 @@ function _signup(type, username, password, firstname, lastname, email){
         lastname  : lastname,
         email     : email
     }, function(data){
-        _auth = false;
+        _auth = data.auth;
+        _user = {
+            type: data.type,
+            name: data.displayName
+        };
         _signedUp = data;
         console.log('authentication response signup', _auth);
         AuthStore.emitAuthChange();
