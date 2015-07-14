@@ -7,6 +7,15 @@ var Navigation = require('react-router').Navigation;
 
 const CandidateViewExperience = React.createClass({
 
+    getInitialState: function() {
+        return  {
+            from: '',
+            to: '',
+            title: '',
+            description: ''
+        }
+    },
+
     getDefaultProps: function() {
         return {
             type: 'work'
@@ -28,9 +37,9 @@ const CandidateViewExperience = React.createClass({
                     </div>
                 </div>
                 <div className="col-sm-10">
-                    <h4>April 2014 - Now</h4>
-                    <h5>Designer</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel sapien nibh. Mauris et neque tellus. In tellus felis, ornare in urna commodo, volutpat gravida sem. Integer vitae lorem sit amet nibh ornare varius. Sed sollicitudin leo quis dui dictum.</p>
+                    <h4>{this.state.from} - {this.state.to}</h4>
+                    <h5>{this.state.title}</h5>
+                    <p>{this.state.description}</p>
                 </div>
             </div>
         );
@@ -43,6 +52,18 @@ const CandidateView = React.createClass({
 
   getInitialState: function() {
     return {
+        description: '',
+        name: '',
+        headline: '',
+        photo: '',
+        skils: '',
+        education: [],
+        word: [],
+        title: '',
+        birthday: '',
+        phone: '',
+        email: '',
+        keySkills: ''
     };
   },
 
@@ -50,13 +71,17 @@ const CandidateView = React.createClass({
   },
 
   render: function () {
+      var skills = [];
+      if(this.state.skills){
+          skills = this.state.skills.split("\n");
+      }
     return (
         <div>
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12 text-center">
-                        <h1>Andy Spencer</h1>
-                        <h4>'Honest Cashier with 10 years of experience'</h4>
+                        <h1>{this.state.name}</h1>
+                        <h4>{this.state.headline}</h4>
                     </div>
                 </div>
             </div>
@@ -67,28 +92,28 @@ const CandidateView = React.createClass({
                     <div className="row">
                         <div className="col-sm-8">
                             <article>
-                                <img src="images/person1.jpg" alt="" className="pull-left" />
-                                <p>Maecenas mollis dictum lectus quis scelerisque. Nulla at rutrum ipsum. Praesent augue quam, facilisis vitae felis vel, convallis convallis nisi. Donec maximus accumsan purus vel tempus. Aenean pretium luctus velit id fermentum. Aenean non velit non nulla interdum venenatis. Integer in libero sagittis, consequat est quis, commodo odio. Aliquam eu vulputate neque. Nunc et massa leo. Vestibulum a pretium dolor. Proin et fermentum sapien. Cras malesuada neque ac purus fermentum, a placerat quam malesuada. Quisque sollicitudin tellus a ex eleifend mattis. In vitae ipsum in mauris vestibulum imperdiet.</p>
-                                <p>Maecenas mollis dictum lectus quis scelerisque. Nulla at rutrum ipsum. Praesent augue quam, facilisis vitae felis vel, convallis convallis nisi. Donec maximus accumsan purus vel tempus. Aenean pretium luctus velit id fermentum. Aenean non velit non nulla interdum venenatis. Integer in libero sagittis, consequat est quis, commodo odio. Aliquam eu vulputate neque. Nunc et massa leo. Vestibulum a pretium dolor. Proin et fermentum sapien. Cras malesuada neque ac purus fermentum, a placerat quam malesuada. Quisque sollicitudin tellus a ex eleifend mattis. In vitae ipsum in mauris vestibulum imperdiet.</p>
+                                <img src={this.state.photo} alt="" className="pull-left" />
+                                <p>{this.state.description}</p>
                                 <h3>Skills</h3>
                                 <ul>
-                                    <li>Aliquam rhoncus justo eget tellus scelerisque, at mollis mi aliquam.</li>
-                                    <li>Quisque pretium convallis pulvinar.</li>
-                                    <li>Nulla rutrum nisi mi, iaculis commodo nibh lobortis sed.</li>
-                                    <li>Sed pulvinar, nunc vitae molestie dapibus, lacus dolor dignissim sapien.</li>
-                                    <li>Pellentesque ipsum ex, imperdiet quis consequat sed, consectetur ut ante.</li>
-                                    <li>Aliquam libero felis, mollis vitae elementum vel, bibendum eu tortor.</li>
-                                    <li>Morbi rhoncus luctus interdum.</li>
+                                    {
+                                        _.map(skills, function(skil){
+                                            return <li>{skil}</li>
+                                        })
+                                    }
                                 </ul>
                                 <h3>Work Experience</h3>
-                                <CandidateViewExperience type="work"/>
-                                <CandidateViewExperience type="work"/>
-                                <CandidateViewExperience type="work"/>
-
+                                {
+                                    _.map(this.state.work, function(w){
+                                        return <CandidateViewExperience data={w} type="work"/>
+                                    })
+                                }
                                 <h3>Education</h3>
-                                <CandidateViewExperience type="education"/>
-                                <CandidateViewExperience type="education"/>
-                                <CandidateViewExperience type="education"/>
+                                {
+                                    _.map(this.state.education, function(e){
+                                        return <CandidateViewExperience data={e} type="education"/>
+                                    })
+                                }
                                 <p>&nbsp;</p>
                                 <p><a href="#" className="btn btn-primary btn-lg"><i className="fa fa-arrow-down"></i> Download Profile</a></p>
                             </article>
@@ -107,22 +132,22 @@ const CandidateView = React.createClass({
                             <div className="sidebar-widget" id="widget-contact">
                                 <h2>Contact</h2>
                                 <ul>
-                                    <li><i className="fa fa-user"></i>Andy Spencer</li>
-                                    <li><i className="fa fa-briefcase"></i>Senior Web Designer</li>
-                                    <li><i className="fa fa-birthday-cake"></i>28/08/1983</li>
-                                    <li><i className="fa fa-map-marker"></i>New York City</li>
-                                    <li><i className="fa fa-phone"></i>01.22.987.8392</li>
-                                    <li><i className="fa fa-envelope"></i><a href="mailto:andy.spencer@yourdomain.com">Send an email</a></li>
+                                    <li><i className="fa fa-user"></i>{this.state.name}</li>
+                                    <li><i className="fa fa-briefcase"></i>{this.state.title}</li>
+                                    <li><i className="fa fa-birthday-cake"></i>{this.state.birtday}</li>
+                                    <li><i className="fa fa-map-marker"></i>{this.state.city}</li>
+                                    <li><i className="fa fa-phone"></i>{this.state.phone}</li>
+                                    <li><i className="fa fa-envelope"></i><a href={'mailto:'+this.state.email}>Send an email</a></li>
                                 </ul>
                             </div>
                             <hr/>
                             <div className="sidebar-widget" id="skills">
                                 <h2>Key skills</h2>
-                                <a className="badge">Cleaning</a>
-                                <a className="badge">Customer Service</a>
-                                <a className="badge">Cash handling</a>
-                                <a className="badge">Produce Ordering</a>
-                                <a className="badge">Sales Forcasting</a>
+                                {
+                                    _.map( this.state.keySkills.split('\n'), function(s) {
+                                        return <a className="badge">{s}</a>
+                                    })
+                                }
                             </div>
                         </div>
                     </div>

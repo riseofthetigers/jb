@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5d822b412f0ca14d6e63"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0773e0f377e1a891259b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -56163,6 +56163,15 @@
 	
 	var CandidateViewExperience = React.createClass({ displayName: "CandidateViewExperience",
 	
+	    getInitialState: function getInitialState() {
+	        return {
+	            from: "",
+	            to: "",
+	            title: "",
+	            description: ""
+	        };
+	    },
+	
 	    getDefaultProps: function getDefaultProps() {
 	        return {
 	            type: "work"
@@ -56175,7 +56184,7 @@
 	            icon = "fa fa-graduation-cap";
 	        }
 	
-	        return React.createElement("div", { className: "row work-experience" }, React.createElement("div", { className: "col-sm-2" }, React.createElement("div", { className: "img-circle" }, React.createElement("i", { className: icon }))), React.createElement("div", { className: "col-sm-10" }, React.createElement("h4", null, "April 2014 - Now"), React.createElement("h5", null, "Designer"), React.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel sapien nibh. Mauris et neque tellus. In tellus felis, ornare in urna commodo, volutpat gravida sem. Integer vitae lorem sit amet nibh ornare varius. Sed sollicitudin leo quis dui dictum.")));
+	        return React.createElement("div", { className: "row work-experience" }, React.createElement("div", { className: "col-sm-2" }, React.createElement("div", { className: "img-circle" }, React.createElement("i", { className: icon }))), React.createElement("div", { className: "col-sm-10" }, React.createElement("h4", null, this.state.from, " - ", this.state.to), React.createElement("h5", null, this.state.title), React.createElement("p", null, this.state.description)));
 	    }
 	
 	});
@@ -56184,13 +56193,38 @@
 	    mixins: [Navigation],
 	
 	    getInitialState: function getInitialState() {
-	        return {};
+	        return {
+	            description: "",
+	            name: "",
+	            headline: "",
+	            photo: "",
+	            skils: "",
+	            education: [],
+	            word: [],
+	            title: "",
+	            birthday: "",
+	            phone: "",
+	            email: "",
+	            keySkills: ""
+	        };
 	    },
 	
 	    handleClick: function handleClick() {},
 	
 	    render: function render() {
-	        return React.createElement("div", null, React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-12 text-center" }, React.createElement("h1", null, "Andy Spencer"), React.createElement("h4", null, "'Honest Cashier with 10 years of experience'")))), React.createElement("section", { id: "jobs" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("article", null, React.createElement("img", { src: "images/person1.jpg", alt: "", className: "pull-left" }), React.createElement("p", null, "Maecenas mollis dictum lectus quis scelerisque. Nulla at rutrum ipsum. Praesent augue quam, facilisis vitae felis vel, convallis convallis nisi. Donec maximus accumsan purus vel tempus. Aenean pretium luctus velit id fermentum. Aenean non velit non nulla interdum venenatis. Integer in libero sagittis, consequat est quis, commodo odio. Aliquam eu vulputate neque. Nunc et massa leo. Vestibulum a pretium dolor. Proin et fermentum sapien. Cras malesuada neque ac purus fermentum, a placerat quam malesuada. Quisque sollicitudin tellus a ex eleifend mattis. In vitae ipsum in mauris vestibulum imperdiet."), React.createElement("p", null, "Maecenas mollis dictum lectus quis scelerisque. Nulla at rutrum ipsum. Praesent augue quam, facilisis vitae felis vel, convallis convallis nisi. Donec maximus accumsan purus vel tempus. Aenean pretium luctus velit id fermentum. Aenean non velit non nulla interdum venenatis. Integer in libero sagittis, consequat est quis, commodo odio. Aliquam eu vulputate neque. Nunc et massa leo. Vestibulum a pretium dolor. Proin et fermentum sapien. Cras malesuada neque ac purus fermentum, a placerat quam malesuada. Quisque sollicitudin tellus a ex eleifend mattis. In vitae ipsum in mauris vestibulum imperdiet."), React.createElement("h3", null, "Skills"), React.createElement("ul", null, React.createElement("li", null, "Aliquam rhoncus justo eget tellus scelerisque, at mollis mi aliquam."), React.createElement("li", null, "Quisque pretium convallis pulvinar."), React.createElement("li", null, "Nulla rutrum nisi mi, iaculis commodo nibh lobortis sed."), React.createElement("li", null, "Sed pulvinar, nunc vitae molestie dapibus, lacus dolor dignissim sapien."), React.createElement("li", null, "Pellentesque ipsum ex, imperdiet quis consequat sed, consectetur ut ante."), React.createElement("li", null, "Aliquam libero felis, mollis vitae elementum vel, bibendum eu tortor."), React.createElement("li", null, "Morbi rhoncus luctus interdum.")), React.createElement("h3", null, "Work Experience"), React.createElement(CandidateViewExperience, { type: "work" }), React.createElement(CandidateViewExperience, { type: "work" }), React.createElement(CandidateViewExperience, { type: "work" }), React.createElement("h3", null, "Education"), React.createElement(CandidateViewExperience, { type: "education" }), React.createElement(CandidateViewExperience, { type: "education" }), React.createElement(CandidateViewExperience, { type: "education" }), React.createElement("p", null, " "), React.createElement("p", null, React.createElement("a", { href: "#", className: "btn btn-primary btn-lg" }, React.createElement("i", { className: "fa fa-arrow-down" }), " Download Profile")))), React.createElement("div", { className: "col-sm-4", id: "sidebar" }, React.createElement("div", { className: "sidebar-widget", id: "share" }, React.createElement("h2", null, "Share Profile"), React.createElement("ul", null, React.createElement("li", null, React.createElement("a", { href: "https://www.facebook.com/sharer/sharer.php?u=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-facebook" }))), React.createElement("li", null, React.createElement("a", { href: "https://twitter.com/home?status=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-twitter" }))), React.createElement("li", null, React.createElement("a", { href: "https://plus.google.com/share?url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-google-plus" }))), React.createElement("li", null, React.createElement("a", { href: "https://www.linkedin.com/shareArticle?mini=true&url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html&title=Jobseek%20-%20Job%20Board%20Responsive%20HTML%20Template&summary=&source=" }, React.createElement("i", { className: "fa fa-linkedin" }))))), React.createElement("hr", null), React.createElement("div", { className: "sidebar-widget", id: "widget-contact" }, React.createElement("h2", null, "Contact"), React.createElement("ul", null, React.createElement("li", null, React.createElement("i", { className: "fa fa-user" }), "Andy Spencer"), React.createElement("li", null, React.createElement("i", { className: "fa fa-briefcase" }), "Senior Web Designer"), React.createElement("li", null, React.createElement("i", { className: "fa fa-birthday-cake" }), "28/08/1983"), React.createElement("li", null, React.createElement("i", { className: "fa fa-map-marker" }), "New York City"), React.createElement("li", null, React.createElement("i", { className: "fa fa-phone" }), "01.22.987.8392"), React.createElement("li", null, React.createElement("i", { className: "fa fa-envelope" }), React.createElement("a", { href: "mailto:andy.spencer@yourdomain.com" }, "Send an email")))), React.createElement("hr", null), React.createElement("div", { className: "sidebar-widget", id: "skills" }, React.createElement("h2", null, "Key skills"), React.createElement("a", { className: "badge" }, "Cleaning"), React.createElement("a", { className: "badge" }, "Customer Service"), React.createElement("a", { className: "badge" }, "Cash handling"), React.createElement("a", { className: "badge" }, "Produce Ordering"), React.createElement("a", { className: "badge" }, "Sales Forcasting")))))));
+	        var skills = [];
+	        if (this.state.skills) {
+	            skills = this.state.skills.split("\n");
+	        }
+	        return React.createElement("div", null, React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-12 text-center" }, React.createElement("h1", null, this.state.name), React.createElement("h4", null, this.state.headline)))), React.createElement("section", { id: "jobs" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("article", null, React.createElement("img", { src: this.state.photo, alt: "", className: "pull-left" }), React.createElement("p", null, this.state.description), React.createElement("h3", null, "Skills"), React.createElement("ul", null, _.map(skills, function (skil) {
+	            return React.createElement("li", null, skil);
+	        })), React.createElement("h3", null, "Work Experience"), _.map(this.state.work, function (w) {
+	            return React.createElement(CandidateViewExperience, { data: w, type: "work" });
+	        }), React.createElement("h3", null, "Education"), _.map(this.state.education, function (e) {
+	            return React.createElement(CandidateViewExperience, { data: e, type: "education" });
+	        }), React.createElement("p", null, " "), React.createElement("p", null, React.createElement("a", { href: "#", className: "btn btn-primary btn-lg" }, React.createElement("i", { className: "fa fa-arrow-down" }), " Download Profile")))), React.createElement("div", { className: "col-sm-4", id: "sidebar" }, React.createElement("div", { className: "sidebar-widget", id: "share" }, React.createElement("h2", null, "Share Profile"), React.createElement("ul", null, React.createElement("li", null, React.createElement("a", { href: "https://www.facebook.com/sharer/sharer.php?u=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-facebook" }))), React.createElement("li", null, React.createElement("a", { href: "https://twitter.com/home?status=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-twitter" }))), React.createElement("li", null, React.createElement("a", { href: "https://plus.google.com/share?url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-google-plus" }))), React.createElement("li", null, React.createElement("a", { href: "https://www.linkedin.com/shareArticle?mini=true&url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html&title=Jobseek%20-%20Job%20Board%20Responsive%20HTML%20Template&summary=&source=" }, React.createElement("i", { className: "fa fa-linkedin" }))))), React.createElement("hr", null), React.createElement("div", { className: "sidebar-widget", id: "widget-contact" }, React.createElement("h2", null, "Contact"), React.createElement("ul", null, React.createElement("li", null, React.createElement("i", { className: "fa fa-user" }), this.state.name), React.createElement("li", null, React.createElement("i", { className: "fa fa-briefcase" }), this.state.title), React.createElement("li", null, React.createElement("i", { className: "fa fa-birthday-cake" }), this.state.birtday), React.createElement("li", null, React.createElement("i", { className: "fa fa-map-marker" }), this.state.city), React.createElement("li", null, React.createElement("i", { className: "fa fa-phone" }), this.state.phone), React.createElement("li", null, React.createElement("i", { className: "fa fa-envelope" }), React.createElement("a", { href: "mailto:" + this.state.email }, "Send an email")))), React.createElement("hr", null), React.createElement("div", { className: "sidebar-widget", id: "skills" }, React.createElement("h2", null, "Key skills"), _.map(this.state.keySkills.split("\n"), function (s) {
+	            return React.createElement("a", { className: "badge" }, s);
+	        })))))));
 	    }
 	
 	});
