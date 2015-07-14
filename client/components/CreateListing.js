@@ -6,6 +6,8 @@ var AuthStore = require('../stores/auth-store');
 var Navigation = require('react-router').Navigation;
 
 var CreateListing = React.createClass({
+  mixins: [Navigation],
+
   getInitialState: function() {
     var defaultValues = {
         businessPicture: '',
@@ -52,6 +54,7 @@ var CreateListing = React.createClass({
         data[key] = val;
     });
    ListingActions.createListing(user, data);
+   this.transitionTo('/listing/detail/temp');
   },
 
 

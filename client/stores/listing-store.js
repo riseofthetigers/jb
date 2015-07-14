@@ -27,6 +27,12 @@ var _getAllListings = function (cb) {
 
 var _getListingById = function (id, cb) {
 
+    if(id === 'temp'){
+        _currentListing = _getInitialListing();
+        cb();
+        return;
+    }
+
     var listing = _.find(_listings, {'id': id} );
     if (!listing){
         listing = _.find(_cacheListing, {'id': id} );

@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "de183a6b0159fb7b331a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c38415b1378e6a509aa5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33763,6 +33763,8 @@
 	var Navigation = __webpack_require__(169).Navigation;
 	
 	var CreateListing = React.createClass({ displayName: "CreateListing",
+	    mixins: [Navigation],
+	
 	    getInitialState: function getInitialState() {
 	        var defaultValues = {
 	            businessPicture: "",
@@ -33807,6 +33809,7 @@
 	            data[key] = val;
 	        });
 	        ListingActions.createListing(user, data);
+	        this.transitionTo("/listing/detail/temp");
 	    },
 	
 	    render: function render() {
@@ -46278,6 +46281,12 @@
 	};
 	
 	var _getListingById = function _getListingById(id, cb) {
+	
+	    if (id === "temp") {
+	        _currentListing = _getInitialListing();
+	        cb();
+	        return;
+	    }
 	
 	    var listing = _.find(_listings, { id: id });
 	    if (!listing) {
