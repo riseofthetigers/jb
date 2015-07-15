@@ -73,7 +73,7 @@ var Navbar = React.createClass({
           </div>
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
-              <li><img style={{width: 100+'px', height: 60+'px'}} src="/images/logo.jpg" alt="" /></li>
+              <li><img style={{width: 100+'px', height: 60+'px', padding: 4+'px'}} src="/images/logo2.jpg" alt="" /></li>
               <li><Link to="createlisting">Create a Listing</Link></li>
               <li><Link to="search">Search Jobs</Link></li>
             </ul>
