@@ -17,6 +17,7 @@ var Dashboard = require('./components/Dashboard');
 var JobsListing = require('./components/JobsListing');
 var ListingDetail = require('./components/ListingDetail')
 var CandidateView = require('./components/CandidateView')
+var CandidateProfileEdit = require('./components/CandidateProfileEdit')
 
 var ContactUs = require('./components/ContactUs');
 var About = require('./components/About');
@@ -34,7 +35,8 @@ var routes = (
     <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
     <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
-    <Route name="profile_view" path="/profile" handler={CandidateView} />
+    <Route name="profile_view" path="/profile/view" handler={CandidateView} />
+    <Route name="profile_edit" path="/profile/edit" handler={CandidateProfileEdit} />
     <Route name="contactus" path="/contactus" handler={ContactUs} />
     <Route name="about" path="/about" handler={About} />
 

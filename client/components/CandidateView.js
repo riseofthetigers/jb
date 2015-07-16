@@ -58,12 +58,13 @@ const CandidateView = React.createClass({
         photo: '',
         skils: '',
         education: [],
-        word: [],
+        experience: [],
         title: '',
         birthday: '',
         phone: '',
         email: '',
-        keySkills: ''
+        city: '',
+        social: []
     };
   },
 
@@ -104,7 +105,7 @@ const CandidateView = React.createClass({
                                 </ul>
                                 <h3>Work Experience</h3>
                                 {
-                                    _.map(this.state.work, function(w){
+                                    _.map(this.state.experience, function(w){
                                         return <CandidateViewExperience data={w} type="work"/>
                                     })
                                 }
@@ -139,15 +140,6 @@ const CandidateView = React.createClass({
                                     <li><i className="fa fa-phone"></i>{this.state.phone}</li>
                                     <li><i className="fa fa-envelope"></i><a href={'mailto:'+this.state.email}>Send an email</a></li>
                                 </ul>
-                            </div>
-                            <hr/>
-                            <div className="sidebar-widget" id="skills">
-                                <h2>Key skills</h2>
-                                {
-                                    _.map( this.state.keySkills.split('\n'), function(s) {
-                                        return <a className="badge">{s}</a>
-                                    })
-                                }
                             </div>
                         </div>
                     </div>

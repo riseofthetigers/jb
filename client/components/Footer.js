@@ -9,9 +9,9 @@ var Footer = React.createClass({
   mixins: [Navigation],
 
   render: function () {
-  
+
     return (
-    <footer>
+    <footer style={{'margin-top': '40px'}}>
       <div id="credits">
         <div className="container text-center">
           <div className="row">
