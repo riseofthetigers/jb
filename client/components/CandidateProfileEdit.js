@@ -129,7 +129,10 @@ const CandidateProfileEdit = React.createClass({
         phone: '',
         email: '',
         city: '',
-        social: []
+        social: [],
+        authorized: '',
+        criminal: '',
+        criminalDescripton: ''
     };
   },
 
@@ -240,6 +243,31 @@ const CandidateProfileEdit = React.createClass({
                             </div>
 
                             <div className="editor" id="resume-content" contenteditable="true">Write something about yourself...</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <hr className="dashed"/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <div className="form-group" id="job-authorize-group">
+                        <label htmlFor="job-authorize">Are you authorized to work in US?</label><br/>
+                            <input type="radio" name="authorized" value="yes"/> I am authorized to work in US<br/>
+                            <input type="radio" name="authorized" value="no"/> I am not authorized to work in US<br/>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <div className="form-group" id="job-criminal-group">
+                            <label htmlFor="job-authorize">Any criminal offenses?</label><br/>
+                            <input type="radio" name="criminal" value="yes"/> Yes<br/>
+                            <input type="radio" name="criminal" value="no"/> No<br/>
+                            <p>If Yes, tell us what happened and when it happened?</p>
+                            <input type="text" valueLink={this.linkState('criminalDescription')} className="form-control" id="job-criminal" placeholder=" Don't worry, this will not disqualify you.."/>
                         </div>
                     </div>
                 </div>
