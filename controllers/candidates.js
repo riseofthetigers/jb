@@ -19,7 +19,18 @@ module.exports = {
       state: req.body.state,
       skills: req.body.skills,
       candidate_picture: req.body.candidate_picture,
-      user_id: req.body.user_id
+      user_id: req.body.user_id,
+      description         :req.body.description         ,
+      headline            :req.body.headline            ,
+      education           :req.body.education           ,
+      experience          :req.body.experience          ,
+      title               :req.body.title               ,
+      birthday            :req.body.birthday            ,
+      email               :req.body.email               ,
+      social              :req.body.social              ,
+      authorized          :req.body.authorized          ,
+      criminal            :req.body.criminal            ,
+      criminal_descripton :req.body.criminal_descripton
     }
 
     Candidate.create(createCandidate).success(function(err) {
@@ -46,7 +57,18 @@ module.exports = {
         address: req.body.address,
         state: req.body.state,
         skills: req.body.skills,
-        candidate_picture: req.body.candidate_picture
+        candidate_picture: req.body.candidate_picture,
+        description         :req.body.description         ,
+        headline            :req.body.headline            ,
+        education           :req.body.education           ,
+        experience          :req.body.experience          ,
+        title               :req.body.title               ,
+        birthday            :req.body.birthday            ,
+        email               :req.body.email               ,
+        social              :req.body.social              ,
+        authorized          :req.body.authorized          ,
+        criminal            :req.body.criminal            ,
+        criminal_descripton :req.body.criminal_descripton
       }).then(function() {
         res.send(200);
         res.json(req.dataValues);
