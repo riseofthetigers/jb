@@ -82,8 +82,7 @@ var Landing = React.createClass({
       						<div className="jobs">
       							
       							<a href="#">
-      								<div className="featured"></div>
-      								<img src="images/job1.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Web Designer</h5>
       									<p>Amazon Inc.</p>
@@ -96,8 +95,7 @@ var Landing = React.createClass({
       							</a>
       							
       							<a href="#">
-      								<div className="featured"></div>
-      								<img src="images/job2.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Senior Web Developer</h5>
       									<p>Dropbox Inc.</p>
@@ -110,7 +108,7 @@ var Landing = React.createClass({
       							</a>
       							
       							<a href="#">
-      								<img src="images/job3.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Project Manager</h5>
       									<p>Apple Inc.</p>
@@ -123,7 +121,7 @@ var Landing = React.createClass({
       							</a>
       							
       							<a href="#">
-      								<img src="images/job4.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Key Account Manager</h5>
       									<p>Dell Inc.</p>
@@ -136,7 +134,7 @@ var Landing = React.createClass({
       							</a>
       							
       							<a href="#">
-      								<img src="images/job5.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Front End Developer</h5>
       									<p>Ebay Inc.</p>
@@ -149,7 +147,7 @@ var Landing = React.createClass({
       							</a>
       							
       							<a href="#" className="hidden-job">
-      								<img src="images/job1.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Web Designer</h5>
       									<p>Amazon Inc.</p>
@@ -162,7 +160,7 @@ var Landing = React.createClass({
       							</a>
       							
       							<a href="#" className="hidden-job">
-      								<img src="images/job2.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Senior Web Developer</h5>
       									<p>Dropbox Inc.</p>
@@ -175,7 +173,7 @@ var Landing = React.createClass({
       							</a>
       							
       							<a href="#" className="hidden-job">
-      								<img src="images/job3.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Project Manager</h5>
       									<p>Apple Inc.</p>
@@ -188,7 +186,7 @@ var Landing = React.createClass({
       							</a>
       							
       							<a href="#" className="hidden-job">
-      								<img src="images/job4.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Key Account Manager</h5>
       									<p>Dell Inc.</p>
@@ -201,7 +199,7 @@ var Landing = React.createClass({
       							</a>
       							
       							<a href="#" className="hidden-job">
-      								<img src="images/job5.jpg" alt="" className="img-circle" />
+      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Front End Developer</h5>
       									<p>Ebay Inc.</p>
@@ -224,9 +222,8 @@ var Landing = React.createClass({
       					<div className="col-sm-4">
       						<h2>Featured Jobs</h2>
       						<a href="#">
-      							<img src="http://placehold.it/400x265.jpg" alt="Featured Job" className="img-responsive" />
+      							<img src="http://i.forbesimg.com/media/lists/companies/wawa_416x416.jpg" alt="Featured Job" className="img-responsive" />
       							<div className="featured-job">
-      								<img src="images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
       									<h5>Web Designer</h5>
       									<p>Amazon</p>
@@ -333,7 +330,7 @@ var Landing = React.createClass({
       			<div className="container">
       				<div className="row">
       					<div className="col-sm-12">
-      						<h1>Jobseek Stats</h1>
+      						<h1>Jobletics Stats</h1>
       						<h4>How many people we’ve helped</h4>
       					</div>
       				</div>
@@ -390,79 +387,6 @@ var Landing = React.createClass({
       			</div>
       		</section>
 
-      		<section id="app" className="color2">
-      			<div className="container">
-      				<div className="row">
-      					<div className="col-sm-5">
-      						<div id="phone"></div>
-      					</div>
-      					<div className="col-sm-offset-1 col-sm-6">
-      						<p>&nbsp;</p>
-      						<h2>Get Jobseek app</h2>
-      						<p>Curabitur et lorem a massa tempus aliquam. Aenean aliquam volutpat gravida. Pellentesque in neque nec tortor sagittis tempor quis in lectus. Vestibulum vehicula aliquet elit ut porta. Sed ipsum felis, interdum blandit purus sed, volutpat ultricies sem. Maecenas feugiat, lectus vitae luctus feugiat, nulla nisl dignissim velit, nec malesuada ligula orci et metus. In vulputate laoreet luctus.</p>
-      						<p>
-      							<a href="#" className="btn btn-default"><i className="fa fa-apple"></i> IOS</a>
-      							<a href="#" className="btn btn-default"><i className="fa fa-android"></i> Android</a>
-      						</p>
-      						<p>&nbsp;</p>
-      					</div>
-      				</div>
-      			</div>
-      		</section>
-
-      		<section id="pricing" className="text-center">
-      			<div className="container">
-      				<div className="row">
-      					<div className="col-sm-12">
-      						<h1>Plans &amp; Pricing</h1>
-      						<h4>Choose a package that fits your needs</h4>
-      					</div>
-      				</div>
-      				<div className="row pricing">
-      					<div className="col-sm-3">
-      						<ul>
-      							<li className="title">Free</li>
-      							<li className="price">$0</li>
-      							<li>1 job posting</li>
-      							<li>No featured jobs</li>
-      							<li>Displayed for 5 days</li>
-      							<li><a href="post-a-job.html" className="btn btn-primary">Choose</a></li>
-      						</ul>
-      					</div>
-      					<div className="col-sm-3">
-      						<ul className="popular">
-      							<li className="title">Startup</li>
-      							<li className="price">$19</li>
-      							<li>1 job posting</li>
-      							<li>No featured jobs</li>
-      							<li>Displayed for 30 days</li>
-      							<li><a href="post-a-job.html" className="btn btn-primary">Choose</a></li>
-      						</ul>
-      					</div>
-      					<div className="col-sm-3">
-      						<ul>
-      							<li className="title">Company</li>
-      							<li className="price">$29</li>
-      							<li>3 job postings</li>
-      							<li>No featured jobs</li>
-      							<li>Displayed for 60 days</li>
-      							<li><a href="post-a-job.html" className="btn btn-primary">Choose</a></li>
-      						</ul>
-      					</div>
-      					<div className="col-sm-3">
-      						<ul>
-      							<li className="title">Enterprise</li>
-      							<li className="price">$39</li>
-      							<li>5 job postings</li>
-      							<li>3 featured jobs</li>
-      							<li>Displayed for 90 days</li>
-      							<li><a href="post-a-job.html" className="btn btn-primary">Choose</a></li>
-      						</ul>
-      					</div>
-      				</div>
-      			</div>
-      		</section>
-
       		<section id="testimonials" className="parallax text-center">
       			<div className="tint"></div>
       			<div className="container">
@@ -478,8 +402,8 @@ var Landing = React.createClass({
       								</div>
       								<div className="col-sm-9 col-md-10">
       									<blockquote>
-      										<p>Thanks for the great service. Jobseek has completely surpassed our expectations.
-      										Jobseek is the most valuable business resource we have ever purchased.</p>
+      										<p>Thanks for the great service. Jobletics has completely surpassed our expectations.
+      										Jobletics is the most valuable business resource we have ever purchased.</p>
       										<footer>
       											Anthony Walsh
       											<cite title="Brand Manager in Ebay Inc.">Brand Manager in Ebay Inc.</cite>
@@ -495,8 +419,8 @@ var Landing = React.createClass({
       								<div className="col-sm-9 col-md-10">
       									<blockquote>
       										<p>I didn't even need training. I couldn't have asked for more than this.
-      										It really saves me time and effort. Jobseek is exactly what our business has been lacking.
-      										I would be lost without Jobseek.</p>
+      										It really saves me time and effort. Jobletics is exactly what our business has been lacking.
+      										I would be lost without Jobletics.</p>
       										<footer>
       											Becky Daniels
       											<cite title="HR Manager in Apple Inc.">HR Manager in Apple Inc.</cite>
@@ -511,7 +435,7 @@ var Landing = React.createClass({
       								</div>
       								<div className="col-sm-9 col-md-10">
       									<blockquote>
-      										<p>I just can't get enough of Jobseek. I want to get a T-Shirt with Jobseek on it so I can show it off to everyone. This is simply unbelievable!</p>
+      										<p>I just can't get enough of Jobletics. I want to get a T-Shirt with Jobletics on it so I can show it off to everyone. This is simply unbelievable!</p>
       										<footer>
       											Erick Olson
       											<cite title="Key Account Manager in Twitter Inc.">Key Account Manager in Twitter Inc.</cite>
@@ -526,7 +450,7 @@ var Landing = React.createClass({
       								</div>
       								<div className="col-sm-9 col-md-10">
       									<blockquote>
-      										<p>Jobseek is worth much more than I paid. I'm good to go. I couldn't have asked for more than this. Keep up the excellent work.</p>
+      										<p>Jobletics is worth much more than I paid. I'm good to go. I couldn't have asked for more than this. Keep up the excellent work.</p>
       										<footer>
       											Nadine Boyd
       											<cite title="CEO in Company Name">CEO in Company Name</cite>
@@ -610,35 +534,6 @@ var Landing = React.createClass({
       							</div>
 
       						</div>
-      					</div>
-      				</div>
-      			</div>
-      		</section>
-
-      		<section id="contact" className="color2">
-      			<div className="container">
-      				<div className="row">
-      					<div className="col-sm-6">
-      						<h2>Drop us a line</h2>
-      						<form role="form" name="contact-form" id="contact-form" action="process.php">
-      							<div className="form-group" id="contact-name-group">
-      								<label for="contact-name" className="sr-only">Name</label>
-      								<input type="text" className="form-control" id="contact-name" placeholder="Name"/>
-      							</div>
-      							<div className="form-group" id="contact-email-group">
-      								<label for="contact-email" className="sr-only">Email</label>
-      								<input type="email" className="form-control" id="contact-email" placeholder="Email"/>
-      							</div>
-      							<div className="form-group" id="contact-subject-group">
-      								<label for="contact-subject" className="sr-only">Subject</label>
-      								<input type="text" className="form-control" id="contact-subject" placeholder="Subject"/>
-      							</div>
-      							<div className="form-group" id="contact-message-group">
-      								<label for="contact-message" className="sr-only">Message</label>
-      								<textarea className="form-control" rows="3" id="contact-message"></textarea>
-      							</div>
-      							<button type="submit" className="btn btn-default">Submit</button>
-      						</form>
       					</div>
       				</div>
       			</div>
