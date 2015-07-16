@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "70197a5913404777af8f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e75e5654ca86b0b38126"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -24504,8 +24504,8 @@
 	var CandidateView = __webpack_require__(316);
 	var CandidateProfileEdit = __webpack_require__(317);
 	
-	var ContactUs = __webpack_require__(318);
-	var About = __webpack_require__(319);
+	var ContactUs = __webpack_require__(336);
+	var About = __webpack_require__(337);
 	
 	var routes = React.createElement(Route, { path: "/", handler: App }, React.createElement(DefaultRoute, { handler: Landing }), React.createElement(Route, { name: "createlisting", path: "/createlisting", handler: CreateListing }), React.createElement(Route, { name: "home", path: "/home", handler: Home }), React.createElement(Route, { name: "login", path: "/login", handler: Login }), React.createElement(Route, { name: "search", path: "/search", handler: Search }), React.createElement(Route, { name: "search_page", path: "/search/:page", handler: Search }), React.createElement(Route, { name: "signup", path: "/signup", handler: Signup }), React.createElement(Route, { name: "dashboard", path: "/dashboard", handler: Dashboard }), React.createElement(Route, { name: "jobslisting", path: "/jobs", handler: JobsListing }), React.createElement(Route, { name: "listing_details", path: "/listing/detail/:id", handler: ListingDetail }), React.createElement(Route, { name: "profile_view", path: "/profile/view", handler: CandidateView }), React.createElement(Route, { name: "profile_edit", path: "/profile/edit", handler: CandidateProfileEdit }), React.createElement(Route, { name: "contactus", path: "/contactus", handler: ContactUs }), React.createElement(Route, { name: "about", path: "/about", handler: About }));
 	
@@ -56317,7 +56317,7 @@
 	
 	"use strict";
 	
-	var React = __webpack_require__(320);
+	var React = __webpack_require__(318);
 	var ReactBootstrap = __webpack_require__(225);
 	var Button = ReactBootstrap.Button;
 	var Modal = ReactBootstrap.Modal;
@@ -56402,57 +56402,11 @@
 /* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
-	
-	"use strict";
-	
-	var React = __webpack_require__(59);
-	
-	var About = React.createClass({ displayName: "About",
-	
-	  render: function render() {
-	
-	    return React.createElement("div", null, React.createElement("section", { id: "contact" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-6" }, React.createElement("h2", null, "Drop us a line"), React.createElement("form", { role: "form", name: "contact-form", id: "contact-form", action: "process.php" }, React.createElement("div", { className: "form-group", id: "contact-name-group" }, React.createElement("label", { "for": "contact-name", className: "sr-only" }, "Name"), React.createElement("input", { type: "text", className: "form-control", id: "contact-name", placeholder: "Name" })), React.createElement("div", { className: "form-group", id: "contact-email-group" }, React.createElement("label", { "for": "contact-email", className: "sr-only" }, "Email"), React.createElement("input", { type: "email", className: "form-control", id: "contact-email", placeholder: "Email" })), React.createElement("div", { className: "form-group", id: "contact-subject-group" }, React.createElement("label", { "for": "contact-subject", className: "sr-only" }, "Subject"), React.createElement("input", { type: "text", className: "form-control", id: "contact-subject", placeholder: "Subject" })), React.createElement("div", { className: "form-group", id: "contact-message-group" }, React.createElement("label", { "for": "contact-message", className: "sr-only" }, "Message"), React.createElement("textarea", { className: "form-control", rows: "3", id: "contact-message" })), React.createElement("button", { type: "submit", className: "btn btn-default" }, "Submit")))))));
-	  }
-	});
-	
-	module.exports = About;
-	
-	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(216), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "ContactUs.js" + ": " + err.message); } }); } } })(); }
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+	module.exports = __webpack_require__(319);
+
 
 /***/ },
 /* 319 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
-	
-	"use strict";
-	
-	var React = __webpack_require__(59);
-	
-	var About = React.createClass({ displayName: "About",
-	
-	  render: function render() {
-	
-	    return React.createElement("h2", null, "About");
-	  }
-	});
-	
-	module.exports = About;
-	
-	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(216), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "About.js" + ": " + err.message); } }); } } })(); }
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
-
-/***/ },
-/* 320 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(321);
-
-
-/***/ },
-/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -56475,18 +56429,18 @@
 	
 	'use strict';
 	
-	var LinkedStateMixin = __webpack_require__(322);
+	var LinkedStateMixin = __webpack_require__(320);
 	var React = __webpack_require__(60);
 	var ReactComponentWithPureRenderMixin =
-	  __webpack_require__(325);
-	var ReactCSSTransitionGroup = __webpack_require__(326);
+	  __webpack_require__(323);
+	var ReactCSSTransitionGroup = __webpack_require__(324);
 	var ReactFragment = __webpack_require__(29);
-	var ReactTransitionGroup = __webpack_require__(327);
+	var ReactTransitionGroup = __webpack_require__(325);
 	var ReactUpdates = __webpack_require__(45);
 	
-	var cx = __webpack_require__(335);
-	var cloneWithProps = __webpack_require__(329);
-	var update = __webpack_require__(336);
+	var cx = __webpack_require__(333);
+	var cloneWithProps = __webpack_require__(327);
+	var update = __webpack_require__(334);
 	
 	React.addons = {
 	  CSSTransitionGroup: ReactCSSTransitionGroup,
@@ -56503,7 +56457,7 @@
 	
 	if ("production" !== process.env.NODE_ENV) {
 	  React.addons.Perf = __webpack_require__(154);
-	  React.addons.TestUtils = __webpack_require__(337);
+	  React.addons.TestUtils = __webpack_require__(335);
 	}
 	
 	module.exports = React;
@@ -56511,7 +56465,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ },
-/* 322 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56528,8 +56482,8 @@
 	
 	'use strict';
 	
-	var ReactLink = __webpack_require__(323);
-	var ReactStateSetters = __webpack_require__(324);
+	var ReactLink = __webpack_require__(321);
+	var ReactStateSetters = __webpack_require__(322);
 	
 	/**
 	 * A simple mixin around ReactLink.forState().
@@ -56556,7 +56510,7 @@
 
 
 /***/ },
-/* 323 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56633,7 +56587,7 @@
 
 
 /***/ },
-/* 324 */
+/* 322 */
 /***/ function(module, exports) {
 
 	/**
@@ -56743,7 +56697,7 @@
 
 
 /***/ },
-/* 325 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56796,7 +56750,7 @@
 
 
 /***/ },
-/* 326 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56818,10 +56772,10 @@
 	var assign = __webpack_require__(19);
 	
 	var ReactTransitionGroup = React.createFactory(
-	  __webpack_require__(327)
+	  __webpack_require__(325)
 	);
 	var ReactCSSTransitionGroupChild = React.createFactory(
-	  __webpack_require__(332)
+	  __webpack_require__(330)
 	);
 	
 	var ReactCSSTransitionGroup = React.createClass({
@@ -56870,7 +56824,7 @@
 
 
 /***/ },
-/* 327 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56887,10 +56841,10 @@
 	'use strict';
 	
 	var React = __webpack_require__(60);
-	var ReactTransitionChildMapping = __webpack_require__(328);
+	var ReactTransitionChildMapping = __webpack_require__(326);
 	
 	var assign = __webpack_require__(19);
-	var cloneWithProps = __webpack_require__(329);
+	var cloneWithProps = __webpack_require__(327);
 	var emptyFunction = __webpack_require__(27);
 	
 	var ReactTransitionGroup = React.createClass({
@@ -57104,7 +57058,7 @@
 
 
 /***/ },
-/* 328 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -57213,7 +57167,7 @@
 
 
 /***/ },
-/* 329 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -57231,7 +57185,7 @@
 	'use strict';
 	
 	var ReactElement = __webpack_require__(23);
-	var ReactPropTransferer = __webpack_require__(330);
+	var ReactPropTransferer = __webpack_require__(328);
 	
 	var keyOf = __webpack_require__(66);
 	var warning = __webpack_require__(26);
@@ -57275,7 +57229,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ },
-/* 330 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -57293,7 +57247,7 @@
 	
 	var assign = __webpack_require__(19);
 	var emptyFunction = __webpack_require__(27);
-	var joinClasses = __webpack_require__(331);
+	var joinClasses = __webpack_require__(329);
 	
 	/**
 	 * Creates a transfer strategy that will merge prop values using the supplied
@@ -57389,7 +57343,7 @@
 
 
 /***/ },
-/* 331 */
+/* 329 */
 /***/ function(module, exports) {
 
 	/**
@@ -57434,7 +57388,7 @@
 
 
 /***/ },
-/* 332 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -57453,8 +57407,8 @@
 	
 	var React = __webpack_require__(60);
 	
-	var CSSCore = __webpack_require__(333);
-	var ReactTransitionEvents = __webpack_require__(334);
+	var CSSCore = __webpack_require__(331);
+	var ReactTransitionEvents = __webpack_require__(332);
 	
 	var onlyChild = __webpack_require__(160);
 	var warning = __webpack_require__(26);
@@ -57585,7 +57539,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ },
-/* 333 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -57700,7 +57654,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ },
-/* 334 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -57815,7 +57769,7 @@
 
 
 /***/ },
-/* 335 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -57874,7 +57828,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ },
-/* 336 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -58048,7 +58002,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ },
-/* 337 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -58564,6 +58518,52 @@
 	
 	module.exports = ReactTestUtils;
 
+
+/***/ },
+/* 336 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	var React = __webpack_require__(59);
+	
+	var About = React.createClass({ displayName: "About",
+	
+	  render: function render() {
+	
+	    return React.createElement("div", null, React.createElement("section", { id: "contact" }, React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-6" }, React.createElement("h2", null, "Drop us a line"), React.createElement("form", { role: "form", name: "contact-form", id: "contact-form", action: "process.php" }, React.createElement("div", { className: "form-group", id: "contact-name-group" }, React.createElement("label", { "for": "contact-name", className: "sr-only" }, "Name"), React.createElement("input", { type: "text", className: "form-control", id: "contact-name", placeholder: "Name" })), React.createElement("div", { className: "form-group", id: "contact-email-group" }, React.createElement("label", { "for": "contact-email", className: "sr-only" }, "Email"), React.createElement("input", { type: "email", className: "form-control", id: "contact-email", placeholder: "Email" })), React.createElement("div", { className: "form-group", id: "contact-subject-group" }, React.createElement("label", { "for": "contact-subject", className: "sr-only" }, "Subject"), React.createElement("input", { type: "text", className: "form-control", id: "contact-subject", placeholder: "Subject" })), React.createElement("div", { className: "form-group", id: "contact-message-group" }, React.createElement("label", { "for": "contact-message", className: "sr-only" }, "Message"), React.createElement("textarea", { className: "form-control", rows: "3", id: "contact-message" })), React.createElement("button", { type: "submit", className: "btn btn-default" }, "Submit")))))));
+	  }
+	});
+	
+	module.exports = About;
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(216), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "ContactUs.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 337 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+	
+	"use strict";
+	
+	var React = __webpack_require__(59);
+	
+	var About = React.createClass({ displayName: "About",
+	
+	  render: function render() {
+	
+	    return React.createElement("h2", null, "About");
+	  }
+	});
+	
+	module.exports = About;
+	
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(216), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "About.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ }
 /******/ ]);
