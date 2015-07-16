@@ -6,3 +6,17 @@
   padding-top: 50px;
   padding-bottom: 20px;
 } */
+
+html, body, #jobletics {
+  height: 100%;
+}
+.app-wrapper {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 130px; /* More or less the height of the footer */
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+}
