@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b9a10b9a3490cae94197"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "de8b723e476db2b1dd41"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -55227,7 +55227,7 @@
 	            default:
 	                employmentType = "Unknown";
 	        }
-	        return React.createElement("div", null, React.createElement("a", { onClick: this.handleClick }, React.createElement("img", { style: { width: 50 + "px", height: 50 + "px" }, src: "/images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, data.job_title), React.createElement("p", null, data.Business.business_name)), React.createElement("div", { className: "data" }, React.createElement("div", null, "Posted 1 Day Ago"), React.createElement("div", { className: "city" }, React.createElement("i", { className: "fa fa-map-marker" }), data.Business.business_city), React.createElement("div", { className: "type full-time" }, React.createElement("i", { className: "fa fa-clock-o" }), employmentType), React.createElement("div", { className: "sallary" }, React.createElement("i", { className: "fa fa-dollar" }), data.job_compensation))));
+	        return React.createElement("a", { onClick: this.handleClick }, React.createElement("img", { style: { width: 50 + "px", height: 50 + "px" }, src: "/images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, data.job_title), React.createElement("p", null, data.Business.business_name)), React.createElement("div", { className: "data" }, React.createElement("div", null, "Posted 1 Day Ago"), React.createElement("div", { className: "city" }, React.createElement("i", { className: "fa fa-map-marker" }), data.Business.business_city), React.createElement("div", { className: "type full-time" }, React.createElement("i", { className: "fa fa-clock-o" }), employmentType), React.createElement("div", { className: "sallary" }, React.createElement("i", { className: "fa fa-dollar" }), data.job_compensation)));
 	    } });
 	
 	module.exports = JobOffer;

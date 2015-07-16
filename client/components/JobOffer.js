@@ -38,7 +38,6 @@ const JobOffer = React.createClass({
             employmentType = 'Unknown';
       }
       return (
-        <div>
           <a onClick={this.handleClick}>
               <img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
               <div className="title">
@@ -52,7 +51,6 @@ const JobOffer = React.createClass({
                   <div className="sallary"><i className="fa fa-dollar"></i>{data.job_compensation}</div>
               </div>
           </a>
-        </div>
       );
     },
 
