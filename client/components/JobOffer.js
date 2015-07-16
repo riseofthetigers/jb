@@ -46,7 +46,7 @@ const JobOffer = React.createClass({
                   <p>{data.Business.business_name}</p>
               </div>
               <div className="data">
-                  <div ><i>Posted 1 Day Ago</i></div>
+                  <div >Posted 1 Day Ago</div>
                   <div className="city"><i className="fa fa-map-marker"></i>{data.Business.business_city}</div>
                   <div className="type full-time"><i className="fa fa-clock-o"></i>{employmentType}</div>
                   <div className="sallary"><i className="fa fa-dollar"></i>{data.job_compensation}</div>
