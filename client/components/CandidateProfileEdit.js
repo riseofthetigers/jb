@@ -117,22 +117,23 @@ const CandidateProfileEdit = React.createClass({
 
   getInitialState: function() {
     return {
-        description: '',
         name: '',
+        phone_number: '',
+        address: '',
+        skills: '',
+        candidate_picture: '',
+
+        description: '',
         headline: '',
-        photo: '',
-        skils: '',
         education: [],
         experience: [],
         title: '',
         birthday: '',
-        phone: '',
         email: '',
-        city: '',
         social: [],
         authorized: '',
         criminal: '',
-        criminalDescripton: ''
+        criminal_descripton: ''
     };
   },
 
@@ -145,7 +146,7 @@ const CandidateProfileEdit = React.createClass({
             <div className="row text-center">
                 <div className="col-sm-12">
                     <h1>{this.state.name}</h1>
-                        <img style={{width: '400px', height: '400px'}} src="images/person1.jpg" alt="" className="img-circle" />
+                        <img style={{width: '400px', height: '400px'}} src={this.state.candidate_picture} alt="" className="img-circle" />
                 </div>
             </div>
 
@@ -194,7 +195,7 @@ const CandidateProfileEdit = React.createClass({
                     <div className="col-sm-6">
                         <div className="form-group" id="resume-category-group">
                             <label htmlFor="resume-category">Phone</label>
-                            <input type="text" valueLink={this.linkState('phone')} className="form-control" placeholder="555 555 5555"/>
+                            <input type="text" valueLink={this.linkState('phone_number')} className="form-control" placeholder="555 555 5555"/>
                         </div>
                     </div>
                 </div>
@@ -202,7 +203,7 @@ const CandidateProfileEdit = React.createClass({
                     <div className="col-sm-6">
                         <div className="form-group" id="resume-location-group">
                             <label htmlFor="resume-location">Location</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('city')} id="resume-location" placeholder="e.g. New York City"/>
+                            <input type="text" className="form-control" valueLink={this.linkState('address')} id="resume-location" placeholder="e.g. New York City"/>
                         </div>
                     </div>
                     <div className="col-sm-6">
@@ -267,7 +268,7 @@ const CandidateProfileEdit = React.createClass({
                             <input type="radio" name="criminal" value="yes"/> Yes<br/>
                             <input type="radio" name="criminal" value="no"/> No<br/>
                             <p>If Yes, tell us what happened and when it happened?</p>
-                            <input type="text" valueLink={this.linkState('criminalDescription')} className="form-control" id="job-criminal" placeholder=" Don't worry, this will not disqualify you.."/>
+                            <input type="text" valueLink={this.linkState('criminal_description')} className="form-control" id="job-criminal" placeholder=" Don't worry, this will not disqualify you.."/>
                         </div>
                     </div>
                 </div>

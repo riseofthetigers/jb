@@ -33,11 +33,79 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     candidate_picture: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    headline: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    education: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    experience: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    birthday: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    social: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    authorized: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    criminal: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    criminal_description: {
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
       }
     }
+
   }, {
     //  lowercase tableName in Posrgres, if you need.
     tableName: 'candidates',

@@ -52,19 +52,23 @@ const CandidateView = React.createClass({
 
   getInitialState: function() {
     return {
-        description: '',
         name: '',
+        phone_number: '',
+        address: '',
+        skills: '',
+        candidate_picture: '',
+        description: '',
         headline: '',
-        photo: '',
-        skils: '',
         education: [],
         experience: [],
         title: '',
         birthday: '',
-        phone: '',
         email: '',
-        city: '',
-        social: []
+        social: [],
+        authorized: '',
+        criminal: '',
+        criminal_descripton: ''
+
     };
   },
 
@@ -93,13 +97,13 @@ const CandidateView = React.createClass({
                     <div className="row">
                         <div className="col-sm-8">
                             <article>
-                                <img src={this.state.photo} alt="" className="pull-left" />
+                                <img src={this.state.candidate_picture} alt="" className="pull-left" />
                                 <p>{this.state.description}</p>
                                 <h3>Skills</h3>
                                 <ul>
                                     {
-                                        _.map(skills, function(skil){
-                                            return <li>{skil}</li>
+                                        _.map(skills, function(skill){
+                                            return <li>{skill}</li>
                                         })
                                     }
                                 </ul>
@@ -135,9 +139,9 @@ const CandidateView = React.createClass({
                                 <ul>
                                     <li><i className="fa fa-user"></i>{this.state.name}</li>
                                     <li><i className="fa fa-briefcase"></i>{this.state.title}</li>
-                                    <li><i className="fa fa-birthday-cake"></i>{this.state.birtday}</li>
-                                    <li><i className="fa fa-map-marker"></i>{this.state.city}</li>
-                                    <li><i className="fa fa-phone"></i>{this.state.phone}</li>
+                                    <li><i className="fa fa-birthday-cake"></i>{this.state.birthday}</li>
+                                    <li><i className="fa fa-map-marker"></i>{this.state.address}</li>
+                                    <li><i className="fa fa-phone"></i>{this.state.phone_number}</li>
                                     <li><i className="fa fa-envelope"></i><a href={'mailto:'+this.state.email}>Send an email</a></li>
                                 </ul>
                             </div>
