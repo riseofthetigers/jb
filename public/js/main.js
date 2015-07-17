@@ -55,10 +55,14 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 /******/ 	var hotCurrentHash = "1171aa4f1110a0cf20be"; // eslint-disable-line no-unused-vars
 =======
 /******/ 	var hotCurrentHash = "b60437617d0d21a564b2"; // eslint-disable-line no-unused-vars
 >>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
+=======
+/******/ 	var hotCurrentHash = "893ca8208a80c20bb86b"; // eslint-disable-line no-unused-vars
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/
@@ -52420,6 +52424,9 @@
 	function getContainer(context) {
 	  return context.props.container && _react2['default'].findDOMNode(context.props.container) || _utilsDomUtils2['default'].ownerDocument(context).body;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 	}
 
 	function requiredIfNot(key, type) {
@@ -52441,6 +52448,7 @@
 	  return result;
 	}
 
+<<<<<<< HEAD
 =======
 	}
 
@@ -52464,6 +52472,8 @@
 	}
 
 >>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
+=======
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 	var currentFocusListener = undefined;
 
 	/**
@@ -56910,6 +56920,7 @@
 	var JobsListing = React.createClass({ displayName: "JobsListing",
 	    mixins: [Navigation],
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	    getInitialState: function getInitialState() {
 	        return {
@@ -57016,6 +57027,8 @@
 	module.exports = JobOffer;
 
 =======
+=======
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 
 	    getInitialState: function getInitialState() {
 	        return {
@@ -57121,7 +57134,10 @@
 
 	module.exports = JobOffer;
 
+<<<<<<< HEAD
 >>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
+=======
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(213), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "JobOffer.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
@@ -57167,6 +57183,7 @@
 	        console.log(ListingStore.getListingById(this.props.params.id));
 	        this.setState({ listing: ListingStore.getListingById(this.props.params.id), loaded: true });
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    },
 
 	    handleClick: function handleClick() {
@@ -57174,13 +57191,18 @@
 	    },
 
 =======
+=======
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 	    },
 
 	    handleClick: function handleClick() {
 	        this.transitionTo("/listing/apply/" + this.state.listing.id);
 	    },
 
+<<<<<<< HEAD
 >>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
+=======
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 	    render: function render() {
 	        var data = this.state.listing;
 	        var employmentType = "";
@@ -59959,6 +59981,9 @@
 	var _profile = {};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 	var _getLoadedProfile = function _getLoadedProfile() {
 	    return _profile;
 	};
@@ -59977,8 +60002,11 @@
 	    });
 	};
 
+<<<<<<< HEAD
 =======
 >>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
+=======
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 	var CandidateStore = assign(EventEmitter.prototype, {
 	    emitCandidateChange: function emitCandidateChange() {
 	        this.emit(CHANGE_EVENT);
@@ -59993,10 +60021,14 @@
 	    },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    get: _getLoadedProfile,
 =======
 	    // get: _getLoadedProfile,
 >>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
+=======
+	    // get: _getLoadedProfile,
+>>>>>>> 697d68b18e53993ecdeb308aaca90284779c47df
 
 	    dispatcherIndex: AppDispatcher.register(function (payload) {
 	        var action = payload.action;
