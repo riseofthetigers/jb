@@ -25,9 +25,9 @@ module.exports = {
   },
 
   "production": {
-    "username": "sugklbnthryhev",
-    "password": "sKyf54WPRuaYHUt72Dz8rbxebd",
-    "database": "dbgn3i7j51joh9",
+    "username": "cdhdbvfqpapsdz",
+    "password": "9rjwwXEMbd6nLvr3gSbsVlWiEn",
+    "database": "d2494roicfq5mg",
     "host": "ec2-54-235-145-226.compute-1.amazonaws.com",
     "dialect": "postgres",
     "port": "5432"

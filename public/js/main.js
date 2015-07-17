@@ -1,11 +1,11 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	var parentHotUpdateCallback = this["webpackHotUpdate"];
-/******/ 	this["webpackHotUpdate"] = 
+/******/ 	this["webpackHotUpdate"] =
 /******/ 	function webpackHotUpdateCallback(chunkId, moreModules) { // eslint-disable-line no-unused-vars
 /******/ 		hotAddUpdateChunk(chunkId, moreModules);
 /******/ 		if(parentHotUpdateCallback) parentHotUpdateCallback(chunkId, moreModules);
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	function hotDownloadUpdateChunk(chunkId) { // eslint-disable-line no-unused-vars
 /******/ 		var head = document.getElementsByTagName("head")[0];
 /******/ 		var script = document.createElement("script");
@@ -14,7 +14,7 @@
 /******/ 		script.src = __webpack_require__.p + "" + chunkId + "." + hotCurrentHash + ".hot-update.js";
 /******/ 		head.appendChild(script);
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	function hotDownloadManifest(callback) { // eslint-disable-line no-unused-vars
 /******/ 		if(typeof XMLHttpRequest === "undefined")
 /******/ 			return callback(new Error("No browser support"));
@@ -51,13 +51,17 @@
 /******/ 		};
 /******/ 	}
 
-/******/ 	
-/******/ 	
+/******/
+/******/
 /******/ 	var hotApplyOnUpdate = true;
+<<<<<<< HEAD
 /******/ 	var hotCurrentHash = "1171aa4f1110a0cf20be"; // eslint-disable-line no-unused-vars
+=======
+/******/ 	var hotCurrentHash = "b60437617d0d21a564b2"; // eslint-disable-line no-unused-vars
+>>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
-/******/ 	
+/******/
 /******/ 	function hotCreateRequire(moduleId) { // eslint-disable-line no-unused-vars
 /******/ 		var me = installedModules[moduleId];
 /******/ 		if(!me) return __webpack_require__;
@@ -105,7 +109,7 @@
 /******/ 		};
 /******/ 		return fn;
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	function hotCreateModule(moduleId) { // eslint-disable-line no-unused-vars
 /******/ 		var hot = {
 /******/ 			// private stuff
@@ -114,7 +118,7 @@
 /******/ 			_selfAccepted: false,
 /******/ 			_selfDeclined: false,
 /******/ 			_disposeHandlers: [],
-/******/ 	
+/******/
 /******/ 			// Module API
 /******/ 			active: true,
 /******/ 			accept: function(dep, callback) {
@@ -146,7 +150,7 @@
 /******/ 				var idx = hot._disposeHandlers.indexOf(callback);
 /******/ 				if(idx >= 0) hot._disposeHandlers.splice(idx, 1);
 /******/ 			},
-/******/ 	
+/******/
 /******/ 			// Management API
 /******/ 			check: hotCheck,
 /******/ 			apply: hotApply,
@@ -161,22 +165,22 @@
 /******/ 				var idx = hotStatusHandlers.indexOf(l);
 /******/ 				if(idx >= 0) hotStatusHandlers.splice(idx, 1);
 /******/ 			},
-/******/ 	
+/******/
 /******/ 			//inherit from previous dispose call
 /******/ 			data: hotCurrentModuleData[moduleId]
 /******/ 		};
 /******/ 		return hot;
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	var hotStatusHandlers = [];
 /******/ 	var hotStatus = "idle";
-/******/ 	
+/******/
 /******/ 	function hotSetStatus(newStatus) {
 /******/ 		hotStatus = newStatus;
 /******/ 		for(var i = 0; i < hotStatusHandlers.length; i++)
 /******/ 			hotStatusHandlers[i].call(null, newStatus);
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	// while downloading
 /******/ 	var hotWaitingFiles = 0;
 /******/ 	var hotChunksLoading = 0;
@@ -184,14 +188,14 @@
 /******/ 	var hotRequestedFilesMap = {};
 /******/ 	var hotAvailibleFilesMap = {};
 /******/ 	var hotCallback;
-/******/ 	
+/******/
 /******/ 	// The update info
 /******/ 	var hotUpdate, hotUpdateNewHash;
-/******/ 	
+/******/
 /******/ 	function toModuleId(id) {
 /******/ 		return (+id) + "" === id ? +id : id;
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	function hotCheck(apply, callback) {
 /******/ 		if(hotStatus !== "idle") throw new Error("check() is only allowed in idle status");
 /******/ 		if(typeof apply === "function") {
@@ -209,14 +213,14 @@
 /******/ 				callback(null, null);
 /******/ 				return;
 /******/ 			}
-/******/ 	
+/******/
 /******/ 			hotRequestedFilesMap = {};
 /******/ 			hotAvailibleFilesMap = {};
 /******/ 			hotWaitingFilesMap = {};
 /******/ 			for(var i = 0; i < update.c.length; i++)
 /******/ 				hotAvailibleFilesMap[update.c[i]] = true;
 /******/ 			hotUpdateNewHash = update.h;
-/******/ 	
+/******/
 /******/ 			hotSetStatus("prepare");
 /******/ 			hotCallback = callback;
 /******/ 			hotUpdate = {};
@@ -229,7 +233,7 @@
 /******/ 			}
 /******/ 		});
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	function hotAddUpdateChunk(chunkId, moreModules) { // eslint-disable-line no-unused-vars
 /******/ 		if(!hotAvailibleFilesMap[chunkId] || !hotRequestedFilesMap[chunkId])
 /******/ 			return;
@@ -243,7 +247,7 @@
 /******/ 			hotUpdateDownloaded();
 /******/ 		}
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	function hotEnsureUpdateChunk(chunkId) {
 /******/ 		if(!hotAvailibleFilesMap[chunkId]) {
 /******/ 			hotWaitingFilesMap[chunkId] = true;
@@ -253,7 +257,7 @@
 /******/ 			hotDownloadUpdateChunk(chunkId);
 /******/ 		}
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	function hotUpdateDownloaded() {
 /******/ 		hotSetStatus("ready");
 /******/ 		var callback = hotCallback;
@@ -271,7 +275,7 @@
 /******/ 			callback(null, outdatedModules);
 /******/ 		}
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	function hotApply(options, callback) {
 /******/ 		if(hotStatus !== "ready") throw new Error("apply() is only allowed in ready status");
 /******/ 		if(typeof options === "function") {
@@ -283,11 +287,11 @@
 /******/ 			options = {};
 /******/ 			callback = callback || function(err) { if(err) throw err; };
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		function getAffectedStuff(module) {
 /******/ 			var outdatedModules = [module];
 /******/ 			var outdatedDependencies = {};
-/******/ 	
+/******/
 /******/ 			var queue = outdatedModules.slice();
 /******/ 			while(queue.length > 0) {
 /******/ 				var moduleId = queue.pop();
@@ -315,7 +319,7 @@
 /******/ 					queue.push(parentId);
 /******/ 				}
 /******/ 			}
-/******/ 	
+/******/
 /******/ 			return [outdatedModules, outdatedDependencies];
 /******/ 		}
 /******/ 		function addAllToSet(a, b) {
@@ -325,7 +329,7 @@
 /******/ 					a.push(item);
 /******/ 			}
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// at begin all updates modules are outdated
 /******/ 		// the "outdated" status can propagate to parents if they don't accept the children
 /******/ 		var outdatedDependencies = {};
@@ -356,7 +360,7 @@
 /******/ 				}
 /******/ 			}
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// Store self accepted outdated modules to require them later by the module system
 /******/ 		var outdatedSelfAcceptedModules = [];
 /******/ 		for(var i = 0; i < outdatedModules.length; i++) {
@@ -367,7 +371,7 @@
 /******/ 					errorHandler: installedModules[moduleId].hot._selfAccepted
 /******/ 				});
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// Now in "dispose" phase
 /******/ 		hotSetStatus("dispose");
 /******/ 		var queue = outdatedModules.slice();
@@ -375,9 +379,9 @@
 /******/ 			var moduleId = queue.pop();
 /******/ 			var module = installedModules[moduleId];
 /******/ 			if(!module) continue;
-/******/ 	
+/******/
 /******/ 			var data = {};
-/******/ 	
+/******/
 /******/ 			// Call dispose handlers
 /******/ 			var disposeHandlers = module.hot._disposeHandlers;
 /******/ 			for(var j = 0; j < disposeHandlers.length; j++) {
@@ -385,13 +389,13 @@
 /******/ 				cb(data);
 /******/ 			}
 /******/ 			hotCurrentModuleData[moduleId] = data;
-/******/ 	
+/******/
 /******/ 			// disable module (this disables requires from this module)
 /******/ 			module.hot.active = false;
-/******/ 	
+/******/
 /******/ 			// remove module from cache
 /******/ 			delete installedModules[moduleId];
-/******/ 	
+/******/
 /******/ 			// remove "parents" references from all children
 /******/ 			for(var j = 0; j < module.children.length; j++) {
 /******/ 				var child = installedModules[module.children[j]];
@@ -402,7 +406,7 @@
 /******/ 				}
 /******/ 			}
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// remove outdated dependency from module children
 /******/ 		for(var moduleId in outdatedDependencies) {
 /******/ 			if(Object.prototype.hasOwnProperty.call(outdatedDependencies, moduleId)) {
@@ -415,19 +419,19 @@
 /******/ 				}
 /******/ 			}
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// Not in "apply" phase
 /******/ 		hotSetStatus("apply");
-/******/ 	
+/******/
 /******/ 		hotCurrentHash = hotUpdateNewHash;
-/******/ 	
+/******/
 /******/ 		// insert new code
 /******/ 		for(var moduleId in appliedUpdate) {
 /******/ 			if(Object.prototype.hasOwnProperty.call(appliedUpdate, moduleId)) {
 /******/ 				modules[moduleId] = appliedUpdate[moduleId];
 /******/ 			}
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// call accept handlers
 /******/ 		var error = null;
 /******/ 		for(var moduleId in outdatedDependencies) {
@@ -452,7 +456,7 @@
 /******/ 				}
 /******/ 			}
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// Load self accepted modules
 /******/ 		for(var i = 0; i < outdatedSelfAcceptedModules.length; i++) {
 /******/ 			var item = outdatedSelfAcceptedModules[i];
@@ -472,13 +476,13 @@
 /******/ 					error = err;
 /******/ 			}
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// handle errors in accept handlers and self accepted module load
 /******/ 		if(error) {
 /******/ 			hotSetStatus("fail");
 /******/ 			return callback(error);
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		hotSetStatus("idle");
 /******/ 		callback(null, outdatedModules);
 /******/ 	}
@@ -22512,7 +22516,7 @@
 	 *       <Route name="about" handler={About}/>
 	 *     </Route>
 	 *   ];
-	 *   
+	 *
 	 *   Router.run(routes, function (Handler) {
 	 *     React.render(<Handler/>, document.body);
 	 *   });
@@ -24439,9 +24443,9 @@
 	 *   Router.run(routes, function (Handler) {
 	 *     React.render(<Handler/>, document.body);
 	 *   });
-	 * 
+	 *
 	 * Using HTML5 history and a custom "cursor" prop:
-	 * 
+	 *
 	 *   Router.run(routes, Router.HistoryLocation, function (Handler) {
 	 *     React.render(<Handler cursor={cursor}/>, document.body);
 	 *   });
@@ -52415,6 +52419,7 @@
 
 	function getContainer(context) {
 	  return context.props.container && _react2['default'].findDOMNode(context.props.container) || _utilsDomUtils2['default'].ownerDocument(context).body;
+<<<<<<< HEAD
 	}
 
 	function requiredIfNot(key, type) {
@@ -52436,6 +52441,29 @@
 	  return result;
 	}
 
+=======
+	}
+
+	function requiredIfNot(key, type) {
+	  return function (props, propName, componentName) {
+	    var propType = type;
+
+	    if (props[key] === undefined) {
+	      propType = propType.isRequired;
+	    }
+	    return propType(props, propName, componentName);
+	  };
+	}
+
+	function toChildArray(children) {
+	  var result = [];
+	  _react2['default'].Children.forEach(children, function (c) {
+	    return result.push(c);
+	  });
+	  return result;
+	}
+
+>>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
 	var currentFocusListener = undefined;
 
 	/**
@@ -56881,6 +56909,7 @@
 	// Our custom component is managing whether the Modal is visible
 	var JobsListing = React.createClass({ displayName: "JobsListing",
 	    mixins: [Navigation],
+<<<<<<< HEAD
 
 	    getInitialState: function getInitialState() {
 	        return {
@@ -56986,6 +57015,113 @@
 
 	module.exports = JobOffer;
 
+=======
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            listings: [],
+	            loaded: false
+
+	        };
+	    },
+
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            currentPage: 1,
+	            entriesPerPage: 2
+	        };
+	    },
+
+	    componentDidMount: function componentDidMount() {
+	        ListingStore.addListingChangeListener(this._onChange);
+	        ListingStore.getListings(true);
+	    },
+
+	    componentWillUnmount: function componentWillUnmount() {
+	        ListingStore.removeListingChangeListener(this._onChange);
+	    },
+
+	    changePageCallback: function changePageCallback(index) {
+	        this.transitionTo("/search/" + index);
+	    },
+
+	    _onChange: function _onChange() {
+	        this.setState({ listings: ListingStore.getListings(), loaded: true });
+	    },
+
+	    render: function render() {
+	        var self = this;
+	        var NoListings = React.createElement("div", null);
+	        if (this.state.loaded && this.state.listings.length == 0) {
+	            NoListings = React.createElement("h1", null, "There is no listings in the database");
+	        }
+	        return React.createElement("div", { className: "container" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("div", { className: "jobs" }, NoListings, this.state.listings.map(function (listing, index) {
+	            if (index >= self.props.entriesPerPage * (self.props.currentPage - 1) && index < self.props.entriesPerPage * self.props.currentPage) {
+	                return React.createElement(JobOffer, { key: listing.id, data: listing });
+	            }
+	        })), React.createElement(Pagination, { currentPage: this.props.currentPage, entriesPerPage: 2, entries: this.state.listings.length, changePage: this.changePageCallback })), React.createElement("div", { className: "col-sm-4", id: "sidebar" })));
+	    }
+
+	});
+
+	module.exports = JobsListing;
+
+	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(213), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "JobsListing.js" + ": " + err.message); } }); } } })(); }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+
+/***/ },
+/* 316 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(161), RootInstanceProvider = __webpack_require__(3), ReactMount = __webpack_require__(5), React = __webpack_require__(59); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } (function () {
+
+	"use strict";
+
+	var React = __webpack_require__(59);
+	var ReactBootstrap = __webpack_require__(234);
+	var Button = ReactBootstrap.Button;
+	var Modal = ReactBootstrap.Modal;
+	var AppActions = __webpack_require__(228);
+	var Navigation = __webpack_require__(169).Navigation;
+
+	var ListingDetail = __webpack_require__(317);
+
+	// Our custom component is managing whether the Modal is visible
+	var JobOffer = React.createClass({ displayName: "JobOffer",
+	    mixins: [Navigation],
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            listing: this.props.data
+	        };
+	    },
+
+	    handleClick: function handleClick() {
+	        this.transitionTo("/listing/detail/" + this.state.listing.id);
+	    },
+
+	    render: function render() {
+	        var data = this.state.listing;
+	        var employmentType;
+	        switch (data.employment_type) {
+	            case "F":
+	                employmentType = "Full Time";
+	                break;
+	            case "P":
+	                employmentType = "Part Time";
+	                break;
+	            case "H":
+	                employmentType = "Hourly";
+	                break;
+	            default:
+	                employmentType = "Unknown";
+	        }
+	        return React.createElement("a", { onClick: this.handleClick }, React.createElement("img", { style: { width: 50 + "px", height: 50 + "px" }, src: "/images/job1.jpg", alt: "", className: "img-circle" }), React.createElement("div", { className: "title" }, React.createElement("h5", null, data.job_title), React.createElement("p", null, data.Business.business_name)), React.createElement("div", { className: "data" }, React.createElement("div", null, "Posted 1 Day Ago"), React.createElement("div", { className: "city" }, React.createElement("i", { className: "fa fa-map-marker" }), data.Business.business_city), React.createElement("div", { className: "type full-time" }, React.createElement("i", { className: "fa fa-clock-o" }), employmentType), React.createElement("div", { className: "sallary" }, React.createElement("i", { className: "fa fa-dollar" }), data.job_compensation)));
+	    } });
+
+	module.exports = JobOffer;
+
+>>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(213), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "JobOffer.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
@@ -57030,12 +57166,21 @@
 	    _onChange: function _onChange() {
 	        console.log(ListingStore.getListingById(this.props.params.id));
 	        this.setState({ listing: ListingStore.getListingById(this.props.params.id), loaded: true });
+<<<<<<< HEAD
 	    },
 
 	    handleClick: function handleClick() {
 	        this.transitionTo("/listing/apply/" + this.state.listing.id);
 	    },
 
+=======
+	    },
+
+	    handleClick: function handleClick() {
+	        this.transitionTo("/listing/apply/" + this.state.listing.id);
+	    },
+
+>>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
 	    render: function render() {
 	        var data = this.state.listing;
 	        var employmentType = "";
@@ -59813,6 +59958,7 @@
 
 	var _profile = {};
 
+<<<<<<< HEAD
 	var _getLoadedProfile = function _getLoadedProfile() {
 	    return _profile;
 	};
@@ -59831,6 +59977,8 @@
 	    });
 	};
 
+=======
+>>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
 	var CandidateStore = assign(EventEmitter.prototype, {
 	    emitCandidateChange: function emitCandidateChange() {
 	        this.emit(CHANGE_EVENT);
@@ -59844,7 +59992,11 @@
 	        this.removeListener(CHANGE_EVENT, callback);
 	    },
 
+<<<<<<< HEAD
 	    get: _getLoadedProfile,
+=======
+	    // get: _getLoadedProfile,
+>>>>>>> 708589b9eb6f1691c1633c17b3dc1e26080f450d
 
 	    dispatcherIndex: AppDispatcher.register(function (payload) {
 	        var action = payload.action;
