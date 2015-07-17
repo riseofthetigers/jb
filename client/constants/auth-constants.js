@@ -1,11 +1,1 @@
-
-module.exports = {
-
-    LOGGEDIN       : 'LOGGEDIN',
-    LOGGEDOUT      : 'LOGGEDOUT',
-    LOGIN          : 'LOGIN',
-    LOGOUT         : 'LOGOUT',
-    LOGIN_FACEBOOK : 'LOGIN_FACEBOOK',
-    SIGNUP		   : 'SIGNUP'
-
-};
+module.exports = require('./app-constants')
