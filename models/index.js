@@ -9,7 +9,13 @@ var env       = process.env.NODE_ENV || "development";
 // Read config from `config/config.js`;
 // `node_modules/.bin/sequelize -c config/config.js cmd`
 var config    = require(__dirname + '/../config/config.js')[env];
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+if(env === 'heroku') {
+  var sequelize = new Sequelize(process.env.DATABASE_URL, config);
+} else {
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
+
 // Store the models.
 var db        = {};
 

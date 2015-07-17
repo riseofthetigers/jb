@@ -40,7 +40,7 @@ db.sequelize
   //.sync()
   .then(function() {
     console.log('Express server listening on port 5000');
-    app.listen(5000);
+    app.listen(process.env.PORT || 5000);
 });
 
 
@@ -55,4 +55,3 @@ app.use('/api', require('./routes/api'));
 app.use( function(request, response) {
   response.sendFile('./public/index.html', {root: __dirname});
 });
-

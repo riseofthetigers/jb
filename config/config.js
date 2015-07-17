@@ -1,6 +1,10 @@
 // export database config
 module.exports = {
 
+  "heroku": {
+    "dialect": "postgres"
+  },
+
   // "postgres://rahul:jobletics@localhost:5432/jobletics"
   "development": {
     "username": process.env.DB_USERNAME,
