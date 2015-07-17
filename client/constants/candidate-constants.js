@@ -1,0 +1,7 @@
+
+module.exports = {
+
+    GET_PROFILE  : 'GET_PROFILE',
+    GET_CURRENT_PROFILE	: 'GET_CURRENT_PROFILE',
+    SAVE_PROFILE: 'SAVE_PROFILE'
+};

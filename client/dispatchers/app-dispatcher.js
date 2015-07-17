@@ -15,6 +15,13 @@ var AppDispatcher = assign(new Dispatcher() , {
             source: 'LISTING_ACTION',
             action: action
         })
+    },
+
+    handleCandidateAction : function(action) {
+        this.dispatch({
+            source: 'CANDIDATE_ACTION',
+            action: action
+        })
     }
 });
 
