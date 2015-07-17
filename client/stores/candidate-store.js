@@ -26,7 +26,7 @@ var CandidateStore = assign(EventEmitter.prototype, {
    },
 
 
-   get: _getLoadedProfile,
+   // get: _getLoadedProfile,
 
     dispatcherIndex: AppDispatcher.register(function(payload){
         var action = payload.action;
@@ -45,4 +45,4 @@ var CandidateStore = assign(EventEmitter.prototype, {
      })
 });
 
-module.exports = ListingStore;
+module.exports = CandidateStore;
