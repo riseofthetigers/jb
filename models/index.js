@@ -10,9 +10,12 @@ var env       = process.env.NODE_ENV || "development";
 // `node_modules/.bin/sequelize -c config/config.js cmd`
 var config    = require(__dirname + '/../config/config.js')[env];
 
+console.log("NODE_ENV:", env)
 if(env === 'heroku') {
+  console.log("Running using database url")
   var sequelize = new Sequelize(process.env.DATABASE_URL, config);
 } else {
+  console.log("Running using config")
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
