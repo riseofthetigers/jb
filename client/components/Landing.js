@@ -84,8 +84,8 @@ var Landing = React.createClass({
       							<a href="#">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
-      									<h5>Web Designer</h5>
-      									<p>Amazon Inc.</p>
+      									<h5>Cashier</h5>
+      									<p>Chevron Inc.</p>
       								</div>
       								<div className="data">
       									<span className="city"><i className="fa fa-map-marker"></i>New York City</span>
@@ -97,8 +97,8 @@ var Landing = React.createClass({
       							<a href="#">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
-      									<h5>Senior Web Developer</h5>
-      									<p>Dropbox Inc.</p>
+      									<h5> Cashierr</h5>
+      									<p>Chevron Inc.</p>
       								</div>
       								<div className="data">
       									<span className="city"><i className="fa fa-map-marker"></i>Los Angeles</span>
@@ -149,8 +149,8 @@ var Landing = React.createClass({
       							<a href="#" className="hidden-job">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
-      									<h5>Web Designer</h5>
-      									<p>Amazon Inc.</p>
+      									<h5>Cashier</h5>
+      									<p>Chevron Inc.</p>
       								</div>
       								<div className="data">
       									<span className="city"><i className="fa fa-map-marker"></i>New York City</span>
@@ -162,8 +162,8 @@ var Landing = React.createClass({
       							<a href="#" className="hidden-job">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
-      									<h5>Senior Web Developer</h5>
-      									<p>Dropbox Inc.</p>
+      									<h5>Senior Cashierr</h5>
+      									<p>Chevron Inc.</p>
       								</div>
       								<div className="data">
       									<span className="city"><i className="fa fa-map-marker"></i>Los Angeles</span>
@@ -225,8 +225,8 @@ var Landing = React.createClass({
       							<img src="http://i.forbesimg.com/media/lists/companies/wawa_416x416.jpg" alt="Featured Job" className="img-responsive" />
       							<div className="featured-job">
       								<div className="title">
-      									<h5>Web Designer</h5>
-      									<p>Amazon</p>
+      									<h5>Cashier</h5>
+      									<p>Chevron</p>
       								</div>
       								<div className="data">
       									<span className="city"><i className="fa fa-map-marker"></i>New York City</span>
@@ -236,90 +236,6 @@ var Landing = React.createClass({
       								<div className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tristique euismod lorem, a consequat orci consequat a. Donec ullamcorper tincidunt nunc, ut aliquam est pellentesque porta. In neque erat, malesuada sit amet orci ac, laoreet laoreet mauris.</div>
       							</div>
       						</a>
-      					</div>
-      				</div>
-      			</div>
-      		</section>
-
-      		<section id="companies" className="color1">
-      			<div className="container">
-      				<div className="row">
-      					<div className="col-sm-12">
-      						<h2>Featured Companies</h2>
-      						<ul id="featured-companies" className="row">
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">12</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">4</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">8</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">9</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">13</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">6</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">7</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">15</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">6</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">11</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">14</span>
-      								</a>
-      							</li>
-      							<li className="col-sm-4 col-md-3">
-      								<a href="company.html">
-      									<img src="http://placehold.it/220x100.jpg" alt="" />
-      									<span className="badge">3</span>
-      								</a>
-      							</li>
-      						</ul>
       					</div>
       				</div>
       			</div>
