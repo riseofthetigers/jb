@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c15b5a068e66dfd8f7d0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "aed0b9ae89254b163b0e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -56310,7 +56310,7 @@
 	            return React.createElement(CandidateViewExperience, { data: w, type: "work" });
 	        }), React.createElement("h3", null, "Education"), _.map(this.state.education, function (e) {
 	            return React.createElement(CandidateViewExperience, { data: e, type: "education" });
-	        }), React.createElement("p", null, " "), React.createElement("p", null, React.createElement("a", { href: "#", className: "btn btn-primary btn-lg" }, React.createElement("i", { className: "fa fa-arrow-down" }), " Download Profile")))), React.createElement("div", { className: "col-sm-4", id: "sidebar" }, React.createElement("div", { className: "sidebar-widget", id: "share" }, React.createElement("h2", null, "Share Profile"), React.createElement("ul", null, React.createElement("li", null, React.createElement("a", { href: "https://www.facebook.com/sharer/sharer.php?u=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-facebook" }))), React.createElement("li", null, React.createElement("a", { href: "https://twitter.com/home?status=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-twitter" }))), React.createElement("li", null, React.createElement("a", { href: "https://plus.google.com/share?url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-google-plus" }))), React.createElement("li", null, React.createElement("a", { href: "https://www.linkedin.com/shareArticle?mini=true&url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html&title=Jobseek%20-%20Job%20Board%20Responsive%20HTML%20Template&summary=&source=" }, React.createElement("i", { className: "fa fa-linkedin" }))))), React.createElement("hr", null), React.createElement("div", { className: "sidebar-widget", id: "widget-contact" }, React.createElement("h2", null, "Contact"), React.createElement("ul", null, React.createElement("li", null, React.createElement("i", { className: "fa fa-user" }), this.state.name), React.createElement("li", null, React.createElement("i", { className: "fa fa-briefcase" }), this.state.title), React.createElement("li", null, React.createElement("i", { className: "fa fa-birthday-cake" }), this.state.birthday), React.createElement("li", null, React.createElement("i", { className: "fa fa-map-marker" }), this.state.address), React.createElement("li", null, React.createElement("i", { className: "fa fa-phone" }), this.state.phone_number), React.createElement("li", null, React.createElement("i", { className: "fa fa-envelope" }), React.createElement("a", { href: "mailto:" + this.state.email }, "Send an email")))))))));
+	        }))), React.createElement("div", { className: "col-sm-4", id: "sidebar" }, React.createElement("div", { className: "sidebar-widget", id: "share" }, React.createElement("h2", null, "Share Profile"), React.createElement("ul", null, React.createElement("li", null, React.createElement("a", { href: "https://www.facebook.com/sharer/sharer.php?u=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-facebook" }))), React.createElement("li", null, React.createElement("a", { href: "https://twitter.com/home?status=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-twitter" }))), React.createElement("li", null, React.createElement("a", { href: "https://plus.google.com/share?url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html" }, React.createElement("i", { className: "fa fa-google-plus" }))), React.createElement("li", null, React.createElement("a", { href: "https://www.linkedin.com/shareArticle?mini=true&url=http://www.coffeecreamthemes.com/themes/jobseek/site/job-details.html&title=Jobseek%20-%20Job%20Board%20Responsive%20HTML%20Template&summary=&source=" }, React.createElement("i", { className: "fa fa-linkedin" }))))), React.createElement("hr", null), React.createElement("div", { className: "sidebar-widget", id: "widget-contact" }, React.createElement("h2", null, "Contact"), React.createElement("ul", null, React.createElement("li", null, React.createElement("i", { className: "fa fa-user" }), this.state.name), React.createElement("li", null, React.createElement("i", { className: "fa fa-briefcase" }), this.state.title), React.createElement("li", null, React.createElement("i", { className: "fa fa-birthday-cake" }), this.state.birthday), React.createElement("li", null, React.createElement("i", { className: "fa fa-map-marker" }), this.state.address), React.createElement("li", null, React.createElement("i", { className: "fa fa-phone" }), this.state.phone_number), React.createElement("li", null, React.createElement("i", { className: "fa fa-envelope" }), React.createElement("a", { href: "mailto:" + this.state.email }, "Send an email")))))))));
 	    }
 	
 	});
@@ -58613,6 +58613,24 @@
 	
 	var _profile = {};
 	
+	var _getLoadedProfile = function _getLoadedProfile() {
+	    return _profile;
+	};
+	
+	var _loadProfile = function _loadProfile(id) {
+	    $.get("/api/candidates/" + id, function (data) {
+	        _profile = data;
+	        CandidateStore.emitCandidateChange();
+	    });
+	};
+	
+	var _loadCurrentProfile = function _loadCurrentProfile(id) {
+	    $.get("/api/candidates/current", function (data) {
+	        _profile = data;
+	        CandidateStore.emitCandidateChange();
+	    });
+	};
+	
 	var CandidateStore = assign(EventEmitter.prototype, {
 	    emitCandidateChange: function emitCandidateChange() {
 	        this.emit(CHANGE_EVENT);
@@ -58645,7 +58663,7 @@
 	    })
 	});
 	
-	module.exports = ListingStore;
+	module.exports = CandidateStore;
 	
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(216), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "candidate-store.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))

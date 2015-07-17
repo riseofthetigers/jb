@@ -119,8 +119,6 @@ const CandidateView = React.createClass({
                                         return <CandidateViewExperience data={e} type="education"/>
                                     })
                                 }
-                                <p>&nbsp;</p>
-                                <p><a href="#" className="btn btn-primary btn-lg"><i className="fa fa-arrow-down"></i> Download Profile</a></p>
                             </article>
                         </div>
                         <div className="col-sm-4" id="sidebar">

@@ -45,6 +45,18 @@ module.exports = {
     });
   },
 
+  getById: function(req, res) {
+    Candidate.findById(req.params.id).success(function(candidates) {
+      res.send(candidates);
+    });
+  },
+
+  getCurrent: function(req, res) {
+    Candidate.findOne({where:{'user_id':req.user.id}}).success(function(candidates) {
+      res.send(candidates);
+    });
+  },
+
   update: function(req, res) {
     Candidate.find({
       where: {

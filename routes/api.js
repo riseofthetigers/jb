@@ -22,6 +22,8 @@ businessRouter.delete("/:id", businessController.destroy);
 // Register candidates routes.
 var candidatesRouter = Router();
 candidatesRouter.get("/", candidatesController.get);
+candidatesRouter.get("/current", candidatesController.getCurrent);
+candidatesRouter.get("/:id", candidatesController.getById);
 candidatesRouter.post("/", candidatesController.create);
 candidatesRouter.put("/:id", candidatesController.update);
 candidatesRouter.delete("/:id", candidatesController.destroy);

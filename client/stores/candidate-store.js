@@ -11,6 +11,24 @@ var CHANGE_EVENT = 'change_candidate';
 
 var _profile = {};
 
+var _getLoadedProfile = function() {
+    return _profile;
+}
+
+var _loadProfile = function(id) {
+    $.get('/api/candidates/'+id, function(data) {
+        _profile = data;
+        CandidateStore.emitCandidateChange();
+    });
+}
+
+var _loadCurrentProfile = function(id) {
+    $.get('/api/candidates/current', function(data) {
+        _profile = data;
+        CandidateStore.emitCandidateChange();
+    });
+}
+
 
 var CandidateStore = assign(EventEmitter.prototype, {
     emitCandidateChange: function(){
@@ -45,4 +63,4 @@ var CandidateStore = assign(EventEmitter.prototype, {
      })
 });
 
-module.exports = ListingStore;
+module.exports = CandidateStore;
