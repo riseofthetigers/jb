@@ -21,10 +21,10 @@ module.exports = {
   },
 
   "production": {
-    "username": "mjfvucmilnanhg",
-    "password": "nOwA73r5O0GbFPtIP0mX16JEYD",
-    "database": "d3hgqfoask25fo",
-    "host": "ec2-23-21-183-70.compute-1.amazonaws.com",
+    "username": "cdhdbvfqpapsdz",
+    "password": "9rjwwXEMbd6nLvr3gSbsVlWiEn",
+    "database": "d2494roicfq5mg",
+    "host": "ec2-54-235-145-226.compute-1.amazonaws.com",
     "dialect": "postgres",
     "port": "5432"
   },
