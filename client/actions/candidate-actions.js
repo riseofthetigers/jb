@@ -1,24 +1,24 @@
 var CandidateConstants = require('../constants/candidate-constants');
 var AppDispatcher = require('../dispatchers/app-dispatcher');
-var $ = require('jquery');
+var axios = require('axios');
 
 
 var CandidateActions = {
     getProfile: function(id) {
-      $.get('/api/candidates/'+id, function(data) {
+      axios.get('/api/candidates/'+id).then(function(result) {
         AppDispatcher.handleCandidateAction({
             actionType: CandidateConstants.GET_PROFILE,
             id: id,
-            profile: data
+            profile: result.data
         });
       });
     },
 
     getCurrentProfile: function() {
-      $.get('/api/candidates/current', function(data) {
+      axios.get('/api/candidates/current').then(function(result) {
         AppDispatcher.handleCandidateAction({
             actionType: CandidateConstants.GET_CURRENT_PROFILE,
-            profile: data
+            profile: result.data
         });
       });
 
@@ -26,9 +26,11 @@ var CandidateActions = {
 
     saveProfile: function (profile) {
       // Send post to API
-      AppDispatcher.handleCandidateAction({
-          actionType: CandidateConstants.SAVE_PROFILE,
-      });
+      axios.post('/api/candidate/'+id, profile).then(function(result) {
+        AppDispatcher.handleCandidateAction({
+            actionType: CandidateConstants.SAVED_PROFILE,
+        })
+      })
     }
 
 }

@@ -3,7 +3,7 @@ var AppActions = require('../actions/app-actions');
 var ListingConstants = require('../constants/listing-constants');
 var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
-var $ = require('jquery');
+var axios = require('axios');
 var _ = require('lodash');
 
 
@@ -19,7 +19,7 @@ var _cacheListing = [];
 
 
 var _getAllListings = function (cb) {
-    $.get('/api/listings', function(data) {
+    axios.get('/api/listings').then(function(data) {
         _listings = data;
         cb();
     });
@@ -42,7 +42,7 @@ var _getListingById = function (id, cb) {
         cb();
         return;
     }
-    $.get('/api/listings/' + id, function(data) {
+    axios.get('/api/listings/' + id).then(function(data) {
         _currentListing = data;
         _cacheListing.push(data);
         cb();
