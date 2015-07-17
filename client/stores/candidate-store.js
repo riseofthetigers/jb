@@ -1,63 +1,58 @@
 var AppDispatcher = require('../dispatchers/app-dispatcher');
-var CandidateActions = require('../actions/candidate-actions');
-var CandidateConstants = require('../constants/candidate-constants');
+var Actions = require('../constants/app-constants');
+
 var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
-var $ = require('jquery');
-var _ = require('lodash');
 
-
-var CHANGE_EVENT = 'change_candidate';
-
-var _profile = {};
-
-var _getLoadedProfile = function() {
-    return _profile;
-}
-
-var _loadProfile = function(id) {
-    $.get('/api/candidates/'+id, function(data) {
-        _profile = data;
-        CandidateStore.emitCandidateChange();
-    });
-}
-
-var _loadCurrentProfile = function(id) {
-    $.get('/api/candidates/current', function(data) {
-        _profile = data;
-        CandidateStore.emitCandidateChange();
-    });
-}
+var _profile = {
+  name: '',
+  phone_number: '',
+  address: '',
+  skills: '',
+  candidate_picture: '',
+  description: '',
+  headline: '',
+  education: [],
+  experience: [],
+  title: '',
+  birthday: '',
+  email: '',
+  social: [],
+  authorized: '',
+  criminal: '',
+  criminal_descripton: ''
+};
 
 
 var CandidateStore = assign(EventEmitter.prototype, {
-    emitCandidateChange: function(){
-        this.emit(CHANGE_EVENT);
+    emitChange: function(){
+      this.emit('change');
     },
 
-    addCandidateChangeListener: function(callback){
-        this.on(CHANGE_EVENT, callback);
-   },
+    addChangeListener: function(callback){
+      this.on('change', callback);
+    },
 
-   removeCandidateChangeListener: function(callback){
-        this.removeListener(CHANGE_EVENT, callback);
-   },
+    removeChangeListener: function(callback){
+      this.removeListener('change', callback);
+    },
 
-
-   // get: _getLoadedProfile,
+    getProfile: function() {
+      return _profile;
+    },
 
     dispatcherIndex: AppDispatcher.register(function(payload){
         var action = payload.action;
-        switch(action.actionType){
-          case CandidateConstants.GET_PROFILE:
-              _loadProfile(payload.action.id);
+        switch(action.actionType) {
+          case Actions.GET_PROFILE:
+              _profile = action.profile;
+              CandidateStore.emitChange();
               break;
-          case CandidateConstants.GET_CURRENT_PROFILE:
-              _loadCurrentProfile();
+          case Actions.GET_CURRENT_PROFILE:
+              _profile = action.profile;
+              CandidateStore.emitChange();
               break;
-          case CandidateConstants.SAVE_PROFILE:
-              _saveProfile(payload.action.profile);
-              break;
+          // Removed save profile, it doesn't alter the store
         }
         return true;
      })

@@ -1,26 +1,34 @@
 var CandidateConstants = require('../constants/candidate-constants');
 var AppDispatcher = require('../dispatchers/app-dispatcher');
+var $ = require('jquery');
+
 
 var CandidateActions = {
-
     getProfile: function(id) {
+      $.get('/api/candidates/'+id, function(data) {
         AppDispatcher.handleCandidateAction({
             actionType: CandidateConstants.GET_PROFILE,
-            id: id
+            id: id,
+            profile: data
         });
+      });
     },
 
     getCurrentProfile: function() {
+      $.get('/api/candidates/current', function(data) {
         AppDispatcher.handleCandidateAction({
-            actionType: CandidateConstants.GET_CURRENT_PROFILE
+            actionType: CandidateConstants.GET_CURRENT_PROFILE,
+            profile: data
         });
+      });
+
     },
 
     saveProfile: function (profile) {
-        AppDispatcher.handleCandidateAction({
-            actionType: CandidateConstants.SAVE_PROFILE,
-            profile: profile
-        });
+      // Send post to API
+      AppDispatcher.handleCandidateAction({
+          actionType: CandidateConstants.SAVE_PROFILE,
+      });
     }
 
 }
