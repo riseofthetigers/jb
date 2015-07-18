@@ -22,8 +22,15 @@ var AppDispatcher = assign(new Dispatcher() , {
             source: 'CANDIDATE_ACTION',
             action: action
         })
+    },
+
+    // To remove this 'source' but don't break all listeners yet
+    dispatchAction: function(action) {
+        this.dispatch({
+            source: 'ACTION',
+            action: action
+        })
     }
 });
 
 module.exports = AppDispatcher;
-

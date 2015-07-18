@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "env $(cat .env) ./node_modules/.bin/nodemon server.js",
+    "docker": "env $(cat .env) node server.js",
     "webpack": "./node_modules/.bin/webpack -w --devtool source-map",
     "devstart": "NODE_ENV=development ./node_modules/.bin/pm2 start server.js --watch",
     "start": "./node_modules/.bin/pm2 start server.js",

@@ -7,6 +7,7 @@ var AuthActions = require('../actions/auth-actions');
 var AuthStore = require('../stores/auth-store');
 var Navigation = require('react-router').Navigation;
 
+var NotificationsActions = require('../actions/notifications-actions');
 
 // Our custom component is managing whether the Modal is visible
 const LoginModal = React.createClass({
@@ -46,6 +47,10 @@ const LoginModal = React.createClass({
                }
                return self.transitionTo(next);
             } else {
+              console.log("Adding notification")
+              NotificationsActions.addNotification(
+                <p>Incorrect username or password</p>
+              , 'danger')
               self.setState({message:'Incorrect Username or Password'});
             }
         });
