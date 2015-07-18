@@ -2,36 +2,37 @@ var React  = require('react');
 
 var Landing = React.createClass({
   render: function () {
+    var single = "'";
     return (
     <div>
       <div id="slider" className="sl-slider-wrapper">
 
       			<div className="sl-slider">
-      			
+
       				<div className="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
       					<div className="sl-slide-inner">
       						<div className="bg-img bg-img-1"></div>
       						<div className="tint"></div>
       						<div className="slide-content">
       							<h2>Looking for a job?</h2>
-      							<h3>There’s no better place to start</h3>
+      							<h3>There{single}s no better place to start</h3>
       							<p><a href="jobs.html" className="btn btn-lg btn-default">Find a job</a></p>
       						</div>
       					</div>
       				</div>
-      			
+
       				<div className="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
       					<div className="sl-slide-inner">
       						<div className="bg-img bg-img-2"></div>
       						<div className="tint"></div>
       						<div className="slide-content">
       							<h2>Need an employee?</h2>
-      							<h3>We've got perfect candidates</h3>
+      							<h3>We{single}ve got perfect candidates</h3>
       							<p><a href="candidates.html" className="btn btn-lg btn-default">Post a job</a></p>
       						</div>
       					</div>
       				</div>
-      			
+
       				<div className="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
       					<div className="sl-slide-inner">
       						<div className="bg-img bg-img-3"></div>
@@ -43,7 +44,7 @@ var Landing = React.createClass({
       						</div>
       					</div>
       				</div>
-      			
+
       				<div className="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
       					<div className="sl-slide-inner">
       						<div className="bg-img bg-img-4"></div>
@@ -80,7 +81,7 @@ var Landing = React.createClass({
       						<h2>Recent Jobs</h2>
 
       						<div className="jobs">
-      							
+
       							<a href="#">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -93,7 +94,7 @@ var Landing = React.createClass({
       									<span className="sallary"><i className="fa fa-dollar"></i>45,000</span>
       								</div>
       							</a>
-      							
+
       							<a href="#">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -106,7 +107,7 @@ var Landing = React.createClass({
       									<span className="sallary"><i className="fa fa-dollar"></i>85,000</span>
       								</div>
       							</a>
-      							
+
       							<a href="#">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -119,7 +120,7 @@ var Landing = React.createClass({
       									<span className="sallary"><i className="fa fa-dollar"></i>60,000</span>
       								</div>
       							</a>
-      							
+
       							<a href="#">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -132,7 +133,7 @@ var Landing = React.createClass({
       									<span className="sallary"><i className="fa fa-dollar"></i>55,000</span>
       								</div>
       							</a>
-      							
+
       							<a href="#">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -145,7 +146,7 @@ var Landing = React.createClass({
       									<span className="sallary"><i className="fa fa-dollar"></i>75,000</span>
       								</div>
       							</a>
-      							
+
       							<a href="#" className="hidden-job">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -158,7 +159,7 @@ var Landing = React.createClass({
       									<span className="sallary"><i className="fa fa-dollar"></i>45,000</span>
       								</div>
       							</a>
-      							
+
       							<a href="#" className="hidden-job">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -171,7 +172,7 @@ var Landing = React.createClass({
       									<span className="sallary"><i className="fa fa-dollar"></i>85,000</span>
       								</div>
       							</a>
-      							
+
       							<a href="#" className="hidden-job">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -184,7 +185,7 @@ var Landing = React.createClass({
       									<span className="sallary"><i className="fa fa-dollar"></i>60,000</span>
       								</div>
       							</a>
-      							
+
       							<a href="#" className="hidden-job">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -197,7 +198,7 @@ var Landing = React.createClass({
       									<span className="sallary"><i className="fa fa-dollar"></i>55,000</span>
       								</div>
       							</a>
-      							
+
       							<a href="#" className="hidden-job">
       								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
       								<div className="title">
@@ -251,22 +252,22 @@ var Landing = React.createClass({
       					</div>
       				</div>
       				<div className="row" id="counter">
-      					
+
       					<div className="counter">
       						<div className="number">4,329</div>
       						<div className="description">Members</div>
       					</div>
-      				
+
       					<div className="counter">
       						<div className="number">894</div>
       						<div className="description">Jobs</div>
       					</div>
-      				
+
       					<div className="counter">
       						<div className="number">1,482</div>
       						<div className="description">Resumes</div>
       					</div>
-      				
+
       					<div className="counter">
       						<div className="number">83</div>
       						<div className="description">Companies</div>
@@ -296,7 +297,7 @@ var Landing = React.createClass({
       					</div>
       					<div className="col-sm-6">
       						<div className="video-wrapper">
-      							<iframe src="https://player.vimeo.com/video/121698707" allowfullscreen></iframe>
+      							<iframe src="https://player.vimeo.com/video/121698707" allowFullScreen></iframe>
       						</div>
       					</div>
       				</div>
@@ -351,7 +352,7 @@ var Landing = React.createClass({
       								</div>
       								<div className="col-sm-9 col-md-10">
       									<blockquote>
-      										<p>I just can't get enough of Jobletics. I want to get a T-Shirt with Jobletics on it so I can show it off to everyone. This is simply unbelievable!</p>
+      										<p>I just can{single}t get enough of Jobletics. I want to get a T-Shirt with Jobletics on it so I can show it off to everyone. This is simply unbelievable!</p>
       										<footer>
       											Erick Olson
       											<cite title="Key Account Manager in Twitter Inc.">Key Account Manager in Twitter Inc.</cite>
@@ -462,27 +463,27 @@ var Landing = React.createClass({
       						<h1>Happy Clients</h1>
       						<h4>Some of the many companies we’ve helped</h4>
       						<div className="owl-carousel">
-      							
+
       							<div>
       								<a href="company.html"><img src="http://placehold.it/133x69.gif" alt="" /></a>
       							</div>
-      							
+
       							<div>
       								<a href="company.html"><img src="http://placehold.it/133x69.gif" alt="" /></a>
       							</div>
-      							
+
       							<div>
       								<a href="company.html"><img src="http://placehold.it/133x69.gif" alt="" /></a>
       							</div>
-      							
+
       							<div>
       								<a href="company.html"><img src="http://placehold.it/133x69.gif" alt="" /></a>
       							</div>
-      							
+
       							<div>
       								<a href="company.html"><img src="http://placehold.it/133x69.gif" alt="" /></a>
       							</div>
-      							
+
       							<div>
       								<a href="company.html"><img src="http://placehold.it/133x69.gif" alt="" /></a>
       							</div>
@@ -498,4 +499,3 @@ var Landing = React.createClass({
 });
 
 module.exports = Landing;
-

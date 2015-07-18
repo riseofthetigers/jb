@@ -11,7 +11,7 @@ var Footer = React.createClass({
   render: function () {
 
     return (
-    <footer style={{'margin-top': '40px'}}>
+    <footer style={{'marginTop': '40px'}}>
       <div id="credits">
         <div className="container text-center">
           <div className="row">
