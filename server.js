@@ -35,7 +35,7 @@ var db = require("./models");
 db.sequelize
   //You can set `force` to `true` in development mode.
   .sync({
-        //force: true
+        force: true
     })
   //.sync()
   .then(function() {

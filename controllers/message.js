@@ -1,11 +1,11 @@
 /**
- * topics controller
+ * messages controller
  */
 
 var _ = require('lodash')
 
 var models = require('../models');
-var Topic = models.Topic;
+var Message = models.Message;
 
 // Expose the topics controller.
 module.exports = {
@@ -13,12 +13,12 @@ module.exports = {
   // POST /api/topics
   create: function(req, res) {
     var data = _.pick(req.body, 'user_id', 'title');
-    Topic
+    Message
       .build(data)
       .save()
-      .complete(function (err, topic) {
-        if (!err && topic) {
-          res.json(topic);
+      .complete(function (err, message) {
+        if (!err && message) {
+          res.json(message);
           res.status(200);
           return;
         }
@@ -30,20 +30,20 @@ module.exports = {
       });
   },
 
-  // GET /api/topics/:id
+  // GET /api/messages/:id
   get: function(req, res) {
     var id = req.params.id;
-    Topic
+    Message
       .find({
         where: {
           id: id
         },
         // include: [models.Reply]
-      }).then(function (topic) {
-        res.json(topic);
-      }).complete(function (err, topic) {
-        if (!err && topic) {
-          res.json(topic);
+      }).then(function (message) {
+        res.json(message);
+      }).complete(function (err, message) {
+        if (!err && message) {
+          res.json(message);
           res.status(200);
           return;
         }
