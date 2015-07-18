@@ -9,16 +9,12 @@ var _index = 1;
 
 var TIMEOUT = 5*1000; // Default timeout before notification dissapears
 
-var NotificationsStore = assign(EventEmitter.prototype, {
-    emitChange: function(){ this.emit('change'); },
-    addChangeListener: function(callback){ this.on('change', callback); },
-    removeChangeListener: function(callback){ this.removeListener('change', callback); },
-
+var NotificationsStore = assign({}, EventEmitter.prototype, {
     getNotifications: function () {
         return _notifications
     },
 
-    dispatcherIndex: Dispatcher.register(function(payload){
+    dispatcherIndex: Dispatcher.register(function(payload) {
         var action = payload.action;
         switch(action.actionType){
           case Actions.ADD_NOTIFICATION:

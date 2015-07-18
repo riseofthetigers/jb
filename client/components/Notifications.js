@@ -25,7 +25,6 @@ var NotificationsStore = require('../stores/notifications-store')
     var self = this;
     NotificationsStore.on('change', function() {
       var newState = self.loadState()
-      console.log("Newstate:", newState)
       self.setState(newState)
     })
   },

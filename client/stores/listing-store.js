@@ -71,7 +71,7 @@ var _getInitialListing = function() {
     return tempData;
 }
 
-var ListingStore = assign(EventEmitter.prototype, {
+var ListingStore = assign({}, EventEmitter.prototype, {
     emitListingChange: function(){
         this.emit(CHANGE_EVENT);
     },

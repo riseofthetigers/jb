@@ -5,39 +5,29 @@ var AuthActions = require('../actions/auth-actions');
 var AuthStore = require('../stores/auth-store');
 var Navigation = require('react-router').Navigation;
 
-
-function getAuth(cb) {
-     AuthStore.isAuthenticated(cb);
-}
-
 var Navbar = React.createClass({
-  mixins: [Navigation],
+    mixins: [Navigation],
 
-    getInitialState: function(){
-        return {auth:false}
+    loadState: function() {
+      return {
+        auth: AuthStore.isAuthenticated()
+      }
     },
+
+    getInitialState: function() { return this.loadState() },
+    _onChange: function() { this.setState(this.loadState()) },
 
     componentDidMount: function() {
-        this._onChange();
-        AuthStore.addAuthChangeListener(this._onChange);
+        AuthStore.on('change', this._onChange);
     },
-
     componentWillUnount: function() {
-        this._onChange();
-        AuthStore.removeAuthChangeListener(this._onChange);
+        AuthStore.removeListener('change', this._onChange);
     },
 
-    _onChange: function() {
-        var self = this;
-        getAuth( function(data) {
-            self.setState(data);
-        });
-    },
 
     handleLogout: function() {
         AuthActions.logout();
         this.transitionTo('/home');
-
     },
 
   render: function () {
@@ -57,7 +47,7 @@ var Navbar = React.createClass({
               <li><Link to="signup">Sign up</Link></li>
             </ul>
 
-            );
+        );
     }
 
 

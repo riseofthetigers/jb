@@ -1,117 +1,72 @@
-var React = require('react');
-var ReactBootstrap = require('react-bootstrap');
-var Button = ReactBootstrap.Button;
-var Modal = ReactBootstrap.Modal;
-var OverlayMixin = ReactBootstrap.OverlayMixin;
-var AuthActions = require('../actions/auth-actions');
-var AuthStore = require('../stores/auth-store');
-var Navigation = require('react-router').Navigation;
+const React = require('react');
+const AuthActions = require('../actions/auth-actions');
+const AuthStore = require('../stores/auth-store');
+const Navigation = require('react-router').Navigation;
 
-var NotificationsActions = require('../actions/notifications-actions');
+const NotificationsActions = require('../actions/notifications-actions');
+const {Form} = require('./Form.js')
 
 // Our custom component is managing whether the Modal is visible
 const LoginModal = React.createClass({
-  mixins: [OverlayMixin, Navigation],
+  mixins: [Navigation],
 
-  handleToggle: function () {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-    });
-  },
-
-  getInitialState: function() {
+  loadState: function() {
     return {
-      isModalOpen: true,
-      message: ''
+      isLoggedIn: AuthStore.isAuthenticated()
     };
   },
 
+  getInitialState: function() {
+    return this.loadState()
+  },
+
   componentDidMount: function() {
-    AuthStore.addAuthChangeListener(this._onChange);
+    AuthStore.on('change', this._update);
   },
-
   componentWillUnmount: function() {
-    AuthStore.removeAuthChangeListener(this._onChange);
+    AuthStore.removeListener('change', this._update);
   },
 
+  _update : function(){
+      const next = this.props.query.next || '/dashboard';
+      const newState = this.loadState()
 
-    _onChange : function(){
-        var self = this;
+      //this.setState(newState)
+      if(newState.isLoggedIn) {
+        return self.transitionTo(next);
+      } else {
+        NotificationsActions.addNotification(
+          <p>Incorrect username or password</p>
+        , 'danger')
+      }
+  },
 
-        var next = this.props.query.next;
+  fields: function() {
+    return [{
+      name: "Username",
+      prop: "username"
+    }, {
+      name: "Password",
+      prop: "password",
+      type: "password"
+    }]
+  },
 
-        AuthStore.isAuthenticated( function(auth) {
-            if (auth.auth){
-               if(!next){
-                    next = '/dashboard';
-               }
-               return self.transitionTo(next);
-            } else {
-              console.log("Adding notification")
-              NotificationsActions.addNotification(
-                <p>Incorrect username or password</p>
-              , 'danger')
-              self.setState({message:'Incorrect Username or Password'});
-            }
-        });
-
-        // should show message incorrect username password
-    },
-
+  handleLogin: function(fields) {
+    AuthActions.login(fields.username, fields.password);
+  },
 
   render: function () {
+      const fields = this.fields()
+
       return (
+        <div className="container">
           <h2>Login</h2>
+          <a href="/auth/facebook" className="btn btn-facebook"><span className="fa fa-facebook" /> Sign In with Facebook</a>
+          <Form onSubmit={this.handleLogin} fields={fields} go="Login!" />
+        </div>
       );
     },
-
-    // This is called by the `OverlayMixin` when this component
-    // is mounted or updated and the return value is appended to the body.
-  renderOverlay: function() {
-      if (!this.state.isModalOpen) {
-        return <span/>;
-      }
-
-      return (
-        <Modal title='Login' onRequestHide={this.handleToggle}>
-          <div className='modal-body'>
-            <LoginForm message = {this.state.message} />
-          </div>
-        </Modal>
-      );
-    }
-});
-
-
-const LoginForm = React.createClass({
-
-    handleLogin: function() {
-        var username = this.refs.username.getDOMNode().value;
-        var password = this.refs.password.getDOMNode().value;
-        AuthActions.login(username, password);
-    },
-
-    render: function() {
-      return (
-          <div className="jumbotron text-center">
-             <h3>{this.props.message}</h3>
-             <a href="/auth/facebook" className="btn btn-facebook"><span className="fa fa-facebook"></span> Sign In with Facebook</a>
-             <form action="/api/users" method="get">
-              <div>
-              <label for="login-username">Username</label>
-              <input type="email" className="form-control" name="username" ref="username"/><br/>
-              </div>
-              <div>
-              <label for="login-password">Password</label>
-              <input type="password" className="form-control" name="password" ref="password"/>
-              </div>
-              <div className="col-md-12">
-              <input type="button" value="Submit" className="btn btn-primary" onClick={this.handleLogin}/>
-              </div>
-             </form>
-         </div>
-        )
-    }
 });
 
 module.exports = LoginModal
