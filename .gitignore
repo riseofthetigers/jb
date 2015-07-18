@@ -8,3 +8,4 @@ db
 public/js/*.hot-update.js*
 
 public/js/main.js
+public/js/main.js
