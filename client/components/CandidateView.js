@@ -5,8 +5,10 @@ var Modal = ReactBootstrap.Modal;
 var AppActions = require('../actions/app-actions');
 var Navigation = require('react-router').Navigation;
 
-const CandidateViewExperience = React.createClass({
+var CandidateStore = require('../stores/candidate-store')
+var CandidateActions = require('../actions/candidate-actions')
 
+const CandidateViewExperience = React.createClass({
     getInitialState: function() {
         return  {
             from: '',
@@ -50,36 +52,32 @@ const CandidateViewExperience = React.createClass({
 const CandidateView = React.createClass({
   mixins: [Navigation],
 
-  getInitialState: function() {
+  loadStateFromStores: function() {
     return {
-        name: '',
-        phone_number: '',
-        address: '',
-        skills: '',
-        candidate_picture: '',
-        description: '',
-        headline: '',
-        education: [],
-        experience: [],
-        title: '',
-        birthday: '',
-        email: '',
-        social: [],
-        authorized: '',
-        criminal: '',
-        criminal_descripton: ''
+      profile: CandidateStore.getProfile()
+    }
+  },
 
-    };
+  getInitialState: function() {
+    return this.loadStateFromStores()
+  },
+
+  componentDidMount: function() {
+    CandidateStore.on('change', function() {
+      this.setState(this.loadStateFromStores())
+    }.bind(this));
+
+    CandidateActions.getCurrentProfile()
   },
 
   handleClick: function () {
   },
 
   render: function () {
-      var skills = [];
-      if(this.state.skills){
-          skills = this.state.skills.split("\n");
-      }
+    var skills = [];
+    if(this.state.skills){
+        skills = this.state.skills.split("\n");
+    }
     return (
         <div>
             <div className="container">

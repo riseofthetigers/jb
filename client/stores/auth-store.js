@@ -4,6 +4,7 @@ var AuthConstants = require('../constants/auth-constants');
 var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
 
+var axios = require('axios')
 
 var CHANGE_EVENT = 'change_auth';
 
@@ -20,7 +21,7 @@ function _getSignedUp() {
 function _isAuthenticated (cb){
     // must check on server if it is authenticated
 
-    $.get('/api/auth', function(data){
+    axios.get('/api/auth').then(function(data){
         var auth= data.auth;
         if( auth != _auth){
             //AuthStore.emitAuthChange();
@@ -34,10 +35,10 @@ function _isAuthenticated (cb){
 function _login(username,password, cb){
     console.log('I should login with ', username, password);
     // do the login on server
-    $.post('/api/login', {
+    axios.post('/api/login', {
         email: username,
         password: password
-    }, function(data){
+    }).then(function(data){
         _auth = data.auth;
         _user = {
             type: data.type,
@@ -52,14 +53,14 @@ function _login(username,password, cb){
 function _signup(type, username, password, firstname, lastname, email){
     console.log('I should signup with ', username, password);
     // do the login on server
-    $.post('/api/signup', {
+    axios.post('/api/signup', {
         type      : type,
         username  : username,
         password  : password,
         firstname : firstname,
         lastname  : lastname,
         email     : email
-    }, function(data){
+    }).then(function(data){
         _auth = data.auth;
         _user = {
             type: data.type,
@@ -78,7 +79,7 @@ function _loginWithFacebook() {
 function _logout() {
     console.log('logging out');
 
-    $.get('/api/logout', function(req){
+    axios.get('/api/logout').then(function(req){
         _auth = false;
         _user = null;
         AuthStore.emitAuthChange();
