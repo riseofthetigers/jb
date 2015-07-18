@@ -8,8 +8,8 @@ var candidatesController = require('../controllers/candidates')
 var employersController = require('../controllers/employers')
 var listingsController = require('../controllers/listings')
 var usersController = require('../controllers/users')
-var repliesController = require('../controllers/replies')
-var topicsController = require('../controllers/topics')
+//var repliesController = require('../controllers/replies')
+//var topicsController = require('../controllers/topics')
 
 // Register business routes.
 var businessRouter = Router();
@@ -52,18 +52,18 @@ usersRouter.put("/:id", usersController.update);
 usersRouter.delete("/:id", usersController.destroy);
 
 // Register replies routes.
-var repliesRouter = Router();
-repliesRouter.get("/", repliesController.get);
-repliesRouter.post("/", repliesController.create);
-repliesRouter.put("/:id", repliesController.update);
-repliesRouter.delete("/:id", repliesController.destroy);
-
-// Register topics routes.
-var topicsRouter = Router();
-topicsRouter.get("/:id", topicsController.get);
-topicsRouter.post("/", topicsController.create);
-topicsRouter.put("/:id", topicsController.update);
-topicsRouter.delete("/:id", topicsController.destroy);
+// var repliesRouter = Router();
+// repliesRouter.get("/", repliesController.get);
+// repliesRouter.post("/", repliesController.create);
+// repliesRouter.put("/:id", repliesController.update);
+// repliesRouter.delete("/:id", repliesController.destroy);
+//
+// // Register topics routes.
+// var topicsRouter = Router();
+// topicsRouter.get("/:id", topicsController.get);
+// topicsRouter.post("/", topicsController.create);
+// topicsRouter.put("/:id", topicsController.update);
+// topicsRouter.delete("/:id", topicsController.destroy);
 
 // Create API router.
 var apiRouter = Router();
@@ -73,8 +73,8 @@ apiRouter.use("/employers", employersRouter);
 apiRouter.use("/listings", listingsRouter);
 apiRouter.use('/candidates', candidatesRouter);
 apiRouter.use("/business", businessRouter);
-apiRouter.use("/replies", repliesRouter);
-apiRouter.use("/topics", topicsRouter);
+//apiRouter.use("/replies", repliesRouter);
+//apiRouter.use("/topics", topicsRouter);
 
 // Expose the API routes.
 module.exports = apiRouter;
