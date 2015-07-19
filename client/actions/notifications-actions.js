@@ -3,11 +3,13 @@ var AppDispatcher = require('../dispatchers/app-dispatcher');
 
 var NotificationActions = {
     addNotification: function(message, type) {
-        AppDispatcher.dispatchAction({
+        setTimeout(function() {
+          AppDispatcher.dispatchAction({
             actionType: Actions.ADD_NOTIFICATION,
             message: message,
             type: type || 'success'
-        });
+          });
+        }, 1)
     },
 
     dismissNotification: function(index) {

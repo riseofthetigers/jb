@@ -24,7 +24,7 @@ var _profile = {
 };
 
 
-var CandidateStore = assign(EventEmitter.prototype, {
+var CandidateStore = assign({}, EventEmitter.prototype, {
     emitChange: function(){
       this.emit('change');
     },

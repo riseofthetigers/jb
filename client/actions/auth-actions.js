@@ -1,38 +1,60 @@
-var AuthConstants = require('../constants/auth-constants');
-var AppDispatcher = require('../dispatchers/app-dispatcher');
+const Actions = require('../constants/app-constants');
+const AppDispatcher = require('../dispatchers/app-dispatcher');
+const axios = require('axios')
 
-var AuthActions = {
+const AuthActions = {
 
     login: function(username, password) {
-        AppDispatcher.handleAuthAction({
-            actionType: AuthConstants.LOGIN,
-            username: username,
-            password: password
-        });
+      axios.post('/api/login', {
+          email: username,
+          password: password
+      }).then(function({data}) {
+          if(!data.auth) {
+            // TODO: Separate action for bad login?
+          }
+          AppDispatcher.handleAuthAction({
+              actionType: Actions.LOGIN,
+              auth: data.auth,
+              type: data.type,
+              name: data.displayName
+          });
+      });
     },
 
     loginWithFacebook: function() {
         AppDispatcher.handleAuthAction({
-            actionType: AuthConstants.LOGIN_FACEBOOK
+            actionType: Actions.LOGIN_FACEBOOK
         });
     },
 
 
     logout: function() {
-        AppDispatcher.handleAuthAction({
-            actionType: AuthConstants.LOGOUT
+        axios.get('/api/logout').then(function(req){
+            AppDispatcher.handleAuthAction({
+                actionType: Actions.LOGOUT
+            });
         });
     },
 
     signup: function(type, username, password, firstname, lastname, email) {
-        AppDispatcher.handleAuthAction({
-            actionType: AuthConstants.SIGNUP,
-            type: type,
-            username: username,
-            password: password,
-            firstname: firstname,
-            lastname: lastname,
-            email: email
+        console.log('I should signup with ', username, password);
+        // do the login on server
+        axios.post('/api/signup', {
+            type      : type,
+            username  : username,
+            password  : password,
+            firstname : firstname,
+            lastname  : lastname,
+            email     : email
+        }).then(function({data}) {
+            console.log('SIGNUP RESPONSE:', data)
+            // Don't see why this should trigger another event than LOGIN
+            AppDispatcher.handleAuthAction({
+                actionType: Actions.LOGIN,
+                auth: data.auth,
+                type: data.type,
+                name: data.displayName
+            });
         });
     }
 
