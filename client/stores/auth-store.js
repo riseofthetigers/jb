@@ -18,6 +18,9 @@ var AuthStore = assign({}, EventEmitter.prototype, {
          return _user
     },
 
+    getSignedInUser: function() {
+      return this.getUser()
+    }
 
     dispatcherIndex: Dispatcher.register(function(payload){
         var action = payload.action;
