@@ -1,7 +1,8 @@
-var Actions = require('../constants/app-constants');
-var AppDispatcher = require('../dispatchers/app-dispatcher');
+const Actions = require('../constants/app-constants');
+const AppDispatcher = require('../dispatchers/app-dispatcher');
+const axios = require('axios')
 
-var MessageActions = {
+const MessageActions = {
 
     getAllMessages: function() {
         AppDispatcher.dispatchAction({
@@ -16,12 +17,29 @@ var MessageActions = {
         });
     },
 
-    createMessage: function(user, data) {
+    createMessage: function(user_id, from, to, subject, body) {
+        //create message on server
+        axios.post('/api/message', {
+            user_id   : user_id,
+            from      : from,
+            to        : to,
+            subject   : subject,
+            body      : body
+        }).then(function({data}) {
         AppDispatcher.dispatchAction({
             actionType : Actions.MESSAGE_CREATE,
-            user       : user,
-            data       : data
+            id       : data.id,
+            from     : data.from,
+            to       : data.to,
+            subject  : data.subject,
+            body     : data.body,
+            subject  : data
         });
+    }).catch(function(err){
+        AppDispatcher.dispatchAction({
+            actionType: Actions.MESSAGE_ERROR,
+        });
+    })
     }
 
 }
