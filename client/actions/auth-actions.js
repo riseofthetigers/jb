@@ -9,7 +9,6 @@ const AuthActions = {
           email: email,
           password: password
       }).then(function({data}) {
-          console.log(data)
           if(!data.auth) {
             // TODO: Separate action for bad login?
           }
@@ -20,7 +19,6 @@ const AuthActions = {
               name: data.displayName
           });
       }).catch(function(err) {
-        console.log(err);
         AppDispatcher.handleAuthAction({
             actionType: Actions.AUTH_ERROR,
         });
