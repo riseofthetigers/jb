@@ -43,8 +43,9 @@ const LoginModal = React.createClass({
 
   fields: function() {
     return [{
-      name: "Username",
-      prop: "username"
+      name: "Email",
+      prop: "email",
+      type: "email"
     }, {
       name: "Password",
       prop: "password",
@@ -53,7 +54,7 @@ const LoginModal = React.createClass({
   },
 
   handleLogin: function(fields) {
-    AuthActions.login(fields.username, fields.password);
+    AuthActions.login(fields.email, fields.password);
   },
 
   render: function () {

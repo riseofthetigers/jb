@@ -12,6 +12,7 @@ module.exports = keyMirror({
   LOGIN          : null,
   LOGOUT         : null,
   LOGIN_FACEBOOK : null,
+  AUTH_ERROR     : null,
 
   GET_PROFILE  : null,
   GET_CURRENT_PROFILE	: null,

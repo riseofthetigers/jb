@@ -4,9 +4,9 @@ const axios = require('axios')
 
 const AuthActions = {
 
-    login: function(username, password) {
-      axios.post('/api/login', {
-          email: username,
+    login: function(email, password) {
+      axios.post('/api/login', { // For PassportJS I need username/password
+          username: email,
           password: password
       }).then(function({data}) {
           if(!data.auth) {
@@ -18,7 +18,12 @@ const AuthActions = {
               type: data.type,
               name: data.displayName
           });
-      });
+      }).catch(function(err) {
+        console.log(err);
+        AppDispatcher.handleAuthAction({
+            actionType: Actions.AUTH_ERROR,
+        });
+      })
     },
 
     loginWithFacebook: function() {
@@ -36,12 +41,11 @@ const AuthActions = {
         });
     },
 
-    signup: function(type, username, password, firstname, lastname, email) {
-        console.log('I should signup with ', username, password);
-        // do the login on server
+    signup: function(type, email, password, firstname, lastname) {
+        // do the signup on server
         axios.post('/api/signup', {
             type      : type,
-            username  : username,
+            username  : email, // Just send it as username, for sure
             password  : password,
             firstname : firstname,
             lastname  : lastname,
@@ -55,7 +59,12 @@ const AuthActions = {
                 type: data.type,
                 name: data.displayName
             });
-        });
+        }).catch(function(err) {
+          console.log(err);
+          AppDispatcher.handleAuthAction({
+              actionType: Actions.AUTH_ERROR,
+          });
+        })
     }
 
 }
