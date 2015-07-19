@@ -1,5 +1,7 @@
 'use strict';
 
+var Promise = require('bluebird')
+
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     username: {
@@ -44,9 +46,13 @@ module.exports = function(sequelize, DataTypes) {
         User.hasMany(models.Message);
         User.hasMany(models.Notification);
       }
+    }, instanceMethods: {
+      verifyPassword: function(password) {
+        // This may later be async
+        return Promise.resolve(password === this.password)
+      }
     }
   });
 
   return User;
 };
-

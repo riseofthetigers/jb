@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "90781df41985a48bd42a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1cda8d77c9d3793f1d0f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -49483,12 +49483,13 @@
 	var AuthActions = {
 
 	    login: function login(email, password) {
-	        axios.post("/api/login", { // For PassportJS I need username/password
-	            username: email,
+	        axios.post("/api/login", {
+	            email: email,
 	            password: password
 	        }).then(function (_ref) {
 	            var data = _ref.data;
 
+	            console.log(data);
 	            if (!data.auth) {}
 	            AppDispatcher.handleAuthAction({
 	                actionType: Actions.LOGIN,
@@ -49529,7 +49530,6 @@
 	        }).then(function (_ref) {
 	            var data = _ref.data;
 
-	            console.log("SIGNUP RESPONSE:", data);
 	            // Don't see why this should trigger another event than LOGIN
 	            AppDispatcher.handleAuthAction({
 	                actionType: Actions.LOGIN,
@@ -49538,7 +49538,6 @@
 	                name: data.displayName
 	            });
 	        })["catch"](function (err) {
-	            console.log(err);
 	            AppDispatcher.handleAuthAction({
 	                actionType: Actions.AUTH_ERROR });
 	        });
@@ -49599,6 +49598,7 @@
 	            case Actions.LOGIN_FACEBOOK:
 	                // Set _auth and _user ?
 	                break;
+	            case Actions.AUTH_ERROR:
 	            case Actions.LOGOUT:
 	                _auth = false;
 	                _user = null;
@@ -52127,7 +52127,7 @@
 
 	    //this.setState(newState)
 	    if (newState.isLoggedIn) {
-	      return self.transitionTo(next);
+	      return this.transitionTo(next);
 	    } else {
 	      NotificationsActions.addNotification(React.createElement("p", null, "Incorrect username or password"), "danger");
 	    }
@@ -57289,8 +57289,7 @@
 
 	    //this.setState(newState)
 	    if (newState.isLoggedIn) {
-	      console.log("Moving to", next);
-	      return self.transitionTo(next);
+	      return this.transitionTo(next);
 	    } else {
 	      NotificationsActions.addNotification(React.createElement("p", null, "Something went wrong with signing up"), "danger");
 	    }
@@ -57358,7 +57357,6 @@
 	    mixins: [Navigation],
 
 	    componentDidMount: function componentDidMount() {
-	        console.log("Getting to dashboard");
 	        var user = AuthStore.getSignedInUser();
 	        if (!user) {
 	            this.transitionTo("/login?next=/dashboard");

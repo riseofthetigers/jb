@@ -35,7 +35,6 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'messages',
     classMethods: {
       associate: function(models) {
-        console.log(models)
         Message.belongsTo(models.User);
         Message.hasMany(models.Notification);
       }

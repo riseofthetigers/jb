@@ -10,7 +10,6 @@ var Dashboard = React.createClass({
   mixins: [Navigation],
 
   componentDidMount() {
-    console.log("Getting to dashboard")
     var user = AuthStore.getSignedInUser();
     if(!user){
         this.transitionTo('/login?next=/dashboard');

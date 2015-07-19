@@ -33,7 +33,7 @@ const LoginModal = React.createClass({
 
       //this.setState(newState)
       if(newState.isLoggedIn) {
-        return self.transitionTo(next);
+        return this.transitionTo(next);
       } else {
         NotificationsActions.addNotification(
           <p>Incorrect username or password</p>
