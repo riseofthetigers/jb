@@ -20,7 +20,7 @@ var AuthStore = assign({}, EventEmitter.prototype, {
 
     getSignedInUser: function() {
       return this.getUser()
-    }
+    },
 
     dispatcherIndex: Dispatcher.register(function(payload){
         var action = payload.action;
