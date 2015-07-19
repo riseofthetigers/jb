@@ -24,6 +24,6 @@ module.exports = keyMirror({
 
   //Messages
   GET_ALL_MESSAGES: null,
-  GET_MESSAGE,
-  MESSAGE_CREATE
+  GET_MESSAGE: null,
+  MESSAGE_CREATE: null,
 });
