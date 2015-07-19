@@ -5,10 +5,11 @@ const axios = require('axios')
 const AuthActions = {
 
     login: function(email, password) {
-      axios.post('/api/login', { // For PassportJS I need username/password
-          username: email,
+      axios.post('/api/login', {
+          email: email,
           password: password
       }).then(function({data}) {
+          console.log(data)
           if(!data.auth) {
             // TODO: Separate action for bad login?
           }
@@ -51,7 +52,6 @@ const AuthActions = {
             lastname  : lastname,
             email     : email
         }).then(function({data}) {
-            console.log('SIGNUP RESPONSE:', data)
             // Don't see why this should trigger another event than LOGIN
             AppDispatcher.handleAuthAction({
                 actionType: Actions.LOGIN,
@@ -60,7 +60,6 @@ const AuthActions = {
                 name: data.displayName
             });
         }).catch(function(err) {
-          console.log(err);
           AppDispatcher.handleAuthAction({
               actionType: Actions.AUTH_ERROR,
           });

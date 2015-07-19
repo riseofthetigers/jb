@@ -34,8 +34,7 @@ const SignupModal = React.createClass({
 
       //this.setState(newState)
       if(newState.isLoggedIn) {
-        console.log("Moving to", next)
-        return self.transitionTo(next);
+        return this.transitionTo(next);
       } else {
         NotificationsActions.addNotification(
           <p>Something went wrong with signing up</p>

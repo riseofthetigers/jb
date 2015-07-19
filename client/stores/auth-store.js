@@ -36,6 +36,7 @@ var AuthStore = assign({}, EventEmitter.prototype, {
             case Actions.LOGIN_FACEBOOK:
                 // Set _auth and _user ?
                 break;
+            case Actions.AUTH_ERROR:
             case Actions.LOGOUT:
                 _auth = false
                 _user = null
