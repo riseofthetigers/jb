@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b798b9e2854f985c0c13"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "90781df41985a48bd42a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25296,7 +25296,13 @@
 
 	  // Notifications
 	  DISMISS_NOTIFICATION: null,
-	  ADD_NOTIFICATION: null });
+	  ADD_NOTIFICATION: null,
+
+	  //Messages
+	  GET_ALL_MESSAGES: null,
+	  GET_MESSAGE: GET_MESSAGE,
+	  MESSAGE_CREATE: MESSAGE_CREATE
+	});
 
 	/* REACT HOT LOADER */ }).call(this); if (true) { (function () { module.hot.dispose(function (data) { data.makeHot = module.makeHot; }); if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(216), foundReactClasses = false; if (makeExportsHot(module, __webpack_require__(59))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "app-constants.js" + ": " + err.message); } }); } } })(); }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))

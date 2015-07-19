@@ -21,4 +21,9 @@ module.exports = keyMirror({
   // Notifications
   DISMISS_NOTIFICATION: null,
   ADD_NOTIFICATION: null,
+
+  //Messages
+  GET_ALL_MESSAGES: null,
+  GET_MESSAGE,
+  MESSAGE_CREATE
 });
