@@ -7,12 +7,12 @@ var _ = require('lodash')
 var models = require('../models');
 var Message = models.Message;
 
-// Expose the topics controller.
+// Expose the message controller.
 module.exports = {
 
-  // POST /api/topics
+  // POST /api/message
   create: function(req, res) {
-    var data = _.pick(req.body, 'user_id', 'title');
+    var data = _.pick(req.body, 'user_id', 'from', 'to', 'subject', 'body');
     Message
       .build(data)
       .save()
@@ -55,7 +55,8 @@ module.exports = {
       });
   },
 
-  update: function(req, res) {
+  reply: function(req, res) {
+    
   },
 
   destroy: function(req, res) {
