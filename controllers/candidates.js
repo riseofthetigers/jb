@@ -11,31 +11,40 @@ var Candidate = models.Candidate;
 module.exports = {
 
   create: function(req, res) {
-    console.log(req.body);
+    if(!req.user || req.user.type != 'C'){
+        return res.json({error: true, message:'Access denied'});
+    }
     var createCandidate = {
       name: req.body.name,
       phone_number: req.body.phone_number,
       address: req.body.address,
-      state: req.body.state,
+      state: '',
       skills: req.body.skills,
       candidate_picture: req.body.candidate_picture,
       user_id: req.body.user_id,
       description         :req.body.description         ,
       headline            :req.body.headline            ,
-      education           :req.body.education           ,
-      experience          :req.body.experience          ,
+      education           :JSON.stringify(req.body.education)           ,
+      experience          :JSON.stringify(req.body.experience)          ,
       title               :req.body.title               ,
       birthday            :req.body.birthday            ,
       email               :req.body.email               ,
-      social              :req.body.social              ,
+      social              :JSON.stringify(req.body.social)              ,
       authorized          :req.body.authorized          ,
       criminal            :req.body.criminal            ,
-      criminal_descripton :req.body.criminal_descripton
+      criminal_description :req.body.criminal_descripton
     }
 
-    Candidate.create(createCandidate).success(function(err) {
-      res.send(200);
-      res.json(req.dataValues);
+    Candidate.findOrCreate({where: {id:req.user.id}, defaults:createCandidate}).spread(function(user, created) {
+        if(created){
+            return res.json(createCandidate);
+        }
+
+        user.updateAttributes(createCandidate).then( function (){
+              res.send(200);
+              res.json(createCandidate);
+        });
+
     });
   },
 
