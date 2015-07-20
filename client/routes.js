@@ -19,8 +19,9 @@ const CandidateProfileEdit = require('./components/CandidateProfileEdit')
 const ContactUs = require('./components/ContactUs');
 const About = require('./components/About');
 
+const Dispatcher = require('./dispatchers/app-dispatcher')
 const AuthStore = require('./stores/auth-store')
-
+const AuthenticationActions = require('./actions/auth-actions')
 
 const NeedLogin = React.createClass({
   mixins: [Navigation, State],
@@ -40,12 +41,12 @@ const NeedLogin = React.createClass({
   },
   componentWillUnmount() { AuthStore.removeListener('change', this.update) },
   componentDidMount() {
+    Dispatcher.callAction(AuthenticationActions.verifyLogin)
     AuthStore.on('change', this.update)
     this.componentWillUpdate(this.props, this.state)
   },
 
   render: function() {
-    console.log("Rendering fine...")
     return <RouteHandler />
   }
 })

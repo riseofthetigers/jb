@@ -3,7 +3,7 @@ const AuthActions = require('../actions/auth-actions');
 const AuthStore = require('../stores/auth-store');
 const Navigation = require('react-router').Navigation;
 
-const NotificationsActions = require('../actions/notifications-actions');
+const NotificationsActions = require('../actions/notifications-actions')
 const {Form} = require('./Form.js')
 
 // Our custom component is managing whether the Modal is visible

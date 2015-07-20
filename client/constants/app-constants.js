@@ -7,8 +7,7 @@ module.exports = keyMirror({
   LISTING_EDIT    : null,
   LISTING_DELETE  : null,
 
-  LOGGEDIN       : null,
-  LOGGEDOUT      : null,
+  VERIFYLOGIN    : null,
   LOGIN          : null,
   LOGOUT         : null,
   LOGIN_FACEBOOK : null,

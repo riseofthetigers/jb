@@ -4,20 +4,28 @@ const axios = require('axios')
 
 const AuthActions = {
 
+    // New kind of actions (call with Dispatcher.callAction)
+    verifyLogin() {
+      return axios.get('/api/auth').then(result => ({
+        actionType: Actions.VERIFYLOGIN,
+        type: result.data.type,
+        name: result.data.displayName
+      })).catch(err => ({
+        actionType: Actions.AUTH_ERROR,
+        error: err
+      }))
+    },
+
     login: function(email, password) {
       axios.post('/api/login', {
-          email: email,
-          password: password
+        email: email,
+        password: password
       }).then(function({data}) {
-          if(!data.auth) {
-            // TODO: Separate action for bad login?
-          }
-          AppDispatcher.handleAuthAction({
-              actionType: Actions.LOGIN,
-              auth: data.auth,
-              type: data.type,
-              name: data.displayName
-          });
+        AppDispatcher.handleAuthAction({
+            actionType: Actions.LOGIN,
+            type: data.type,
+            name: data.displayName
+        });
       }).catch(function(err) {
         AppDispatcher.handleAuthAction({
             actionType: Actions.AUTH_ERROR,

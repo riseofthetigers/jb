@@ -26,9 +26,9 @@ var AppDispatcher = assign(new Dispatcher() , {
     callAction(fn) {
         Promise.cast(fn()).then(actions => {
           if(!Array.isArray(actions)) actions = [actions]
-          actions.forEach(action => this.dispatchActions(action))
+          actions.forEach(action => this.dispatchAction(action))
         }).catch(err => {
-          console.log("Error in action creator:", err)
+          console.error("Error in action creator:", err)
           // Dispatch error action?
         })
     }
