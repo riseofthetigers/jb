@@ -27,7 +27,6 @@ var Navbar = React.createClass({
 
     handleLogout: function() {
         AuthActions.logout();
-        this.transitionTo('/home');
     },
 
   render: function () {

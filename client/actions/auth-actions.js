@@ -37,7 +37,7 @@ const AuthActions = {
             AppDispatcher.handleAuthAction({
                 actionType: Actions.LOGOUT
             });
-        });
+        })
     },
 
     signup: function(type, email, password, firstname, lastname) {

@@ -1,17 +1,22 @@
-var Dispatcher = require('../dispatchers/app-dispatcher');
-var AuthActions = require('../actions/auth-actions');
-var Actions = require('../constants/app-constants');
-var assign = require('react/lib/Object.assign');
-var EventEmitter = require('events').EventEmitter;
+const Dispatcher = require('../dispatchers/app-dispatcher');
+const AuthActions = require('../actions/auth-actions');
+const Actions = require('../constants/app-constants');
+const assign = require('react/lib/Object.assign');
+const EventEmitter = require('events').EventEmitter;
 
-var CHANGE_EVENT = 'change_auth';
+var _user = JSON.parse(localStorage.getItem('_user') || "null");
+const _setUser = function(user) {
+  _user = user || null
+  if(_user !== null)
+    localStorage.setItem('_user', JSON.stringify(_user))
+  else
+    localStorage.removeItem('_user')
+  AuthStore.emit('change')
+}
 
-var _auth = false;
-var _user = null;
-
-var AuthStore = assign({}, EventEmitter.prototype, {
+const AuthStore = assign({}, EventEmitter.prototype, {
     isAuthenticated: function () {
-        return _auth
+        return _user !== null
     },
 
     getUser: function() {
@@ -23,24 +28,20 @@ var AuthStore = assign({}, EventEmitter.prototype, {
     },
 
     dispatcherIndex: Dispatcher.register(function(payload){
-        var action = payload.action;
+        const action = payload.action;
         switch(action.actionType){
             case Actions.LOGIN:
-                _auth = action.auth;
-                _user = {
+                _setUser({
                     type: action.type,
                     name: action.displayName
-                };
-                AuthStore.emit('change')
+                })
                 break;
             case Actions.LOGIN_FACEBOOK:
                 // Set _auth and _user ?
                 break;
             case Actions.AUTH_ERROR:
             case Actions.LOGOUT:
-                _auth = false
-                _user = null
-                AuthStore.emit('change')
+                _setUser(null)
                 break;
         }
 

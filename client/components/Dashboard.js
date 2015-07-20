@@ -9,15 +9,6 @@ var Navigation = require('react-router').Navigation;
 var Dashboard = React.createClass({
   mixins: [Navigation],
 
-  componentDidMount() {
-    var user = AuthStore.getSignedInUser();
-    if(!user){
-        this.transitionTo('/login?next=/dashboard');
-        return;
-    }
-
-  },
-
   render: function () {
 
     var type = "E";

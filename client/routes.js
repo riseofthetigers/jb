@@ -1,26 +1,53 @@
 // React
-var React = require("react");
-var Router = require("react-router");
-var Route = Router.Route;
-var NotFoundRoute = Router.NotFoundRoute;
-var DefaultRoute = Router.DefaultRoute;
+const React = require("react");
+const {RouteHandler, DefaultRoute, NotFoundRoute, Route, Navigation, State}  = require("react-router");
 
-var App = require('./components/App.js');
-var CreateListing = require('./components/CreateListing.js');
-var Home = require('./components/Home.js');
-var Landing = require('./components/Landing.js');
-var Login = require('./components/Login.js');
-var Search = require('./components/Search');
-var Signup = require('./components/Signup');
+const App = require('./components/App.js');
+const CreateListing = require('./components/CreateListing.js');
+const Home = require('./components/Home.js');
+const Landing = require('./components/Landing.js');
+const Login = require('./components/Login.js');
+const Search = require('./components/Search');
+const Signup = require('./components/Signup');
 
-var Dashboard = require('./components/Dashboard');
-var JobsListing = require('./components/JobsListing');
-var ListingDetail = require('./components/ListingDetail')
-var CandidateView = require('./components/CandidateView')
-var CandidateProfileEdit = require('./components/CandidateProfileEdit')
+const Dashboard = require('./components/Dashboard');
+const JobsListing = require('./components/JobsListing');
+const ListingDetail = require('./components/ListingDetail')
+const CandidateView = require('./components/CandidateView')
+const CandidateProfileEdit = require('./components/CandidateProfileEdit')
 
-var ContactUs = require('./components/ContactUs');
-var About = require('./components/About');
+const ContactUs = require('./components/ContactUs');
+const About = require('./components/About');
+
+const AuthStore = require('./stores/auth-store')
+
+
+const NeedLogin = React.createClass({
+  mixins: [Navigation, State],
+
+  loadState() {
+    return {
+      isLoggedIn: AuthStore.isAuthenticated(),
+      currentRoute: this.getPathname() // Or .getPath, not sure yet
+    }
+  },
+
+  getInitialState() { return this.loadState() },
+  update() { this.setState(this.loadState()) },
+  componentWillUpdate(nextProps, nextState) {
+    if(!nextState.isLoggedIn)
+      this.transitionTo('/login?next='+nextState.currentRoute)
+  },
+  componentWillUnmount() { AuthStore.removeListener('change', this.update) },
+  componentDidMount() {
+    AuthStore.on('change', this.update)
+    this.componentWillUpdate(this.props, this.state)
+  },
+
+  render: function() {
+    return <RouteHandler />
+  }
+})
 
 var routes = (
   <Route path="/" handler={App}>
@@ -31,15 +58,17 @@ var routes = (
     <Route name="search" path='/search' handler={Search} />
     <Route name="search_page" path="/search/:page" handler={Search} />
     <Route name="signup" path='/signup' handler={Signup}/>
-
-    <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
-    <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
-    <Route name="profile_view" path="/profile/view" handler={CandidateView} />
-    <Route name="profile_edit" path="/profile/edit" handler={CandidateProfileEdit} />
+
     <Route name="contactus" path="/contactus" handler={ContactUs} />
     <Route name="about" path="/about" handler={About} />
 
+    <Route name="needslogin" path="/" handler={NeedLogin}>
+      <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
+      <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
+      <Route name="profile_view" path="/profile/view" handler={CandidateView} />
+      <Route name="profile_edit" path="/profile/edit" handler={CandidateProfileEdit} />
+    </Route>
   </Route>
 
 );

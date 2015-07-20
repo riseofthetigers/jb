@@ -1,19 +1,21 @@
-var React  = require('react');
-var Navbar = require('./Navbar');
-var Footer = require('./Footer');
-var Router = require('react-router');
+const React  = require('react');
+const Notifications = require('./Notifications');
+const Navbar = require('./Navbar');
+const Footer = require('./Footer');
+const {RouteHandler} = require('react-router');
 
-var Notifications = require('./Notifications');
-
-var RouteHandler = Router.RouteHandler;
 
 var App = React.createClass({
+  onError: function(err) {
+    console.log("An error ocurred...", err)
+  },
+
   render: function () {
     return (
       <div className="app-wrapper">
         <Notifications />
         <Navbar />
-        		<RouteHandler />
+        <RouteHandler />
         <Footer />
       </div>
     );

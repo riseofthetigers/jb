@@ -1,9 +1,6 @@
-var React  = require('react');
-var Router = require('react-router');
-var Link = Router.Link;
-var RouteHandler = Router.RouteHandler;
-
-var routes = require('./routes.js');
+const React = require('react')
+const Router = require('react-router');
+const routes = require('./routes.js');
 
 /*
 Router.run(routes, function (Handler) {

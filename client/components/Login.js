@@ -19,21 +19,23 @@ const LoginModal = React.createClass({
   getInitialState: function() {
     return this.loadState()
   },
-
   componentDidMount: function() {
     AuthStore.on('change', this._update);
+    this._update(true)
   },
   componentWillUnmount: function() {
     AuthStore.removeListener('change', this._update);
   },
 
-  _update : function(){
+  _update : function(initial){
       const next = this.props.query.next || '/dashboard';
       const newState = this.loadState()
 
-      //this.setState(newState)
+      if(!initial) this.setState(newState)
+
       if(newState.isLoggedIn) {
-        return this.transitionTo(next);
+        if(initial) NotificationsActions.addNotification(<p>You are already logged in!</p>)
+        this.transitionTo(next);
       } else {
         NotificationsActions.addNotification(
           <p>Incorrect username or password</p>
