@@ -52,7 +52,7 @@ var CreateListing = React.createClass({
             //val = node.innerHTML;
         //}
         //data[key] = val;
-    });
+    //});
    _.extend(data, this.state);
    ListingActions.createListing(user, data);
    this.transitionTo('/listing/detail/temp');

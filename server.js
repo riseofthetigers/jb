@@ -34,8 +34,9 @@ var db = require("./models");
 
 db.sequelize
   //You can set `force` to `true` in development mode.
-  .sync()
-  //.sync()
+  .sync({
+        //force: true
+    })
   .then(function() {
     console.log('Express server listening on port 5000');
     app.listen(process.env.PORT || 5000);
