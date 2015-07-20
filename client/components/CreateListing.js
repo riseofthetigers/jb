@@ -17,7 +17,6 @@ var CreateListing = React.createClass({
 
         job_category: '',
         job_description: 'Job description...',
-        job_email: '',
         job_region: '',
         job_location: '',
         job_title: '',
@@ -100,10 +99,6 @@ var CreateListing = React.createClass({
                         <div className="form-group" id="company-logo-group">
                             <label htmlFor="company-logo">Business Pictures</label>
                             <input type="file" valueLink={this.linkState('company_logo')}/>
-                        </div>
-                        <div className="form-group" id="job-email-group">
-                            <label htmlFor="job-email">Email</label>
-                            <input type="email" className="form-control" valueLink={this.linkState('job_email')}  placeholder="you@yourdomain.com"/>
                         </div>
                         <div className="form-group" id="job-title-group">
                             <label htmlFor="job-title">Job Title</label>

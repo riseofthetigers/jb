@@ -50,12 +50,6 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
-    job_email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-      }
-    },
     job_location: {
       type: DataTypes.STRING,
       allowNull: false,

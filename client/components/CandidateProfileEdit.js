@@ -250,7 +250,7 @@ const CandidateProfileEdit = React.createClass({
             <div className="row text-center">
                 <div className="col-sm-12">
                     <h1>{this.state.name}</h1>
-                        <img style={{width: '400px', height: '400px'}} src={this.state.candidate_picture} alt="" className="img-circle" />
+                        <img style={{width: '400px', height: '400px'}} src={this.state.candidate_picture} alt="UPLOAD IMAGE" className="img-circle" />
                 </div>
             </div>
 
@@ -279,7 +279,7 @@ const CandidateProfileEdit = React.createClass({
                     <div className="col-sm-6">
                         <div className="form-group" id="resume-title-group">
                             <label htmlFor="resume-title">Title</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('title')} id="resume-title" placeholder="e.g. Web Designer"/>
+                            <input type="text" className="form-control" valueLink={this.linkState('title')} id="resume-title" placeholder="e.g. Barista"/>
                         </div>
                     </div>
                     <div className="col-sm-6">

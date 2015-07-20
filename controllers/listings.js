@@ -16,7 +16,6 @@ module.exports = {
     var createListing = {
         job_category     :  req.body.job_category,
         job_description  :  req.body.job_description,
-        job_email        :  req.body.job_email,
         job_region       :  req.body.job_region,
         job_location     :  req.body.job_location,
         job_title        :  req.body.job_title,
