@@ -12,15 +12,16 @@ var Business = models.Business;
 module.exports = {
 
   create: function(req, res) {
+    console.log(req.body);
     var createListing = {
-      job_title: req.body.job_title,
-      employment_type: req.body.employment_type,
-      job_description: req.body.job_description,
+      job_title: req.body.jobTitle,
+      employment_type: req.body.jobType,
+      job_description: req.body.jobDescription,
       job_compensation: req.body.job_compensation,
       job_benefits: req.body.job_benefits,
       business_id: req.body.business_id ,
       requirements: req.body.requirements,
-      photo_url: req.body.photo_url
+      photo_url: ''
     }
 
     Listing.create(createListing).then(function() {

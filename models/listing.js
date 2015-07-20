@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
-    employment_type: {
+    job_type: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -20,13 +20,13 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
-    photo_url: {
+    job_zip: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
       }
     },
-    requirements: {
+    job_region: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -38,7 +38,25 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
-    job_benefits: {
+    job_requirements: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    job_category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    job_email: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+      }
+    },
+    job_location: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

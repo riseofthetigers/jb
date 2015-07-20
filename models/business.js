@@ -16,37 +16,43 @@ module.exports = function(sequelize, DataTypes) {
     },
     business_city: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
       }
     },
     business_state: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
       }
     },
     business_zip: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
       }
     },
     business_description: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
       }
     },
-    business_picture: {
+    business_tagline: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      validate: {
+      }
+    },
+    business_logo: {
+      type: DataTypes.STRING,
+      allowNull: true,
       validate: {
       }
     },
     business_hiring_manager: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
       }
     },

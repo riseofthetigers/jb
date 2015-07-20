@@ -52,7 +52,10 @@ var _getListingById = function (id, cb) {
 
 var _createListing = function (user, data) {
     if(user && user.type === 'E'){
-        //should save to database
+        axios.post('/api/listings', data).then(function(res) {
+            console.log('---- SAVED ---', res);
+
+        });
     } else {
         localStorage.setItem('tempListing',JSON.stringify(data));
     }
