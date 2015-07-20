@@ -17,9 +17,6 @@ module.exports = keyMirror({
   GET_PROFILE  : null,
   GET_CURRENT_PROFILE	: null,
   SAVE_PROFILE: null,
-  ADD_EXPERIENCE: null,
-  ADD_SOCIAL: null,
-  ADD_EDUCATION: null,
 
   // Notifications
   DISMISS_NOTIFICATION: null,
