@@ -62,6 +62,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Listing.belongsTo(models.Business);
+        Listing.hasMany(models.Application);
+
       }
     }
   });
