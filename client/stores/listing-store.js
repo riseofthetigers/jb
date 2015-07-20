@@ -54,6 +54,7 @@ var _createListing = function (user, data) {
     if(user && user.type === 'E'){
         axios.post('/api/listings', data).then(function(res) {
             console.log('---- SAVED ---', res);
+            localStorage.removeItem('tempListing');
 
         });
     } else {
