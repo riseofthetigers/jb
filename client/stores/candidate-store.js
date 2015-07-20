@@ -23,6 +23,31 @@ var _profile = {
   criminal_descripton: ''
 };
 
+function _addSocial() {
+    _profile.social.push({
+        network: '',
+        url: 'http://'
+    });
+}
+
+function _addEducation() {
+    _profile.education.push({
+        school: '',
+        qualifications: '',
+        start_end: '',
+        notes: ''
+    });
+}
+
+function _addExperience() {
+    _profile.experience.push({
+        employer: '',
+        job_title: '',
+        responsabilities: '',
+        state_end: ''
+    });
+}
+
 
 var CandidateStore = assign({}, EventEmitter.prototype, {
     emitChange: function(){
@@ -50,6 +75,18 @@ var CandidateStore = assign({}, EventEmitter.prototype, {
               break;
           case Actions.GET_CURRENT_PROFILE:
               _profile = action.profile;
+              CandidateStore.emitChange();
+              break;
+          case Actions.ADD_SOCIAL:
+              _addSocial();
+              CandidateStore.emitChange();
+              break;
+          case Actions.ADD_EDUCATION:
+              _addEducation();
+              CandidateStore.emitChange();
+              break;
+          case Actions.ADD_EXPERIENCE:
+              _addExperience();
               CandidateStore.emitChange();
               break;
           // Removed save profile, it doesn't alter the store

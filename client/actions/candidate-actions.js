@@ -24,9 +24,27 @@ var CandidateActions = {
 
     },
 
+    addSocial: function() {
+        AppDispatcher.handleCandidateAction({
+            actionType: CandidateConstants.ADD_SOCIAL
+        });
+    },
+
+    addExperience: function() {
+        AppDispatcher.handleCandidateAction({
+            actionType: CandidateConstants.ADD_EXPERIENCE
+        });
+    },
+
+    addEducation: function() {
+        AppDispatcher.handleCandidateAction({
+            actionType: CandidateConstants.ADD_EDUCATION
+        });
+    },
+
     saveProfile: function (profile) {
       // Send post to API
-      axios.post('/api/candidate/'+id, profile).then(function(result) {
+      axios.post('/api/candidate/'+profile.id, profile).then(function(result) {
         AppDispatcher.handleCandidateAction({
             actionType: CandidateConstants.SAVED_PROFILE,
         })

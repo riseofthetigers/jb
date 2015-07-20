@@ -5,23 +5,85 @@ var Modal = ReactBootstrap.Modal;
 var CandidateActions = require('../actions/candidate-actions');
 var CandidateStore = require('../stores/candidate-store');
 var Navigation = require('react-router').Navigation;
+var AuthStore = require('../stores/auth-store');
 
 
-const CandidateExperience = React.createClass({
+function sendBack(target, source) {
+
+    for( var k in source ){
+        target[k] = source[k];
+    }
+}
+
+const CandidateSocial = React.createClass({
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function() {
+        return {
+            network: '',
+            url: 'http://'
+        }
+    },
+
+    componentDidMount: function(){
+        this.state = this.props.data;
+    },
+
+    componentDidUpdate: function() {
+        sendBack(this.props.data, this.state);
+    },
+
+    render: function() {
+        return (
+            <div className="row social-network">
+                <div className="col-sm-6">
+                    <div className="form-group" id="resume-social-network-group">
+                        <label htmlFor="resume-social-network">Choose Social Network</label>
+                        <select  className="form-control" id="resume-social-network" valueLink={this.linkState('network')} >
+                            <option>Choose social network</option>
+                            <option>Facebook</option>
+                            <option>Twitter</option>
+                            <option>Google+</option>
+                            <option>LinkedIn</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="col-sm-6">
+                    <div className="form-group" id="resume-social-network-url-group">
+                        <label htmlFor="resume-social-network-url">URL</label>
+                        <input type="text" className="form-control" id="resume-social-network-url" placeholder="http://" valueLink={this.linkState('url')}/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+});
+
+
+const CandidateExperience = React.createClass({
+    mixins: [React.addons.LinkedStateMixin, Navigation],
+
+    getInitialState: function() {
         return  {
-            date: '',
-            title: '',
+            employer: '',
+            job_title: '',
             responsabilities: '',
-            employer: ''
+            state_end: ''
         }
     },
 
     getDefaultProps: function() {
         return {
         }
+    },
+
+    componentDidMount: function(){
+        this.state = this.props.data;
+    },
+
+    componentDidUpdate: function() {
+        sendBack(this.props.data, this.state);
     },
 
     render: function() {
@@ -37,7 +99,7 @@ const CandidateExperience = React.createClass({
                     <div className="col-sm-6">
                         <div className="form-group" id="resume-experience-dates-group">
                             <label htmlFor="resume-experience-dates">Start/End Date</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('date')} id="resume-experience-dates" placeholder="e.g. April 2010 - June 2013"/>
+                            <input type="text" className="form-control" valueLink={this.linkState('start_end')} id="resume-experience-dates" placeholder="e.g. April 2010 - June 2013"/>
                         </div>
                     </div>
                 </div>
@@ -45,7 +107,7 @@ const CandidateExperience = React.createClass({
                     <div className="col-sm-6">
                         <div className="form-group" id="resume-job-title-group">
                             <label htmlFor="resume-job-title">Job Title</label>
-                            <input type="text" className="form-control" id="resume-job-title" valueLink={this.linkState('title')} placeholder="e.g. Cashier"/>
+                            <input type="text" className="form-control" id="resume-job-title" valueLink={this.linkState('job_title')} placeholder="e.g. Cashier"/>
                         </div>
                     </div>
                     <div className="col-sm-6">
@@ -67,13 +129,20 @@ const CandidateEducation = React.createClass({
 
     getInitialState: function() {
         return  {
-            date: '',
             school: '',
             qualifications: '',
+            start_end: '',
             notes: ''
         }
     },
 
+    componentDidMount: function(){
+        this.state = this.props.data;
+    },
+
+    componentDidUpdate: function() {
+        sendBack(this.props.data, this.state);
+    },
     render: function() {
         return (
             <div>
@@ -87,7 +156,7 @@ const CandidateEducation = React.createClass({
                     <div className="col-sm-6">
                         <div className="form-group" id="resume-education-dates-group">
                             <label htmlFor="resume-education-dates">Start/End Date</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('date')} id="resume-education-dates" placeholder="e.g. April 2010 - June 2013"/>
+                            <input type="text" className="form-control" valueLink={this.linkState('start_end')} id="resume-education-dates" placeholder="e.g. April 2010 - June 2013"/>
                         </div>
                     </div>
                 </div>
@@ -137,8 +206,48 @@ const CandidateProfileEdit = React.createClass({
         criminal_descripton: ''
     };
   },
+    componentDidMount() {
+        var user = AuthStore.getSignedInUser();
+        if(!user || user.type != 'C'){
+            this.transitionTo('/login?next=/profile/edit');
+            return;
+        }
+    },
 
-  handleClick: function () {
+  handleSave: function () {
+    console.log('=====', this.state);
+    CandidateActions.saveProfile(this.state);
+  },
+
+  handleAddEducation: function() {
+    var education = this.state.education;
+    education.push({
+        school: '',
+        qualifications: '',
+        start_end: '',
+        notes: ''
+    });
+    this.setState({education: education});
+  },
+
+  handleAddExperience: function() {
+    var experience = this.state.experience;
+    experience.push({
+        employer: '',
+        job_title: '',
+        responsabilities: '',
+        state_end: ''
+    });
+    this.setState({experience: experience});
+  },
+
+  handleAddSocial: function() {
+    var social = this.state.social;
+    social.push({
+        network: '',
+        url: 'http://'
+    });
+    this.setState({social: social});
   },
 
   render: function () {
@@ -278,34 +387,24 @@ const CandidateProfileEdit = React.createClass({
                         <hr className="dashed"/>
                     </div>
                 </div>
-                <div className="row social-network">
-                    <div className="col-sm-6">
-                        <div className="form-group" id="resume-social-network-group">
-                            <label htmlFor="resume-social-network">Choose Social Network</label>
-                            <select  className="form-control" id="resume-social-network" valueLink={this.linkState('social')} >
-                                <option>Choose social network</option>
-                                <option>Facebook</option>
-                                <option>Twitter</option>
-                                <option>Google+</option>
-                                <option>LinkedIn</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <div className="form-group" id="resume-social-network-url-group">
-                            <label htmlFor="resume-social-network-url">URL</label>
-                            <input type="text" className="form-control" id="resume-social-network-url" placeholder="http://"/>
-                        </div>
-                    </div>
-                </div>
+                {
+                    _.map(this.state.social, function(s) {
+                        return (
+
+                                <div>
+                                <CandidateSocial data={s} />
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <hr className="dashed"/>
+                                    </div>
+                                </div>
+                                </div>
+                            );
+                    })
+                }
                 <div className="row">
                     <div className="col-sm-12">
-                        <hr className="dashed"/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-12">
-                        <p><a id="add-social-network">+ Add Social Network</a></p>
+                        <p><a onClick={this.handleAddSocial}>+ Add Social Network</a></p>
                         <hr/>
                     </div>
                 </div>
@@ -316,15 +415,24 @@ const CandidateProfileEdit = React.createClass({
                         <h2>Experience</h2>
                     </div>
                 </div>
-                <CandidateExperience/>
+                {
+                    _.map(this.state.experience, function(e) {
+                        return (
+
+                                <div>
+                                <CandidateExperience data={e}/>
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <hr className="dashed"/>
+                                    </div>
+                                </div>
+                                </div>
+                            );
+                    })
+                }
                 <div className="row">
                     <div className="col-sm-12">
-                        <hr className="dashed"/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-12">
-                        <p><a id="add-experience">+ Add Experience</a></p>
+                        <p><a  onClick={this.handleAddExperience}>+ Add Experience</a></p>
                         <hr/>
                     </div>
                 </div>
@@ -335,15 +443,23 @@ const CandidateProfileEdit = React.createClass({
                         <h2>Education</h2>
                     </div>
                 </div>
-                <CandidateEducation />
+                {
+                    _.map(this.state.education, function(e) {
+                        return (
+                                <div>
+                                    <CandidateEducation data={e}/>
+                                    <div className="row">
+                                        <div className="col-sm-12">
+                                            <hr className="dashed"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                    })
+                }
                 <div className="row">
                     <div className="col-sm-12">
-                        <hr className="dashed"/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-12">
-                        <p><a id="add-education">+ Add Education</a></p>
+                        <p><a  onClick={this.handleAddEducation}>+ Add Education</a></p>
                         <hr/>
                     </div>
                 </div>
@@ -352,7 +468,7 @@ const CandidateProfileEdit = React.createClass({
                 <div className="row text-center">
                     <div className="col-sm-12">
                         <p>&nbsp;</p>
-                        <a href="#" className="btn btn-primary btn-lg">Save <i className="fa fa-arrow-right"></i></a>
+                        <a onClick={this.handleSave} className="btn btn-primary btn-lg">Save <i className="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
 

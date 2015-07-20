@@ -10,7 +10,8 @@ var Navbar = React.createClass({
 
     loadState: function() {
       return {
-        auth: AuthStore.isAuthenticated()
+        auth: AuthStore.isAuthenticated(),
+        user: AuthStore.getSignedInUser()
       }
     },
 
@@ -31,6 +32,7 @@ var Navbar = React.createClass({
 
   render: function () {
     var LoginNav;
+    var UserMenu = (<ul></ul>);
 
     if(this.state.auth){
         LoginNav = (
@@ -38,6 +40,14 @@ var Navbar = React.createClass({
               <li><a  href="#" onClick={this.handleLogout}>Logout</a></li>
             </ul>
             );
+        if(this.state.user && this.state.user.type == 'C') {
+            UserMenu = (
+                <ul>
+                    <li><Link to="profile_edit">Profile</Link></li>
+                </ul>
+            );
+        }
+
     } else {
         LoginNav = (
 
@@ -66,6 +76,7 @@ var Navbar = React.createClass({
               <li><Link to="createlisting">Create a Listing</Link></li>
               <li><Link to="search">Search Jobs</Link></li>
             </ul>
+            {UserMenu}
             {LoginNav}
           </div>
         </div>
