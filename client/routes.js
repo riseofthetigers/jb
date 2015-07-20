@@ -52,6 +52,7 @@ const NeedLogin = React.createClass({
 var routes = (
   <Route path="/" handler={App}>
     <DefaultRoute handler={Landing} />
+    <Route name="landing" path="/" handler={Landing} />
     <Route name="createlisting" path='/createlisting' handler={CreateListing}/>
     <Route name="home" path='/home' handler={Home}/>
     <Route name="login" path='/login' handler={Login}/>
