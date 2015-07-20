@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     job_compensation: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
       }
@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     job_email: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
       }
