@@ -45,6 +45,7 @@ const NeedLogin = React.createClass({
   },
 
   render: function() {
+    console.log("Rendering fine...")
     return <RouteHandler />
   }
 })
@@ -65,6 +66,7 @@ var routes = (
     <Route name="about" path="/about" handler={About} />
 
     <Route name="needslogin" path="/" handler={NeedLogin}>
+      <DefaultRoute handler={Dashboard} />
       <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
       <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
       <Route name="profile_view" path="/profile/view" handler={CandidateView} />

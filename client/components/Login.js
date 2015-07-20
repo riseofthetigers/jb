@@ -36,7 +36,7 @@ const LoginModal = React.createClass({
       if(newState.isLoggedIn) {
         if(initial) NotificationsActions.addNotification(<p>You are already logged in!</p>)
         this.transitionTo(next);
-      } else {
+      } else if(!initial) { // Dont show notification when opening login page xd
         NotificationsActions.addNotification(
           <p>Incorrect username or password</p>
         , 'danger')

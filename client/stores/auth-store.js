@@ -5,12 +5,16 @@ const assign = require('react/lib/Object.assign');
 const EventEmitter = require('events').EventEmitter;
 
 var _user = JSON.parse(localStorage.getItem('_user') || "null");
+console.log(localStorage.getItem('_user'))
+
 const _setUser = function(user) {
   _user = user || null
-  if(_user !== null)
+  if(_user !== null) {
+    console.log("User...", _user)
     localStorage.setItem('_user', JSON.stringify(_user))
-  else
+  } else {
     localStorage.removeItem('_user')
+  }
   AuthStore.emit('change')
 }
 
@@ -29,11 +33,11 @@ const AuthStore = assign({}, EventEmitter.prototype, {
 
     dispatcherIndex: Dispatcher.register(function(payload){
         const action = payload.action;
-        switch(action.actionType){
+        switch(action.actionType) {
             case Actions.LOGIN:
                 _setUser({
                     type: action.type,
-                    name: action.displayName
+                    name: action.name
                 })
                 break;
             case Actions.LOGIN_FACEBOOK:
