@@ -45,14 +45,14 @@ var CreateListing = React.createClass({
     var user = AuthStore.getSignedInUser();
     var login ='';
     var data = {};
-    //_.each(this.refs, function(ref, key){
-        //var node = ref.getDOMNode();
-        //var val  = node.value;
-        //if(val === undefined){
-            //val = node.innerHTML;
-        //}
-        //data[key] = val;
-    //});
+    _.each(this.refs, function(ref, key){
+        var node = ref.getDOMNode();
+        var val  = node.value;
+        if(val === undefined){
+            val = node.innerHTML;
+        }
+        data[key] = val;
+    });
    _.extend(data, this.state);
    ListingActions.createListing(user, data);
    this.transitionTo('/listing/detail/temp');
@@ -83,27 +83,27 @@ var CreateListing = React.createClass({
                         <h2>Job Details</h2>
                         <div className="form-group" id="company-logo-group">
                             <label htmlFor="company-logo">Business Pictures</label>
-                            <input type="file" valueLink={this.linkState('businessPicture')} ref="businessPicture"/>
+                            <input type="file" valueLink={this.linkState('businessPicture')}/>
                         </div>
                         <div className="form-group" id="job-email-group">
                             <label htmlFor="job-email">Email</label>
-                            <input type="email" className="form-control" defaultvalueLink={this.linkState('jobEmail')} ref="jobEmail" placeholder="you@yourdomain.com"/>
+                            <input type="email" className="form-control" defaultvalueLink={this.linkState('jobEmail')}  placeholder="you@yourdomain.com"/>
                         </div>
                         <div className="form-group" id="job-title-group">
                             <label htmlFor="job-title">Job Title</label>
-                            <input type="text" className="form-control" defaultvalueLink={this.linkState('jobTitle')} ref="jobTitle" placeholder="e.g. Web Designer"/>
+                            <input type="text" className="form-control" defaultvalueLink={this.linkState('jobTitle')}  placeholder="e.g. Web Designer"/>
                         </div>
                         <div className="form-group" id="job-location-group">
                             <label htmlFor="job-location">Address</label>
-                            <input type="text" className="form-control" defaultvalueLink={this.linkState('jobLocation')} ref="jobLocation" placeholder="e.g.123 Hope Ave"/>
+                            <input type="text" className="form-control" defaultvalueLink={this.linkState('jobLocation')}  placeholder="e.g.123 Hope Ave"/>
                         </div>
                         <div className="form-group" id="job-location-group">
                             <label htmlFor="job-location">Zipcode</label>
-                            <input type="text" className="form-control" defaultvalueLink={this.linkState('jobZip')} ref="jobZip" placeholder="12345"/>
+                            <input type="text" className="form-control" defaultvalueLink={this.linkState('jobZip')} placeholder="12345"/>
                         </div>
                         <div className="form-group" id="job-region-group">
                             <label htmlFor="job-region">Region</label>
-                            <select  className="form-control" defaultvalueLink={this.linkState('jobRegion')} ref="jobRegion">
+                            <select  className="form-control" defaultvalueLink={this.linkState('jobRegion')} >
                                 <option>Choose a region</option>
                                 <option>New York</option>
                                 <option>Boston</option>
@@ -111,7 +111,7 @@ var CreateListing = React.createClass({
                         </div>
                         <div className="form-group" id="job-type-group">
                             <label htmlFor="job-type">Job Type</label>
-                            <select  className="form-control" defaultvalueLink={this.linkState('jobType')} ref="jobType">
+                            <select  className="form-control" defaultvalueLink={this.linkState('jobType')}>
                                 <option>Choose a job type</option>
                                 <option>Freelance</option>
                                 <option>Part Time</option>
@@ -122,7 +122,7 @@ var CreateListing = React.createClass({
                         </div>
                         <div className="form-group" id="job-category-group">
                             <label fhtmlFor="job-category">Job Category</label>
-                            <select  className="form-control" defaultvalueLink={this.linkState('jobCategory')} ref="jobCategory">
+                            <select  className="form-control" defaultvalueLink={this.linkState('jobCategory')}>
                                 <option>Choose a job category</option>
                                 <option>Cashier</option>
                                 <option>Barister</option>
@@ -166,15 +166,15 @@ var CreateListing = React.createClass({
                         <h2>Company Details</h2>
                         <div className="form-group" id="company-logo-group">
                             <label htmlFor="company-logo">Company Logo</label>
-                            <input type="file" defaultvalueLink={this.linkState('companyLogo')} ref="companyLogo"/>
+                            <input type="file" defaultvalueLink={this.linkState('companyLogo')}/>
                         </div>
                         <div className="form-group" id="company-name-group">
                             <label htmlFor="company-name">Company Name</label>
-                            <input type="text" defaultvalueLink={this.linkState('companyName')} className="form-control" ref="companyName" placeholder="Enter company name"/>
+                            <input type="text" defaultvalueLink={this.linkState('companyName')} className="form-control" placeholder="Enter company name"/>
                         </div>
                         <div className="form-group" id="company-tagline-group">
                             <label htmlFor="company-tagline">Tagline</label>
-                            <input type="text" className="form-control" defaultvalueLink={this.linkState('companyTagLine')} ref="companyTagLine" placeholder="Brief description"/>
+                            <input type="text" className="form-control" defaultvalueLink={this.linkState('companyTagLine')} placeholder="Brief description"/>
                         </div>
                         <div className="form-group wysiwyg" id="company-description-group">
                             <label>Description</label>
