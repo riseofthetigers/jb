@@ -5,12 +5,9 @@ const assign = require('react/lib/Object.assign');
 const EventEmitter = require('events').EventEmitter;
 
 var _user = JSON.parse(localStorage.getItem('_user') || "null");
-console.log(localStorage.getItem('_user'))
-
 const _setUser = function(user) {
   _user = user || null
   if(_user !== null) {
-    console.log("User...", _user)
     localStorage.setItem('_user', JSON.stringify(_user))
   } else {
     localStorage.removeItem('_user')

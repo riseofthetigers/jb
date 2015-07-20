@@ -10,13 +10,9 @@ var Dashboard = React.createClass({
   mixins: [Navigation],
 
   render: function () {
-    console.log("Being rendered...")
-
     var type = "E";
     var dashboard;
     var user = AuthStore.getSignedInUser();
-
-    console.log(user)
 
     if(user && user.type === 'E'){
         dashboard = <DashboardEmployer />;
