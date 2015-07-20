@@ -16,60 +16,51 @@ const AuthActions = {
       }))
     },
 
-    login: function(email, password) {
-      axios.post('/api/login', {
+    login(email, password) {
+      return axios.post('/api/login', {
         email: email,
         password: password
-      }).then(function({data}) {
-        AppDispatcher.handleAuthAction({
-            actionType: Actions.LOGIN,
-            type: data.type,
-            name: data.displayName
-        });
-      }).catch(function(err) {
-        AppDispatcher.handleAuthAction({
-            actionType: Actions.AUTH_ERROR,
-        });
-      })
+      }).then(result => ({
+        actionType: Actions.LOGIN,
+        type: result.data.type,
+        name: result.data.displayName
+      })).catch(err => ({
+        actionType: Actions.AUTH_ERROR,
+        error: err
+      }))
     },
 
-    loginWithFacebook: function() {
-        AppDispatcher.handleAuthAction({
-            actionType: Actions.LOGIN_FACEBOOK
-        });
+    loginWithFacebook() {
+      return {
+        actionType: Actions.LOGIN_FACEBOOK
+      }
     },
 
 
-    logout: function() {
-        axios.get('/api/logout').then(function(req){
-            AppDispatcher.handleAuthAction({
-                actionType: Actions.LOGOUT
-            });
-        })
+    logout() {
+      return axios.get('/api/logout').then(() => ({
+        actionType: Actions.LOGOUT
+      }))
     },
 
     signup: function(type, email, password, firstname, lastname) {
         // do the signup on server
-        axios.post('/api/signup', {
-            type      : type,
-            username  : email, // Just send it as username, for sure
-            password  : password,
-            firstname : firstname,
-            lastname  : lastname,
-            email     : email
-        }).then(function({data}) {
-            // Don't see why this should trigger another event than LOGIN
-            AppDispatcher.handleAuthAction({
-                actionType: Actions.LOGIN,
-                auth: data.auth,
-                type: data.type,
-                name: data.displayName
-            });
-        }).catch(function(err) {
-          AppDispatcher.handleAuthAction({
-              actionType: Actions.AUTH_ERROR,
-          });
-        })
+        return axios.post('/api/signup', {
+          type      : type,
+          username  : email, // Just send it as username, for sure
+          password  : password,
+          firstname : firstname,
+          lastname  : lastname,
+          email     : email
+        }).then(result => ({
+          actionType: Actions.LOGIN,
+          auth: result.data.auth,
+          type: result.data.type,
+          name: result.data.displayName
+        })).catch((err) => ({
+          actionType: Actions.AUTH_ERROR,
+          error: err
+        }))
     }
 
 }

@@ -1,9 +1,10 @@
-const React = require('react');
-const AuthActions = require('../actions/auth-actions');
-const AuthStore = require('../stores/auth-store');
-const Navigation = require('react-router').Navigation;
+const React = require('react')
+const Dispatcher = require('../dispatchers/app-dispatcher')
+const AuthActions = require('../actions/auth-actions')
+const AuthStore = require('../stores/auth-store')
+const {Navigation} = require('react-router')
 
-const NotificationsActions = require('../actions/notifications-actions');
+const NotificationsActions = require('../actions/notifications-actions')
 const {Form} = require('./Form.js')
 
 // Our custom component is managing whether the Modal is visible
@@ -70,7 +71,7 @@ const SignupModal = React.createClass({
   },
 
   handleSignup: function(fields) {
-    AuthActions.signup(fields.type, fields.email, fields.password, fields.firstName, fields.lastName);
+    Dispatcher.callAction(AuthActions.signup, fields.type, fields.email, fields.password, fields.firstName, fields.lastName);
   },
 
   render: function () {

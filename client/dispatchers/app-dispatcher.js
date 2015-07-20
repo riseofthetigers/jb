@@ -23,8 +23,8 @@ var AppDispatcher = assign(new Dispatcher() , {
     },
 
     // For new kind of actionCreators who return the action(s) instead of dispatching it
-    callAction(fn) {
-        Promise.cast(fn()).then(actions => {
+    callAction(fn, ...args) {
+        Promise.try(fn, args).then(actions => {
           if(!Array.isArray(actions)) actions = [actions]
           actions.forEach(action => this.dispatchAction(action))
         }).catch(err => {

@@ -1,4 +1,5 @@
 const React = require('react');
+const Dispatcher = require('../dispatchers/app-dispatcher')
 const AuthActions = require('../actions/auth-actions');
 const AuthStore = require('../stores/auth-store');
 const Navigation = require('react-router').Navigation;
@@ -56,7 +57,7 @@ const LoginModal = React.createClass({
   },
 
   handleLogin: function(fields) {
-    AuthActions.login(fields.email, fields.password);
+    Dispatcher.callAction(AuthActions.login, fields.email, fields.password);
   },
 
   render: function () {
