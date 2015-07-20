@@ -11,55 +11,33 @@ var Navbar = React.createClass({
 
     loadState: function() {
       return {
-        auth: AuthStore.isAuthenticated(),
-        user: AuthStore.getSignedInUser()
+        isLoggedIn: AuthStore.isAuthenticated(),
+        user: AuthStore.getUser()
       }
     },
 
     getInitialState: function() { return this.loadState() },
     _onChange: function() { this.setState(this.loadState()) },
 
-    componentDidMount: function() {
-        AuthStore.on('change', this._onChange);
-    },
-    componentWillUnount: function() {
-        AuthStore.removeListener('change', this._onChange);
-    },
-
+    componentDidMount: function() { AuthStore.on('change', this._onChange); },
+    componentWillUnount: function() { AuthStore.removeListener('change', this._onChange); },
 
     handleLogout: function() {
         Dispatcher.callAction(AuthActions.logout);
     },
 
   render: function () {
-    var LoginNav;
-    var UserMenu = (<ul></ul>);
+    const {isLoggedIn, user} = this.state
 
-    if(this.state.auth){
-        LoginNav = (
-            <ul className="nav navbar-nav navbar-right">
-              <li><a  href="#" onClick={this.handleLogout}>Logout</a></li>
-            </ul>
-            );
-        if(this.state.user && this.state.user.type == 'C') {
-            UserMenu = (
-                <ul>
-                    <li><Link to="profile_edit">Profile</Link></li>
-                </ul>
-            );
-        }
+    const rightButtons = isLoggedIn ? [
+      <li key="logout"><a  href="#" onClick={this.handleLogout}>Logout</a></li>
+    ] : [
+      <li key="login"><Link to="login">Log in</Link></li>
+    , <li key="signup"><Link to="signup">Sign up</Link></li>
+    ];
 
-    } else {
-        LoginNav = (
-
-            <ul className="nav navbar-nav navbar-right">
-              <li><Link to="login">Log in</Link></li>
-              <li><Link to="signup">Sign up</Link></li>
-            </ul>
-
-        );
-    }
-
+    if(this.state.user && this.state.user.type == 'C')
+      rightButtons.unshift(<li key="profile"><Link to="profile_edit">Profile</Link></li>)
 
     return (
       <div className="navbar navbar-default navbar-static-top">
@@ -77,8 +55,7 @@ var Navbar = React.createClass({
               <li><Link to="createlisting">Create a Listing</Link></li>
               <li><Link to="search">Search Jobs</Link></li>
             </ul>
-            {UserMenu}
-            {LoginNav}
+            <ul className="nav navbar-nav navbar-right">{rightButtons}</ul>
           </div>
         </div>
       </div>
