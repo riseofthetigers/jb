@@ -6,14 +6,8 @@ var CandidateActions = require('../actions/candidate-actions');
 var CandidateStore = require('../stores/candidate-store');
 var Navigation = require('react-router').Navigation;
 var AuthStore = require('../stores/auth-store');
+var _ = require('lodash');
 
-
-function sendBack(target, source) {
-
-    for( var k in source ){
-        target[k] = source[k];
-    }
-}
 
 const CandidateSocial = React.createClass({
     mixins: [React.addons.LinkedStateMixin],
@@ -30,7 +24,7 @@ const CandidateSocial = React.createClass({
     },
 
     componentDidUpdate: function() {
-        sendBack(this.props.data, this.state);
+        _.extend(this.props.data, this.state);
     },
 
     render: function() {
@@ -83,7 +77,7 @@ const CandidateExperience = React.createClass({
     },
 
     componentDidUpdate: function() {
-        sendBack(this.props.data, this.state);
+        _.extend(this.props.data, this.state);
     },
 
     render: function() {
@@ -141,7 +135,7 @@ const CandidateEducation = React.createClass({
     },
 
     componentDidUpdate: function() {
-        sendBack(this.props.data, this.state);
+        _.extend(this.props.data, this.state);
     },
     render: function() {
         return (
