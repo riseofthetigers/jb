@@ -1,32 +1,11 @@
-var React  = require('react');
-var DashboardEmployer = require('./DashboardEmployer');
-var DashboardCandidate = require('./DashboardCandidate');
-var AuthStore = require('../stores/auth-store');
-var Navigation = require('react-router').Navigation;
+const React  = require('react');
+const DashboardEmployer = require('./DashboardEmployer');
+const DashboardCandidate = require('./DashboardCandidate');
 
-
-
-var Dashboard = React.createClass({
-  mixins: [Navigation],
-
+const Dashboard = React.createClass({
   render: function () {
-    var type = "E";
-    var dashboard;
-    var user = AuthStore.getSignedInUser();
-
-    if(user && user.type === 'E'){
-        dashboard = <DashboardEmployer />;
-    }
-    if(user && user.type === 'C'){
-
-        dashboard = <DashboardCandidate />;
-    }
-
-    return (
-        <div>
-            {dashboard}
-        </div>
-    );
+    const {user} = this.props
+    return (user.type === 'E') ? <DashboardEmployer /> : <DashboardCandidate />
   }
 });
 

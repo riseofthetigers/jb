@@ -29,7 +29,8 @@ const NeedLogin = React.createClass({
   loadState() {
     return {
       isLoggedIn: AuthStore.isAuthenticated(),
-      currentRoute: this.getPathname() // Or .getPath, not sure yet
+      currentRoute: this.getPathname(), // Or .getPath, not sure yet
+      user: AuthStore.getUser()
     }
   },
 
@@ -47,7 +48,7 @@ const NeedLogin = React.createClass({
   },
 
   render: function() {
-    return <RouteHandler />
+    return <RouteHandler user={this.state.user}/>
   }
 })
 
@@ -67,7 +68,6 @@ var routes = (
     <Route name="about" path="/about" handler={About} />
 
     <Route name="needslogin" path="/" handler={NeedLogin}>
-      <DefaultRoute handler={Dashboard} />
       <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
       <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
       <Route name="profile_view" path="/profile/view" handler={CandidateView} />
