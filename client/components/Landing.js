@@ -6,6 +6,7 @@ const Landing = React.createClass({
     const single = "'";
 
     const jobs = [{
+      id: 1,
       Business: {
         business_logo: '/images/job1.jpg',
         business_name: 'Chevron .inc',
@@ -16,6 +17,7 @@ const Landing = React.createClass({
       job_type: 'F',
       job_compensation: '45,000'
     }, {
+      id: 2,
       Business: {
         business_logo: '/images/job2.jpg',
         business_name: 'Chevron .inc',
@@ -26,6 +28,7 @@ const Landing = React.createClass({
       job_type: 'F',
       job_compensation: '40,000'
     }, {
+      id: 3,
       Business: {
         business_logo: 'https://lh3.googleusercontent.com/-02vOdc80_bQ/UZVL2172aMI/AAAAAAAAd70/ZSZLkwMKas8/s451-no/600573_10151235197458057_878851817_n.jpg',
         business_name: 'Starbucks',
@@ -36,6 +39,7 @@ const Landing = React.createClass({
       job_type: 'P',
       job_compensation: '37,000'
     }, {
+      id: 4,
       Business: {
         business_logo: '/images/job1.jpg',
         business_name: 'Chevron .inc',
