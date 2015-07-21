@@ -89,128 +89,54 @@ var Landing = React.createClass({
       									<p>Chevron Inc.</p>
       								</div>
       								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>New York City</span>
-      									<span className="type full-time"><i className="fa fa-clock-o"></i>Full Time</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>45,000</span>
-      								</div>
+                                                            <div >Posted 1 Day Ago</div>
+                                                            <div className="city"><i className="fa fa-map-marker"></i>Boston</div>
+                                                            <div className="type full-time"><i className="fa fa-clock-o"></i>Full Time</div>
+                                                            <div className="sallary"><i className="fa fa-dollar"></i>45,000</div>
+                                                      </div>
       							</a>
 
-      							<a href="#">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5> Cashierr</h5>
-      									<p>Chevron Inc.</p>
-      								</div>
-      								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>Los Angeles</span>
-      									<span className="type part-time"><i className="fa fa-clock-o"></i>Part Time</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>85,000</span>
-      								</div>
-      							</a>
+                                                <a href="#">
+                                                      <img style={{width: 50+'px', height: 50+'px'}} src="/images/job2.jpg" alt="" className="img-circle" />
+                                                      <div className="title">
+                                                            <h5>Cashier</h5>
+                                                            <p>Chevron Inc.</p>
+                                                      </div>
+                                                      <div className="data">
+                                                            <div >Posted 1 Day Ago</div>
+                                                            <div className="city"><i className="fa fa-map-marker"></i>Boston</div>
+                                                            <div className="type full-time"><i className="fa fa-clock-o"></i>Full Time</div>
+                                                            <div className="sallary"><i className="fa fa-dollar"></i>45,000</div>
+                                                      </div>
+                                                </a>
 
-      							<a href="#">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5>Project Manager</h5>
-      									<p>Apple Inc.</p>
-      								</div>
-      								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>San Francisco</span>
-      									<span className="type freelance"><i className="fa fa-clock-o"></i>Freelance</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>60,000</span>
-      								</div>
-      							</a>
+                                                <a href="#">
+                                                      <img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
+                                                      <div className="title">
+                                                            <h5>Cashier</h5>
+                                                            <p>Chevron Inc.</p>
+                                                      </div>
+                                                      <div className="data">
+                                                            <div >Posted 1 Day Ago</div>
+                                                            <div className="city"><i className="fa fa-map-marker"></i>Boston</div>
+                                                            <div className="type full-time"><i className="fa fa-clock-o"></i>Full Time</div>
+                                                            <div className="sallary"><i className="fa fa-dollar"></i>45,000</div>
+                                                      </div>
+                                                </a>
 
-      							<a href="#">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5>Key Account Manager</h5>
-      									<p>Dell Inc.</p>
-      								</div>
-      								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>Boston</span>
-      									<span className="type full-time"><i className="fa fa-clock-o"></i>Full Time</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>55,000</span>
-      								</div>
-      							</a>
-
-      							<a href="#">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5>Front End Developer</h5>
-      									<p>Ebay Inc.</p>
-      								</div>
-      								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>Chicago</span>
-      									<span className="type part-time"><i className="fa fa-clock-o"></i>Part Time</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>75,000</span>
-      								</div>
-      							</a>
-
-      							<a href="#" className="hidden-job">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5>Cashier</h5>
-      									<p>Chevron Inc.</p>
-      								</div>
-      								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>New York City</span>
-      									<span className="type full-time"><i className="fa fa-clock-o"></i>Full Time</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>45,000</span>
-      								</div>
-      							</a>
-
-      							<a href="#" className="hidden-job">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5>Senior Cashierr</h5>
-      									<p>Chevron Inc.</p>
-      								</div>
-      								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>Los Angeles</span>
-      									<span className="type part-time"><i className="fa fa-clock-o"></i>Part Time</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>85,000</span>
-      								</div>
-      							</a>
-
-      							<a href="#" className="hidden-job">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5>Project Manager</h5>
-      									<p>Apple Inc.</p>
-      								</div>
-      								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>San Francisco</span>
-      									<span className="type freelance"><i className="fa fa-clock-o"></i>Freelance</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>60,000</span>
-      								</div>
-      							</a>
-
-      							<a href="#" className="hidden-job">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5>Key Account Manager</h5>
-      									<p>Dell Inc.</p>
-      								</div>
-      								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>Boston</span>
-      									<span className="type full-time"><i className="fa fa-clock-o"></i>Full Time</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>55,000</span>
-      								</div>
-      							</a>
-
-      							<a href="#" className="hidden-job">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5>Front End Developer</h5>
-      									<p>Ebay Inc.</p>
-      								</div>
-      								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>Chicago</span>
-      									<span className="type part-time"><i className="fa fa-clock-o"></i>Part Time</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>75,000</span>
-      								</div>
-      							</a>
+                                                <a href="#">
+                                                      <img style={{width: 50+'px', height: 50+'px'}} src="/images/job2.jpg" alt="" className="img-circle" />
+                                                      <div className="title">
+                                                            <h5>Bob Cnadidate</h5>
+                                                            <p>Cashier, Customer Service, Bartender</p>
+                                                      </div>
+                                                      <div className="data">
+                                                            <div >Posted 1 Day Ago</div>
+                                                            <div className="city"><i className="fa fa-map-marker"></i>Boston</div>
+                                                            <div className="type full-time"><i className="fa fa-clock-o"></i>Full Time</div>
+                                                            <div className="sallary"><i className="fa fa-dollar"></i>45,000</div>
+                                                      </div>
+                                                </a>
 
       						</div>
 
@@ -221,12 +147,12 @@ var Landing = React.createClass({
 
       					</div>
       					<div className="col-sm-4">
-      						<h2>Featured Jobs</h2>
+      						<h2>Featured Candidate</h2>
       						<a href="#">
-      							<img src="http://i.forbesimg.com/media/lists/companies/wawa_416x416.jpg" alt="Featured Job" className="img-responsive" />
+      							<img style={{width: 300+'px', height: 300+'px'}} src="http://blogs.cuit.columbia.edu/asj2122/files/2013/07/profile.jpg" alt="Featured Candidate" className="img-responsive" />
       							<div className="featured-job">
       								<div className="title">
-      									<h5>Cashier</h5>
+      									<h5>Bob Candidate</h5>
       									<p>Chevron</p>
       								</div>
       								<div className="data">
