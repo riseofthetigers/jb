@@ -9,6 +9,14 @@
       type: 'E',
       displayName: 'John Doe',
       password: 'SomethingSilly'
+    }).then(function(user){
+        return User.create({
+          username: 'c@domain.com',
+          email: 'c@domain.com',
+          type: 'C',
+          displayName: 'John Candidate',
+          password: 'pass'
+       });
     }).then(function(user) {
       return Employer.create({
         city: 'Boston',
@@ -34,8 +42,7 @@
       return Listing.create({
         job_title: 'Barista',
         job_type: 'F',
-        job_region: 'Boston',
-        job_location: 'Exactly here',
+        job_post_date: null,
         job_requirements: 'Some requirements',
         job_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu felis et lorem venenatis consectetur. Suspendisse vestibulum ante id tortor venenatis ornare. Nullam aliquet, est sit amet ultrices feugiat, orci elit bibendum eros, quis molestie sem nisl pretium neque. Pellentesque sit amet justo sit amet eros fringilla maximus. Aliquam at felis eleifend est molestie tempus. Maecenas suscipit orci eu blandit efficitur. Aenean sit amet dictum mauris. Sed rutrum sapien a nibh tristique, eu tincidunt neque hendrerit. In ac lorem semper, molestie lectus ac, congue nulla. Phasellus nec semper tellus. Praesent egestas risus ante, in tincidunt ipsum faucibus ut. Sed porta ligula magna, non fermentum ex viverra ut.',
         job_compensation: 150,

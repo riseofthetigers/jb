@@ -14,14 +14,15 @@ var CreateListing = React.createClass({
         company_logo: '',
         company_name: '',
         company_tagline: '',
+        company_zip: ''  ,
+        company_state: '',
+        company_city: '',
+        company_address: '',
 
         job_category: '',
         job_description: 'Job description...',
-        job_region: '',
-        job_location: '',
         job_title: '',
         job_type: '',
-        job_zip: ''  ,
         job_compensation: '',
         job_requirements: ''
 
@@ -103,22 +104,6 @@ var CreateListing = React.createClass({
                         <div className="form-group" id="job-title-group">
                             <label htmlFor="job-title">Job Title</label>
                             <input type="text" className="form-control" valueLink={this.linkState('job_title')}  placeholder="e.g. Web Designer"/>
-                        </div>
-                        <div className="form-group" id="job-location-group">
-                            <label htmlFor="job-location">Address</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('job_location')}  placeholder="e.g.123 Hope Ave"/>
-                        </div>
-                        <div className="form-group" id="job-location-group">
-                            <label htmlFor="job-location">Zipcode</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('job_zip')} placeholder="12345"/>
-                        </div>
-                        <div className="form-group" id="job-region-group">
-                            <label htmlFor="job-region">Region</label>
-                            <select  className="form-control" valueLink={this.linkState('job_region')} >
-                                <option>Choose a region</option>
-                                <option>New York</option>
-                                <option>Boston</option>
-                            </select>
                         </div>
                         <div className="form-group" id="job-type-group">
                             <label htmlFor="job-type">Job Type</label>
@@ -220,6 +205,26 @@ var CreateListing = React.createClass({
                         <div className="form-group" id="company-tagline-group">
                             <label htmlFor="company-tagline">Tagline</label>
                             <input type="text" className="form-control" valueLink={this.linkState('company_tagline')} placeholder="Brief description"/>
+                        </div>
+                        <div className="form-group" id="job-location-group">
+                            <label htmlFor="job-location">Address</label>
+                            <input type="text" className="form-control" valueLink={this.linkState('company_address')}  placeholder="e.g.123 Hope Ave"/>
+                        </div>
+                        <div className="form-group" id="job-location-group">
+                            <label htmlFor="job-location">Zipcode</label>
+                            <input type="text" className="form-control" valueLink={this.linkState('company_zip')} placeholder="12345"/>
+                        </div>
+                        <div className="form-group" id="job-location-group">
+                            <label htmlFor="job-location">City</label>
+                            <input type="text" className="form-control" valueLink={this.linkState('company_city')} placeholder="12345"/>
+                        </div>
+                        <div className="form-group" id="job-region-group">
+                            <label htmlFor="job-region">Region</label>
+                            <select  className="form-control" valueLink={this.linkState('company_state')} >
+                                <option>Choose a region</option>
+                                <option>New York</option>
+                                <option>Boston</option>
+                            </select>
                         </div>
                         <div className="form-group wysiwyg" id="company-description-group">
                             <label>Description</label>

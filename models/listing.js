@@ -8,6 +8,13 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
+
+    job_post_date: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      validate: {
+      }
+    },
     job_type: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -16,18 +23,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     job_description: { // Just a description filled by the employer
       type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-      }
-    },
-    job_zip: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-      }
-    },
-    job_region: {
-      type: DataTypes.STRING,
       allowNull: false,
       validate: {
       }
@@ -49,13 +44,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
       }
-    },
-    job_location: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-      }
-    },
+    }
   }, {
     //  lowercase tableName in Posrgres, if you need.
     tableName: 'listings',
