@@ -118,7 +118,7 @@ const Search = React.createClass({
                   <div className="sidebar-widget" id="jobsearch">
                     <h3>Filter</h3>
                     <form>
-                      <Options title="Availability" options={availableOptions} onChange={this.update('employment_type')} />
+                      <Options title="Availability" options={availableOptions} onChange={this.update('job_type')} />
                       <Options title="Location" options={cityOptions} onChange={this.update('Business.business_city')} />
 
                       <hr />
