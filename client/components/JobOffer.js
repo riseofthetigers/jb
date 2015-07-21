@@ -22,7 +22,7 @@ const JobOffer = React.createClass({
   render: function () {
       const data = this.props.data
       const fromNow = moment(data.created_at).fromNow()
-      const employmentType = employmentTypes[data.employment_type] || 'Unknown'
+      const employmentType = employmentTypes[data.job_type] || 'Unknown'
 
       return (
           <div onClick={this.handleClick} className="job row">

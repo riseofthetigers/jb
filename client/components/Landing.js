@@ -1,8 +1,52 @@
-var React  = require('react');
+const React  = require('react');
+const JobOffer = require('../components/JobOffer')
 
-var Landing = React.createClass({
+const Landing = React.createClass({
   render: function () {
-    var single = "'";
+    const single = "'";
+
+    const jobs = [{
+      Business: {
+        business_logo: '/images/job1.jpg',
+        business_name: 'Chevron .inc',
+        business_city: 'Boston'
+      },
+      job_title: 'Cashier',
+      job_description: 'Some description',
+      job_type: 'F',
+      job_compensation: '45,000'
+    }, {
+      Business: {
+        business_logo: '/images/job2.jpg',
+        business_name: 'Chevron .inc',
+        business_city: 'Boston'
+      },
+      job_title: 'Cashier',
+      job_description: 'Some description',
+      job_type: 'F',
+      job_compensation: '40,000'
+    }, {
+      Business: {
+        business_logo: 'https://lh3.googleusercontent.com/-02vOdc80_bQ/UZVL2172aMI/AAAAAAAAd70/ZSZLkwMKas8/s451-no/600573_10151235197458057_878851817_n.jpg',
+        business_name: 'Starbucks',
+        business_city: 'San Fransico'
+      },
+      job_title: 'Barista',
+      job_description: 'Some description',
+      job_type: 'P',
+      job_compensation: '37,000'
+    }, {
+      Business: {
+        business_logo: '/images/job1.jpg',
+        business_name: 'Chevron .inc',
+        business_city: 'Boston'
+      },
+      job_title: 'Cashier',
+      job_description: 'Some description',
+      job_type: 'F',
+      job_compensation: '45,000'
+    }].map(data => <JobOffer data={data} key={data.id} />)
+
     return (
     <div>
       <div id="slider" className="sl-slider-wrapper">
@@ -81,63 +125,7 @@ var Landing = React.createClass({
       						<h2>Recent Jobs</h2>
 
       						<div className="jobs">
-
-      							<a href="#">
-      								<img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-      								<div className="title">
-      									<h5>Cashier</h5>
-      									<p>Chevron Inc.</p>
-      								</div>
-      								<div className="data">
-                                                            <div >Posted 1 Day Ago</div>
-                                                            <div className="city"><i className="fa fa-map-marker"></i>Boston</div>
-                                                            <div className="type full-time"><i className="fa fa-clock-o"></i>Full Time</div>
-                                                            <div className="sallary"><i className="fa fa-dollar"></i>45,000</div>
-                                                      </div>
-      							</a>
-
-                                                <a href="#">
-                                                      <img style={{width: 50+'px', height: 50+'px'}} src="/images/job2.jpg" alt="" className="img-circle" />
-                                                      <div className="title">
-                                                            <h5>Cashier</h5>
-                                                            <p>Chevron Inc.</p>
-                                                      </div>
-                                                      <div className="data">
-                                                            <div >Posted 1 Day Ago</div>
-                                                            <div className="city"><i className="fa fa-map-marker"></i>Boston</div>
-                                                            <div className="type full-time"><i className="fa fa-clock-o"></i>Full Time</div>
-                                                            <div className="sallary"><i className="fa fa-dollar"></i>45,000</div>
-                                                      </div>
-                                                </a>
-
-                                                <a href="#">
-                                                      <img style={{width: 50+'px', height: 50+'px'}} src="/images/job1.jpg" alt="" className="img-circle" />
-                                                      <div className="title">
-                                                            <h5>Cashier</h5>
-                                                            <p>Chevron Inc.</p>
-                                                      </div>
-                                                      <div className="data">
-                                                            <div >Posted 1 Day Ago</div>
-                                                            <div className="city"><i className="fa fa-map-marker"></i>Boston</div>
-                                                            <div className="type full-time"><i className="fa fa-clock-o"></i>Full Time</div>
-                                                            <div className="sallary"><i className="fa fa-dollar"></i>45,000</div>
-                                                      </div>
-                                                </a>
-
-                                                <a href="#">
-                                                      <img style={{width: 50+'px', height: 50+'px'}} src="/images/job2.jpg" alt="" className="img-circle" />
-                                                      <div className="title">
-                                                            <h5>Bob Cnadidate</h5>
-                                                            <p>Cashier, Customer Service, Bartender</p>
-                                                      </div>
-                                                      <div className="data">
-                                                            <div >Posted 1 Day Ago</div>
-                                                            <div className="city"><i className="fa fa-map-marker"></i>Boston</div>
-                                                            <div className="type full-time"><i className="fa fa-clock-o"></i>Full Time</div>
-                                                            <div className="sallary"><i className="fa fa-dollar"></i>45,000</div>
-                                                      </div>
-                                                </a>
-
+                    {jobs}
       						</div>
 
       						<a className="btn btn-primary" id="more-jobs">
