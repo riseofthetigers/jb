@@ -53,11 +53,8 @@ const ListingStore = assign({}, EventEmitter.prototype, {
           case Actions.LISTING_CREATE:
               const {user, data} = action
               if(user && user.type === 'E'){
-                //should save to database
                 axios.post('/api/listings', data).then(function(res) {
-                    console.log('---- SAVED ---', res);
                     localStorage.removeItem('tempListing');
-
                  });
               } else {
                 localStorage.setItem('tempListing',JSON.stringify(data));

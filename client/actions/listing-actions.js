@@ -27,6 +27,13 @@ const ListingActions = {
     },
 
     getListingById(id) {
+      if(id === 'preview'){
+       return {
+            actionType: Actions.GET_LISTING,
+            listing: JSON.parse(localStorage.getItem('tempListing'))
+
+       }
+      }
       return axios.get('/api/listings/' + id).then(response => ({
         actionType: Actions.GET_LISTING,
         listing: response.data

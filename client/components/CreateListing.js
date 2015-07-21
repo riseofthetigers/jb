@@ -10,14 +10,16 @@ var CreateListing = React.createClass({
 
   getInitialState: function() {
     var defaultValues = {
-        company_description: 'Company description...',
-        company_logo: '',
-        company_name: '',
-        company_tagline: '',
-        company_zip: ''  ,
-        company_state: '',
-        company_city: '',
-        company_address: '',
+        Business: {
+            business_description: 'Company description...',
+            business_logo: '',
+            business_name: '',
+            business_tagline: '',
+            business_zip: ''  ,
+            business_state: '',
+            business_city: '',
+            business_address: '',
+        },
 
         job_category: '',
         job_description: 'Job description...',
@@ -70,8 +72,8 @@ var CreateListing = React.createClass({
     var user = AuthStore.getSignedInUser();
     var data = this._getFormData();
 
-   ListingActions.createListing(user, data);
-   this.transitionTo('/listing/detail/temp');
+    ListingActions.createListing(user, data);
+    this.transitionTo('/job/preview');
   },
 
 
@@ -106,7 +108,7 @@ var CreateListing = React.createClass({
                         <h2>Job Details</h2>
                         <div className="form-group" id="company-logo-group">
                             <label htmlFor="company-logo">Business Pictures</label>
-                            <input type="file" valueLink={this.linkState('company_logo')}/>
+                            <input type="file" valueLink={this.linkState('Business.business_logo')}/>
                         </div>
                         <div className="form-group" id="job-title-group">
                             <label htmlFor="job-title">Job Title</label>
@@ -203,31 +205,31 @@ var CreateListing = React.createClass({
                         <h2>Company Details</h2>
                         <div className="form-group" id="company-logo-group">
                             <label htmlFor="company-logo">Company Logo</label>
-                            <input type="file" valueLink={this.linkState('company_logo')}/>
+                            <input type="file" valueLink={this.linkState('Business.business_logo')}/>
                         </div>
                         <div className="form-group" id="company-name-group">
                             <label htmlFor="company-name">Company Name</label>
-                            <input type="text" valueLink={this.linkState('company_name')} className="form-control" placeholder="Enter company name"/>
+                            <input type="text" valueLink={this.linkState('Business.business_name')} className="form-control" placeholder="Enter company name"/>
                         </div>
                         <div className="form-group" id="company-tagline-group">
                             <label htmlFor="company-tagline">Tagline</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('company_tagline')} placeholder="Brief description"/>
+                            <input type="text" className="form-control" valueLink={this.linkState('Business.business_tagline')} placeholder="Brief description"/>
                         </div>
                         <div className="form-group" id="job-location-group">
                             <label htmlFor="job-location">Address</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('company_address')}  placeholder="e.g.123 Hope Ave"/>
+                            <input type="text" className="form-control" valueLink={this.linkState('Business.business_address')}  placeholder="e.g.123 Hope Ave"/>
                         </div>
                         <div className="form-group" id="job-location-group">
                             <label htmlFor="job-location">Zipcode</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('company_zip')} placeholder="12345"/>
+                            <input type="text" className="form-control" valueLink={this.linkState('Business.business_zip')} placeholder="12345"/>
                         </div>
                         <div className="form-group" id="job-location-group">
                             <label htmlFor="job-location">City</label>
-                            <input type="text" className="form-control" valueLink={this.linkState('company_city')} placeholder="12345"/>
+                            <input type="text" className="form-control" valueLink={this.linkState('Business.business_city')} placeholder="12345"/>
                         </div>
                         <div className="form-group" id="job-region-group">
                             <label htmlFor="job-region">Region</label>
-                            <select  className="form-control" valueLink={this.linkState('company_state')} >
+                            <select  className="form-control" valueLink={this.linkState('Business.business_state')} >
                                 <option>Choose a region</option>
                                 <option>New York</option>
                                 <option>Boston</option>
@@ -261,7 +263,7 @@ var CreateListing = React.createClass({
                                 <input type="text" data-edit="inserttext" id="voiceBtn2" style={{display: 'none'}}/>
                             </div>
 
-                            <div className="editor" id="company-description" ref="company_descrption" contentEditable="true" dangerouslySetInnerHTML={{__html: this.state.company_description}}></div>
+                            <div className="editor" id="company-description" ref="Business.business_descrption" contentEditable="true" dangerouslySetInnerHTML={{__html: this.state.Business.business_description}}></div>
                             {save}
                             <div className="row text-center">
                                 <p>&nbsp;</p>

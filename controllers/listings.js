@@ -23,14 +23,14 @@ module.exports = {
         job_requirements :  req.body.job_requirements
     };
     var createBusiness = {
-        business_description : req.body.company_description,
-        business_logo       : req.body.company_logo,
-        business_name       : req.body.company_name,
-        business_tagline    : req.body.company_tagline,
-        business_zip        : req.body.company_zip,
-        business_state      : req.body.company_state,
-        business_city       : req.body.company_city,
-        business_address    : req.body.company_address
+        business_description : req.body.Business.business_description,
+        business_logo        : req.body.Business.business_logo,
+        business_name        : req.body.Business.business_name,
+        business_tagline     : req.body.Business.business_tagline,
+        business_zip         : req.body.Business.business_zip,
+        business_state       : req.body.Business.business_state,
+        business_city        : req.body.Business.business_city,
+        business_address     : req.body.Business.business_address
     };
     Business.create(createBusiness).then(function(business) {
         createListing.business_id = business.id

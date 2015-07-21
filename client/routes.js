@@ -64,6 +64,7 @@ var routes = (
     <Route name="search" path='/search' handler={Search} />
     <Route name="search_page" path="/search/:page" handler={Search} />
     <Route name="listing_details" path="/job/:id" handler={ListingDetail} />
+    <Route name="listing_preview" path="/job/preview" handler={ListingDetail} />
 
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
 
