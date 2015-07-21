@@ -78,6 +78,7 @@ var CreateListing = React.createClass({
   render: function () {
     var user = AuthStore.getSignedInUser();
     var login ='';
+    var save ='';
 
     if(!user || user.type!=='E'){
       login= (
@@ -88,7 +89,13 @@ var CreateListing = React.createClass({
             </div>
         </div>
         );
-
+    } else {
+      save = (
+        <div className="row text-center">
+            <p>&nbsp;</p>
+            <a onClick={this.handleSave} className="btn btn-primary btn-lg">Save<i className="fa fa-arrow-right"></i></a>
+        </div>
+        );
     }
     return (
         <div className="container">
@@ -255,10 +262,7 @@ var CreateListing = React.createClass({
                             </div>
 
                             <div className="editor" id="company-description" ref="company_descrption" contentEditable="true" dangerouslySetInnerHTML={{__html: this.state.company_description}}></div>
-                            <div className="row text-center">
-                                <p>&nbsp;</p>
-                                <a onClick={this.handleSave} className="btn btn-primary btn-lg">Save <i className="fa fa-arrow-right"></i></a>
-                            </div>
+                            {save}
                             <div className="row text-center">
                                 <p>&nbsp;</p>
                                 <a onClick={this.handlePreview} className="btn btn-primary btn-lg">Preview <i className="fa fa-arrow-right"></i></a>
