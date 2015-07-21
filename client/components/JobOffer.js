@@ -27,7 +27,7 @@ const JobOffer = React.createClass({
       return (
           <div onClick={this.handleClick} className="job row">
             <div className="col-sm-3 col-md-2">
-              <img style={{width: 70, height: 70}} src={data.photo_url} alt={data.job_description} className="img-circle" />
+              <img style={{width: 70, height: 70}} src={data.Business.business_logo} alt={data.job_description} className="img-circle" />
               <div>{data.Business.business_name}</div>
             </div>
             <div className="col-sm-6 col-md-7">
