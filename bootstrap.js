@@ -29,7 +29,7 @@
       });
     }).then(function(employer) {
       return Business.create({
-        business_name: 'Joblethics',
+        business_name: 'Starbucks',
         business_address: 'Some street 75',
         business_city: 'Boston',
         business_state: 'Massachusetts',
