@@ -2,41 +2,35 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Employer = sequelize.define("Employer", {
-    name: {
+    city: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     phone_number: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     address: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     employer_description: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     employer_picture: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
   }, {
     //  lowercase tableName in Posrgres, if you need.
@@ -51,4 +45,3 @@ module.exports = function(sequelize, DataTypes) {
 
   return Employer;
 };
-

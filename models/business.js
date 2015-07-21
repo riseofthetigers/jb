@@ -11,44 +11,37 @@ module.exports = function(sequelize, DataTypes) {
     business_address: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     business_city: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     business_state: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     business_zip: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     business_description: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     business_picture: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     business_hiring_manager: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
 
   }, {
@@ -63,4 +56,3 @@ module.exports = function(sequelize, DataTypes) {
   });
   return Business;
 };
-

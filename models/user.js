@@ -7,20 +7,16 @@ module.exports = function(sequelize, DataTypes) {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     type: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM('E', 'C'),
       allowNull: false,
-      validate: {
-      }
     },
     displayName: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-      }
+      validate: {}
     },
     email: {
       type: DataTypes.STRING(256),
@@ -33,8 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-      }
+      validate: {}
     }
   }, {
     //  lowercase tableName in Posrgres, if you need.
