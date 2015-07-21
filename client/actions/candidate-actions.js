@@ -26,7 +26,7 @@ var CandidateActions = {
 
     saveProfile: function (profile) {
       // Send post to API
-      axios.post('/api/candidate/'+profile.id, profile).then(function(result) {
+      axios.post('/api/candidates', profile).then(function(result) {
         AppDispatcher.handleCandidateAction({
             actionType: CandidateConstants.SAVED_PROFILE,
         })

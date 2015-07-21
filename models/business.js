@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = function(sequelize, DataTypes) {
-	var Business = sequelize.define("Business", {
+    var Business = sequelize.define("Business", {
     business_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -33,25 +33,33 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {}
     },
-    business_picture: {
+    business_tagline: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {}
+      allowNull: true,
+      validate: {
+      }
+    },
+    business_logo: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+      }
     },
     business_hiring_manager: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {}
+      allowNull: true,
+      validate: {
+      }
     },
 
   }, {
     //  lowercase tableName in Posrgres, if you need.
     tableName: 'business',
     classMethods: {
-    	associate: function(models) {
-    		Business.belongsTo(models.Employer);
-    		Business.hasMany(models.Listing);
-    	}
+        associate: function(models) {
+            Business.belongsTo(models.Employer);
+            Business.hasMany(models.Listing);
+        }
     }
   });
   return Business;

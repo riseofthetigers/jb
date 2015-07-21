@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
-    employment_type: { // Full Time, Part Time, etc
+    job_type: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -20,25 +20,37 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
-    photo_url: { // Hmm
+    job_zip: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
       }
     },
-    requirements: { // Also just a text made by employer
+    job_region: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
       }
     },
-    job_compensation: { // Salary?
-      type: DataTypes.INTEGER,
+    job_compensation: {
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
       }
     },
-    job_benefits: { // Another text
+    job_requirements: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    job_category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      }
+    },
+    job_location: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -50,6 +62,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Listing.belongsTo(models.Business);
+        Listing.hasMany(models.Application);
+
       }
     }
   });
