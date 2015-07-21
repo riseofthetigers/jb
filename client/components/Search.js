@@ -22,7 +22,6 @@ const Options = React.createClass({
   handleChange(e) {
     const {checked, value} = e.target
     var filter = this.props.value
-    console.log(this.props)
     filter[value] = checked
     this.props.onChange(filter)
   },
@@ -30,7 +29,6 @@ const Options = React.createClass({
   render() {
     const {options, title} = this.props
     const value = this.props.value || {}
-    console.log("CHILD:", value)
 
     const optionsRendered = options.map(option =>
       <div className="checkbox" key={option.value}>
@@ -117,8 +115,6 @@ const Search = React.createClass({
       const Content = (listings.length === 0) ?
                       <h1>There is no listings in the database</h1> :
                       listings.map(listing => <JobOffer key={listing.id} data={listing} />)
-
-      console.log("PARENT:", filter)
 
       return (
         <div className="container">
