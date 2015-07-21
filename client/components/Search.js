@@ -8,31 +8,34 @@ const JobOffer = require('./JobOffer');
 
 
 const Options = React.createClass({
-  getInitialState() {
-    return {
-      filter: this.props.options.reduce((obj, option) => {
+  componentDidMount() {
+    const {value, onChange, options} = this.props
+    if(!value) {
+      const filter = options.reduce((obj, option) => {
         obj[option.value] = false
         return obj
       }, {})
+      onChange(filter)
     }
   },
 
   handleChange(e) {
     const {checked, value} = e.target
-    var {filter} = this.state
+    var filter = this.props.value
+    console.log(this.props)
     filter[value] = checked
-    this.setState({filter})
     this.props.onChange(filter)
   },
 
   render() {
     const {options, title} = this.props
-    const {filter} = this.state
+    const value = this.props.value || {}
+    console.log("CHILD:", value)
 
     const optionsRendered = options.map(option =>
       <div className="checkbox" key={option.value}>
         <label>
-          <input type="checkbox" checked={filter[option.value]} value={option.value} onChange={this.handleChange} />
+          <input type="checkbox" checked={value[option.value]} value={option.value} onChange={this.handleChange} />
           {option.title}
         </label>
       </div>
@@ -48,17 +51,38 @@ const Options = React.createClass({
 })
 
 
+const optionsToFilter = function(options) {
+  return options.reduce((obj, option) => {
+    obj[option.value] = false
+    return obj
+  }, {})
+}
 
 const Search = React.createClass({
+  availableOptions: [
+    {value: 'F', title: 'Full Time'},
+    {value: 'P', title: 'Part Time'},
+    {value: 'H', title: 'Hourly'}
+  ],
+  cityOptions: [
+    {title: 'New York', value: 'new york'},
+    {title: 'San Fransisco', value: 'san fransisco'},
+    {title: 'Boston', value: 'boston'}
+  ],
+
   loadState() {
     return {
       listings: ListingStore.getListings(),
-      filter: ListingStore.getFilter()
     }
   },
 
   getInitialState() {
-    return this.loadState()
+    return assign({
+      filter: {
+        'Business.business_city': optionsToFilter(this.cityOptions),
+        'job_type': optionsToFilter(this.availableOptions)
+      }
+    }, this.loadState())
   },
   _onChange : function(){ this.setState(this.loadState()); },
 
@@ -74,37 +98,27 @@ const Search = React.createClass({
     return (checked => {
       var {filter} = this.state
       filter[key] = checked
+      this.setState({filter})
       Dispatcher.callAction(ListingActions.getListings, filter)
     })
   },
 
+  clearFilter() {
+    const filter = {
+      'Business.business_city': optionsToFilter(this.cityOptions),
+      'job_type': optionsToFilter(this.availableOptions)
+    }
+    this.setState({filter})
+    Dispatcher.callAction(ListingActions.getListings, filter)
+  },
+
   render() {
-      const {listings} = this.state
+      const {listings, filter} = this.state
       const Content = (listings.length === 0) ?
                       <h1>There is no listings in the database</h1> :
                       listings.map(listing => <JobOffer key={listing.id} data={listing} />)
 
-      const availableOptions = [{
-        value: 'F',
-        title: 'Full Time'
-      }, {
-        value: 'P',
-        title: 'Part Time'
-      }, {
-        value: 'H',
-        title: 'Hourly'
-      }]
-
-      const cityOptions = [{
-        title: 'New York',
-        value: 'new york'
-      }, {
-        title: 'San Fransisco',
-        value: 'san fransisco'
-      }, {
-        title: 'Boston',
-        value: 'boston'
-      }]
+      console.log("PARENT:", filter)
 
       return (
         <div className="container">
@@ -118,14 +132,16 @@ const Search = React.createClass({
                   <div className="sidebar-widget" id="jobsearch">
                     <h3>Filter</h3>
                     <form>
-                      <Options title="Availability" options={availableOptions} onChange={this.update('job_type')} />
-                      <Options title="Location" options={cityOptions} onChange={this.update('Business.business_city')} />
+                      <Options title="Availability" options={this.availableOptions}
+                               value={filter.job_type} onChange={this.update('job_type')} />
+                      <Options title="Location" options={this.cityOptions}
+                               value={filter['Business.business_city']} onChange={this.update('Business.business_city')} />
 
                       <hr />
 
                       <div className="row">
                         <div className="col-xs-12">
-                          <a className="btn btn-primary">Reset All Filters</a>
+                          <a className="btn btn-primary" onClick={this.clearFilter}>Reset All Filters</a>
                         </div>
                       </div>
                     </form>
