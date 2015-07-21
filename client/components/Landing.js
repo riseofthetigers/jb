@@ -9,22 +9,22 @@ const Landing = React.createClass({
       id: 1,
       Business: {
         business_logo: '/images/job1.jpg',
-        business_name: 'Chevron .inc',
+        business_name: 'Chevron',
         business_city: 'Boston'
       },
       job_title: 'Cashier',
-      job_description: 'Some description',
+      job_description: "We're looking for an honest, and hard-working cashier for our swing shift M-F 2pm -10pm... ",
       job_type: 'F',
-      job_compensation: '45,000'
+      job_compensation: '15/hr'
     }, {
       id: 2,
       Business: {
         business_logo: '/images/job2.jpg',
-        business_name: 'Chevron .inc',
+        business_name: '7-11 .inc',
         business_city: 'Boston'
       },
-      job_title: 'Cashier',
-      job_description: 'Some description',
+      job_title: 'Shift Lead',
+      job_description: 'The shift lead will lead and mentor two other employees...',
       job_type: 'F',
       job_compensation: '40,000'
     }, {
@@ -35,9 +35,9 @@ const Landing = React.createClass({
         business_city: 'San Fransico'
       },
       job_title: 'Barista',
-      job_description: 'Some description',
+      job_description: 'The barista will promote coffee consumption by educating customers; selling coffee and coffee grinding and brewing equipment, accessories, and supplies; preparing and serving a variety of coffee drinks, along with pastries and cookies',
       job_type: 'P',
-      job_compensation: '37,000'
+      job_compensation: '11.50/hr'
     }, {
       id: 4,
       Business: {
@@ -46,9 +46,9 @@ const Landing = React.createClass({
         business_city: 'Boston'
       },
       job_title: 'Cashier',
-      job_description: 'Some description',
+      job_description: "We're looking for an honest, and hard-working cashier for our swing shift M-F 2pm -10pm... ",
       job_type: 'F',
-      job_compensation: '45,000'
+      job_compensation: '10/hr'
     }].map(data => <JobOffer data={data} key={data.id} />)
 
     return (
@@ -64,7 +64,7 @@ const Landing = React.createClass({
       						<div className="slide-content">
       							<h2>Looking for a job?</h2>
       							<h3>There{single}s no better place to start</h3>
-      							<p><a href="jobs.html" className="btn btn-lg btn-default">Find a job</a></p>
+      							<p><a href="/search" className="btn btn-lg btn-default">Find a job</a></p>
       						</div>
       					</div>
       				</div>
@@ -76,7 +76,7 @@ const Landing = React.createClass({
       						<div className="slide-content">
       							<h2>Need an employee?</h2>
       							<h3>We{single}ve got perfect candidates</h3>
-      							<p><a href="candidates.html" className="btn btn-lg btn-default">Post a job</a></p>
+      							<p><a href="/signup" className="btn btn-lg btn-default">Post a job</a></p>
       						</div>
       					</div>
       				</div>
@@ -88,7 +88,7 @@ const Landing = React.createClass({
       						<div className="slide-content">
       							<h2>Evolving your career?</h2>
       							<h3>Find new opportunities here</h3>
-      							<p><a href="jobs.html" className="btn btn-lg btn-default">Find a job</a></p>
+      							<p><a href="/search" className="btn btn-lg btn-default">Find a job</a></p>
       						</div>
       					</div>
       				</div>
@@ -100,7 +100,7 @@ const Landing = React.createClass({
       						<div className="slide-content">
       							<h2>Extending your team?</h2>
       							<h3>Find a perfect match</h3>
-      							<p><a href="candidates.html" className="btn btn-lg btn-default">Find a cadidate</a></p>
+      							<p><a href="/signup" className="btn btn-lg btn-default">Find a cadidate</a></p>
       						</div>
       					</div>
       				</div>
@@ -144,15 +144,14 @@ const Landing = React.createClass({
       							<img style={{width: 300+'px', height: 300+'px'}} src="http://blogs.cuit.columbia.edu/asj2122/files/2013/07/profile.jpg" alt="Featured Candidate" className="img-responsive" />
       							<div className="featured-job">
       								<div className="title">
-      									<h5>Bob Candidate</h5>
-      									<p>Chevron</p>
+      									<h4>John Doe</h4>
+                                                            <h6>Skills: </h6>
+      									<p>Cashier, Cleaning, Ordering, Customer Service</p>
       								</div>
       								<div className="data">
-      									<span className="city"><i className="fa fa-map-marker"></i>New York City</span>
-      									<span className="type full-time"><i className="fa fa-clock-o"></i>Full Time</span>
-      									<span className="sallary"><i className="fa fa-dollar"></i>45,000</span>
-      								</div>
-      								<div className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tristique euismod lorem, a consequat orci consequat a. Donec ullamcorper tincidunt nunc, ut aliquam est pellentesque porta. In neque erat, malesuada sit amet orci ac, laoreet laoreet mauris.</div>
+      									<span className="city"><i className="fa fa-map-marker"></i>Boston</span>
+      									<span className="type full-time"><i className="fa fa-clock-o"></i><b>Looking for: </b>Full Time</span>      								</div>
+      								<div className="description">I am a hard working Sales Representative that has experience with ordering product, customer service, point of sale and working as a barista.</div>
       							</div>
       						</a>
       					</div>
@@ -172,29 +171,29 @@ const Landing = React.createClass({
       				<div className="row" id="counter">
 
       					<div className="counter">
-      						<div className="number">4,329</div>
+      						<div className="number">8</div>
       						<div className="description">Members</div>
       					</div>
 
       					<div className="counter">
-      						<div className="number">894</div>
+      						<div className="number">2</div>
       						<div className="description">Jobs</div>
       					</div>
 
       					<div className="counter">
-      						<div className="number">1,482</div>
-      						<div className="description">Resumes</div>
+      						<div className="number">4</div>
+      						<div className="description">Candidates</div>
       					</div>
 
       					<div className="counter">
-      						<div className="number">83</div>
-      						<div className="description">Companies</div>
+      						<div className="number">3</div>
+      						<div className="description">Businesses</div>
       					</div>
 
       				</div>
       				<div className="row">
       					<div className="col-sm-12">
-      						<p><a className="link-register btn btn-primary">Join Us</a></p>
+      						<p><a href='/signup' className="link-register btn btn-primary">Join Us</a></p>
       					</div>
       				</div>
       			</div>
