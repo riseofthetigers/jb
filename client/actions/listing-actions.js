@@ -1,29 +1,47 @@
-var ListingConstants = require('../constants/listing-constants');
-var AppDispatcher = require('../dispatchers/app-dispatcher');
+const Actions = require('../constants/app-constants')
+const AppDispatcher = require('../dispatchers/app-dispatcher')
+const axios = require('axios')
 
-var ListingActions = {
+const makeQuerystring = function(params) {
+  return Object.keys(params)
+         .map(key => encodeURI(key) + "=" + encodeURI(params[key]))
+         .join("&")
+}
 
-    getAllListings: function() {
-        AppDispatcher.handleListingAction({
-            actionType: ListingConstants.GET_ALL_LISTINGS
-        });
+const ListingActions = {
+    // New style actions
+    getListings(query={}) {
+      const things = Object.keys(query).map(key => ({
+        key: key,
+        xs: Object.keys(query[key]).filter(i => query[key][i]).join(",")
+      })).filter(o => o.xs.length !== 0).reduce((o, {key, xs}) => {
+        o[key] = xs
+        return o
+      }, {})
+
+      return axios.get('/api/listings?' + makeQuerystring(things)).then(response => ({
+        actionType: Actions.GET_ALL_LISTINGS,
+        listings: response.data,
+        filter: query
+      }))
     },
 
-    getListing: function (id) {
-        AppDispatcher.handleListingAction({
-            actionType: ListingConstants.GET_LISTING,
-            id: id
-        });
+    getListingById(id) {
+      return axios.get('/api/listings/' + id).then(response => ({
+        actionType: Actions.GET_LISTING,
+        listing: response.data
+      }))
     },
 
+
+    // Old style actions
     createListing: function(user, data) {
         AppDispatcher.handleListingAction({
-            actionType : ListingConstants.LISTING_CREATE,
+            actionType : Actions.LISTING_CREATE,
             user       : user,
             data       : data
         });
     }
-
 }
 
 

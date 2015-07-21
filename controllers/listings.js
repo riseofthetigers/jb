@@ -7,6 +7,7 @@ var models = require('../models');
 // Import Listing Model.
 var Listing = models.Listing;
 var Business = models.Business;
+var url = require('url');
 
 // Expose the listings controller.
 module.exports = {
@@ -32,8 +33,35 @@ module.exports = {
   },
 
   getAll: function(req, res) {
-    Listing.findAll({include: [Business]}).then(function(listings) {
-      res.send(listings);
+    var query = url.parse(req.url, true).query
+
+    var where = {}
+    var nestedWhere = {} // Needs work
+    Object.keys(query).forEach(function(key) {
+      (key.indexOf('.') !== -1 ? nestedWhere : where)[key] = {$in: query[key].split(",")}
+    })
+
+    getKeyByString = function(obj, str) {
+      var keys = str.split(".")
+      return keys.reduce(function(o, key) {
+        return !o ? undefined : o[key]
+      }, obj)
+    }
+
+    Listing.findAll({include: [Business], where: where}).then(function(listings) {
+      var filtered = listings.filter(function(listing) {
+        for (var key in nestedWhere) {
+          if(!nestedWhere.hasOwnProperty(key)) continue
+          var value = getKeyByString(listing, key)
+          var checks = nestedWhere[key]
+          // ToLowerCase for now, to match boston with Boston
+          if(checks.$in && checks.$in.indexOf(value.toLowerCase()) === -1) return false
+        }
+        return true
+      })
+
+      // NestedWhere has to be handled here
+      res.send(filtered);
     });
   },
 

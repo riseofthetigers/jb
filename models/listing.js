@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Listing = sequelize.define("Listing", {
-    job_title: {
+    job_title: { // Barista, Cashier, etc
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       }
     },
-    job_description: {
+    job_description: { // Just a description filled by the employer
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
