@@ -858,61 +858,45 @@ header {
 	margin-bottom: 25px;
 }
 
-	.jobs > div {
-		border-bottom: 1px solid #e7e7e7;
-		color: #888;
-		display: block;
-		float: left;
-		padding: 15px;
-		position: relative;
-		overflow: hidden;
-		width: 100%;
-	}
+.jobs > div {
+border-bottom: 1px solid #e7e7e7;
+color: #888;
+display: block;
+float: left;
+padding: 15px;
+position: relative;
+overflow: hidden;
+width: 100%;
+}
 
-		.jobs > div:nth-child(2n) {
-			background: #f8f8f8;
-		}
+.jobs > div:nth-child(2n) {
+	background: #f8f8f8;
+}
 
-		.jobs > div:hover {
-			background: #f2f2f2;
-		}
+.jobs > div:hover {
+	background: #f2f2f2;
+}
 
-		.jobs > div .featured {
-			background: #14b1bb;
-			display: block;
-			height: 30px;
-			left: -15px;
-			position: absolute;
-			top: -15px;
-			width: 30px;
-			-webkit-transform: rotate(45deg);
-		    -moz-transform: rotate(45deg);
-		    -o-transform: rotate(45deg);
-		    -ms-transform: rotate(45deg);
-		    transform: rotate(45deg);
-		}
-
-	.jobs img,
-	.jobs .title,
-	.featured-job img,
-	.featured-job .title {
-		float: left;
-	}
-
-	.jobs .data {
-		float: right;
-	}
+.jobs > div .featured {
+	background: #14b1bb;
+	display: block;
+	height: 30px;
+	left: -15px;
+	position: absolute;
+	top: -15px;
+	width: 30px;
+	-webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 
 	.jobs h5,
 	.jobs p,
 	#sidebar .featured-job h5,
 	#sidebar .featured-job p {
 		margin: 0;
-	}
-
-	.jobs .title,
-	.featured-job .title {
-		padding: 11px 0 0 20px;
 	}
 
 	.jobs span {
@@ -1001,7 +985,6 @@ header {
 
 		.featured-job img,
 		.featured-job .title {
-			float: left;
 			margin-bottom: 15px;
 			margin-top: 15px;
 		}
@@ -1785,12 +1768,6 @@ ____________________________________________________________________*/
 
 		.slide-content h2 {
 			font-size: 44px;
-		}
-
-		.jobs img,
-		.jobs .title {
-			float: left;
-			margin-bottom: 15px;
 		}
 
 		.jobs .data {

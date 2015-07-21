@@ -8,6 +8,10 @@ const employmentTypes = {
   H: 'Hourly',
 }
 
+const cut = function(x, str) {
+  return str.length < 140 ? str : str.substr(0, 135) + "..."
+}
+
 const JobOffer = React.createClass({
   mixins: [Navigation],
 
@@ -21,18 +25,25 @@ const JobOffer = React.createClass({
       const employmentType = employmentTypes[data.employment_type] || 'Unknown'
 
       return (
-          <div onClick={this.handleClick} className="job">
-              <img style={{width: 90, height: 90}} src={data.photo_url} alt={data.job_description} className="img-circle" />
+          <div onClick={this.handleClick} className="job row">
+            <div className="col-sm-3 col-md-2">
+              <img style={{width: 70, height: 70}} src={data.photo_url} alt={data.job_description} className="img-circle" />
+              <div>{data.Business.business_name}</div>
+            </div>
+            <div className="col-sm-6 col-md-7">
               <div className="title">
                   <h5>{data.job_title}</h5>
-                  <p>{data.Business.business_name}</p>
+                  <p>{cut(145, data.job_description)}</p>
               </div>
+            </div>
+            <div className="col-xs-3">
               <div className="data">
                   <div>{"Posted "+fromNow}</div>
                   <div className="city"><i className="fa fa-map-marker" />{data.Business.business_city}</div>
                   <div className="type full-time"><i className="fa fa-clock-o" />{employmentType}</div>
                   <div className="sallary"><i className="fa fa-dollar" />{data.job_compensation}</div>
               </div>
+            </div>
           </div>
       );
     },
