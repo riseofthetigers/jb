@@ -17,19 +17,29 @@ module.exports = {
     var createListing = {
         job_category     :  req.body.job_category,
         job_description  :  req.body.job_description,
-        job_region       :  req.body.job_region,
-        job_location     :  req.body.job_location,
         job_title        :  req.body.job_title,
         job_type         :  req.body.job_type,
-        job_zip          :  req.body.job_zip,
         job_compensation :  req.body.job_compensation,
         job_requirements :  req.body.job_requirements
-    }
-
-    Listing.create(createListing).then(function() {
+    };
+    var createBusiness = {
+        business_description : req.body.company_description,
+        business_logo       : req.body.company_logo,
+        business_name       : req.body.company_name,
+        business_tagline    : req.body.company_tagline,
+        business_zip        : req.body.company_zip,
+        business_state      : req.body.company_state,
+        business_city       : req.body.company_city,
+        business_address    : req.body.company_address
+    };
+    Business.create(createBusiness).then(function(business) {
+        createListing.business_id = business.id
+        return Listing.create(createListing)
+    }).then(function(listing) {
       res.send(200);
       res.json(req.dataValues);
     });
+
   },
 
   getAll: function(req, res) {

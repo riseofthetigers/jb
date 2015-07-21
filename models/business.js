@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {}
     },
     business_zip: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {}
     },

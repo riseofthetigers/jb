@@ -2,6 +2,7 @@ const Dispatcher = require('../dispatchers/app-dispatcher');
 const Actions = require('../constants/app-constants');
 const assign = require('react/lib/Object.assign');
 const {EventEmitter} = require('events');
+const axios = require('axios');
 
 let _listings = [];  // Plural
 let _currentlisting = {
@@ -53,6 +54,11 @@ const ListingStore = assign({}, EventEmitter.prototype, {
               const {user, data} = action
               if(user && user.type === 'E'){
                 //should save to database
+                axios.post('/api/listings', data).then(function(res) {
+                    console.log('---- SAVED ---', res);
+                    localStorage.removeItem('tempListing');
+
+                 });
               } else {
                 localStorage.setItem('tempListing',JSON.stringify(data));
               }

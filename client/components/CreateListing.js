@@ -10,7 +10,7 @@ var CreateListing = React.createClass({
 
   getInitialState: function() {
     var defaultValues = {
-        company_descrption: 'Company description...',
+        company_description: 'Company description...',
         company_logo: '',
         company_name: '',
         company_tagline: '',
@@ -254,7 +254,7 @@ var CreateListing = React.createClass({
                                 <input type="text" data-edit="inserttext" id="voiceBtn2" style={{display: 'none'}}/>
                             </div>
 
-                            <div className="editor" id="company-description" ref="company_descrption" contentEditable="true" dangerouslySetInnerHTML={{__html: this.state.company_descrption}}></div>
+                            <div className="editor" id="company-description" ref="company_descrption" contentEditable="true" dangerouslySetInnerHTML={{__html: this.state.company_description}}></div>
                             <div className="row text-center">
                                 <p>&nbsp;</p>
                                 <a onClick={this.handleSave} className="btn btn-primary btn-lg">Save <i className="fa fa-arrow-right"></i></a>
