@@ -60,7 +60,7 @@ const ListingDetail = React.createClass({
                             <h3>Benefits</h3>
                             <ul>{jobs_benefits.map((line,i) => <li key={i}>{line}</li>)}</ul>
                             */}
-                            <p><Link to={`/listing/${data.id}/apply/`} className="btn btn-primary btn-lg">
+                            <p><Link to='apply' params={{id: data.id}} className="btn btn-primary btn-lg">
                               Apply Here
                             </Link></p>
                         </article>
