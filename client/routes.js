@@ -48,7 +48,7 @@ const NeedLogin = React.createClass({
   },
 
   render: function() {
-    return (this.state.user === null) ? <RouteHandler user={this.state.user} /> : null
+    return (this.state.user !== null) ? <RouteHandler user={this.state.user} /> : null
   }
 })
 
