@@ -4,8 +4,25 @@ const assign = require('react/lib/Object.assign');
 const {EventEmitter} = require('events');
 
 let _listings = [];  // Plural
-let _currentlisting = null; // Singular
+let _currentlisting = {
+  id: 0,
+  Business: {
+    business_logo: 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+    business_name: '',
+    business_city: ''
+  },
+  job_title: '',
+  job_description: '',
+  job_type: '',
+  job_compensation: ''
+}; // Singular
 let _filter = {};
+
+const employmentTypes = {
+  F: 'Full Time',
+  P: 'Part Time',
+  H: 'Hourly',
+}
 
 const ListingStore = assign({}, EventEmitter.prototype, {
     addListingChangeListener(fn) { this.on('change', fn) },
@@ -25,6 +42,10 @@ const ListingStore = assign({}, EventEmitter.prototype, {
       return _filter
     },
 
+    employmentType(type) {
+      return employmentTypes[type] || 'Unknown'
+    },
+
     dispatcherIndex: Dispatcher.register(function(payload){
         const action = payload.action;
         switch(action.actionType){
@@ -37,7 +58,7 @@ const ListingStore = assign({}, EventEmitter.prototype, {
               }
               break;
           case Actions.GET_LISTING:
-              _listing = action.listing
+              _currentlisting = action.listing
               ListingStore.emit('change')
               break;
           case Actions.GET_ALL_LISTINGS:

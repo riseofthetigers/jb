@@ -57,11 +57,14 @@ var routes = (
     <DefaultRoute handler={Landing} />
     <Route name="landing" path="/" handler={Landing} />
     <Route name="createlisting" path='/createlisting' handler={CreateListing}/>
-    <Route name="home" path='/home' handler={Home}/>
+
+    <Route name="signup" path='/signup' handler={Signup}/>
     <Route name="login" path='/login' handler={Login}/>
+
     <Route name="search" path='/search' handler={Search} />
     <Route name="search_page" path="/search/:page" handler={Search} />
-    <Route name="signup" path='/signup' handler={Signup}/>
+    <Route name="listing_details" path="/job/:id" handler={ListingDetail} />
+
     <Route name='jobslisting' path='/jobs' handler={JobsListing}/>
 
     <Route name="contactus" path="/contactus" handler={ContactUs} />
@@ -69,7 +72,6 @@ var routes = (
 
     <Route name="needslogin" path="/" handler={NeedLogin}>
       <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
-      <Route name="listing_details" path="/listing/detail/:id" handler={ListingDetail} />
       <Route name="profile_view" path="/profile/view" handler={CandidateView} />
       <Route name="profile_edit" path="/profile/edit" handler={CandidateProfileEdit} />
     </Route>

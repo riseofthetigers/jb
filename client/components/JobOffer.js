@@ -1,12 +1,7 @@
 const React = require('react')
 const {Navigation} = require('react-router')
 const moment = require('moment')
-
-const employmentTypes = {
-  F: 'Full Time',
-  P: 'Part Time',
-  H: 'Hourly',
-}
+const ListingStore = require('../stores/listing-store')
 
 const cut = function(x, str) {
   return str.length < 140 ? str : str.substr(0, 135) + "..."
@@ -16,13 +11,13 @@ const JobOffer = React.createClass({
   mixins: [Navigation],
 
   handleClick() {
-    this.transitionTo('/listing/detail/' + this.props.data.id);
+    this.transitionTo('/job/' + this.props.data.id);
   },
 
   render: function () {
       const data = this.props.data
       const fromNow = moment(data.created_at).fromNow()
-      const employmentType = employmentTypes[data.job_type] || 'Unknown'
+      const employmentType = ListingStore.employmentType(data.job_type)
 
       return (
           <div onClick={this.handleClick} className="job row">
