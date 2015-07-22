@@ -67,7 +67,7 @@ const ListingDetail = React.createClass({
                     </div>
                     <div className="col-sm-4" id="sidebar">
                         <div className="sidebar-widget" id="company">
-                            <h2>About this company</h2>
+                            <h2>About this business</h2>
                             <p><img src={data.Business.business_logo} style={{maxWidth: 150, maxHeight: 150}}
                                     alt={data.Business.business_description} className="img-responsive" /></p>
                             <p>{data.Business.business_description}</p>
