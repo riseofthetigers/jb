@@ -1,14 +1,9 @@
 var React = require('react');
-var ReactBootstrap = require('react-bootstrap');
-var Button = ReactBootstrap.Button;
-var Modal = ReactBootstrap.Modal;
-var AppActions = require('../actions/app-actions');
 var ListingStore = require('../stores/listing-store');
 var Navigation = require('react-router').Navigation;
-var _ = require('lodash');
 
 var JobOffer = require('./JobOffer');
-var Pagination = require('./Pagination');
+//var Pagination = require('./Pagination');
 
 
 // Our custom component is managing whether the Modal is visible
