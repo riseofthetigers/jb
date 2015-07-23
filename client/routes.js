@@ -14,8 +14,10 @@ import Apply from './components/Apply'
 const Dashboard = require('./components/Dashboard');
 const JobsListing = require('./components/JobsListing');
 const ListingDetail = require('./components/ListingDetail')
+const MyListings = require('./components/MyListings')
 const CandidateView = require('./components/CandidateView')
 const CandidateProfileEdit = require('./components/CandidateProfileEdit')
+const Mailbox = require('./components/Mailbox')
 
 const ContactUs = require('./components/ContactUs');
 const About = require('./components/About');
@@ -74,6 +76,8 @@ var routes = (
 
     <Route name="needslogin" path="/" handler={NeedLogin}>
       <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
+      <Route name='mylistings' path='/mylistings' handler={MyListings}/>
+      <Route name='mailbox' path='/mailbox' handler={Mailbox}/>
       <Route name="profile_view" path="/profile/view" handler={CandidateView} />
       <Route name="profile_edit" path="/profile/edit" handler={CandidateProfileEdit} />
       <Route name="apply" path="/job/:id/apply" handler={Apply} />
