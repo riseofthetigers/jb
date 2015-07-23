@@ -9,6 +9,7 @@ const Landing = require('./components/Landing.js');
 const Login = require('./components/Login.js');
 const Search = require('./components/Search');
 const Signup = require('./components/Signup');
+import Apply from './components/Apply'
 
 const Dashboard = require('./components/Dashboard');
 const JobsListing = require('./components/JobsListing');
@@ -75,6 +76,7 @@ var routes = (
       <Route name='dashboard' path='/dashboard' handler={Dashboard}/>
       <Route name="profile_view" path="/profile/view" handler={CandidateView} />
       <Route name="profile_edit" path="/profile/edit" handler={CandidateProfileEdit} />
+      <Route name="apply" path="/job/:id/apply" handler={Apply} />
     </Route>
   </Route>
 
