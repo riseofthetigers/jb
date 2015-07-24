@@ -1,0 +1,27 @@
+ecmaFeatures:
+  modules: true
+
+env:
+  es6: true
+
+parser: "babel-eslint"
+rules:
+  strict: 0
+  new-cap: 0
+  quotes: 0
+  semi: 0
+  global-strict: 0
+  comma-dangle: 0
+  camelcase: 0
+  no-unused-vars: 0
+  curly: 0
+  no-console: 0
+  no-trailing-spaces: 0
+  no-underscore-dangle: 0
+  no-unneeded-ternary: 1
+globals:
+  require: true
+  module: true
+  console: true
+  setTimeout: true
+  setInterval: true

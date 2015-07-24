@@ -1,9 +1,42 @@
-var CandidateConstants = require('../constants/candidate-constants');
-var AppDispatcher = require('../dispatchers/app-dispatcher');
-var axios = require('axios');
+const CandidateConstants = require('../constants/candidate-constants');
+const AppDispatcher = require('../dispatchers/app-dispatcher');
+const axios = require('axios');
 
+const safeParse = str => {
+  try        { return JSON.parse(str) }
+  catch(err) { return [] }
+}
 
-var CandidateActions = {
+const CandidateActions = {
+    // New style action
+    getUserProfile(id) {
+      return axios.get(`/api/users/${id}/candidate`).then((result) => {
+        let candidate = result.data.candidate
+        candidate.experience = safeParse(candidate.experience)
+        candidate.education = safeParse(candidate.education)
+
+        return { // Just reuse that action, haha
+            actionType: CandidateConstants.GET_CURRENT_PROFILE,
+            profile: candidate
+        };
+      });
+    },
+
+    addProfileField(field) {
+      return {
+        actionType: CandidateConstants.PROFILE_ADD_FIELD,
+        field: field
+      }
+    },
+
+    updateProfile(candidate) {
+      return { // Just reuse that action, haha
+          actionType: CandidateConstants.GET_CURRENT_PROFILE,
+          profile: candidate
+      };
+    },
+
+    // Old style actions
     getProfile: function(id) {
       axios.get('/api/candidates/'+id).then(function(result) {
         AppDispatcher.handleCandidateAction({
@@ -21,7 +54,6 @@ var CandidateActions = {
             profile: result.data
         });
       });
-
     },
 
     saveProfile: function (profile) {

@@ -9,6 +9,8 @@ var employersController = require('../controllers/employers')
 var listingsController = require('../controllers/listings')
 var usersController = require('../controllers/users')
 var messageController = require('../controllers/message')
+var applicationController = require('../controllers/application')
+
 //var repliesController = require('../controllers/replies')
 //var topicsController = require('../controllers/topics')
 
@@ -50,7 +52,14 @@ usersRouter.get("/", usersController.get);
 usersRouter.get("/:id", usersController.getUser);
 usersRouter.post("/", usersController.create);
 usersRouter.put("/:id", usersController.update);
-usersRouter.delete("/:id", usersController.destroy);
+usersRouter
+  .delete("/:id", usersController.destroy)
+  .get("/:id/candidate", usersController.getCandidate)
+
+var applicationRouter = Router()
+  .post("/", applicationController.create)
+  .get("/:id", applicationController.getApplication)
+
 
 //Register message routes.
 var messageRouter = Router();
@@ -83,6 +92,7 @@ apiRouter.use("/listings", listingsRouter);
 apiRouter.use('/candidates', candidatesRouter);
 apiRouter.use("/business", businessRouter);
 apiRouter.use("/message", messageRouter);
+apiRouter.use("/applications", applicationRouter)
 
 //apiRouter.use("/replies", repliesRouter);
 //apiRouter.use("/topics", topicsRouter);

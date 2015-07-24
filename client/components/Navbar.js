@@ -38,7 +38,10 @@ var Navbar = React.createClass({
 
     const leftButtons = isLoggedIn ? [
       <li key="mylistings"><Link to="mylistings">My Listings</Link></li>,
-      <li key="mailbox"><Link to="mailbox">Messages</Link></li>
+      <li key="mailbox"><Link to="mailbox">Messages</Link></li>,
+      user.type === "C"
+      ? <li><Link to="search">Search Jobs</Link></li>
+      : <li><Link to="createlisting">Create a Listing</Link></li>
     ] : [
       <li><Link to="createlisting">Create a Listing</Link></li>,
       <li><Link to="search">Search Jobs</Link></li>

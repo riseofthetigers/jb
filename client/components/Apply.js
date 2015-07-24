@@ -1,40 +1,33 @@
 import React from 'react'
 import assign from 'react/lib/Object.assign'
 
-import AuthStore from '../stores/auth-store'
 import ListingStore from '../stores/listing-store'
+import CandidateStore from '../stores/candidate-store'
+import ApplicationStore from '../stores/application-store'
 
 import Dispatcher from '../dispatchers/app-dispatcher'
 import ListingActions from '../actions/listing-actions'
+import CandidateActions from '../actions/candidate-actions'
+import ApplicationActions from '../actions/application-actions'
+import NotificationActions from '../actions/notifications-actions'
 
 import { ApplyContainer, ApplyInput, ApplyField, ApplyRadio } from './reusableForm'
+import connectToStores from '../utils/connectToStores'
+import {Navigation} from 'react-router'
 
-const JobInfo = React.createClass({
-  loadState:() => ({
-    user: AuthStore.getUser(),
-    listing: ListingStore.getCurrentListing()
-  }),
-
-  getInitialState() { return this.loadState() },
-  _onChange() { this.setState(this.loadState()) },
-
+let JobInfo = React.createClass({
   componentDidMount() {
-    ListingStore.on('change', this._onChange);
     Dispatcher.callAction(ListingActions.getListingById, this.props.id);
-  },
-  componentWillUnmount() {
-    ListingStore.removeListener('change', this._onChange);
   },
 
   render() {
-    const {user, listing} = this.state
+    const {user, listing} = this.props
     return (
       <div className="row text-center">
         <div className="col-sm-12">
-          <h1>{listing.job_title} -  {listing.Business.business_name}</h1><br />
+          <h1>{listing.job_title} - {listing.Business.business_name}</h1><br />
         </div>
-        <div className="col-md-2" />
-        <div className="col-md-4">
+        <div className="col-md-4 col-md-offset-2">
           <img style={{width: 200, height: 200}} src="images/person3.jpg" /><br />
           <h4>{listing.Business.business_hiring_manager}</h4>
         </div>
@@ -43,9 +36,8 @@ const JobInfo = React.createClass({
           <h4>{user.name}</h4>
         </div>
         <div className="col-sm-12"><h3>Apply to this job</h3></div>
-        <div className="col-sm-4" />
         {/*
-        <div className="col-sm-4">
+        <div className="col-sm-4 col-sm-offset-4">
           <div className="progress">
             <div className="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow={40} aria-valuemin={0} aria-valuemax={100} style={{width: '40%'}}>
               40%
@@ -57,10 +49,13 @@ const JobInfo = React.createClass({
     )
   }
 })
+JobInfo = connectToStores(JobInfo, [ListingStore], props =>({
+  listing: ListingStore.getCurrentListing()
+}))
 
 const SingleFieldThing = React.createClass({
   // Think about something with <label htmlFor={xxx}> ?
-  input({title, placeholder, value, name}) {
+  input({title, placeholder, name}) {
     const {change, props: {value}} = this
     return (
       <div className="col-sm-6" key={name}>
@@ -89,12 +84,8 @@ const SingleFieldThing = React.createClass({
 })
 
 const MultipleFieldThing = React.createClass({
-  componentDidMount() { if(this.props.value.length === 0) this.addField() },
-
   addField() {
-    const {onChange, value, initial} = this.props
-    const instantiated = assign({}, initial)
-    onChange(value.concat( [instantiated] ))
+    Dispatcher.callAction(CandidateActions.addProfileField, this.props.name)
   },
 
   change(index) {
@@ -112,43 +103,40 @@ const MultipleFieldThing = React.createClass({
     })
 
     return (
-        <div>
-            <h2>{this.props.title}</h2>
-            {experiences}
-            <p><a onClick={this.addField}>+ Add {this.props.title}</a></p>
-        </div>
+      <div>
+        <h2>{this.props.title}</h2>
+        {experiences}
+        <p><a onClick={this.addField}>+ Add {this.props.title}</a></p>
+      </div>
     )
   }
 })
 
-const ApplyForm = React.createClass({
-  getInitialState:() => ({
-    /* Still need
-       - social
-       - title
-       - candidate_picture
-       And doubting about these
-       - name (Already in the original profile)
-       - birthday (Also shouldn't be different really xd)
-    */
-    email: '',
-    phone_number: '',
-    address: '',
-    state: '',
-    skills: '',
-    availability: 'I',
-    authorized: true,
-    criminal: false,
-    headline: '',
-    criminal_description: '',
-    experiences: [],
-    educations: [],
-  }),
+let ApplyForm = React.createClass({
+  mixins: [Navigation],
+  /* Still need these maybe
+     - social
+     - title
+     - candidate_picture
+     Make these readonly?
+     - name (Already in the original profile)
+     - birthday (Also shouldn't be different really xd)
+  */
+
+  componentDidMount() {
+    Dispatcher.callAction(CandidateActions.getUserProfile, this.props.user.id)
+  },
 
   change(prop) {
-    return function(value) {
-      this.setState({[prop]: value})
-    }.bind(this)
+    return value => {
+      if(prop === 'availability') {
+        const newProfile = assign({}, this.props.application, { [prop]: value })
+        Dispatcher.callAction(ApplicationActions.updateApplication, newProfile)
+      } else {
+        const newProfile = assign({}, this.props.profile, { [prop]: value })
+        Dispatcher.callAction(CandidateActions.updateProfile, newProfile)
+      }
+    }
   },
 
   nativeChange(prop) {
@@ -162,46 +150,42 @@ const ApplyForm = React.createClass({
   // but also very happy I finally got it in react all with ONE STATE
   // (And so the ability to move it to even less states)
   subFuckingMit() {
-    alert("OMG YOU ARE NEARLY THERE")
-    console.log(this.state)
+    const {profile, application, params} = this.props
+    const jobId = params.id
+    Dispatcher.callAction(ApplicationActions.sendApplication, profile, application, jobId)
+    .then(() => { // I shouldn't add a callback directly, I think :/
+      Dispatcher.callActions(NotificationActions.addNotification, "You applied to the job!")
+      this.transitionTo("/dashboard")
+    }).catch(err => {
+      Dispatcher.callAction(NotificationActions.addNotification, err.data.message, 'danger')
+    })
   },
 
   render: function() {
     // For the addable form groups
     const experienceFields = [
-      { title: 'Employer', placeholder: "Company name", name: 'employer'  },
+      { title: 'Employer', placeholder: "Company name", name: 'employer' },
       { title: 'Start/End Date', placeholder: "e.g. April 2010 - June 2013", name: 'start_end' },
       { title: 'Job Title', placeholder: "e.g. Cashier", name: 'job_title' },
-      { title: 'Responsibilities', placeholder: "e.g. Developing new websites", name: 'responsabilities'  }
+      { title: 'Responsibilities', placeholder: "e.g. Developing new websites", name: 'responsabilities' }
     ]
-    const experienceDefault = {
-      employer: '',
-      start_end: '',
-      job_title: '',
-      responsabilities: ''
-    }
 
     const educationFields = [
-      { title: 'School Name', placeholder: "School name, city and country", name: 'school'  },
+      { title: 'School Name', placeholder: "School name, city and country", name: 'school' },
       { title: 'Start/End Date', placeholder: "e.g. April 2010 - June 2013", name: 'start_end' },
       { title: 'Qualifications', placeholder: "e.g. Master Engineer", name: 'qualifications' },
-      { title: 'Notes', placeholder: "Any achievements", name: 'notes'  }
+      { title: 'Notes', placeholder: "Any achievements", name: 'notes' }
     ]
-    const educationDefault = {
-      school: '',
-      start_end: '',
-      qualifications: '',
-      notes: ''
-    }
 
     const jobId = this.props.params.id
-    const {email, phone_number, address, state, skills, availability, educations,
-           authorized, criminal, headline, criminal_description, experiences} = this.state
+    const {email, phone_number, address, state, skills, education,
+           authorized, criminal, headline, criminal_description, experience} = this.props.profile
+    const {availability} = this.props.application
     const {change, nativeChange} = this
 
     return (
       <div className="container" style={{maxWidth: 700}}>
-        <JobInfo id={jobId} />
+        <JobInfo id={jobId} user={this.props.user} />
         <div className="row">
           <div className="col-sm-12">
             <ApplyContainer title="Tagline">
@@ -241,28 +225,19 @@ const ApplyForm = React.createClass({
             </div>
 
             {/* Experience Start */}
-            <MultipleFieldThing title="Experience" fields={experienceFields} initial={experienceDefault}
-                                value={experiences} onChange={change('experiences')} />
+            <MultipleFieldThing title="Experience" fields={experienceFields} name="experience"
+                                value={experience} onChange={change('experience')} />
             <hr />
-            <MultipleFieldThing title="Education" fields={educationFields} initial={educationDefault}
-                                value={educations} onChange={change('educations')} />
+            <MultipleFieldThing title="Education" fields={educationFields} name="education"
+                                value={education} onChange={change('education')} />
 
             {/* Resume File Start */}
             {/* Will make resume working later... maybe
-            <div className="row">
-              <div className="col-sm-12">
-                <p>&nbsp;</p>
-                <h5>Resume File</h5>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-sm-12">
-                <div className="form-group" id="resume-file-group">
-                  <label htmlFor="resume-file">Upload Your Resume</label>
-                  <input type="file" id="resume-file" />
-                  <p className="help-block">Optionally upload your resume for employers to view. Max. file size: 64 MB.</p>
-                </div>
-              </div>
+            <h5>Resume File</h5>
+            <div className="form-group" id="resume-file-group">
+              <label htmlFor="resume-file">Upload Your Resume</label>
+              <input type="file" id="resume-file" />
+              <p className="help-block">Optionally upload your resume for employers to view. Max. file size: 64 MB.</p>
             </div>
             */}
             {/* Resume File End */}
@@ -279,5 +254,10 @@ const ApplyForm = React.createClass({
     );
   }
 });
+
+ApplyForm = connectToStores(ApplyForm, [CandidateStore, ApplicationStore], props =>({
+  profile: CandidateStore.get(),
+  application: ApplicationStore.get()
+}))
 
 module.exports = ApplyForm

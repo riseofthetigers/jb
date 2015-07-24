@@ -1,7 +1,4 @@
 var React = require('react');
-var ReactBootstrap = require('react-bootstrap');
-var Button = ReactBootstrap.Button;
-var Modal = ReactBootstrap.Modal;
 var AppActions = require('../actions/app-actions');
 var ListingStore = require('../stores/listing-store');
 var Navigation = require('react-router').Navigation;
@@ -40,19 +37,19 @@ const JobsListing = React.createClass({
   },
 
   changePageCallback: function(index) {
-    this.transitionTo('/search/'+ index);
+    this.transitionTo('/search/' + index);
   },
 
 
-  _onChange : function(){
-    this.setState({listings:ListingStore.getListings(), loaded: true});
+  _onChange: function(){
+    this.setState({listings: ListingStore.getListings(), loaded: true});
   },
 
 
   render: function () {
       var self = this;
       var NoListings = <div/>;
-      if(this.state.loaded && this.state.listings.length == 0){
+      if(this.state.loaded && this.state.listings.length === 0){
           NoListings = <h1>There is no listings in the database</h1>;
       }
       return (
@@ -63,8 +60,8 @@ const JobsListing = React.createClass({
                         { NoListings }
                         {
                          this.state.listings.map( function (listing, index) {
-                             if(   index>=self.props.entriesPerPage*(self.props.currentPage-1)
-                                && index < self.props.entriesPerPage*self.props.currentPage){
+                             if(index >= self.props.entriesPerPage * (self.props.currentPage - 1)
+                                && index < self.props.entriesPerPage * self.props.currentPage) {
                                 return <JobOffer key={listing.id} data={listing} />
                              }
                         })}

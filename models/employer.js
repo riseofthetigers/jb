@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'employers',
     classMethods: {
       associate: function(models) {
-        Employer.belongsTo(models.User);
+        Employer.hasOne(models.User);
         Employer.hasMany(models.Business);
       }
     }

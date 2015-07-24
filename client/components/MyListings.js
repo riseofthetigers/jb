@@ -1,7 +1,4 @@
 var React = require('react');
-var ReactBootstrap = require('react-bootstrap');
-var Button = ReactBootstrap.Button;
-var Modal = ReactBootstrap.Modal;
 var AppActions = require('../actions/app-actions');
 var Navigation = require('react-router').Navigation;
 var Pagination = require('./Pagination.js');
