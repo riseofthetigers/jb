@@ -20,7 +20,7 @@ module.exports = {
       "underscored": true,
       "charset": "utf8"
     },
-    "logging": console.log
+    "logging": false
 
   },
 

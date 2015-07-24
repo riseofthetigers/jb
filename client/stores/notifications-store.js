@@ -7,7 +7,7 @@ var EventEmitter = require('events').EventEmitter;
 var _notifications = [];
 var _index = 1;
 
-var TIMEOUT = 5*1000; // Default timeout before notification dissapears
+var TIMEOUT = 5 * 1000; // Default timeout before notification dissapears
 
 var NotificationsStore = assign({}, EventEmitter.prototype, {
     getNotifications: function () {

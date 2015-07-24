@@ -20,10 +20,11 @@ const AuthActions = {
       return axios.post('/api/login', {
         email: email,
         password: password
-      }).then(result => ({
+      }).then(({data}) => ({
         actionType: Actions.LOGIN,
-        type: result.data.type,
-        name: result.data.displayName
+        id: data.id,
+        type: data.type,
+        name: data.displayName
       })).catch(err => ({
         actionType: Actions.AUTH_ERROR,
         error: err

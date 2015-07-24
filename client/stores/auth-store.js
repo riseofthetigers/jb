@@ -33,6 +33,7 @@ const AuthStore = assign({}, EventEmitter.prototype, {
         switch(action.actionType) {
             case Actions.LOGIN:
                 _setUser({
+                    id: action.id,
                     type: action.type,
                     name: action.name
                 })

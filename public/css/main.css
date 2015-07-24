@@ -22,7 +22,7 @@ footer {
 }
 
 .notifications {
-  position: absolute;
+  position: fixed;
   left: 50%;
   margin-left: -200px;
   width: 400px;

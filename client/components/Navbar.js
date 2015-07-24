@@ -36,6 +36,17 @@ var Navbar = React.createClass({
     , <li key="signup"><Link to="signup">Sign up</Link></li>
     ];
 
+    const leftButtons = isLoggedIn ? [
+      <li key="mylistings"><Link to="mylistings">My Listings</Link></li>,
+      <li key="mailbox"><Link to="mailbox">Messages</Link></li>,
+      user.type === "C"
+      ? <li><Link to="search">Search Jobs</Link></li>
+      : <li><Link to="createlisting">Create a Listing</Link></li>
+    ] : [
+      <li><Link to="createlisting">Create a Listing</Link></li>,
+      <li><Link to="search">Search Jobs</Link></li>
+    ];
+
     if(this.state.user && this.state.user.type == 'C')
       rightButtons.unshift(<li key="profile"><Link to="profile_edit">Profile</Link></li>)
 
@@ -52,9 +63,8 @@ var Navbar = React.createClass({
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
               <li><img style={{width: 100+'px', height: 60+'px', padding: 4+'px'}} src="/images/logo2.jpg" alt="" /></li>
-              <li><Link to="createlisting">Create a Listing</Link></li>
-              <li><Link to="search">Search Jobs</Link></li>
             </ul>
+            <ul className="nav navbar-nav navbar-left">{leftButtons}</ul>
             <ul className="nav navbar-nav navbar-right">{rightButtons}</ul>
           </div>
         </div>

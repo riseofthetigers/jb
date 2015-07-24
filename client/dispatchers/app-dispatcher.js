@@ -1,8 +1,8 @@
-const {Dispatcher} = require ('flux')
+const {Dispatcher} = require('flux')
 const assign = require('react/lib/Object.assign')
 const Promise = require('bluebird')
 
-var AppDispatcher = assign(new Dispatcher() , {
+var AppDispatcher = assign(new Dispatcher(), {
     handleAuthAction(action) {
         this.dispatchAction(action, 'AUTH_ACTION')
     },
@@ -24,13 +24,18 @@ var AppDispatcher = assign(new Dispatcher() , {
 
     // For new kind of actionCreators who return the action(s) instead of dispatching it
     callAction(fn, ...args) {
-        Promise.try(fn, args).then(actions => {
+        const result = Promise.try(fn, args).then(actions => {
+          if(!actions) return
           if(!Array.isArray(actions)) actions = [actions]
           actions.forEach(action => this.dispatchAction(action))
-        }).catch(err => {
+        })
+
+        result.catch(err => {
           console.error("Error in action creator:", err)
           // Dispatch error action?
         })
+
+        return result
     }
 
 });

@@ -1,4 +1,5 @@
 var React = require('react');
+var AppActions = require('../actions/app-actions');
 var Navigation = require('react-router').Navigation;
 
 var CandidateStore = require('../stores/candidate-store')

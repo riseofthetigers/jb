@@ -36,15 +36,25 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'users',
     classMethods: {
       associate: function(models) {
-        User.hasMany(models.Candidate);
-        User.hasMany(models.Employer);
-        User.hasMany(models.Message);
-        User.hasMany(models.Notification);
+        User.belongsTo(models.Candidate);
+        User.belongsTo(models.Employer);
+
       }
     }, instanceMethods: {
       verifyPassword: function(password) {
         // This may later be async
         return Promise.resolve(password === this.password)
+      },
+
+      safeValues: function() {
+        return {
+          id: this.id,
+          displayName: this.displayName,
+          type: this.type,
+          email: this.email,
+          candidate_id: this.candidate_id,
+          employer_id: this.employer_id
+        }
       }
     }
   });
